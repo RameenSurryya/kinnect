@@ -157,6 +157,16 @@
     <!-- Initials inside avatars (Bricolage Bold) are 0.36 x the avatar size: 36dp -> 13sp,
          48dp -> 17sp, 74dp -> 26sp, 144dp -> 50sp (measured on 04, 13, 14, 22). -->
     <dimen name="text_avatar">13sp</dimen>         <!-- for the default 36dp avatar -->
+    <dimen name="text_wordmark_splash">43sp</dimen> <!-- "kinnect" under the splash logo (01) -->
+    <dimen name="text_splash_from">12.5sp</dimen>   <!-- "from" (01) -->
+    <dimen name="text_splash_company">24sp</dimen>  <!-- "SMD" (01), tracked out -->
+
+    <!-- Splash (01) -->
+    <dimen name="splash_logo">60dp</dimen>          <!-- white logo; its ink is 58 x 56dp -->
+    <dimen name="splash_brand_shift">20dp</dimen>   <!-- logo group sits this far below the centre -->
+    <dimen name="splash_wordmark_gap">11.5dp</dimen> <!-- logo to wordmark (31dp ink to ink) -->
+    <dimen name="splash_bottom_margin">17.5dp</dimen> <!-- "SMD" to the gesture bar -->
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->

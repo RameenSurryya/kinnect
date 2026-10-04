@@ -23,6 +23,27 @@
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
+    <!-- Large white wordmark under the splash logo (01). -->
+    <style name="Kinnect.Text.Wordmark.Splash">
+        <item name="android:textSize">@dimen/text_wordmark_splash</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- "from" above "SMD" on the splash (01): soft white. -->
+    <style name="Kinnect.Text.SplashFrom">
+        <item name="android:textSize">@dimen/text_splash_from</item>
+        <item name="android:textColor">@color/text_on_teal_soft</item>
+    </style>
+
+    <!-- "SMD" on the splash (01): Bricolage ExtraBold capitals, tracked out
+         (letter-by-letter overlap with the design: Bricolage 800 0.89, Figtree 700 0.61). -->
+    <style name="Kinnect.Text.SplashCompany">
+        <item name="android:fontFamily">@font/bricolage_grotesque_extrabold</item>
+        <item name="android:textSize">@dimen/text_splash_company</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:letterSpacing">0.09</item>
+    </style>
+
     <!-- Page titles (Friends, Notifications, Menu, Marketplace, Chats) and big
          onboarding questions ("What's your name and birthday?"). -->
     <style name="Kinnect.Text.Heading">

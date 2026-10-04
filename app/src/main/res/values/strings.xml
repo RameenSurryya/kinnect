@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Kinnect</string>
 
+    <!-- 01 Splash -->
+    <string name="splash_from">from</string>
+    <string name="splash_company" translatable="false">SMD</string>
+
     <!-- Shared top bar (include_top_bar.xml) -->
     <string name="wordmark" translatable="false">kinnect</string>
     <string name="cd_search">Search</string>

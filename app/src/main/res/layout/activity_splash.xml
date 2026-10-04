@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    01 Splash: full teal screen, the white logo and "kinnect" wordmark in the middle,
+    "from SMD" near the bottom. SplashActivity opens Login after about 2 seconds.
+
+    ScrollView (fillViewport) keeps the screen scrollable like every other screen; on a normal
+    phone it simply fills the screen. Inside, a FrameLayout lets the two groups be positioned
+    independently: the logo group is centred on the screen (shifted 20dp down), the "from SMD"
+    group sits at the bottom (measured: logo 60dp; "SMD" baseline 52dp above the bottom edge).
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Logo and wordmark, centred together. In a FrameLayout a top margin on a centred
+             child moves it down by the full margin, so the group sits a little below the
+             centre, as in the design. -->
+        <LinearLayout
+            android:id="@+id/ll_splash_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/splash_brand_shift"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_splash_logo"
+                android:layout_width="@dimen/splash_logo"
+                android:layout_height="@dimen/splash_logo"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/logo_kinnect" />
+
+            <TextView
+                android:id="@+id/tv_splash_wordmark"
+                style="@style/Kinnect.Text.Wordmark.Splash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/splash_wordmark_gap"
+                android:importantForAccessibility="no"
+                android:text="@string/wordmark" />
+        </LinearLayout>
+
+        <!-- "from" / "SMD" at the bottom -->
+        <LinearLayout
+            android:id="@+id/ll_splash_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/splash_bottom_margin"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_splash_from"
+                style="@style/Kinnect.Text.SplashFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/splash_from" />
+
+            <TextView
+                android:id="@+id/tv_splash_company"
+                style="@style/Kinnect.Text.SplashCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/splash_company" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

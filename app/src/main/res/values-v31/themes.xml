@@ -1,0 +1,8 @@
+<resources>
+    <!-- Android 12+ always shows a system splash (background + app icon) before the first
+         screen. Make it plain teal with no icon, so it blends into our own Splash screen. -->
+    <style name="Theme.Kinnect.Splash" parent="Base.Theme.Kinnect.Splash">
+        <item name="android:windowSplashScreenBackground">@color/teal</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@android:color/transparent</item>
+    </style>
+</resources>

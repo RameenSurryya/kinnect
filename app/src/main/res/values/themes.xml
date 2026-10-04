@@ -46,4 +46,12 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
     </style>
+
+    <!-- Splash (01): teal window, so the screen is teal from the first frame.
+         values-v31/themes.xml adds the Android 12+ system splash settings on top. -->
+    <style name="Base.Theme.Kinnect.Splash" parent="Theme.Kinnect.Dark">
+        <item name="android:windowBackground">@color/teal</item>
+    </style>
+
+    <style name="Theme.Kinnect.Splash" parent="Base.Theme.Kinnect.Splash" />
 </resources>
