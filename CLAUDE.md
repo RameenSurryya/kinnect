@@ -32,22 +32,39 @@ Read first: @docs/SCREENS.md @docs/DESIGN_TOKENS.md @docs/ICONS.md @docs/PROGRES
 
 ## Responsive rules (phones only)
 
-Portrait phones only; tablets and landscape are out of scope for now.
+Follow these in every screen. Tablets and landscape are out of scope; the app is portrait phones only.
 
 - Design baseline is 360dp wide. Never hardcode a screen width in dp. Use match_parent,
   layout_weight and wrap_content so layouts stretch cleanly on phones from 320dp to 430dp wide.
 - Fixed dp sizes only for things that should stay the same physical size: icons, avatars,
   button and input heights, badges, corner radii.
-- Every screen has a scrolling body (ScrollView) with the top bar and any bottom bar pinned,
-  so nothing is cut off on short phones (about 640dp tall).
+- Every screen has a scrolling body (ScrollView) with the top bar and any bottom bar pinned.
 - Photos use scaleType centerCrop inside weighted or fixed-ratio containers, never fixed pixel widths.
-- Text sizes in sp. Long text wraps or uses maxLines plus ellipsize instead of overflowing.
-- Handle the status bar and gesture bar with android:fitsSystemWindows="true" on each screen root
-  (or equivalent), and keep the design's background colour behind the system bars.
+- Text sizes in sp. Long text wraps or uses maxLines plus ellipsize.
+- Handle the status bar and gesture bar with android:fitsSystemWindows="true" on each screen root,
+  keeping the design's background colour behind the system bars.
 - Lock the app to portrait with android:screenOrientation="portrait" on every Activity in
   AndroidManifest.xml.
-- Test target: Kinnect360 (360x800dp) for pixel matching against the PDF, plus one other phone
-  size (for example Pixel 4a or Pixel 7) for the complex screens.
+- Test target: a 360x800dp emulator for pixel matching, plus one other phone size for the
+  complex screens.
+
+## Scope: UI only
+
+Follow these in every screen.
+
+- This assignment is UI only. No backend, database, network, authentication logic, data models,
+  ViewModels, Retrofit, Room or permission requests.
+- All content is static sample text and the drawables already in res/drawable, copied from the
+  PDF screens.
+- Kotlin is limited to: starting activities with Intents, finish(), back handling, the log out
+  flag, and tiny UI toggles that XML cannot do (show or hide the password, switch the selected
+  tab or chip). Keep each Activity as short as possible.
+- Buttons that do not lead to another screen in the navigation flow do nothing (no toasts, no
+  fake logic), unless the design shows a visual state change XML alone can do.
+- Camera, photo picker, voice call and chat are visual screens only. Do not use the camera,
+  microphone, storage or any real device API.
+- Prefer XML-only solutions (selectors, styles, android:visibility, android:rotation) over
+  Kotlin, because the marks for "simple widgets" reward XML without Kotlin code.
 
 ## Advanced concepts
 
