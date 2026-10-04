@@ -4,7 +4,7 @@ store storefront
 bell bell
 menu list
 search magnifying-glass
-messenger chat-circle
+messenger custom
 image image
 tag tag
 smile smiley
@@ -13,7 +13,7 @@ live video-camera
 camera camera
 calendar calendar-blank
 like thumbs-up
-comment chat-centered
+comment chat
 share arrow-bend-up-right
 globe globe
 close x
@@ -44,7 +44,7 @@ text_aa text-aa
 music music-notes
 sparkle sparkle
 brightness sun
-create_reel film-slate
+create_reel custom
 phone phone
 video video-camera
 mic microphone

@@ -42,8 +42,7 @@ Added after checking the screens: ic_lock=lock ("End-to-end encrypted", screen 2
 Filled variants (Phosphor Fill): ic_like_filled=thumbs-up-fill, ic_heart_filled=heart-fill.
 No ic_home_filled: the active tab in the design is still an outline icon (teal).
 All names above resolved on Phosphor with no 404s. SVG sources are in design/svg/.
-design/svg/map.txt is the original mapping and is now out of date for messenger, comment and
-create_reel (design/ is read-only; this file is the current list).
+design/svg/map.txt lists the same mapping (icon name, Phosphor name); "custom" means hand-drawn.
 
 ## Custom (hand-drawn VectorDrawables from the PNGs, no download)
 
