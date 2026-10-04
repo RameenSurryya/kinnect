@@ -1,14 +1,12 @@
-\# Screens (Activity / layout / package)
+# Screens (Activity / layout / package)
 
-Tabs = shows the shared top tab bar (include\_top\_tabs).
-
-
+Tabs = shows the shared top tab bar (include_top_tabs).
 
 | # | Activity | Package | Tabs | Goes to |
 
 |---|----------|---------|------|---------|
 
-| 01 | SplashActivity | auth | no | Login after \~2 s, finish() |
+| 01 | SplashActivity | auth | no | Login after ~2 s, finish() |
 
 | 02 | LoginActivity | auth | no | Log in → Home (finish); Create new account → SignUp |
 

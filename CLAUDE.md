@@ -1,44 +1,36 @@
-\# Kinnect – rules for Claude Code
-
-
+# Kinnect – rules for Claude Code
 
 Android app (package com.rameen.kinnect). 23 screens copied from design/screens/screen-NN.png.
 
-Read first: @docs/SCREENS.md @docs/DESIGN\_TOKENS.md @docs/ICONS.md @docs/PROGRESS.md
+Read first: @docs/SCREENS.md @docs/DESIGN_TOKENS.md @docs/ICONS.md @docs/PROGRESS.md
 
+## Stack
 
+- Kotlin + XML Views, ViewBinding. One Activity per screen. Basic layouts only.
 
-\## Stack
+- Packages: ui/auth, ui/home, ui/social, ui/profile, ui/chat, ui/market (see SCREENS.md).
 
-\- Kotlin + XML Views, ViewBinding. One Activity per screen. Basic layouts only.
+- Never edit anything inside design/.
 
-\- Packages: ui/auth, ui/home, ui/social, ui/profile, ui/chat, ui/market (see SCREENS.md).
+## Layout rules (try earlier options first)
 
-\- Never edit anything inside design/.
+1. LinearLayout (layout_weight for columns) is the default.
 
+2. FrameLayout for anything that overlaps (badges, "+4" over a photo, dim overlays).
 
+3. RelativeLayout for simple positioning (top bars).
 
-\## Layout rules (try earlier options first)
+4. GridLayout for true grids (photo picker, marketplace, shortcuts).
 
-1\. LinearLayout (layout\_weight for columns) is the default.
+5. ScrollView / HorizontalScrollView with static sample content. No RecyclerView unless truly needed.
 
-2\. FrameLayout for anything that overlaps (badges, "+4" over a photo, dim overlays).
+6. Basic widgets only: TextView, ImageView, Button, EditText, CheckBox, RadioGroup, Spinner, ProgressBar, View.
 
-3\. RelativeLayout for simple positioning (top bars).
+7. Styling via drawable shapes and styles.xml. No custom views, no layout libraries.
 
-4\. GridLayout for true grids (photo picker, marketplace, shortcuts).
+8. Rotation: android:rotation. Enlarging: scaleX/scaleY.
 
-5\. ScrollView / HorizontalScrollView with static sample content. No RecyclerView unless truly needed.
-
-6\. Basic widgets only: TextView, ImageView, Button, EditText, CheckBox, RadioGroup, Spinner, ProgressBar, View.
-
-7\. Styling via drawable shapes and styles.xml. No custom views, no layout libraries.
-
-8\. Rotation: android:rotation. Enlarging: scaleX/scaleY.
-
-
-
-\## Advanced concepts
+## Advanced concepts
 
 Before using ConstraintLayout, RecyclerView, animations or custom drawing: STOP and tell me
 
@@ -46,55 +38,45 @@ the screen, the element, why basic XML cannot do it, and what you propose.
 
 Mark it in XML with <!-- ADVANCED: reason -->.
 
+## Naming
 
+- Activity: XxxActivity. Layout: activity_xxx.xml. Included layouts: include_xxx.xml.
 
-\## Naming
+- View ids snake_case with prefix: btn_, tv_, iv_, et_, ll_, fl_, rg_ (e.g. btn_login).
 
-\- Activity: XxxActivity. Layout: activity\_xxx.xml. Included layouts: include\_xxx.xml.
+- Drawables: ic_ (icons), bg_ (shapes), ph_ (vector photo placeholders), photo_ (real photos).
 
-\- View ids snake\_case with prefix: btn\_, tv\_, iv\_, et\_, ll\_, fl\_, rg\_ (e.g. btn\_login).
+- All visible text in strings.xml. All colours/sizes in colors.xml / dimens.xml / styles.xml.
 
-\- Drawables: ic\_ (icons), bg\_ (shapes), ph\_ (vector photo placeholders), photo\_ (real photos).
+## Icons and images
 
-\- All visible text in strings.xml. All colours/sizes in colors.xml / dimens.xml / styles.xml.
+- Icons are VectorDrawables in res/drawable, tinted with app:tint. Never invent a substitute: if an
 
+  icon is missing, add it to docs/ICONS.md and tell me.
 
+- Real photos go in res/drawable-nodpi (JPG, under 300 KB each). Initials avatars stay as styled TextViews.
 
-\## Icons and images
+## Navigation
 
-\- Icons are VectorDrawables in res/drawable, tinted with app:tint. Never invent a substitute: if an
+- Explicit Intents. Back must return to the previous screen.
 
-&#x20; icon is missing, add it to docs/ICONS.md and tell me.
+- Splash and Login call finish() after moving on.
 
-\- Real photos go in res/drawable-nodpi (JPG, under 300 KB each). Initials avatars stay as styled TextViews.
+- Top tabs use FLAG_ACTIVITY_REORDER_TO_FRONT so they don't pile up.
 
+- Log out: FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK to LoginActivity.
 
+## Quality
 
-\## Navigation
+- Scrollable roots, 48dp minimum touch targets, contentDescription on icon buttons, readable contrast.
 
-\- Explicit Intents. Back must return to the previous screen.
+- Comment the code clearly: the author must explain it in a live demo. Keep code simple.
 
-\- Splash and Login call finish() after moving on.
+## After every screen
 
-\- Top tabs use FLAG\_ACTIVITY\_REORDER\_TO\_FRONT so they don't pile up.
+1. Build with gradlew.bat assembleDebug (Command Prompt) and fix errors.
 
-\- Log out: FLAG\_ACTIVITY\_NEW\_TASK or FLAG\_ACTIVITY\_CLEAR\_TASK to LoginActivity.
+2. Tick the screen in docs/PROGRESS.md.
 
-
-
-\## Quality
-
-\- Scrollable roots, 48dp minimum touch targets, contentDescription on icon buttons, readable contrast.
-
-\- Comment the code clearly: the author must explain it in a live demo. Keep code simple.
-
-
-
-\## After every screen
-
-1\. Build with gradlew.bat assembleDebug (Command Prompt) and fix errors.
-
-2\. Tick the screen in docs/PROGRESS.md.
-
-3\. git commit with a meaningful message ("feat: add Login screen ..."), then git push.
+3. git commit with a meaningful message ("feat: add Login screen ..."), then git push.
 

@@ -1,4 +1,4 @@
-\# Icons
+# Icons
 
 Source: Phosphor Icons "Regular" (rounded outline, closest to the design).
 
@@ -6,45 +6,41 @@ URL pattern: https://raw.githubusercontent.com/phosphor-icons/core/main/assets/r
 
 Names below are suggestions. If one 404s, pick the nearest on phosphoricons.com and update this file.
 
+Tabs/top bar: ic_home=house, ic_friends=users, ic_store=storefront, ic_bell=bell, ic_menu=list,
 
+ic_search=magnifying-glass, ic_messenger=chat-circle
 
-Tabs/top bar: ic\_home=house, ic\_friends=users, ic\_store=storefront, ic\_bell=bell, ic\_menu=list,
+Post/feed: ic_image=image, ic_tag=tag, ic_smile=smiley, ic_pin=map-pin, ic_live=video-camera,
 
-ic\_search=magnifying-glass, ic\_messenger=chat-circle
+ic_camera=camera, ic_calendar=calendar-blank, ic_like=thumbs-up, ic_comment=chat-centered,
 
-Post/feed: ic\_image=image, ic\_tag=tag, ic\_smile=smiley, ic\_pin=map-pin, ic\_live=video-camera,
+ic_share=arrow-bend-up-right, ic_globe=globe, ic_close=x, ic_more=dots-three, ic_back=caret-left,
 
-ic\_camera=camera, ic\_calendar=calendar-blank, ic\_like=thumbs-up, ic\_comment=chat-centered,
+ic_chevron_down=caret-down, ic_chevron_right=caret-right, ic_eye=eye, ic_info=info,
 
-ic\_share=arrow-bend-up-right, ic\_globe=globe, ic\_close=x, ic\_more=dots-three, ic\_back=caret-left,
+ic_plus_circle=plus-circle, ic_check=check, ic_expand=corners-out, ic_select_multiple=copy
 
-ic\_chevron\_down=caret-down, ic\_chevron\_right=caret-right, ic\_eye=eye, ic\_info=info,
+People/profile: ic_add_person=user-plus, ic_person=user, ic_groups=users-three,
 
-ic\_plus\_circle=plus-circle, ic\_check=check, ic\_expand=corners-out, ic\_select\_multiple=copy
+ic_briefcase=briefcase, ic_graduation=graduation-cap, ic_clock=clock, ic_edit=pencil-simple,
 
-People/profile: ic\_add\_person=user-plus, ic\_person=user, ic\_groups=users-three,
+ic_bookmark=bookmark-simple
 
-ic\_briefcase=briefcase, ic\_graduation=graduation-cap, ic\_clock=clock, ic\_edit=pencil-simple,
+Camera/story: ic_flash=lightning, ic_flip=camera-rotate, ic_star=star, ic_send=paper-plane-tilt,
 
-ic\_bookmark=bookmark-simple
+ic_heart=heart, ic_text_aa=text-aa, ic_music=music-notes, ic_sparkle=sparkle, ic_brightness=sun,
 
-Camera/story: ic\_flash=lightning, ic\_flip=camera-rotate, ic\_star=star, ic\_send=paper-plane-tilt,
+ic_create_reel=film-slate
 
-ic\_heart=heart, ic\_text\_aa=text-aa, ic\_music=music-notes, ic\_sparkle=sparkle, ic\_brightness=sun,
+Chat/call: ic_phone=phone, ic_video=video-camera, ic_mic=microphone, ic_call_end=phone-disconnect,
 
-ic\_create\_reel=film-slate
+ic_speaker=speaker-high, ic_transcript=article
 
-Chat/call: ic\_phone=phone, ic\_video=video-camera, ic\_mic=microphone, ic\_call\_end=phone-disconnect,
-
-ic\_speaker=speaker-high, ic\_transcript=article
-
-Menu: ic\_logout=sign-out, ic\_help=question, ic\_settings=sun, ic\_apps=squares-four, ic\_memories=clock-counter-clockwise
-
-
+Menu: ic_logout=sign-out, ic_help=question, ic_settings=sun, ic_apps=squares-four, ic_memories=clock-counter-clockwise
 
 Custom (hand-drawn VectorDrawables from the PNGs, no download):
 
-logo\_kinnect (three overlapping rings), reaction\_like / love / haha / wow / sad / angry (coloured
+logo_kinnect (three overlapping rings), reaction_like / love / haha / wow / sad / angry (coloured
 
-circles with simple faces), ph\_\* sun-and-hills placeholders in each palette.
+circles with simple faces), ph_* sun-and-hills placeholders in each palette.
 
