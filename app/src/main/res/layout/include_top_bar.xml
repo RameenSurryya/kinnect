@@ -4,7 +4,9 @@
     wordmark on Home) on the left, and the search and messenger circles on the right.
     BaseActivity.setupTopBar() sets the title and wires the two buttons.
 
-    Measured on screen 04: row 49dp tall, circles 36dp with an 8dp gap and a 16dp right margin,
+    Measured on screen 04: row 48dp tall; the title sits 1dp and the circles 2dp below the
+    row's centre (translationY, which moves a view without changing the layout around it);
+    circles 36dp with an 8dp gap and a 16dp right margin,
     19dp icons, 18dp badge centred 12dp right and 13dp above the messenger circle's centre.
     Each circle sits in a 48dp FrameLayout so the touch target is 48dp; the two frames overlap
     by 4dp (negative margin) so the circles keep the design's 8dp gap.
@@ -15,7 +17,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/top_bar_height">
 
-    <!-- Page title. Home switches it to the wordmark style. -->
+    <!-- Page title (Friends, Notifications, Menu, Marketplace). Hidden on Home. -->
     <TextView
         android:id="@+id/tv_top_title"
         style="@style/Kinnect.Text.Heading"
@@ -25,9 +27,24 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/screen_margin"
         android:layout_toStartOf="@+id/fl_search"
+        android:translationY="@dimen/top_bar_title_shift"
         android:ellipsize="end"
         android:singleLine="true"
-        tools:text="@string/wordmark" />
+        tools:text="Friends" />
+
+    <!-- "kinnect" wordmark, shown instead of the title on Home. A separate view (not a style
+         switched from code) so its font loads with the layout. -->
+    <TextView
+        android:id="@+id/tv_wordmark"
+        style="@style/Kinnect.Text.Wordmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/screen_margin"
+        android:text="@string/wordmark"
+        android:translationY="@dimen/top_bar_title_shift"
+        android:visibility="gone" />
 
     <!-- Messenger button: grey circle, icon, red unread badge -->
     <FrameLayout
@@ -35,8 +52,8 @@
         android:layout_width="@dimen/touch_target"
         android:layout_height="@dimen/touch_target"
         android:layout_alignParentTop="true"
+        android:translationY="@dimen/top_bar_button_shift"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/space_2"
         android:layout_marginEnd="@dimen/space_10"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/cd_messenger">
@@ -67,7 +84,7 @@
         android:layout_width="@dimen/touch_target"
         android:layout_height="@dimen/touch_target"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/space_2"
+        android:translationY="@dimen/top_bar_button_shift"
         android:layout_marginEnd="@dimen/top_bar_button_overlap"
         android:layout_toStartOf="@id/fl_messenger"
         android:background="?attr/selectableItemBackgroundBorderless"

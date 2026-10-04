@@ -31,7 +31,9 @@ Confirmed against known elements:
 - Round numbers everywhere else: 36 dp circles, 44 dp primary buttons, 48 dp search avatars,
   72 dp end-call button, 144 dp call avatar.
 
-Screen 14's frame is drawn 17 px left and 8 px up of the others; tools/px.py corrects for it.
+Screen 14's grey outline is drawn 17 px left and 8 px up of the others, but its content sits
+exactly where every other screen's does (its tab divider runs past the outline), so it uses
+the same origin.
 The PNGs carry slight compression noise (a flat teal reads #0B5F63 +/- 3), so colours are
 always medians over many pixels, never single pixels.
 
@@ -100,12 +102,13 @@ Measured with tools/measure_dims.py (bounding boxes add up to ~0.5 dp of anti-al
 values are rounded down to whole dp).
 
 - Margins: 16 dp on most screens; 20 dp on login and sign up (02, 03).
-- Top bar (04): row 49 dp; title or wordmark centred vertically, 16 dp from the left;
-  search and messenger circles 36 dp, 8 dp apart, 16 dp from the right edge, icons 19 dp;
-  messenger badge 18 dp (14 dp red disc + 2 dp white ring), centre 12 dp right and 13 dp above
-  the circle centre.
-- Tab bar: 48 dp, five equal columns, 24 dp icons, 3 dp teal underline the full column width,
-  1 dp divider under the bar. Bell badge centre 13 dp right and 7 dp above the tab centre.
+- Top bar (04): row 48 dp; title or wordmark 16 dp from the left and 1 dp below the row
+  centre; search and messenger circles 36 dp, 2 dp below the row centre (y 8-44), 8 dp apart,
+  16 dp from the right edge, icons 19 dp; messenger badge 18 dp (14 dp red disc + 2 dp white
+  ring), centre 12 dp right and 13 dp above the circle centre.
+- Tab bar: 48 dp, five equal columns, 24 dp icons 1 dp below the bar centre, 3 dp teal
+  underline the full column width, 1 dp divider under the bar (y 96-97). Bell badge centre
+  13 dp right and 6 dp above the tab centre.
 - Toolbars with a back arrow: 52 dp (03, 05-08, 13, 15-17), chat header 56 dp (21).
   Bottom nav (20): 56 dp.
 - Avatars (every size in the design): 20, 24, 26, 30, 33, 35, 36, 40, 44, 48, 52, 55, 58, 66,
@@ -119,9 +122,10 @@ values are rounded down to whole dp).
   Edit profile, See more, See previous, SELECT MULTIPLE); small 35 dp (Confirm / Delete in 14,
   See all people); 33 dp (Confirm / Delete in 18, Post); Join 31 dp; Log out 41 dp;
   circle buttons 36 dp (send, compose, add friend), next arrow 44 dp; menu row icon circle 33 dp.
-- Inputs: 50 dp (with floating label), 54 dp (password with eye), 37 dp search / reply / Aa,
-  gender options 44 dp.
-- Chips: 33 dp (14, 15), 31 dp (13 filters), 35 dp (23 Sell / Categories), 24 dp (07 Public).
+- Inputs: 51 dp (with floating label; 49.9 dp white inside a 0.5 dp outline), 54 dp
+  (password with eye), 37 dp search / reply / Aa, gender options 44 dp.
+- Chips: 33 dp (14, 15), 31 dp (13 filters), 35 dp (23 Sell / Categories), 24 dp (07 Public);
+  12 dp left/right padding.
 - Section band 7 dp (04). Dividers 1 dp; input and card outlines 0.5 dp.
 
 Corner radii (tools/measure_radii.py):
@@ -145,9 +149,21 @@ Corner radii (tools/measure_radii.py):
 
 **Headings: Bricolage Grotesque Bold (700); wordmark and profile names: ExtraBold (800).
 Everything else: Figtree (Regular 400, Medium 500, SemiBold 600, Bold 700).**
+Initials inside avatars are Bricolage Grotesque Bold too (not Figtree): IoU 0.94 on "AM" (22),
+0.88 on "SI" (14), 0.84 on "LM" (04); their size is 0.36 x the avatar diameter.
+
 Both are downloadable Google Fonts (res/font/*.xml, fetched by Google Play services; the
 certificates in res/values/font_certs.xml come from Google's DownloadableFonts sample and the
-fonts are preloaded via manifest meta-data).
+fonts are preloaded via manifest meta-data). Two things found on the emulator:
+
+- Font XMLs use only the `app:` provider attributes and every style sets both
+  `android:fontFamily` and `fontFamily`. With `android:` provider attributes Android uses its
+  deprecated platform loader ("Platform version of downloadable fonts is deprecated") and the
+  text silently stays in Roboto; AppCompat only applies the font through `app:fontFamily`.
+- The first screen of each app launch draws about 2 frames (~200 ms) in the fallback font
+  before the downloaded font arrives; later screens get it from the in-process cache. On a
+  device without Play services or before the very first download, text stays in Roboto.
+  If that ever matters for a demo, bundle the TTFs in res/font instead (same file names).
 
 Evidence (tools/compare_fonts.py; sheets in design/check/font_*.png). Each candidate was
 rendered with the same text, scaled onto the design crop's ink box and scored by overlap
@@ -178,23 +194,52 @@ Gabarito, Instrument Sans, Hanken Grotesk, Onest, Parkinsans, Funnel Display, Ho
 Rethink Sans, Archivo, Sora; body — Figtree, Albert Sans, Plus Jakarta Sans, DM Sans, Outfit,
 Urbanist, Onest, Golos Text, Manrope, Rethink Sans.
 
-Text sizes (tools/measure_text.py, from the ink height and width of each string):
+Text sizes (tools/measure_text.py, from the ink height and width of each string; Bricolage
+sizes then corrected by -3 % after comparing the emulator with the PNGs, see Verification):
 
 | Style (styles.xml) | Font | Size | Examples |
 |---|---|---|---|
-| Kinnect.Text.Wordmark | Bricolage 800, teal | 28 sp | kinnect (04) |
-| Kinnect.Text.ProfileName | Bricolage 800 | 26 sp | Jacob West (15), Omar Farooq (17) |
-| Kinnect.Text.Heading | Bricolage 700 | 24 sp | Friends, Notifications, Menu, Marketplace, Chats, "What's your name and birthday?" |
+| Kinnect.Text.Wordmark | Bricolage 800, teal, letterSpacing -0.03 | 27 sp | kinnect (04) |
+| Kinnect.Text.ProfileName | Bricolage 800 | 25 sp | Jacob West (15), Omar Farooq (17) |
+| Kinnect.Text.Heading | Bricolage 700, letterSpacing -0.02, line pitch 26 dp | 23 sp | Friends, Notifications, Menu, Marketplace, Chats, "What's your name and birthday?" |
 | Kinnect.Text.Title / SectionTitle | Bricolage 700 | 18 sp | Create account, Comments, Friend requests, Today's picks |
 | Kinnect.Text.SectionTitle.Small | Bricolage 700 | 17 sp | New, Earlier, People, Groups |
 | Kinnect.Text.Name | Figtree 600 | 15 sp | Sara Iqbal (14), Jacob West (02) |
-| Kinnect.Text.Body | Figtree 400 | 14 sp | post text, bubbles |
+| Kinnect.Text.Body | Figtree 400, line pitch 18.3 dp (+1.5 dp) | 14 sp | post text (04); comments in 06 are 17.3 dp |
 | Kinnect.Text.Body.Bold | Figtree 600 | 14 sp | Lina Marsh (04) |
 | Kinnect.Text.Label | Figtree 600, grey | 13 sp | All shortcuts, RECENT LOGIN |
-| Kinnect.Text.Caption | Figtree 400, grey | 12 sp | 8 mutual friends, 2h, field labels |
+| Kinnect.Text.Caption | Figtree 400, grey | 11.5 sp | 8 mutual friends, 2h, field labels (measured 11.2-12.7, mean 11.6) |
+| Kinnect.Avatar | Bricolage 700, white | 13 sp in 36 dp (0.36 x size) | JW, LM, AK ... |
 | buttons | Figtree 700 | 15 sp primary, 14 sp small, 13 sp chips | Log in, Confirm, Suggestions |
 | badges, nav labels | Figtree 700 / 600 | 11 sp | badge digits, Chats / People / Stories |
 | JUST LISTED | Figtree 700 | 10 sp | (23) |
+
+## Verification on the emulator
+
+A temporary preview screen (not committed) showed the top bar, tab bar, composer row, login
+input and buttons, Confirm / Delete, chips, a heading and avatars. It ran on the Small_Phone
+AVD (720 x 1280, xhdpi = 360 x 640 dp, Play Store image) and its screenshot was measured with
+the same colour-box method as tools/measure_dims.py, in dp, against the PNGs.
+
+Within 1 dp of the design after the fixes: search / messenger circles (x 264-300 / 308-344,
+y 8-44), both badges, tab underline (y 93-96), divider, top bar glyphs, composer avatar and
+pill, login input (50 dp white), Log in (320 x 44), Create new account (320 x 46),
+Confirm / Delete (118.5 x 35), chips (39.5 x 31 vs 40.2 x 31). Text ink width / height vs
+design: wordmark +0.9 % / +0.6 %, heading +1.6 % / -1.8 %, body hint +0.7 % / -1.8 %,
+field label +3.0 % / -1.8 %, field value +1.7 % / -1.8 %, Log in -0.6 % / +1.8 %,
+Confirm -0.8 % / +3.1 %, Friend requests -1.8 % / -1.8 %, avatar initials +1.1 %.
+
+Fixed during verification: Bricolage sizes (-3 %), wordmark tracking, caption 12 -> 11.5 sp,
+chip padding 14 -> 12 dp, input 50 -> 51 dp, top bar 49 -> 48 dp with the 1 dp / 2 dp offsets,
+avatar initials font, heading line spacing, the androidx font loading above, and the screen 14
+origin.
+
+Still different (not foundation issues):
+
+- Friends tab icon: Phosphor "users" draws two full figures (23 x 15 dp); the design's glyph is
+  a front person with a partial one behind (20 x 17 dp). Listed for review in docs/ICONS.md.
+- Home tab icon renders 18 x 18.5 dp vs 19.3 dp (Phosphor stroke geometry); under 1.5 dp.
+- The composer's image icon in 04 is drawn at about 21 dp, not 24 dp: set it on screen 04.
 
 ## Known differences inside the design
 

@@ -11,6 +11,7 @@
     <!-- Base for all text: Figtree Regular, dark, body size. -->
     <style name="Kinnect.Text" parent="">
         <item name="android:fontFamily">@font/figtree_regular</item>
+        <item name="fontFamily">@font/figtree_regular</item>
         <item name="android:textSize">@dimen/text_body</item>
         <item name="android:textColor">@color/text_dark</item>
     </style>
@@ -18,22 +19,26 @@
     <!-- "kinnect" wordmark in the home top bar (04). -->
     <style name="Kinnect.Text.Wordmark">
         <item name="android:fontFamily">@font/bricolage_grotesque_extrabold</item>
+        <item name="fontFamily">@font/bricolage_grotesque_extrabold</item>
         <item name="android:textSize">@dimen/text_wordmark</item>
         <item name="android:textColor">@color/teal</item>
-        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:letterSpacing">-0.03</item>
     </style>
 
     <!-- Page titles (Friends, Notifications, Menu, Marketplace, Chats) and big
          onboarding questions ("What's your name and birthday?"). -->
     <style name="Kinnect.Text.Heading">
         <item name="android:fontFamily">@font/bricolage_grotesque_bold</item>
+        <item name="fontFamily">@font/bricolage_grotesque_bold</item>
         <item name="android:textSize">@dimen/text_heading</item>
         <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingExtra">@dimen/heading_line_spacing</item>
     </style>
 
     <!-- Big name under a profile photo (15, 17). -->
     <style name="Kinnect.Text.ProfileName">
         <item name="android:fontFamily">@font/bricolage_grotesque_extrabold</item>
+        <item name="fontFamily">@font/bricolage_grotesque_extrabold</item>
         <item name="android:textSize">@dimen/text_profile_name</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
@@ -41,12 +46,14 @@
     <!-- Toolbar titles next to a back arrow (Create account, Comments, Lina's post). -->
     <style name="Kinnect.Text.Title">
         <item name="android:fontFamily">@font/bricolage_grotesque_bold</item>
+        <item name="fontFamily">@font/bricolage_grotesque_bold</item>
         <item name="android:textSize">@dimen/text_title</item>
     </style>
 
     <!-- Section titles inside a page ("Friend requests", "Today's picks", "Details"). -->
     <style name="Kinnect.Text.SectionTitle">
         <item name="android:fontFamily">@font/bricolage_grotesque_bold</item>
+        <item name="fontFamily">@font/bricolage_grotesque_bold</item>
         <item name="android:textSize">@dimen/text_title</item>
     </style>
 
@@ -58,15 +65,19 @@
     <!-- Person or item name in a list row (Sara Iqbal in 14, Jacob West in 02). -->
     <style name="Kinnect.Text.Name">
         <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="fontFamily">@font/figtree_semibold</item>
         <item name="android:textSize">@dimen/text_name</item>
     </style>
 
-    <!-- Running text: posts, bubbles, notifications. -->
-    <style name="Kinnect.Text.Body" />
+    <!-- Running text: posts, bubbles, notifications. Slightly airier lines than the font's own. -->
+    <style name="Kinnect.Text.Body">
+        <item name="android:lineSpacingExtra">@dimen/body_line_spacing</item>
+    </style>
 
     <!-- Bold name inside body text ("Lina Marsh is at ..."). -->
     <style name="Kinnect.Text.Body.Bold">
         <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="fontFamily">@font/figtree_semibold</item>
     </style>
 
     <!-- Grey secondary line under a name ("8 mutual friends", "Tap to log in", "2h"). -->
@@ -78,6 +89,7 @@
     <!-- Grey bold label above a group ("All shortcuts", "RECENT LOGIN"). -->
     <style name="Kinnect.Text.Label">
         <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="fontFamily">@font/figtree_semibold</item>
         <item name="android:textSize">@dimen/text_label</item>
         <item name="android:textColor">@color/text_grey</item>
     </style>
@@ -85,6 +97,7 @@
     <!-- Teal text link ("See all", "Forgot password?", "Find friends"). -->
     <style name="Kinnect.Text.Link">
         <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="fontFamily">@font/figtree_semibold</item>
         <item name="android:textColor">@color/teal</item>
     </style>
 
@@ -101,6 +114,7 @@
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">0dp</item>
         <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="fontFamily">@font/figtree_bold</item>
         <item name="android:textSize">@dimen/text_body</item>
         <item name="android:singleLine">true</item>
     </style>
@@ -153,6 +167,7 @@
         <item name="android:paddingStart">@dimen/input_padding</item>
         <item name="android:paddingEnd">@dimen/input_padding</item>
         <item name="android:fontFamily">@font/figtree_regular</item>
+        <item name="fontFamily">@font/figtree_regular</item>
         <item name="android:textSize">@dimen/text_name</item>
         <item name="android:textColor">@color/text_dark</item>
         <item name="android:textColorHint">@color/text_hint</item>
@@ -177,6 +192,7 @@
         <item name="android:paddingStart">@dimen/chip_padding</item>
         <item name="android:paddingEnd">@dimen/chip_padding</item>
         <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="fontFamily">@font/figtree_bold</item>
         <item name="android:textSize">@dimen/text_label</item>
         <item name="android:textColor">@color/text_dark</item>
         <item name="android:singleLine">true</item>
@@ -197,20 +213,22 @@
         <item name="android:background">@drawable/bg_badge</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="fontFamily">@font/figtree_bold</item>
         <item name="android:textSize">@dimen/text_small</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <!-- Initials avatar (36dp by default). Set android:text and android:backgroundTint;
-         change the size per screen with the avatar_* dimens. -->
+         change the size per screen with the avatar_* dimens and the text to 0.36 x that size. -->
     <style name="Kinnect.Avatar" parent="">
         <item name="android:layout_width">@dimen/avatar_36</item>
         <item name="android:layout_height">@dimen/avatar_36</item>
         <item name="android:background">@drawable/bg_avatar_circle</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">@font/figtree_bold</item>
-        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:fontFamily">@font/bricolage_grotesque_bold</item>
+        <item name="fontFamily">@font/bricolage_grotesque_bold</item>
+        <item name="android:textSize">@dimen/text_avatar</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:singleLine">true</item>

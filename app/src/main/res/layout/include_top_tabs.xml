@@ -32,6 +32,7 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
+                android:translationY="@dimen/tab_icon_shift"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_home"
                 app:tint="@color/text_grey" />
@@ -59,6 +60,7 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
+                android:translationY="@dimen/tab_icon_shift"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_friends"
                 app:tint="@color/text_grey" />
@@ -86,6 +88,7 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
+                android:translationY="@dimen/tab_icon_shift"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_store"
                 app:tint="@color/text_grey" />
@@ -113,6 +116,7 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
+                android:translationY="@dimen/tab_icon_shift"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_bell"
                 app:tint="@color/text_grey" />
@@ -148,6 +152,7 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
+                android:translationY="@dimen/tab_icon_shift"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_menu"
                 app:tint="@color/text_grey" />

@@ -3,7 +3,8 @@
 Scale (see docs/DESIGN_TOKENS.md): the phone frame's grey outline is centred on x = 61.3 and
 x = 768.3, so the screen is 707 px = 360 dp wide and 1 dp = 1.964 px. Coordinates printed by this
 tool are dp from the top-left corner of the screen (x 62, y 89 in the PNG). Screen 14's frame
-is drawn 17 px left and 8 px up of the others; the tool corrects for that.
+has its grey outline drawn 17 px left and 8 px up, but its content sits exactly where every
+other screen's does (its tab divider runs past the outline), so it uses the same origin.
 
 Commands (run from the project root, all coordinates in dp):
 
@@ -27,7 +28,7 @@ from PIL import Image
 S = "design/screens/screen-%02d.png"
 PX_PER_DP = 707 / 360.0  # 1.964 px per dp
 ORIGIN = (62.0, 89.0)  # PNG pixel of the screen's top-left corner
-OFFSET = {14: (-17, -8)}  # screen 14 is drawn shifted
+OFFSET = {}  # per-screen (dx, dy) PNG px corrections; none needed (see screen 14 note above)
 
 
 def load(n):

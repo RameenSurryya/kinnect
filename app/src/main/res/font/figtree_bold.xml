@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Figtree Bold: buttons, chips, badges. Downloadable font from Google Fonts (fetched by Google Play services). -->
-<font-family xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fontProviderAuthority="com.google.android.gms.fonts"
-    android:fontProviderPackage="com.google.android.gms"
-    android:fontProviderQuery="name=Figtree&amp;weight=700&amp;besteffort=true"
-    android:fontProviderCerts="@array/com_google_android_gms_fonts_certs"
+<!-- Figtree Bold: buttons, chips, badges. Downloadable font from Google Fonts, fetched by Google Play services
+     through androidx (app: attributes; the platform android: version is deprecated and ignored). -->
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
     app:fontProviderAuthority="com.google.android.gms.fonts"
     app:fontProviderPackage="com.google.android.gms"
     app:fontProviderQuery="name=Figtree&amp;weight=700&amp;besteffort=true"

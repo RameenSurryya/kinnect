@@ -107,3 +107,9 @@ What centerCrop shows (viewport units, PNG frame 707 px = 360 dp):
 Overlays (the dark "+4" layer, 04 story name scrim, 08 selection rings, "0:23" label) are layout
 views on top, not part of the drawables.
 
+## Needs review
+
+- ic_friends (Phosphor users): the tab glyph in 04/14/18/19/23 is a front person with a partial
+  person behind it (about 20 x 17 dp at 24 dp); Phosphor users draws two full figures (23 x 15 dp).
+  Found while verifying the shared tab bar on the emulator. Not replaced yet: decide whether to
+  hand-draw it like ic_messenger.

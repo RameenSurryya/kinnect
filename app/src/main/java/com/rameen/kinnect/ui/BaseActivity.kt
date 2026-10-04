@@ -23,7 +23,8 @@ import com.rameen.kinnect.R
  *     and the gesture bar (each layout root has android:fitsSystemWindows="true").
  *  2. The five top tabs (layout/include_top_tabs.xml): highlights the active tab and opens
  *     the others with FLAG_ACTIVITY_REORDER_TO_FRONT, so tab screens never pile up.
- *  3. The top bar (layout/include_top_bar.xml): title or wordmark, search and messenger.
+ *  3. The top bar (layout/include_top_bar.xml): page title (or the wordmark on Home via
+ *     setupHomeTopBar()), search and messenger.
  *  4. A one-line helper for back arrows.
  *
  * Usage in a tab screen:
@@ -109,16 +110,21 @@ abstract class BaseActivity : AppCompatActivity() {
     // 3. Top bar
     // ---------------------------------------------------------------------------------------
 
-    /**
-     * Sets the top bar title and wires search and messenger.
-     * @param title page title, e.g. R.string.title_friends (Home passes R.string.wordmark)
-     * @param wordmark true on Home: shows the title in the teal "kinnect" wordmark style
-     */
-    protected fun setupTopBar(@StringRes title: Int, wordmark: Boolean = false) {
-        val titleView = findViewById<TextView>(R.id.tv_top_title)
-        titleView.setText(title)
-        if (wordmark) titleView.setTextAppearance(R.style.Kinnect_Text_Wordmark)
+    /** Tab screens: shows the page title, e.g. setupTopBar(R.string.title_friends). */
+    protected fun setupTopBar(@StringRes title: Int) {
+        findViewById<TextView>(R.id.tv_top_title).setText(title)
+        wireTopBarButtons()
+    }
 
+    /** Home: shows the teal "kinnect" wordmark instead of a page title. */
+    protected fun setupHomeTopBar() {
+        findViewById<View>(R.id.tv_top_title).visibility = View.GONE
+        findViewById<View>(R.id.tv_wordmark).visibility = View.VISIBLE
+        wireTopBarButtons()
+    }
+
+    /** Search opens the Search screen, messenger opens the Chats list. */
+    private fun wireTopBarButtons() {
         findViewById<View>(R.id.fl_search).setOnClickListener {
             openScreen("com.rameen.kinnect.ui.home.SearchActivity")
         }
