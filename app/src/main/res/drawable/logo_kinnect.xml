@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kinnect logo: three overlapping white rings (drawn by hand from design/logo.png).
+     Viewport 100 x 100. All rings share radius 28.25 and stroke 9.1 (stroke = 0.32 x radius).
+     The bottom rings sit 16.2 left/right of centre and 28.25 below the top ring,
+     the same proportions measured on the original. White, so it can be tinted with app:tint. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Top ring, centre (50, 35.88) -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="9.1"
+        android:pathData="M21.75,35.88a28.25,28.25 0,1 0,56.5 0a28.25,28.25 0,1 0,-56.5 0Z" />
+
+    <!-- Bottom-left ring, centre (33.81, 64.13) -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="9.1"
+        android:pathData="M5.56,64.13a28.25,28.25 0,1 0,56.5 0a28.25,28.25 0,1 0,-56.5 0Z" />
+
+    <!-- Bottom-right ring, centre (66.19, 64.13) -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="9.1"
+        android:pathData="M37.94,64.13a28.25,28.25 0,1 0,56.5 0a28.25,28.25 0,1 0,-56.5 0Z" />
+</vector>

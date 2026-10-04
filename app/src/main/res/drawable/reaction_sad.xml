@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Sad" reaction (screen 05). Mustard disc, two white oval eyes and a frown.
+     Viewport 64 x 64. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Mustard disc -->
+    <path
+        android:fillColor="#FFC98714"
+        android:pathData="M0,32a32,32 0,1 0,64 0a32,32 0,1 0,-64 0Z" />
+
+    <!-- Eyes: slightly tall ovals -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M19.7,28.8a4.9,5.4 0,1 0,9.8 0a4.9,5.4 0,1 0,-9.8 0Z
+            M34.5,28.8a4.9,5.4 0,1 0,9.8 0a4.9,5.4 0,1 0,-9.8 0Z" />
+
+    <!-- Frown: a curve bending down at both ends, thick stroke with round caps -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:pathData="M23.5,44Q32,35.2 40.5,44" />
+</vector>

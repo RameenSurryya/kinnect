@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Wow" reaction (screen 05). Mustard disc, two round white eyes and a tall oval mouth.
+     Viewport 64 x 64. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Mustard disc -->
+    <path
+        android:fillColor="#FFC98714"
+        android:pathData="M0,32a32,32 0,1 0,64 0a32,32 0,1 0,-64 0Z" />
+
+    <!-- Eyes: circles of radius 4.9 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M19.7,25.6a4.9,4.9 0,1 0,9.8 0a4.9,4.9 0,1 0,-9.8 0Z
+            M34.5,25.6a4.9,4.9 0,1 0,9.8 0a4.9,4.9 0,1 0,-9.8 0Z" />
+
+    <!-- Mouth: oval, 14.8 wide and 18.7 tall -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M24.6,40.85a7.4,9.35 0,1 0,14.8 0a7.4,9.35 0,1 0,-14.8 0Z" />
+</vector>

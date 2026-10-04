@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notification type badge "friend request" (screen 18): teal disc with a white person.
+     Viewport 64 x 64. Drawn by hand (same stroke style as badge_group) because the design's
+     head is smaller and lower than in the Phosphor "user" icon. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Teal disc -->
+    <path
+        android:fillColor="#FF0B5F63"
+        android:pathData="M0,32a32,32 0,1 0,64 0a32,32 0,1 0,-64 0Z" />
+
+    <!-- Head: ring with centre (33,25.5), then the shoulders as one curve -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M25.8,25.5a7.2,7.2 0,1 0,14.4 0a7.2,7.2 0,1 0,-14.4 0Z
+            M17.8,49.2Q33,30.5 48.2,49.2" />
+</vector>

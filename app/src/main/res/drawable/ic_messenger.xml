@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Phosphor "chat-circle" icon. Black fill, tinted in layouts with app:tint. -->
+<!-- Messenger icon, drawn by hand from the top bar of screen 04 (also the "Chats" tab in 20):
+     a round chat bubble whose tail points down at the bottom-left, with a zigzag
+     lightning bolt inside that rises from lower-left to upper-right.
+     Phosphor style: 256 viewport, 16-unit strokes, round ends. Black, tinted with app:tint. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="256"
     android:viewportHeight="256">
+
+    <!-- Bubble: from the tail start (50,178) down to the tail tip (54,238), back up to the
+         circle at (96,213.2), then the long way round the circle (centre 128,124.8, radius 94) -->
     <path
-        android:fillColor="#FF000000"
-        android:pathData="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z" />
+        android:strokeColor="#FF000000"
+        android:strokeWidth="16"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M50,178L54,238L96,213.2A94,94 0,1 0,50 178Z" />
+
+    <!-- Lightning bolt: up, down, up -->
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="16"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M72,148L108,112L138,140L172,100" />
 </vector>

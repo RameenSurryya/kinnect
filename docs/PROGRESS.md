@@ -2,7 +2,7 @@
 
 - [ ] Foundation (colours, dimens, styles, fonts, shapes, tab bar include, BaseActivity)
 
-- [ ] Icons imported
+- [x] Icons imported
 
 - [ ] Real photos added
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Like" reaction (screen 05; also used small in 04/06/11 and as the like badge in 18).
+     Teal disc with a white outlined thumbs-up. Viewport 64 x 64, disc fills it.
+     The thumb is one outer outline plus an inner hole; evenOdd cuts the hole out. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Teal disc -->
+    <path
+        android:fillColor="#FF0B5F63"
+        android:pathData="M0,32a32,32 0,1 0,64 0a32,32 0,1 0,-64 0Z" />
+
+    <!-- White thumb: outline (cuff + hand + raised thumb), then the teal hole inside -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M15.8,27.5L22.6,27.5L25.6,19.5Q27.2,15.9 31,16Q35.6,16.2 35.6,20L35.6,25L49.2,25Q51.7,25.1 51.4,27.8L48.9,48.4Q48.6,50.6 46.2,50.6L15.8,50.6Q14.3,50.6 14.3,49.1L14.3,29Q14.3,27.5 15.8,27.5Z
+            M24,29.6L30.8,20.8L31,30.5L45.6,30.5L44,46L24,46Z" />
+</vector>

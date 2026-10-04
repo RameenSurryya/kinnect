@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notification type badge "comment / reply" (screen 18): green disc with a white speech bubble.
+     Viewport 64 x 64. The bubble is the Phosphor Bold "chat" path (bolder version of
+     ic_comment), scaled into the middle of the disc with a group. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Green disc -->
+    <path
+        android:fillColor="#FF2B6D4F"
+        android:pathData="M0,32a32,32 0,1 0,64 0a32,32 0,1 0,-64 0Z" />
+
+    <!-- White speech bubble, 256 units scaled to about 40 units -->
+    <group
+        android:scaleX="0.155"
+        android:scaleY="0.155"
+        android:translateX="12.46"
+        android:translateY="10.2">
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M216,44H40A20,20,0,0,0,20,64V224A19.82,19.82,0,0,0,31.56,242.1a20.14,20.14,0,0,0,8.49,1.9,19.91,19.91,0,0,0,12.82-4.72l.12-.11L84.47,212H216a20,20,0,0,0,20-20V64A20,20,0,0,0,216,44Zm-4,144H80a11.93,11.93,0,0,0-7.84,2.92L44,215.23V68H212Z" />
+    </group>
+</vector>

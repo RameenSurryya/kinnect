@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Phosphor "film-slate" icon. Black fill, tinted in layouts with app:tint. -->
+<!-- "Create" / "Stories" icon from screens 12 and 20: a clapperboard with a play triangle.
+     Phosphor has no such icon, so it is drawn by hand in the Phosphor style
+     (256 viewport, 16-unit strokes, round ends). Black, tinted in layouts with app:tint. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="256"
     android:viewportHeight="256">
+
+    <!-- Rounded square frame, the line under the clapper band, and its two slanted stripes -->
     <path
-        android:fillColor="#FF000000"
-        android:pathData="M216,104H102.09L210,75.51a8,8,0,0,0,5.68-9.84l-8.16-30a15.93,15.93,0,0,0-19.42-11.13L35.81,64.74a15.75,15.75,0,0,0-9.7,7.4,15.51,15.51,0,0,0-1.55,12L32,111.56c0,.14,0,.29,0,.44v88a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V112A8,8,0,0,0,216,104ZM192.16,40l6,22.07-22.62,6L147.42,51.83Zm-66.69,17.6,28.12,16.24-36.94,9.75L88.53,67.37Zm-79.4,44.62-6-22.08,26.5-7L94.69,89.4ZM208,200H48V120H208v80Z" />
+        android:strokeColor="#FF000000"
+        android:strokeWidth="16"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M64,50L192,50A20,20 0,0 1,212 70L212,186A20,20 0,0 1,192 206L64,206A20,20 0,0 1,44 186L44,70A20,20 0,0 1,64 50Z
+            M44,98L212,98M92,50L108,98M150,50L166,98" />
+
+    <!-- Play triangle (thick outline with round corners, leaving a small hole) -->
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="16"
+        android:strokeLineJoin="round"
+        android:pathData="M110,136L146,161L110,186Z" />
 </vector>

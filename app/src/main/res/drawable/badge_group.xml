@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notification type badge "group post" (screen 18): indigo disc with two white people.
+     Viewport 64 x 64. Drawn by hand because the design's people have smaller heads and
+     wider shoulders than the Phosphor "users" icon: a full person in front and a second
+     person half hidden behind on the right. White round-capped strokes. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Indigo disc -->
+    <path
+        android:fillColor="#FF4B4F8E"
+        android:pathData="M0,32a32,32 0,1 0,64 0a32,32 0,1 0,-64 0Z" />
+
+    <!-- Front person: round head (centre 26.5,23.5) and shoulders -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M20.2,23.5a6.3,6.3 0,1 0,12.6 0a6.3,6.3 0,1 0,-12.6 0Z
+            M12.5,48.5Q26,28.5 39,48.5" />
+
+    <!-- Back person: only the right half of the head and the right shoulder show -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M38.5,17.7A6.3,6.3 0,0 1,38.5 30.3
+            M41,37.5Q48,39.5 51.2,49" />
+</vector>
