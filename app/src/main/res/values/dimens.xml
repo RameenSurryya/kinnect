@@ -129,7 +129,7 @@
 
     <!-- Inputs -->
     <dimen name="input_height">51dp</dimen>          <!-- text field with floating label (02, 03) -->
-    <dimen name="input_height_password">54dp</dimen> <!-- password field with eye icon (02, 03) -->
+    <dimen name="input_height_password">55dp</dimen> <!-- password field with eye icon (02: 55.5, 03: 55) -->
     <dimen name="input_height_search">37dp</dimen>   <!-- search, reply and message fields -->
     <dimen name="option_height">44dp</dimen>         <!-- gender option boxes (03) -->
     <dimen name="input_padding">14dp</dimen>         <!-- left/right padding inside fields -->
@@ -166,6 +166,42 @@
     <dimen name="splash_brand_shift">20dp</dimen>   <!-- logo group sits this far below the centre -->
     <dimen name="splash_wordmark_gap">11.5dp</dimen> <!-- logo to wordmark (31dp ink to ink) -->
     <dimen name="splash_bottom_margin">17.5dp</dimen> <!-- "SMD" to the gesture bar -->
+
+    <!-- Login (02) -->
+    <dimen name="text_name_large">15.5sp</dimen>     <!-- "Jacob West" in the recent login card -->
+    <dimen name="text_subtitle">12.25sp</dimen>      <!-- "Tap to log in" -->
+    <dimen name="text_label_bold">13sp</dimen>       <!-- "RECENT LOGIN" -->
+    <dimen name="field_value_gap">2dp</dimen>        <!-- field label to value (02, 03) -->
+    <dimen name="text_avatar_52">19sp</dimen>        <!-- initials in a 52dp avatar (0.36 x 52) -->
+    <dimen name="login_language_top">16dp</dimen>    <!-- top of the 48dp language row -->
+    <dimen name="icon_size_chevron">12dp</dimen>     <!-- caret after "English (UK)" -->
+    <dimen name="login_chevron_gap">5.5dp</dimen>
+    <dimen name="logo_tile">70dp</dimen>             <!-- teal tile -->
+    <dimen name="logo_tile_top">21.5dp</dimen>       <!-- language row to tile -->
+    <dimen name="logo_tile_pad_top">14dp</dimen>     <!-- 36dp logo sits 3dp above the tile centre -->
+    <dimen name="logo_tile_pad_bottom">20dp</dimen>
+    <dimen name="logo_tile_pad_side">17dp</dimen>
+    <dimen name="login_label_top">33dp</dimen>       <!-- tile to "RECENT LOGIN" -->
+    <dimen name="login_card_top">9.5dp</dimen>       <!-- "RECENT LOGIN" to the card -->
+    <dimen name="login_card_height">75dp</dimen>
+    <dimen name="login_card_pad_start">11.5dp</dimen>
+    <dimen name="login_avatar_frame_top">3dp</dimen> <!-- room above and right of the avatar for the badge -->
+    <dimen name="login_avatar_frame_end">2.5dp</dimen>
+    <dimen name="badge_size_large">20dp</dimen>      <!-- "2" badge: 16dp red disc + 2dp white ring -->
+    <dimen name="login_name_start">8dp</dimen>       <!-- avatar frame to "Jacob West" -->
+    <dimen name="login_hint_top">2dp</dimen>        <!-- "Jacob West" to "Tap to log in" -->
+    <dimen name="login_more_end">-3dp</dimen>        <!-- dots centred 21dp from the card edge -->
+    <dimen name="login_more_shift">-2dp</dimen>      <!-- dots sit 2.5dp above the card centre -->
+    <dimen name="login_fields_top">21dp</dimen>      <!-- card to the first field -->
+    <dimen name="login_field_gap">11dp</dimen>       <!-- between the two fields -->
+    <dimen name="login_button_top">11.5dp</dimen>    <!-- password field to Log in -->
+    <dimen name="login_eye_padding">14.5dp</dimen>   <!-- (48 - 19) / 2: a 19dp eye in a 48dp target -->
+    <dimen name="login_eye_end">9dp</dimen>          <!-- eye centred 33dp from the field edge -->
+    <dimen name="login_forgot_top">21dp</dimen>
+    <dimen name="login_create_bottom">15.5dp</dimen> <!-- Create new account to the footer -->
+    <dimen name="footer_logo">11.5dp</dimen>
+    <dimen name="footer_logo_gap">7.5dp</dimen>
+    <dimen name="login_footer_bottom">2.5dp</dimen>  <!-- footer to the gesture bar -->
 
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->

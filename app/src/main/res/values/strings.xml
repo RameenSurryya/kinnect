@@ -5,6 +5,26 @@
     <string name="splash_from">from</string>
     <string name="splash_company" translatable="false">SMD</string>
 
+    <!-- 02 Login (name, e-mail and password are static sample content) -->
+    <string name="login_language">English (UK)</string>
+    <string name="login_recent">RECENT LOGIN</string>
+    <string name="sample_name_jacob" translatable="false">Jacob West</string>
+    <string name="sample_initials_jacob" translatable="false">JW</string>
+    <string name="sample_badge_login" translatable="false">2</string>
+    <string name="login_tap_to_log_in">Tap to log in</string>
+    <string name="login_email_label">Mobile number or email</string>
+    <string name="sample_email" translatable="false">jacob.west@mail.com</string>
+    <string name="login_password_label">Password</string>
+    <string name="sample_password" translatable="false">kinnect2026</string>
+    <string name="login_button">Log in</string>
+    <string name="login_forgot">Forgot password?</string>
+    <string name="login_create_account">Create new account</string>
+    <string name="login_footer">Kinnect · from SMD</string>
+    <string name="cd_recent_login">Log in as Jacob West</string>
+    <string name="cd_more">More options</string>
+    <string name="cd_show_password">Show password</string>
+    <string name="cd_hide_password">Hide password</string>
+
     <!-- Shared top bar (include_top_bar.xml) -->
     <string name="wordmark" translatable="false">kinnect</string>
     <string name="cd_search">Search</string>

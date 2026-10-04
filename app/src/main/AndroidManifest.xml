@@ -31,6 +31,17 @@
             android:name=".ui.auth.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- 03 Sign up (placeholder) -->
+        <activity
+            android:name=".ui.auth.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 04 Home (placeholder) -->
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

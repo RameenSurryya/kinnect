@@ -52,6 +52,7 @@ that value is kept.
 | chip_fill | #ECE9E2 | top bar circles (04), chips (13, 14), See more (19), search (13, 20), bubbles (06, 21: #EDEAE3) |
 | divider | #E0E0DE | under the tab bar (04), between sections (14), above Like row (04) |
 | border | #D6D1C8 | input and card outlines (02, 03; 1 PNG px = 0.5 dp) |
+| card_border | #E4E0D8 | lighter outline of the recent login card (02) |
 | section_band | #E6E3DA | thick gaps in the feed (04) |
 | track | #D6D0C9 | empty step bar and password meter (03: #D5D0CA / #D7D0C9), sheet handle (07) |
 | card_shadow | #E8E6E2 | soft line under the menu cards (19) |
@@ -127,8 +128,9 @@ values are rounded down to whole dp).
   Edit profile, See more, See previous, SELECT MULTIPLE); small 35 dp (Confirm / Delete in 14,
   See all people); 33 dp (Confirm / Delete in 18, Post); Join 31 dp; Log out 41 dp;
   circle buttons 36 dp (send, compose, add friend), next arrow 44 dp; menu row icon circle 33 dp.
-- Inputs: 51 dp (with floating label; 49.9 dp white inside a 0.5 dp outline), 54 dp
-  (password with eye), 37 dp search / reply / Aa, gender options 44 dp.
+- Inputs: 51 dp (with floating label; 49.9 dp white inside a 0.5 dp outline), 55 dp
+  (password with eye; outline to outline 55.5 dp on 02, 55 dp on 03; the earlier 54 dp was the
+  white inside), 37 dp search / reply / Aa, gender options 44 dp.
 - Chips: 33 dp (14, 15), 31 dp (13 filters), 35 dp (23 Sell / Categories), 24 dp (07 Public);
   12 dp left/right padding.
 - Section band 7 dp (04). Dividers 1 dp; input and card outlines 0.5 dp.
@@ -209,11 +211,16 @@ on the emulator with the bundled fonts, see Verification):
 | Kinnect.Text.Title | Bricolage 700 | 18 sp | toolbar titles: Create account, Comments, Lina's post |
 | Kinnect.Text.SectionTitle | Bricolage 700 | 18.5 sp | Friend requests, Today's picks, Details |
 | Kinnect.Text.SectionTitle.Small | Bricolage 700 | 16.5 sp | New, Earlier, People, Groups |
-| Kinnect.Text.Name | Figtree 600 | 15 sp | Sara Iqbal (14), Jacob West (02) |
+| Kinnect.Text.Name | Figtree 600 | 15 sp | Sara Iqbal (14) |
+| Kinnect.Text.Name.Bold | Figtree 700 | 15.5 sp | Jacob West in the recent login card (02) |
+| Kinnect.Text.Subtitle | Figtree 400, grey | 12.25 sp | Tap to log in (02) |
 | Kinnect.Text.Body | Figtree 400, line pitch 18.3 dp (+1.5 dp) | 14 sp | post text (04); comments in 06 are 17.3 dp |
 | Kinnect.Text.Body.Bold | Figtree 600 | 14 sp | Lina Marsh (04) |
-| Kinnect.Text.Label | Figtree 600, grey | 13 sp | All shortcuts, RECENT LOGIN |
-| Kinnect.Text.Caption | Figtree 400, grey | 11.5 sp | 8 mutual friends, 2h, field labels (measured 11.2-12.7, mean 11.6) |
+| Kinnect.Text.Label | Figtree 600, grey | 13 sp | All shortcuts |
+| Kinnect.Text.Label.Bold | Figtree 700, grey | 13 sp | RECENT LOGIN (02) |
+| Kinnect.Text.Caption | Figtree 400, grey | 11.5 sp | 8 mutual friends, 2h (measured 11.2-12.7, mean 11.6) |
+| Kinnect.Text.FieldLabel | Caption, letterSpacing -0.025 | 11.5 sp | field labels (02: 5 % narrower than plain Caption) |
+| splash | Bricolage 800 white 43 sp (wordmark); Figtree 400 white 80 % 12.5 sp ("from"); Bricolage 800 24 sp, letterSpacing 0.09 ("SMD") | | (01) |
 | Kinnect.Avatar | Bricolage 700, white | 13 sp in 36 dp (0.36 x size) | JW, LM, AK ... |
 | buttons | Figtree 700 | 15 sp primary, 14 sp small, 13 sp chips | Log in, Confirm, Suggestions |
 | badges, nav labels | Figtree 700 / 600 | 11 sp | badge digits, Chats / People / Stories |

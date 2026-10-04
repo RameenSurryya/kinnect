@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Teal app tile behind the logo on Login (02): 70dp square, 21dp corners. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/teal" />
+    <corners android:radius="@dimen/radius_logo_tile" />
+</shape>

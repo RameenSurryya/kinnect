@@ -105,11 +105,35 @@
         <item name="android:textColor">@color/text_grey</item>
     </style>
 
+    <!-- Bold name in the recent login card (02): heavier than a list name. -->
+    <style name="Kinnect.Text.Name.Bold">
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_name_large</item>
+    </style>
+
+    <!-- Grey line under a name in a card ("Tap to log in", 02). -->
+    <style name="Kinnect.Text.Subtitle">
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
     <!-- Grey bold label above a group ("All shortcuts", "RECENT LOGIN"). -->
     <style name="Kinnect.Text.Label">
         <item name="android:fontFamily">@font/figtree_semibold</item>
         <item name="android:textSize">@dimen/text_label</item>
         <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <!-- Bold capitals label ("RECENT LOGIN", 02). -->
+    <style name="Kinnect.Text.Label.Bold">
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_label_bold</item>
+    </style>
+
+    <!-- Small label inside a field ("Mobile number or email", "Password"): caption size,
+         set slightly tighter, as measured on 02. -->
+    <style name="Kinnect.Text.FieldLabel" parent="Kinnect.Text.Caption">
+        <item name="android:letterSpacing">-0.025</item>
     </style>
 
     <!-- Teal text link ("See all", "Forgot password?", "Find friends"). -->
@@ -189,6 +213,34 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <!-- Field with a small label above the value (02, 03): the white rounded box is a vertical
+         LinearLayout holding a Kinnect.Text.Caption label and a Kinnect.FieldText EditText. -->
+    <style name="Kinnect.Field" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/input_padding</item>
+        <item name="android:paddingEnd">@dimen/input_padding</item>
+        <!-- balances the gap above the value, so the label stays where the design has it -->
+        <item name="android:paddingTop">@dimen/field_value_gap</item>
+    </style>
+
+    <!-- The EditText inside a Kinnect.Field: no box or padding of its own (the field draws it). -->
+    <style name="Kinnect.FieldText" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/field_value_gap</item>
+        <item name="android:background">@null</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+        <item name="android:textSize">@dimen/text_name</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <!-- Grey pill field: search (13, 20), Write a reply (06), Aa (21). -->
     <style name="Kinnect.Input.Search">
         <item name="android:layout_height">@dimen/input_height_search</item>
@@ -230,6 +282,12 @@
         <item name="android:textSize">@dimen/text_small</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Larger badge on the recent login avatar (02): 20dp, 16dp red disc. -->
+    <style name="Kinnect.Badge.Large">
+        <item name="android:layout_width">@dimen/badge_size_large</item>
+        <item name="android:layout_height">@dimen/badge_size_large</item>
     </style>
 
     <!-- Initials avatar (36dp by default). Set android:text and android:backgroundTint;

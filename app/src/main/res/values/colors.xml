@@ -18,6 +18,7 @@
     <color name="chip_fill">#ECE9E2</color>         <!-- chips, grey buttons, search fields, bubbles -->
     <color name="divider">#E0E0DE</color>           <!-- 1dp lines under bars and between rows -->
     <color name="border">#D6D1C8</color>            <!-- input and card outlines -->
+    <color name="card_border">#E4E0D8</color>       <!-- lighter outline of the recent login card (02) -->
     <color name="section_band">#E6E3DA</color>      <!-- thick gap between feed sections -->
     <color name="track">#D6D0C9</color>             <!-- empty progress / strength segments, sheet handle -->
     <color name="card_shadow">#E8E6E2</color>       <!-- soft line under white cards (19) -->
