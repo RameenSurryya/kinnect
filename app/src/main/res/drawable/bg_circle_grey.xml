@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Grey circle behind icon buttons: search / messenger (top bar), compose (20),
+     menu row icons (19), recent search clocks (13). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/chip_fill" />
+</shape>

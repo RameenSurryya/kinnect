@@ -1,6 +1,6 @@
 # Progress
 
-- [ ] Foundation (colours, dimens, styles, fonts, shapes, tab bar include, BaseActivity)
+- [x] Foundation (colours, dimens, styles, fonts, shapes, tab bar include, BaseActivity)
 
 - [x] Icons imported
 

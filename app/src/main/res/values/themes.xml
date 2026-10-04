@@ -1,9 +1,36 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Kinnect" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <!--
+        App theme: light, no action bar (every screen draws its own top bar).
+        AppCompat (not Material) so a plain <Button> keeps our drawable backgrounds instead of
+        being turned into a tinted MaterialButton.
+        System bars are transparent: BaseActivity calls enableEdgeToEdge() and each screen root
+        uses android:fitsSystemWindows="true", so the screen's own background colour shows
+        behind the status bar and the gesture bar.
+    -->
+    <style name="Base.Theme.Kinnect" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/teal</item>
+        <item name="colorPrimaryDark">@color/teal</item>
+        <item name="colorAccent">@color/teal</item>                <!-- checkboxes, radios, cursor -->
+        <item name="colorControlNormal">@color/text_grey</item>    <!-- unchecked boxes -->
+        <item name="android:textColorPrimary">@color/text_dark</item>
+        <item name="android:textColorSecondary">@color/text_grey</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:windowBackground">@color/surface</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+        <item name="fontFamily">@font/figtree_regular</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>      <!-- dark icons on light screens -->
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <style name="Theme.Kinnect" parent="Base.Theme.Kinnect" />
+
+    <!-- Dark screens (splash, camera, story editor/viewer, your story, voice call):
+         light status bar icons on the dark or teal background. -->
+    <style name="Theme.Kinnect.Dark" parent="Base.Theme.Kinnect">
+        <item name="android:windowBackground">@color/camera_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
 </resources>

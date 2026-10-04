@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Text field box (02, 03): white, 12dp corners, a hairline warm-grey outline. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/surface" />
+    <stroke
+        android:width="@dimen/hairline"
+        android:color="@color/border" />
+    <corners android:radius="@dimen/radius_input" />
+</shape>

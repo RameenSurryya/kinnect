@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bottom sheet (07): white with 20dp top corners. Give the view android:elevation="8dp"
+     for the soft shadow above its top edge. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/surface" />
+    <corners
+        android:topLeftRadius="@dimen/radius_sheet"
+        android:topRightRadius="@dimen/radius_sheet"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp" />
+</shape>

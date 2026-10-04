@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Red count badge (messenger "3", bell "5", login "2"). Used on an 18dp view:
+     the 2dp white stroke is drawn inside the bounds, leaving a 14dp red disc. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/accent_orange" />
+    <stroke
+        android:width="@dimen/badge_ring"
+        android:color="@color/white" />
+</shape>

@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Kinnect</string>
+
+    <!-- Shared top bar (include_top_bar.xml) -->
+    <string name="wordmark" translatable="false">kinnect</string>
+    <string name="cd_search">Search</string>
+    <string name="cd_messenger">Messages</string>
+    <string name="cd_back">Back</string>
+
+    <!-- Shared tab bar (include_top_tabs.xml) -->
+    <string name="cd_tab_home">Home</string>
+    <string name="cd_tab_friends">Friends</string>
+    <string name="cd_tab_marketplace">Marketplace</string>
+    <string name="cd_tab_notifications">Notifications</string>
+    <string name="cd_tab_menu">Menu</string>
+
+    <!-- Sample badge counts shown in the design -->
+    <string name="sample_badge_messages" translatable="false">3</string>
+    <string name="sample_badge_notifications" translatable="false">5</string>
 </resources>

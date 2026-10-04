@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Shared five-tab bar (04, 14, 18, 19, 23): Home, Friends, Marketplace, Notifications, Menu.
+    Five equal columns (layout_weight), 48dp tall, 24dp icons centred. The active tab has a
+    teal icon and a 3dp teal underline the full width of its column; BaseActivity.setupTopTabs()
+    picks the active tab and wires the clicks. A 1dp divider runs under the whole bar.
+    The bell carries the red notification badge (centre 13dp right, 7dp above the tab centre).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_bar_height"
+        android:orientation="horizontal">
+
+        <!-- Home -->
+        <FrameLayout
+            android:id="@+id/fl_tab_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/cd_tab_home">
+
+            <ImageView
+                android:id="@+id/iv_tab_home"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_home"
+                app:tint="@color/text_grey" />
+
+            <View
+                android:id="@+id/v_tab_home_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_indicator"
+                android:layout_gravity="bottom"
+                android:background="@color/teal"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <!-- Friends -->
+        <FrameLayout
+            android:id="@+id/fl_tab_friends"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/cd_tab_friends">
+
+            <ImageView
+                android:id="@+id/iv_tab_friends"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_friends"
+                app:tint="@color/text_grey" />
+
+            <View
+                android:id="@+id/v_tab_friends_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_indicator"
+                android:layout_gravity="bottom"
+                android:background="@color/teal"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <!-- Marketplace -->
+        <FrameLayout
+            android:id="@+id/fl_tab_marketplace"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/cd_tab_marketplace">
+
+            <ImageView
+                android:id="@+id/iv_tab_marketplace"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_store"
+                app:tint="@color/text_grey" />
+
+            <View
+                android:id="@+id/v_tab_marketplace_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_indicator"
+                android:layout_gravity="bottom"
+                android:background="@color/teal"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <!-- Notifications: the bell has a red count badge on top (FrameLayout overlap) -->
+        <FrameLayout
+            android:id="@+id/fl_tab_notifications"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/cd_tab_notifications">
+
+            <ImageView
+                android:id="@+id/iv_tab_notifications"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_bell"
+                app:tint="@color/text_grey" />
+
+            <TextView
+                android:id="@+id/tv_tab_notifications_badge"
+                style="@style/Kinnect.Badge"
+                android:layout_gravity="center"
+                android:text="@string/sample_badge_notifications"
+                android:translationX="@dimen/tab_badge_x"
+                android:translationY="@dimen/tab_badge_y" />
+
+            <View
+                android:id="@+id/v_tab_notifications_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_indicator"
+                android:layout_gravity="bottom"
+                android:background="@color/teal"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <!-- Menu -->
+        <FrameLayout
+            android:id="@+id/fl_tab_menu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/cd_tab_menu">
+
+            <ImageView
+                android:id="@+id/iv_tab_menu"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_menu"
+                app:tint="@color/text_grey" />
+
+            <View
+                android:id="@+id/v_tab_menu_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_indicator"
+                android:layout_gravity="bottom"
+                android:background="@color/teal"
+                android:visibility="invisible" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Divider under the whole tab bar -->
+    <View style="@style/Kinnect.Divider" />
+</LinearLayout>

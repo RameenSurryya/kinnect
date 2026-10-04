@@ -1,5 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Kinnect colour tokens. Every value was sampled from the design PNGs with
+    tools/sample_colors.py (median of many pixels, so compression noise cancels out).
+    See docs/DESIGN_TOKENS.md for where each colour was sampled.
+-->
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!-- Brand -->
+    <color name="teal">#0B5F63</color>              <!-- primary: buttons, active tab, links -->
+    <color name="teal_tint">#E3EFEF</color>         <!-- selected chip, "New" band, add-friend circle -->
+
+    <!-- Surfaces -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="background">#F3F2EE</color>        <!-- warm off-white: login, sign up, menu -->
+    <color name="surface">#FFFFFF</color>           <!-- feed, lists, cards, inputs -->
+    <color name="chip_fill">#ECE9E2</color>         <!-- chips, grey buttons, search fields, bubbles -->
+    <color name="divider">#E0E0DE</color>           <!-- 1dp lines under bars and between rows -->
+    <color name="border">#D6D1C8</color>            <!-- input and card outlines -->
+    <color name="section_band">#E6E3DA</color>      <!-- thick gap between feed sections -->
+    <color name="track">#D6D0C9</color>             <!-- empty progress / strength segments, sheet handle -->
+    <color name="card_shadow">#E8E6E2</color>       <!-- soft line under white cards (19) -->
+
+    <!-- Text and icons -->
+    <color name="text_dark">#1C1B19</color>
+    <color name="text_grey">#5B5954</color>         <!-- secondary text and inactive icons -->
+    <color name="text_hint">#74726E</color>         <!-- placeholders: Search, Write a reply..., Aa -->
+    <color name="text_on_teal_soft">#CCFFFFFF</color> <!-- white 80 %: "from", call timer, encrypted -->
+
+    <!-- Accents -->
+    <color name="accent_orange">#B84A2A</color>     <!-- badges, JUST LISTED, counts, angry, password meter -->
+    <color name="love_red">#C8384A</color>
+    <color name="mustard">#C98714</color>
+    <color name="purple">#7A4E7F</color>
+    <color name="indigo">#4B4F8E</color>
+    <color name="green">#2F6B4F</color>
+    <color name="online_green">#2E9D5A</color>
+    <color name="maroon">#9B3D4F</color>
+    <color name="steel_blue">#3F6E8C</color>
+    <color name="olive">#6C5B2F</color>
+    <color name="brown">#8A5A2C</color>
+
+    <!-- Initials avatars: eight disc colours shared by every person in the design -->
+    <color name="avatar_jw">@color/teal</color>      <!-- Jacob West -->
+    <color name="avatar_lm">@color/purple</color>    <!-- Lina Marsh -->
+    <color name="avatar_ak">@color/maroon</color>    <!-- Aisha Khan -->
+    <color name="avatar_of">@color/green</color>     <!-- Omar Farooq -->
+    <color name="avatar_si">@color/indigo</color>    <!-- Sara Iqbal -->
+    <color name="avatar_ha">@color/brown</color>     <!-- Hamza Ali -->
+    <color name="avatar_zr">@color/steel_blue</color> <!-- Zain Raza -->
+    <color name="avatar_mc">@color/olive</color>     <!-- Maya Chen -->
+    <color name="avatar_dc">@color/olive</color>     <!-- Design crew / SMD class -->
+    <color name="avatar_ba">@color/purple</color>    <!-- Bilal Ahmed -->
+    <color name="avatar_nf">@color/green</color>     <!-- Noor Fatima -->
+    <color name="avatar_ds">@color/maroon</color>    <!-- Daniyal Shah -->
+    <color name="avatar_os">@color/indigo</color>    <!-- Omar Siddiqui -->
+    <color name="avatar_ot">@color/brown</color>     <!-- Omar Tariq -->
+    <color name="avatar_op">@color/purple</color>    <!-- Omar's Photography Circle -->
+    <color name="avatar_am">@color/purple</color>    <!-- Ammi -->
+
+    <!-- Dark screens: camera, story editor, story viewer, your story -->
+    <color name="camera_bg">#121212</color>
+    <color name="story_pill">#2A2925</color>         <!-- "Your story" / "Close friends" pills (10) -->
+    <color name="story_track">#66FFFFFF</color>      <!-- unfilled story progress bar -->
+    <!-- Translucent layers on top of photos (fitted against the photo colour underneath) -->
+    <color name="photo_button_light">#52000000</color> <!-- black 32 %: camera top buttons (09) -->
+    <color name="photo_button">#66000000</color>     <!-- black 40 %: story editor buttons (10) -->
+    <color name="photo_button_dark">#80000000</color> <!-- black 50 %: expand button (08) -->
+    <color name="story_scrim">#6B141414</color>      <!-- 42 %: name scrim on story cards (04) -->
+    <color name="photo_dim">#80141414</color>        <!-- 50 %: "+4" tile (04) -->
+    <color name="overlay_dim">#5C1C1B19</color>      <!-- 36 %: whole-screen dim behind reactions (05) -->
+
+    <!-- Voice call (22) -->
+    <color name="call_control">#24FFFFFF</color>     <!-- white 14 % on teal -->
+    <color name="call_halo_outer">#0DFFFFFF</color>  <!-- white 5 % -->
+    <color name="call_halo_inner">#1FFFFFFF</color>  <!-- white 12 % -->
+    <color name="call_end_red">#C62827</color>
+
+    <!-- Photo placeholders (ph_* drawables): sky, sun, back hill, front hill -->
+    <color name="ph_sand_sky">#E9D7BF</color>
+    <color name="ph_sand_sun">#FFF3DD</color>
+    <color name="ph_sand_back">#C8A57F</color>
+    <color name="ph_sand_front">#9E7B55</color>
+    <color name="ph_teal_sky">#BFD7D9</color>
+    <color name="ph_teal_sun">#F2E3C6</color>
+    <color name="ph_teal_back">#7FA9A8</color>
+    <color name="ph_teal_front">#4F8585</color>
+    <color name="ph_lilac_sky">#D8C7D9</color>
+    <color name="ph_lilac_sun">#F4D5B8</color>
+    <color name="ph_lilac_back">#A48AA7</color>
+    <color name="ph_lilac_front">#6F5673</color>
+    <color name="ph_sky_sky">#CBD8E9</color>
+    <color name="ph_sky_sun">#F5EBD0</color>
+    <color name="ph_sky_back">#8FA8C7</color>
+    <color name="ph_sky_front">#5C769B</color>
+    <color name="ph_sage_sky">#CDDAC0</color>
+    <color name="ph_sage_sun">#F3EBC7</color>
+    <color name="ph_sage_back">#93AD7E</color>
+    <color name="ph_sage_front">#627F4F</color>
+    <color name="ph_rose_sky">#E5C9BD</color>
+    <color name="ph_rose_sun">#FBEBDC</color>
+    <color name="ph_rose_back">#C68F7B</color>
+    <color name="ph_rose_front">#955E4A</color>
+    <color name="ph_night_sky">#2E3A4A</color>
+    <color name="ph_night_sun">#E8C989</color>
+    <color name="ph_night_back">#465670</color>
+    <color name="ph_night_front">#202634</color>
 </resources>

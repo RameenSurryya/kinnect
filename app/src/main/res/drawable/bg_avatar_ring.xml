@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Story ring (04 story cards): a teal ring, then a white gap. Put it on a FrameLayout and
+     place the initials avatar inside with a margin of avatar_ring + avatar_ring_gap (3dp). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer teal disc: only its 1.5dp edge stays visible -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/teal" />
+        </shape>
+    </item>
+    <!-- White disc inset by the ring width: forms the gap around the avatar -->
+    <item
+        android:bottom="@dimen/avatar_ring"
+        android:left="@dimen/avatar_ring"
+        android:right="@dimen/avatar_ring"
+        android:top="@dimen/avatar_ring">
+        <shape android:shape="oval">
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>

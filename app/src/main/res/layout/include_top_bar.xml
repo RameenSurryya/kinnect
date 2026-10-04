@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Shared top bar of the tab screens (04, 14, 18, 19, 23): the page title (or the "kinnect"
+    wordmark on Home) on the left, and the search and messenger circles on the right.
+    BaseActivity.setupTopBar() sets the title and wires the two buttons.
+
+    Measured on screen 04: row 49dp tall, circles 36dp with an 8dp gap and a 16dp right margin,
+    19dp icons, 18dp badge centred 12dp right and 13dp above the messenger circle's centre.
+    Each circle sits in a 48dp FrameLayout so the touch target is 48dp; the two frames overlap
+    by 4dp (negative margin) so the circles keep the design's 8dp gap.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_bar_height">
+
+    <!-- Page title. Home switches it to the wordmark style. -->
+    <TextView
+        android:id="@+id/tv_top_title"
+        style="@style/Kinnect.Text.Heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/screen_margin"
+        android:layout_toStartOf="@+id/fl_search"
+        android:ellipsize="end"
+        android:singleLine="true"
+        tools:text="@string/wordmark" />
+
+    <!-- Messenger button: grey circle, icon, red unread badge -->
+    <FrameLayout
+        android:id="@+id/fl_messenger"
+        android:layout_width="@dimen/touch_target"
+        android:layout_height="@dimen/touch_target"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/space_2"
+        android:layout_marginEnd="@dimen/space_10"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/cd_messenger">
+
+        <ImageView
+            android:id="@+id/iv_messenger"
+            android:layout_width="@dimen/top_bar_button"
+            android:layout_height="@dimen/top_bar_button"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_circle_grey"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/top_bar_icon_padding"
+            android:src="@drawable/ic_messenger"
+            app:tint="@color/text_dark" />
+
+        <TextView
+            android:id="@+id/tv_messenger_badge"
+            style="@style/Kinnect.Badge"
+            android:layout_gravity="center"
+            android:text="@string/sample_badge_messages"
+            android:translationX="@dimen/top_bar_badge_x"
+            android:translationY="@dimen/top_bar_badge_y" />
+    </FrameLayout>
+
+    <!-- Search button: grey circle and icon -->
+    <FrameLayout
+        android:id="@+id/fl_search"
+        android:layout_width="@dimen/touch_target"
+        android:layout_height="@dimen/touch_target"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/space_2"
+        android:layout_marginEnd="@dimen/top_bar_button_overlap"
+        android:layout_toStartOf="@id/fl_messenger"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/cd_search">
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/top_bar_button"
+            android:layout_height="@dimen/top_bar_button"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_circle_grey"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/top_bar_icon_padding"
+            android:src="@drawable/ic_search"
+            app:tint="@color/text_dark" />
+    </FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Teal rounded button: Confirm (14, 18), Join (13), Add to story (15), Add friend (17).
+     Same 10dp corners as bg_button_grey. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/teal" />
+    <corners android:radius="@dimen/radius_button_small" />
+</shape>

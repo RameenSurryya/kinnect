@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Initials avatar disc. The colour comes from the view:
+     android:backgroundTint="@color/avatar_lm" (see colors.xml for every person). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/white" />
+</shape>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- White card with 12dp corners and the soft line under its bottom edge (menu cards, 19).
+     The shadow is a second rounded shape peeking out 1.5dp below the card. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow: same shape, visible only along the bottom -->
+    <item android:top="1.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/card_shadow" />
+            <corners android:radius="@dimen/radius_card" />
+        </shape>
+    </item>
+    <!-- Card -->
+    <item android:bottom="1.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/surface" />
+            <corners android:radius="@dimen/radius_card" />
+        </shape>
+    </item>
+</layer-list>

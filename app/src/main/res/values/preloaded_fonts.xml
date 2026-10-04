@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fonts that Google Play services downloads when the app starts (manifest meta-data
+     "preloaded_fonts"), so the first screen already draws with Figtree and Bricolage. -->
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/figtree_regular</item>
+        <item>@font/figtree_medium</item>
+        <item>@font/figtree_semibold</item>
+        <item>@font/figtree_bold</item>
+        <item>@font/bricolage_grotesque_bold</item>
+        <item>@font/bricolage_grotesque_extrabold</item>
+    </array>
+</resources>
