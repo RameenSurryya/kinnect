@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Photo placeholder "sand": flat sky, pale sun and two wavy hills, copied from the design
+     (sampled colours, shapes measured by tools/sample_placeholders.py, written by
+     tools/make_placeholders.py). The viewport is square because every placeholder in the
+     design is a centre crop of the same square picture: use android:scaleType="centerCrop". -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="360dp"
+    android:viewportWidth="360"
+    android:viewportHeight="360">
+
+    <!-- sky -->
+    <path
+        android:fillColor="#E9D7BF"
+        android:pathData="M0,0 L360,0 L360,360 L0,360 Z" />
+
+    <!-- sun: circle at (259.4, 108.1), radius 36.0, drawn as two half arcs -->
+    <path
+        android:fillColor="#FFF3DD"
+        android:pathData="M223.4,108.1 A36.0,36.0 0 1,1 295.4,108.1 A36.0,36.0 0 1,1 223.4,108.1 Z" />
+
+    <!-- back hill (lighter): high on the left, dips on the right -->
+    <path
+        android:fillColor="#C8A57F"
+        android:pathData="M-14.4,270.1 C-13.5,266.2 37.1,202.5 98.6,202.5 C173.7,202.5 185.0,265.0 259.2,265.0 C318.6,265.0 369.6,201.3 370.1,194.7 L370.1,360 L-14.4,360 Z" />
+
+    <!-- front hill (darker), drawn over the back hill -->
+    <path
+        android:fillColor="#9E7B55"
+        android:pathData="M-17.4,319.3 C-10.9,313.3 48.9,267.6 116.1,267.6 C202.1,267.6 234.8,323.8 301.2,323.8 C360.7,323.8 370.1,251.2 370.5,250.2 L370.5,360 L-17.4,360 Z" />
+</vector>

@@ -74,5 +74,36 @@ the white ring around them is a layout background):
 - badge_friend_request #0B5F63 (person, hand-drawn), badge_comment #2B6D4F (Phosphor Bold chat),
   badge_group #4B4F8E (two people, hand-drawn), badge_tag #C98714 (Phosphor Bold tag).
 
-Still to do: ph_* sun-and-hills placeholders in each palette.
+## Photo placeholders (ph_*)
+
+ph_sand, ph_teal, ph_lilac, ph_sky, ph_sage, ph_rose, ph_night: flat sky, pale sun, back hill,
+front hill. Colours per family are in DESIGN_TOKENS.md. All seven share the same shapes.
+
+- Every placeholder in the design (36 frames on 13 screens) is a centre crop of ONE square
+  picture, so the viewport is square (360 x 360, default 360dp) and every ImageView uses
+  android:scaleType="centerCrop". That alone gives the right crop for each use (table below).
+- Shapes measured from all 36 frames with tools/sample_placeholders.py (writes
+  design/check/placeholder_geometry.json). Fitted and written by tools/make_placeholders.py:
+  sun circle centre (259.4, 108.1) radius 36.0; each hill = 3 smooth cubic curves with the crest
+  and trough as knots. The hill ends sit a little outside the viewport (the drawable clips them).
+- Checked with tools/check_placeholders.py (sheets design/check/ph_<family>.png: design |
+  drawable centre-cropped | overlay). Mean edge offset 0.13 px over all frames, worst 0.92 px
+  (09 camera, 1311 px tall).
+
+What centerCrop shows (viewport units, PNG frame 707 px = 360 dp):
+
+| Use | Frame (dp) | Shape | Visible part of the 360 x 360 picture |
+|---|---|---|---|
+| 10, 11, 12 story; 09 camera | 344 x 680 (09: 344 x 668) | tall 0.51 | x 89-271, full height; sun cut by the right edge |
+| 04 story card | 95 x 161 | tall 0.59 | x 74-286 |
+| 04 large post photo (05 too) | 178 x 238 | tall 0.75 | x 46-314 |
+| 08 grid, 17 photos, 23 tiles, 09 gallery thumb | 88 / 106 / 160 / ~36 square | 1.0 | whole picture |
+| 08 preview | 359 x 303 | wide 1.19 | y 28-332 |
+| 21 chat photo, 06 comment photo | 184 x 127, 164 x 113 | wide 1.45 | y 55-305 |
+| 04 small post tiles | 177 x 117 | wide 1.52 | y 62-298 |
+| 15, 17 cover | 359 x 179 | wide 2.0 | y 90-270; sun cut by the top edge |
+| 16 cover | 329 x 109 | wide 3.0 | y 120-240; only the bottom of the sun shows |
+
+Overlays (the dark "+4" layer, 04 story name scrim, 08 selection rings, "0:23" label) are layout
+views on top, not part of the drawables.
 

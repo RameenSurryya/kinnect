@@ -4,6 +4,8 @@
 
 - [x] Icons imported
 
+- [x] Photo placeholders (ph_sand, ph_teal, ph_lilac, ph_sky, ph_sage, ph_rose, ph_night)
+
 - [ ] Real photos added
 
 - [ ] 01 Splash   - [ ] 02 Login   - [ ] 03 Sign up   - [ ] 04 Home feed   - [ ] 05 Reaction picker
