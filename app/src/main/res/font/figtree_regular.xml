@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Figtree Regular: body text. Downloadable font from Google Fonts, fetched by Google Play services
-     through androidx (app: attributes; the platform android: version is deprecated and ignored). -->
-<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:fontProviderAuthority="com.google.android.gms.fonts"
-    app:fontProviderPackage="com.google.android.gms"
-    app:fontProviderQuery="name=Figtree&amp;weight=400&amp;besteffort=true"
-    app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
-</font-family>

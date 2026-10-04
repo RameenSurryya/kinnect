@@ -55,7 +55,14 @@ CHECKS = [
     ("ic_comment_s04", "ic_comment", SCREENS + "/screen-04.png", 352, 1572, 38, "auto"),
     ("ic_create_reel_s20", "ic_create_reel", SCREENS + "/screen-20.png", 650.7, 1544.6, 46, "auto"),
     ("ic_create_reel_s12", "ic_create_reel", SCREENS + "/screen-12.png", 296, 1521, 46, "auto"),
+    ("ic_friends_s04_tab", "ic_friends", SCREENS + "/screen-04.png", 274.1, 233.0, 47.1, "auto"),
+    ("ic_friends_s14_tab", "ic_friends", SCREENS + "/screen-14.png", 274.1, 233.0, 47.1, "auto"),
+    ("ic_friends_s19_groups", "ic_friends", SCREENS + "/screen-19.png", 138, 702, 47.1, "auto"),
 ]
+
+# Run only some checks:  python tools/check_glyphs.py ic_friends
+if __name__ == "__main__" and len(__import__("sys").argv) > 1:
+    CHECKS = [c for c in CHECKS if any(k in c[0] for k in __import__("sys").argv[1:])]
 
 
 # ---------- VectorDrawable -> SVG ----------

@@ -1,5 +1,5 @@
 home house
-friends users
+friends custom
 store storefront
 bell bell
 menu list

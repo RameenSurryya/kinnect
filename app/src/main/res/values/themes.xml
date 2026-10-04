@@ -17,14 +17,27 @@
         <item name="android:textColorHint">@color/text_hint</item>
         <item name="android:windowBackground">@color/surface</item>
         <item name="android:fontFamily">@font/figtree_regular</item>
-        <item name="fontFamily">@font/figtree_regular</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>      <!-- dark icons on light screens -->
         <item name="android:windowLightNavigationBar">true</item>
+        <!-- Shared top bar: large circles by default (Home, 04) -->
+        <item name="topBarSearchFrameStyle">@style/Kinnect.TopBar.SearchFrame</item>
+        <item name="topBarMessengerFrameStyle">@style/Kinnect.TopBar.MessengerFrame</item>
+        <item name="topBarCircleStyle">@style/Kinnect.TopBar.Circle</item>
+        <item name="topBarBadgeStyle">@style/Kinnect.TopBar.Badge</item>
     </style>
 
     <style name="Theme.Kinnect" parent="Base.Theme.Kinnect" />
+
+    <!-- Small top bar circles (14, 18, 19, 23). Use it on the include, so only the top bar changes:
+         <include layout="@layout/include_top_bar" android:theme="@style/ThemeOverlay.Kinnect.TopBarSmall" /> -->
+    <style name="ThemeOverlay.Kinnect.TopBarSmall" parent="">
+        <item name="topBarSearchFrameStyle">@style/Kinnect.TopBar.SearchFrame.Small</item>
+        <item name="topBarMessengerFrameStyle">@style/Kinnect.TopBar.MessengerFrame.Small</item>
+        <item name="topBarCircleStyle">@style/Kinnect.TopBar.Circle.Small</item>
+        <item name="topBarBadgeStyle">@style/Kinnect.TopBar.Badge.Small</item>
+    </style>
 
     <!-- Dark screens (splash, camera, story editor/viewer, your story, voice call):
          light status bar icons on the dark or teal background. -->

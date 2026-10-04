@@ -6,7 +6,7 @@ URL pattern: https://raw.githubusercontent.com/phosphor-icons/core/main/assets/r
 
 Names below are suggestions. If one 404s, pick the nearest on phosphoricons.com and update this file.
 
-Tabs/top bar: ic_home=house, ic_friends=users, ic_store=storefront, ic_bell=bell, ic_menu=list,
+Tabs/top bar: ic_home=house, ic_friends=hand-drawn (see Custom; Phosphor users had two full figures), ic_store=storefront, ic_bell=bell, ic_menu=list,
 
 ic_search=magnifying-glass, ic_messenger=hand-drawn (see Custom; chat-circle had no bolt)
 
@@ -53,6 +53,10 @@ Re-drawn icons (black, tint with app:tint, 256 viewport, 16-unit round strokes l
 
 - ic_messenger: round bubble, tail pointing down at bottom-left, zigzag bolt rising left to right (04, 18, 20).
 - ic_create_reel: clapperboard with a play triangle ("Create" in 12, "Stories" tab in 20).
+- ic_friends: a person in front (ring head, arched shoulders) and the right half of a second
+  person behind (C-shaped head, one shoulder); 20-unit strokes, slightly heavier than Phosphor's 16
+  (Friends tab in 04/14/18/19/23, Groups shortcut in 19). Measured 20.5 x 17.0 dp on the emulator
+  vs 20.4 x 17.3 dp in the design.
 
 Logo (viewport 100, three equal rings: stroke = 0.32 x radius, bottom rings 0.57 x radius left/right
 and 1.0 x radius below the top ring, fitted to design/logo.png):
@@ -107,9 +111,5 @@ What centerCrop shows (viewport units, PNG frame 707 px = 360 dp):
 Overlays (the dark "+4" layer, 04 story name scrim, 08 selection rings, "0:23" label) are layout
 views on top, not part of the drawables.
 
-## Needs review
-
-- ic_friends (Phosphor users): the tab glyph in 04/14/18/19/23 is a front person with a partial
-  person behind it (about 20 x 17 dp at 24 dp); Phosphor users draws two full figures (23 x 15 dp).
-  Found while verifying the shared tab bar on the emulator. Not replaced yet: decide whether to
-  hand-draw it like ic_messenger.
+Icon sizes are in DESIGN_TOKENS.md (Sizes): 24 dp default, Home tab 25 dp, top bar 19 / 15 dp,
+composer image icon 21 dp.

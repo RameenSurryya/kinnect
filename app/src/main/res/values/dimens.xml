@@ -30,13 +30,26 @@
 
     <!-- Bars -->
     <dimen name="top_bar_height">48dp</dimen>       <!-- wordmark/title row above the tabs -->
-    <dimen name="top_bar_button">36dp</dimen>       <!-- grey circle behind search / messenger (04) -->
     <dimen name="top_bar_title_shift">1dp</dimen>   <!-- title / wordmark sit 1dp below the row centre -->
-    <dimen name="top_bar_button_shift">2dp</dimen>  <!-- circles sit 2dp below the row centre -->
+    <!-- Large top bar circles: Home (04) -->
+    <dimen name="top_bar_button">36dp</dimen>       <!-- grey circle behind search / messenger -->
     <dimen name="top_bar_icon_padding">8.5dp</dimen> <!-- (36 - 19) / 2: centres the 19dp icon -->
+    <dimen name="top_bar_button_shift">2dp</dimen>  <!-- circles sit 2dp below the row centre (y 8-44) -->
+    <dimen name="top_bar_end_margin">10dp</dimen>   <!-- messenger frame to screen edge: circle 16dp in -->
     <dimen name="top_bar_button_overlap">-4dp</dimen> <!-- 48dp touch frames overlap so circles are 8dp apart -->
     <dimen name="top_bar_badge_x">12dp</dimen>      <!-- messenger badge centre, right of circle centre -->
     <dimen name="top_bar_badge_y">-13dp</dimen>     <!-- messenger badge centre, above circle centre -->
+    <!-- Small top bar circles: Friends, Notifications, Menu, Marketplace (14, 18, 19, 23;
+         measured 29.6 to 32 dp, centred at y 27, 6.5dp apart, circle 18dp from the edge) -->
+    <dimen name="top_bar_button_small">31dp</dimen>
+    <dimen name="top_bar_icon_padding_small">8dp</dimen> <!-- (31 - 15) / 2: centres a 15dp icon -->
+    <dimen name="top_bar_button_shift_small">3dp</dimen>
+    <dimen name="top_bar_end_margin_small">9.5dp</dimen>
+    <dimen name="top_bar_button_overlap_small">-10.5dp</dimen>
+    <dimen name="top_bar_badge_x_small">9.5dp</dimen>
+    <dimen name="top_bar_badge_y_small">-10.5dp</dimen>
+    <dimen name="badge_size_small">15dp</dimen>      <!-- 11dp red disc + 2dp white ring -->
+    <dimen name="text_badge_small">9sp</dimen>
     <dimen name="tab_badge_x">13dp</dimen>          <!-- bell badge centre, right of the tab centre -->
     <dimen name="tab_badge_y">-6dp</dimen>          <!-- bell badge centre, above the tab centre -->
     <dimen name="tab_icon_shift">1dp</dimen>        <!-- tab icons sit 1dp below the bar centre -->
@@ -88,6 +101,8 @@
 
     <!-- Icons -->
     <dimen name="icon_size">24dp</dimen>           <!-- default: tabs, toolbars, list icons -->
+    <dimen name="icon_size_tab_home">25dp</dimen>  <!-- Home tab: the house glyph is drawn 1dp larger (19.3dp) -->
+    <dimen name="icon_size_composer">21dp</dimen>  <!-- image icon at the end of the composer row (04) -->
     <dimen name="icon_size_top_bar">19dp</dimen>   <!-- search and messenger inside the 36dp circles -->
     <dimen name="icon_size_small">16dp</dimen>     <!-- inside chips and small buttons -->
     <dimen name="icon_size_tiny">12dp</dimen>      <!-- globe after "2h ·" -->
@@ -130,8 +145,9 @@
     <dimen name="text_wordmark">27sp</dimen>       <!-- "kinnect" (04) -->
     <dimen name="text_profile_name">25sp</dimen>   <!-- Jacob West (15), Omar Farooq (17) -->
     <dimen name="text_heading">23sp</dimen>        <!-- page titles and "What's your name..." -->
-    <dimen name="text_title">18sp</dimen>          <!-- toolbar titles, "Friend requests" -->
-    <dimen name="text_section">17sp</dimen>        <!-- list section headers: New, People, Groups -->
+    <dimen name="text_title">18sp</dimen>          <!-- toolbar titles: Create account, Comments -->
+    <dimen name="text_section_title">18.5sp</dimen> <!-- "Friend requests", "Today's picks", "Details" -->
+    <dimen name="text_section">16.5sp</dimen>        <!-- list section headers: New, People, Groups -->
     <dimen name="text_name">15sp</dimen>           <!-- list names (14, 02), inputs, menu rows -->
     <dimen name="text_body">14sp</dimen>           <!-- post text, bubbles, buttons, inline names -->
     <dimen name="text_label">13sp</dimen>          <!-- chips, small buttons, "All shortcuts" -->

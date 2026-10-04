@@ -2,14 +2,21 @@
 <!--
     Shared top bar of the tab screens (04, 14, 18, 19, 23): the page title (or the "kinnect"
     wordmark on Home) on the left, and the search and messenger circles on the right.
-    BaseActivity.setupTopBar() sets the title and wires the two buttons.
+    BaseActivity.setupTopBar() / setupHomeTopBar() set the title and wire the two buttons.
 
-    Measured on screen 04: row 48dp tall; the title sits 1dp and the circles 2dp below the
-    row's centre (translationY, which moves a view without changing the layout around it);
-    circles 36dp with an 8dp gap and a 16dp right margin,
-    19dp icons, 18dp badge centred 12dp right and 13dp above the messenger circle's centre.
-    Each circle sits in a 48dp FrameLayout so the touch target is 48dp; the two frames overlap
-    by 4dp (negative margin) so the circles keep the design's 8dp gap.
+    Two sizes, picked by the including screen with no code:
+      Home (04):          <include layout="@layout/include_top_bar" />
+      14, 18, 19, 23:     <include layout="@layout/include_top_bar"
+                              android:theme="@style/ThemeOverlay.Kinnect.TopBarSmall" />
+    The circles, badge and touch frames take their sizes from style="?attr/topBar...Style":
+    the app theme points those at the large styles, the overlay at the small ones (styles.xml).
+
+    Measured: row 48dp; title 1dp below the row centre. Large (04): circles 36dp, 8dp apart,
+    16dp from the right edge, y 8-44, 19dp icons, 18dp badge. Small (14-23): circles 31dp,
+    6.5dp apart, 18dp from the edge, centred at y 27, 16dp icons, 15dp badge.
+    Each circle sits in a 48dp FrameLayout (the touch target); the frames overlap (negative
+    margin) so the circles keep the design's gap. translationY moves a view down without
+    changing the layout around it.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,7 +27,7 @@
     <!-- Page title (Friends, Notifications, Menu, Marketplace). Hidden on Home. -->
     <TextView
         android:id="@+id/tv_top_title"
-        style="@style/Kinnect.Text.Heading"
+        style="@style/Kinnect.Text.PageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -32,8 +39,7 @@
         android:singleLine="true"
         tools:text="Friends" />
 
-    <!-- "kinnect" wordmark, shown instead of the title on Home. A separate view (not a style
-         switched from code) so its font loads with the layout. -->
+    <!-- "kinnect" wordmark, shown instead of the title on Home. -->
     <TextView
         android:id="@+id/tv_wordmark"
         style="@style/Kinnect.Text.Wordmark"
@@ -49,55 +55,43 @@
     <!-- Messenger button: grey circle, icon, red unread badge -->
     <FrameLayout
         android:id="@+id/fl_messenger"
-        android:layout_width="@dimen/touch_target"
-        android:layout_height="@dimen/touch_target"
+        style="?attr/topBarMessengerFrameStyle"
         android:layout_alignParentTop="true"
-        android:translationY="@dimen/top_bar_button_shift"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/space_10"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/cd_messenger">
 
         <ImageView
             android:id="@+id/iv_messenger"
-            android:layout_width="@dimen/top_bar_button"
-            android:layout_height="@dimen/top_bar_button"
+            style="?attr/topBarCircleStyle"
             android:layout_gravity="center"
             android:background="@drawable/bg_circle_grey"
             android:importantForAccessibility="no"
-            android:padding="@dimen/top_bar_icon_padding"
             android:src="@drawable/ic_messenger"
             app:tint="@color/text_dark" />
 
         <TextView
             android:id="@+id/tv_messenger_badge"
-            style="@style/Kinnect.Badge"
+            style="?attr/topBarBadgeStyle"
             android:layout_gravity="center"
-            android:text="@string/sample_badge_messages"
-            android:translationX="@dimen/top_bar_badge_x"
-            android:translationY="@dimen/top_bar_badge_y" />
+            android:text="@string/sample_badge_messages" />
     </FrameLayout>
 
     <!-- Search button: grey circle and icon -->
     <FrameLayout
         android:id="@+id/fl_search"
-        android:layout_width="@dimen/touch_target"
-        android:layout_height="@dimen/touch_target"
+        style="?attr/topBarSearchFrameStyle"
         android:layout_alignParentTop="true"
-        android:translationY="@dimen/top_bar_button_shift"
-        android:layout_marginEnd="@dimen/top_bar_button_overlap"
         android:layout_toStartOf="@id/fl_messenger"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/cd_search">
 
         <ImageView
             android:id="@+id/iv_search"
-            android:layout_width="@dimen/top_bar_button"
-            android:layout_height="@dimen/top_bar_button"
+            style="?attr/topBarCircleStyle"
             android:layout_gravity="center"
             android:background="@drawable/bg_circle_grey"
             android:importantForAccessibility="no"
-            android:padding="@dimen/top_bar_icon_padding"
             android:src="@drawable/ic_search"
             app:tint="@color/text_dark" />
     </FrameLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Theme attributes that let a screen choose the size of the shared top bar without code.
+    include_top_bar.xml styles its views with style="?attr/topBar...Style". The app theme points
+    these at the large (Home, 04) styles; a screen that needs the small circles (14, 18, 19, 23)
+    adds android:theme="@style/ThemeOverlay.Kinnect.TopBarSmall" to its <include> tag.
+-->
+<resources>
+    <attr name="topBarSearchFrameStyle" format="reference" />    <!-- 48dp touch frame around search -->
+    <attr name="topBarMessengerFrameStyle" format="reference" /> <!-- 48dp touch frame around messenger -->
+    <attr name="topBarCircleStyle" format="reference" />         <!-- grey circle + icon -->
+    <attr name="topBarBadgeStyle" format="reference" />          <!-- red badge on messenger -->
+</resources>

@@ -102,19 +102,24 @@ Measured with tools/measure_dims.py (bounding boxes add up to ~0.5 dp of anti-al
 values are rounded down to whole dp).
 
 - Margins: 16 dp on most screens; 20 dp on login and sign up (02, 03).
-- Top bar (04): row 48 dp; title or wordmark 16 dp from the left and 1 dp below the row
-  centre; search and messenger circles 36 dp, 2 dp below the row centre (y 8-44), 8 dp apart,
-  16 dp from the right edge, icons 19 dp; messenger badge 18 dp (14 dp red disc + 2 dp white
-  ring), centre 12 dp right and 13 dp above the circle centre.
-- Tab bar: 48 dp, five equal columns, 24 dp icons 1 dp below the bar centre, 3 dp teal
-  underline the full column width, 1 dp divider under the bar (y 96-97). Bell badge centre
-  13 dp right and 6 dp above the tab centre.
+- Top bar: row 48 dp; title or wordmark 16 dp from the left and 1 dp below the row centre.
+  The circles come in two sizes, picked per screen (include_top_bar.xml explains how):
+  - Large, Home (04): circles 36 dp (top_bar_button), 2 dp below the row centre (y 8-44),
+    8 dp apart, 16 dp from the right edge, icons 19 dp; badge 18 dp (14 dp red disc + 2 dp
+    white ring), centre 12 dp right and 13 dp above the circle centre.
+  - Small, 14 / 18 / 19 / 23: circles 31 dp (top_bar_button_small; measured 29.6 dp on 18 and
+    32 dp on 23), centred at y 27, 6.5 dp apart, 18 dp from the right edge, icons 15 dp;
+    badge 15 dp (11 dp red disc), centre 9.5 dp right and 10.5 dp above the circle centre.
+- Tab bar: 48 dp, five equal columns, 24 dp icons 1 dp below the bar centre (Home 25 dp: its
+  house glyph is drawn 1 dp larger), 3 dp teal underline the full column width, 1 dp divider
+  under the bar (y 96-97). Bell badge centre 13 dp right and 6 dp above the tab centre.
 - Toolbars with a back arrow: 52 dp (03, 05-08, 13, 15-17), chat header 56 dp (21).
   Bottom nav (20): 56 dp.
 - Avatars (every size in the design): 20, 24, 26, 30, 33, 35, 36, 40, 44, 48, 52, 55, 58, 66,
   74, 103, 130 (+4 dp white ring), 144. Story ring (04): 38 dp outside, 1.5 dp teal + 1.5 dp
   white around the disc. Profile ring (17): 3 dp teal + 3.5 dp white.
-- Icons: 24 dp default (tabs), 19 dp in the top bar circles, 16 dp in chips, 12 dp globe.
+- Icons: 24 dp default (tabs; Home tab 25 dp), 19 dp in the large top bar circles, 15 dp in the
+  small ones, 21 dp composer image icon (04, icon_size_composer), 16 dp in chips, 12 dp globe.
   Reactions 32 dp (05 tray and 11; measured 32.1 and 31.6), hovered reaction 46 dp, small
   summary reactions 18 dp. Badges 18 dp. Notification type badges 20 dp + 2 dp ring.
   Online dot 8 dp + ring, unread dot 11 dp.
@@ -152,18 +157,15 @@ Everything else: Figtree (Regular 400, Medium 500, SemiBold 600, Bold 700).**
 Initials inside avatars are Bricolage Grotesque Bold too (not Figtree): IoU 0.94 on "AM" (22),
 0.88 on "SI" (14), 0.84 on "LM" (04); their size is 0.36 x the avatar diameter.
 
-Both are downloadable Google Fonts (res/font/*.xml, fetched by Google Play services; the
-certificates in res/values/font_certs.xml come from Google's DownloadableFonts sample and the
-fonts are preloaded via manifest meta-data). Two things found on the emulator:
+The fonts are bundled in res/font as static TTFs (figtree_regular/medium/semibold/bold.ttf,
+bricolage_grotesque_bold/extrabold.ttf), so text is right offline, without Play services and
+from the first frame. tools/make_fonts.py builds them from the Google Fonts variable fonts with
+fontTools: one instance per weight, Bricolage at optical size 24 and normal width. Both fonts
+are SIL Open Font License; the licences are in docs/licenses/. Styles use android:fontFamily.
 
-- Font XMLs use only the `app:` provider attributes and every style sets both
-  `android:fontFamily` and `fontFamily`. With `android:` provider attributes Android uses its
-  deprecated platform loader ("Platform version of downloadable fonts is deprecated") and the
-  text silently stays in Roboto; AppCompat only applies the font through `app:fontFamily`.
-- The first screen of each app launch draws about 2 frames (~200 ms) in the fallback font
-  before the downloaded font arrives; later screens get it from the in-process cache. On a
-  device without Play services or before the very first download, text stays in Roboto.
-  If that ever matters for a demo, bundle the TTFs in res/font instead (same file names).
+(The first version used downloadable fonts. On the emulator they needed androidx-only
+attributes, and the first screen of each launch drew about 200 ms in Roboto, so they were
+replaced by bundled files.)
 
 Evidence (tools/compare_fonts.py; sheets in design/check/font_*.png). Each candidate was
 rendered with the same text, scaled onto the design crop's ink box and scored by overlap
@@ -186,24 +188,27 @@ Bricolage Grotesque wins every heading sample by a wide margin and has the desig
 glyphs (the u-shaped "y", the curved leg of "K" and "k"). Figtree wins or comes second on every
 body sample except the 51-character post line, where small spacing differences add up; it also
 matches the single-storey "g" and straight-tailed "y". Optical size barely matters for
-Bricolage (opsz 14 to 48 changes the score by under 0.02), so the provider's default instance
-is fine.
+Bricolage (opsz 14 to 48 changes the score by under 0.02); 24 is used, the value
+tools/compare_fonts.py and tools/measure_text.py render with, so their measurements apply to
+the app directly.
 
 Candidates tried: headings — Bricolage Grotesque, Familjen Grotesk, Schibsted Grotesk,
 Gabarito, Instrument Sans, Hanken Grotesk, Onest, Parkinsans, Funnel Display, Host Grotesk,
 Rethink Sans, Archivo, Sora; body — Figtree, Albert Sans, Plus Jakarta Sans, DM Sans, Outfit,
 Urbanist, Onest, Golos Text, Manrope, Rethink Sans.
 
-Text sizes (tools/measure_text.py, from the ink height and width of each string; Bricolage
-sizes then corrected by -3 % after comparing the emulator with the PNGs, see Verification):
+Text sizes (tools/measure_text.py, from the ink height and width of each string, then checked
+on the emulator with the bundled fonts, see Verification):
 
 | Style (styles.xml) | Font | Size | Examples |
 |---|---|---|---|
-| Kinnect.Text.Wordmark | Bricolage 800, teal, letterSpacing -0.03 | 27 sp | kinnect (04) |
+| Kinnect.Text.Wordmark | Bricolage 800, teal, letterSpacing -0.02 | 27 sp | kinnect (04) |
 | Kinnect.Text.ProfileName | Bricolage 800 | 25 sp | Jacob West (15), Omar Farooq (17) |
-| Kinnect.Text.Heading | Bricolage 700, letterSpacing -0.02, line pitch 26 dp | 23 sp | Friends, Notifications, Menu, Marketplace, Chats, "What's your name and birthday?" |
-| Kinnect.Text.Title / SectionTitle | Bricolage 700 | 18 sp | Create account, Comments, Friend requests, Today's picks |
-| Kinnect.Text.SectionTitle.Small | Bricolage 700 | 17 sp | New, Earlier, People, Groups |
+| Kinnect.Text.PageTitle | Bricolage 700 | 23 sp | top bar titles: Friends, Notifications, Menu, Marketplace |
+| Kinnect.Text.Heading | Bricolage 700, letterSpacing -0.02, line pitch 26 dp | 23 sp | "What's your name and birthday?" (03), Chats (20) |
+| Kinnect.Text.Title | Bricolage 700 | 18 sp | toolbar titles: Create account, Comments, Lina's post |
+| Kinnect.Text.SectionTitle | Bricolage 700 | 18.5 sp | Friend requests, Today's picks, Details |
+| Kinnect.Text.SectionTitle.Small | Bricolage 700 | 16.5 sp | New, Earlier, People, Groups |
 | Kinnect.Text.Name | Figtree 600 | 15 sp | Sara Iqbal (14), Jacob West (02) |
 | Kinnect.Text.Body | Figtree 400, line pitch 18.3 dp (+1.5 dp) | 14 sp | post text (04); comments in 06 are 17.3 dp |
 | Kinnect.Text.Body.Bold | Figtree 600 | 14 sp | Lina Marsh (04) |
@@ -229,22 +234,34 @@ design: wordmark +0.9 % / +0.6 %, heading +1.6 % / -1.8 %, body hint +0.7 % / -1
 field label +3.0 % / -1.8 %, field value +1.7 % / -1.8 %, Log in -0.6 % / +1.8 %,
 Confirm -0.8 % / +3.1 %, Friend requests -1.8 % / -1.8 %, avatar initials +1.1 %.
 
-Fixed during verification: Bricolage sizes (-3 %), wordmark tracking, caption 12 -> 11.5 sp,
+Fixed during verification: Bricolage sizes, wordmark tracking, caption 12 -> 11.5 sp,
 chip padding 14 -> 12 dp, input 50 -> 51 dp, top bar 49 -> 48 dp with the 1 dp / 2 dp offsets,
-avatar initials font, heading line spacing, the androidx font loading above, and the screen 14
-origin.
+avatar initials font, heading line spacing and the screen 14 origin.
 
-Still different (not foundation issues):
+Second pass, after bundling the fonts (screenshots taken with the emulator's network off):
 
-- Friends tab icon: Phosphor "users" draws two full figures (23 x 15 dp); the design's glyph is
-  a front person with a partial one behind (20 x 17 dp). Listed for review in docs/ICONS.md.
-- Home tab icon renders 18 x 18.5 dp vs 19.3 dp (Phosphor stroke geometry); under 1.5 dp.
-- The composer's image icon in 04 is drawn at about 21 dp, not 24 dp: set it on screen 04.
+- Text ink width / height vs design: wordmark +0.3 % / -1.8 %, Notifications page title
+  -0.0 % / -1.8 %, 03 heading +0.1 % / -1.8 %, Friend requests -0.4 % / -1.8 %, profile name
+  +0.4 % / -1.8 %, body hint +0.7 % / -1.8 %, field label +3.0 % / -1.8 %, Log in -0.6 % / +1.8 %
+  (-1.8 % in height is half a screenshot pixel). Fixing Bricolage at optical size 24 changed
+  its widths, so the tracking that had compensated for the downloaded font was removed from
+  page titles and profile names, and section titles became 18.5 / 16.5 sp.
+- Home bar: Home tab icon 19.0 x 19.5 dp (design 19.3 x 19.3), hand-drawn Friends icon
+  20.5 x 17.0 dp (design 20.4 x 17.3; Phosphor's was 23 x 15), composer icon at 21 dp
+  17.0 x 14.0 dp (design 16.8 x 14.8), circles, badges and wordmark as before.
+- Small bar vs 18 and 23: circles 31 dp at x 273.5-304.5 / 311-342, y 11.5-42.5 (18: 29.6 dp
+  at 278-307.5 / 313.5-343, y 12.7-41.5; 23: 32 dp at 268-300 / 307-338.5, y 11.4-42.8),
+  badge 11 x 11 dp red (18: 10.7 x 9.2, 23: 11.7 x 10.2), search glyph 12 dp (11.2 / 12.7),
+  title within 0.3 dp.
+
+Nothing in the bars is now more than 1 dp from the design. Small top bar positions sit between
+screens 18 and 23 because those two differ from each other by up to 2.5 dp.
 
 ## Known differences inside the design
 
-- The search / messenger circles are 36 dp on Home (04) but about 31 dp on 14, 18, 19 and 23.
-  The shared top bar uses 04's 36 dp (dimen top_bar_button) so every tab looks the same.
+- The search / messenger circles are 36 dp on Home (04) but 29.6-32 dp on 14, 18, 19 and 23,
+  and their exact size and right margin vary from screen to screen. The top bar has a large
+  and a small variant (top_bar_button / top_bar_button_small) chosen per screen.
 - Confirm / Delete are 35 dp tall in 14 and 33 dp in 18; Join is 31 dp (13). Each has a dimen.
 - Screens 14, 18, 19 and 23 show a stray light line above the top bar buttons (a leftover in
   the mock-up); it is not reproduced.

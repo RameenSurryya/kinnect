@@ -4,7 +4,9 @@
     Five equal columns (layout_weight), 48dp tall, 24dp icons centred. The active tab has a
     teal icon and a 3dp teal underline the full width of its column; BaseActivity.setupTopTabs()
     picks the active tab and wires the clicks. A 1dp divider runs under the whole bar.
-    The bell carries the red notification badge (centre 13dp right, 7dp above the tab centre).
+    The bell carries the red notification badge (centre 13dp right, 6dp above the tab centre).
+    Icons sit 1dp below the bar centre; the Home icon is 25dp because its house glyph is drawn
+    1dp larger in the design; ic_friends is hand-drawn to match the design (docs/ICONS.md).
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -29,8 +31,8 @@
 
             <ImageView
                 android:id="@+id/iv_tab_home"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
+                android:layout_width="@dimen/icon_size_tab_home"
+                android:layout_height="@dimen/icon_size_tab_home"
                 android:layout_gravity="center"
                 android:translationY="@dimen/tab_icon_shift"
                 android:importantForAccessibility="no"

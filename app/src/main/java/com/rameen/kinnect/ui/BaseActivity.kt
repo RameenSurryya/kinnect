@@ -133,13 +133,6 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    /** Shows [count] in a red badge, or hides the badge when there is nothing new. */
-    protected fun setBadge(badgeId: Int, count: Int) {
-        val badge = findViewById<TextView>(badgeId)
-        badge.text = count.toString()
-        badge.visibility = if (count > 0) View.VISIBLE else View.GONE
-    }
-
     // ---------------------------------------------------------------------------------------
     // 4. Back arrow and navigation
     // ---------------------------------------------------------------------------------------
