@@ -72,6 +72,8 @@ Mark it in XML with <!-- ADVANCED: reason -->.
 
 - Comment the code clearly: the author must explain it in a live demo. Keep code simple.
 
+- On Windows the Bash tool can hang. Run builds and scripts through PowerShell (.\gradlew.bat assembleDebug, python script.py), and never use heredocs (<<'EOF'); write the script to a file first.
+
 ## After every screen
 
 1. Build with gradlew.bat assembleDebug (Command Prompt) and fix errors.
