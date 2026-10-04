@@ -30,6 +30,25 @@ Read first: @docs/SCREENS.md @docs/DESIGN_TOKENS.md @docs/ICONS.md @docs/PROGRES
 
 8. Rotation: android:rotation. Enlarging: scaleX/scaleY.
 
+## Responsive rules (phones only)
+
+Portrait phones only; tablets and landscape are out of scope for now.
+
+- Design baseline is 360dp wide. Never hardcode a screen width in dp. Use match_parent,
+  layout_weight and wrap_content so layouts stretch cleanly on phones from 320dp to 430dp wide.
+- Fixed dp sizes only for things that should stay the same physical size: icons, avatars,
+  button and input heights, badges, corner radii.
+- Every screen has a scrolling body (ScrollView) with the top bar and any bottom bar pinned,
+  so nothing is cut off on short phones (about 640dp tall).
+- Photos use scaleType centerCrop inside weighted or fixed-ratio containers, never fixed pixel widths.
+- Text sizes in sp. Long text wraps or uses maxLines plus ellipsize instead of overflowing.
+- Handle the status bar and gesture bar with android:fitsSystemWindows="true" on each screen root
+  (or equivalent), and keep the design's background colour behind the system bars.
+- Lock the app to portrait with android:screenOrientation="portrait" on every Activity in
+  AndroidManifest.xml.
+- Test target: Kinnect360 (360x800dp) for pixel matching against the PDF, plus one other phone
+  size (for example Pixel 4a or Pixel 7) for the complex screens.
+
 ## Advanced concepts
 
 Before using ConstraintLayout, RecyclerView, animations or custom drawing: STOP and tell me
