@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figtree as one family (regular + bold). Use it for text that mixes weights inside one
+     TextView through <b> in strings.xml (the "@Lina Marsh" mention in 06): <b> then picks the
+     real Figtree Bold file instead of a synthetic bold. -->
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:font="@font/figtree_regular"
+        android:fontStyle="normal"
+        android:fontWeight="400" />
+    <font
+        android:font="@font/figtree_bold"
+        android:fontStyle="normal"
+        android:fontWeight="700" />
+</font-family>

@@ -22,6 +22,7 @@
     <color name="section_band">#E6E3DA</color>      <!-- thick gap between feed sections -->
     <color name="track">#D6D0C9</color>             <!-- empty progress / strength segments, sheet handle -->
     <color name="card_shadow">#E8E6E2</color>       <!-- soft line under white cards (19) -->
+    <color name="thread_line">#D2D1CC</color>       <!-- curved lines joining replies to a comment (06) -->
     <color name="dashed_outline">#A4A39F</color>    <!-- dashed profile photo circle (03) -->
 
     <!-- Text and icons -->

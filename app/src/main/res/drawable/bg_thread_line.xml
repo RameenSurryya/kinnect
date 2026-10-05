@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reply connector (06): a grey line down the left side that curves right at the bottom.
+     It is a rounded rectangle outline pushed past the top and right edges of its view
+     (negative top / right), so only the left side, the curve and the bottom are visible. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:right="-8dp"
+        android:top="-8dp">
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="@dimen/thread_line_stroke"
+                android:color="@color/thread_line" />
+            <corners android:bottomLeftRadius="@dimen/thread_line_radius" />
+        </shape>
+    </item>
+</layer-list>

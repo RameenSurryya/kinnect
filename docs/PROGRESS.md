@@ -10,7 +10,7 @@
 
 - [x] 01 Splash   - [x] 02 Login   - [x] 03 Sign up   - [x] 04 Home feed   - [x] 05 Reaction picker
 
-- [ ] 06 Comments   - [ ] 07 Create post   - [ ] 08 Photo picker   - [ ] 09 Camera   - [ ] 10 Story editor
+- [x] 06 Comments   - [ ] 07 Create post   - [ ] 08 Photo picker   - [ ] 09 Camera   - [ ] 10 Story editor
 
 - [ ] 11 Story viewer   - [ ] 12 Your story   - [ ] 13 Search   - [ ] 14 Friends   - [ ] 15 Profile
 

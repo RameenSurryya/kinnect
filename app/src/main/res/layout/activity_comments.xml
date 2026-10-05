@@ -1,7 +1,618 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 06 Comments (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    06 Comments. Pinned at the top: toolbar (back, "Comments", "Most relevant" pill) and the
+    reaction summary row. Pinned at the bottom: the reply bar. The comment list scrolls.
+
+    Each comment = avatar + a column holding the grey bubble and the "2h  Like  Reply" row.
+    Reaction chips ("24", "3") overlap the bottom-right corner of a bubble: bubble and chip
+    share a FrameLayout, the chip is drawn last at bottom|end.
+    Replies are indented under the parent bubble. Each reply row is a FrameLayout with a curved
+    grey line (bg_thread_line) that starts 40dp above the row (negative top margin) and ends at
+    the reply's avatar; ll_thread has clipChildren="false" so that part is drawn.
+    Measurements in dp come from design/screens/screen-06.png (dimens.xml, Comments section).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== Toolbar: back arrow, "Comments", "Most relevant" pill ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/Kinnect.IconButton"
+            android:contentDescription="@string/cd_back"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/Kinnect.Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/comments_title" />
+
+        <!-- Sort pill: visual only -->
+        <LinearLayout
+            android:id="@+id/ll_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/chip_height"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:background="@drawable/bg_chip"
+            android:contentDescription="@string/cd_sort_comments"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/chip_padding"
+            android:paddingEnd="@dimen/chip_padding_end">
+
+            <TextView
+                style="@style/Kinnect.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/figtree_bold"
+                android:singleLine="true"
+                android:text="@string/comments_most_relevant"
+                android:textSize="@dimen/text_caption" />
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_chevron"
+                android:layout_height="@dimen/icon_size_chevron"
+                android:layout_marginStart="@dimen/sort_chevron_gap"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_chevron_down"
+                app:tint="@color/text_dark" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/Kinnect.Divider" />
+
+    <!-- ===== Reaction summary: like, love, haha overlapping, "1.2K", chevron ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/summary_row_height"
+        android:contentDescription="@string/cd_reactions"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/screen_margin"
+        android:paddingEnd="@dimen/screen_margin"
+        android:paddingBottom="@dimen/reaction_row_padding_bottom">
+
+        <!-- White disc behind each icon = ring; negative margin = overlap (as on Home) -->
+        <ImageView
+            android:layout_width="@dimen/reaction_size_small"
+            android:layout_height="@dimen/reaction_size_small"
+            android:background="@drawable/bg_avatar_circle"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/reaction_ring"
+            android:src="@drawable/reaction_like" />
+
+        <ImageView
+            android:layout_width="@dimen/reaction_size_small"
+            android:layout_height="@dimen/reaction_size_small"
+            android:layout_marginStart="@dimen/reaction_overlap"
+            android:background="@drawable/bg_avatar_circle"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/reaction_ring"
+            android:src="@drawable/reaction_love" />
+
+        <ImageView
+            android:layout_width="@dimen/reaction_size_small"
+            android:layout_height="@dimen/reaction_size_small"
+            android:layout_marginStart="@dimen/reaction_overlap"
+            android:background="@drawable/bg_avatar_circle"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/reaction_ring"
+            android:src="@drawable/reaction_haha" />
+
+        <TextView
+            style="@style/Kinnect.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/summary_text_gap"
+            android:layout_weight="1"
+            android:text="@string/sample_reaction_total" />
+
+        <ImageView
+            android:layout_width="@dimen/icon_size_chevron"
+            android:layout_height="@dimen/icon_size_chevron"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="@color/text_dark" />
+    </LinearLayout>
+
+    <View style="@style/Kinnect.Divider" />
+
+    <!-- ===== Comment list (static sample comments) ===== -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/comments_list_top">
+
+            <!-- ===== Thread: Aisha's comment, two replies, "View 6 more replies" ===== -->
+            <LinearLayout
+                android:id="@+id/ll_thread"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:orientation="vertical">
+
+                <!-- 1. Aisha Khan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/screen_margin">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="@dimen/avatar_33"
+                        android:layout_height="@dimen/avatar_33"
+                        android:backgroundTint="@color/avatar_ak"
+                        android:text="@string/sample_initials_aisha"
+                        android:textSize="@dimen/text_avatar_33" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/comment_bubble_gap"
+                        android:layout_marginEnd="@dimen/comment_column_end"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- Bubble with the like + love "24" chip on its corner -->
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                style="@style/Kinnect.CommentBubble.Thread"
+                                android:layout_marginEnd="@dimen/comment_bubble_end"
+                                android:layout_marginBottom="@dimen/comment_chip_space">
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentName"
+                                    android:text="@string/sample_name_aisha" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentText"
+                                    android:text="@string/sample_comment_aisha" />
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/Kinnect.ReactionChip">
+
+                                <ImageView
+                                    style="@style/Kinnect.ReactionChip.Icon"
+                                    android:src="@drawable/reaction_like" />
+
+                                <ImageView
+                                    style="@style/Kinnect.ReactionChip.Icon"
+                                    android:layout_marginStart="@dimen/reaction_chip_overlap"
+                                    android:src="@drawable/reaction_love" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.ChipCount"
+                                    android:text="@string/sample_count_24" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <!-- "2h  Like  Reply": Like is teal because Jacob liked it -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/comment_bubble_padding_h"
+                            android:layout_marginTop="@dimen/comment_meta_top_chip"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/Kinnect.Text.CommentMeta"
+                                android:text="@string/sample_time_2h" />
+
+                            <TextView
+                                style="@style/Kinnect.Text.CommentMeta.Action"
+                                android:text="@string/comment_like"
+                                android:textColor="@color/teal" />
+
+                            <TextView
+                                style="@style/Kinnect.Text.CommentMeta.Action"
+                                android:text="@string/comment_reply" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 2. Reply from Lina Marsh, joined to Aisha's avatar by a curved line -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/reply_top">
+
+                    <View style="@style/Kinnect.ThreadLine" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/reply_indent">
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:layout_width="@dimen/avatar_26"
+                            android:layout_height="@dimen/avatar_26"
+                            android:backgroundTint="@color/avatar_lm"
+                            android:text="@string/sample_initials_lina"
+                            android:textSize="@dimen/text_avatar_26" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/comment_bubble_gap"
+                            android:layout_marginEnd="@dimen/comment_column_end"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <!-- Bubble with the haha "3" chip on its corner -->
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    style="@style/Kinnect.CommentBubble.Thread"
+                                    android:layout_marginEnd="@dimen/comment_bubble_end"
+                                    android:layout_marginBottom="@dimen/comment_chip_space">
+
+                                    <TextView
+                                        style="@style/Kinnect.Text.CommentName"
+                                        android:text="@string/sample_name_lina" />
+
+                                    <TextView
+                                        style="@style/Kinnect.Text.CommentText"
+                                        android:text="@string/sample_comment_lina" />
+                                </LinearLayout>
+
+                                <LinearLayout style="@style/Kinnect.ReactionChip">
+
+                                    <ImageView
+                                        style="@style/Kinnect.ReactionChip.Icon"
+                                        android:src="@drawable/reaction_haha" />
+
+                                    <TextView
+                                        style="@style/Kinnect.Text.ChipCount"
+                                        android:text="@string/sample_count_3" />
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/comment_bubble_padding_h"
+                                android:layout_marginTop="@dimen/comment_meta_top_chip"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentMeta"
+                                    android:text="@string/sample_time_1h" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentMeta.Action"
+                                    android:text="@string/comment_like" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentMeta.Action"
+                                    android:text="@string/comment_reply" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- 3. Reply from Zain Raza: "@Lina Marsh" is bold teal (markup in strings.xml) -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/reply_top">
+
+                    <View style="@style/Kinnect.ThreadLine" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/reply_indent">
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:layout_width="@dimen/avatar_26"
+                            android:layout_height="@dimen/avatar_26"
+                            android:backgroundTint="@color/avatar_zr"
+                            android:text="@string/sample_initials_zain"
+                            android:textSize="@dimen/text_avatar_26" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/comment_bubble_gap"
+                            android:layout_marginEnd="@dimen/comment_column_end"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                style="@style/Kinnect.CommentBubble.Thread"
+                                android:layout_marginEnd="@dimen/comment_bubble_end">
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentName"
+                                    android:text="@string/sample_name_zain" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentText"
+                                    android:fontFamily="@font/figtree"
+                                    android:text="@string/sample_comment_zain" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/comment_bubble_padding_h"
+                                android:layout_marginTop="@dimen/comment_meta_top"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentMeta"
+                                    android:text="@string/sample_time_45m" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentMeta.Action"
+                                    android:text="@string/comment_like" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.CommentMeta.Action"
+                                    android:text="@string/comment_reply" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- 4. "View 6 more replies" at the end of the last line (visual only) -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_more_top">
+
+                    <View
+                        style="@style/Kinnect.ThreadLine"
+                        android:layout_height="@dimen/view_more_line_height"
+                        android:layout_marginTop="@dimen/view_more_line_top" />
+
+                    <TextView
+                        style="@style/Kinnect.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/reply_indent"
+                        android:fontFamily="@font/figtree_bold"
+                        android:text="@string/comments_view_more"
+                        android:textColor="@color/text_grey"
+                        android:textSize="@dimen/text_comment" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- ===== Hamza Ali: text bubble, then a photo comment under it ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comment_after_thread"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_33"
+                    android:layout_height="@dimen/avatar_33"
+                    android:backgroundTint="@color/avatar_ha"
+                    android:text="@string/sample_initials_hamza"
+                    android:textSize="@dimen/text_avatar_33" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/comment_bubble_gap"
+                    android:layout_marginEnd="@dimen/comment_column_end"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/Kinnect.CommentBubble.Thread"
+                        android:layout_marginEnd="@dimen/comment_bubble_end">
+
+                        <TextView
+                            style="@style/Kinnect.Text.CommentName"
+                            android:text="@string/sample_name_hamza" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.CommentText"
+                            android:text="@string/sample_comment_hamza" />
+                    </LinearLayout>
+
+                    <!-- Photo comment: ph_sky, 18dp corners (clipToOutline set in Kotlin) -->
+                    <ImageView
+                        android:id="@+id/iv_comment_photo"
+                        android:layout_width="@dimen/comment_photo_width"
+                        android:layout_height="@dimen/comment_photo_height"
+                        android:layout_marginTop="@dimen/comment_photo_top"
+                        android:background="@drawable/bg_bubble_received"
+                        android:contentDescription="@string/cd_comment_photo"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ph_sky" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/comment_bubble_padding_h"
+                        android:layout_marginTop="@dimen/comment_meta_top"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.CommentMeta"
+                            android:text="@string/sample_time_1h" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.CommentMeta.Action"
+                            android:text="@string/comment_like" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.CommentMeta.Action"
+                            android:text="@string/comment_reply" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Maya Chen: runs under the reply bar until you scroll ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comment_gap"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingBottom="@dimen/comments_bottom">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_33"
+                    android:layout_height="@dimen/avatar_33"
+                    android:backgroundTint="@color/avatar_mc"
+                    android:text="@string/sample_initials_maya"
+                    android:textSize="@dimen/text_avatar_33" />
+
+                <LinearLayout
+                    style="@style/Kinnect.CommentBubble.Thread"
+                    android:layout_marginStart="@dimen/comment_bubble_gap">
+
+                    <TextView
+                        style="@style/Kinnect.Text.CommentName"
+                        android:text="@string/sample_name_maya" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.CommentText"
+                        android:text="@string/sample_comment_maya" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ===== Reply bar (pinned, visual only) ===== -->
+    <View style="@style/Kinnect.Divider" />
+
+    <!-- "Replying to Aisha Khan" ... "Cancel" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/reply_banner_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/screen_margin"
+        android:paddingEnd="@dimen/reply_cancel_end">
+
+        <TextView
+            style="@style/Kinnect.Text.CommentMeta"
+            android:singleLine="true"
+            android:text="@string/reply_replying_to"
+            android:textSize="@dimen/text_subtitle" />
+
+        <TextView
+            style="@style/Kinnect.Text.CommentName"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/space_4"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/sample_name_aisha"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_subtitle" />
+
+        <TextView
+            android:id="@+id/tv_cancel_reply"
+            style="@style/Kinnect.Text.CommentMeta"
+            android:fontFamily="@font/figtree_bold"
+            android:text="@string/reply_cancel"
+            android:textSize="@dimen/text_subtitle" />
+    </LinearLayout>
+
+    <!-- Camera, "Write a reply..." pill with an emoji icon, teal send circle -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/reply_bar_bottom">
+
+        <ImageView
+            android:id="@+id/iv_reply_camera"
+            style="@style/Kinnect.IconButton"
+            android:layout_marginStart="@dimen/reply_camera_start"
+            android:layout_marginTop="@dimen/reply_camera_overlap"
+            android:layout_marginBottom="@dimen/reply_camera_overlap"
+            android:contentDescription="@string/cd_add_photo_reply"
+            android:padding="@dimen/reply_camera_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_camera"
+            app:tint="@color/teal" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/input_height_search"
+            android:layout_weight="1"
+            android:background="@drawable/bg_chip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/reply_field_padding_start"
+            android:paddingEnd="@dimen/reply_smile_end">
+
+            <EditText
+                android:id="@+id/et_reply"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/figtree_regular"
+                android:hint="@string/reply_hint"
+                android:importantForAutofill="no"
+                android:inputType="textCapSentences"
+                android:padding="0dp"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/text_body" />
+
+            <ImageView
+                android:layout_width="@dimen/reply_smile_size"
+                android:layout_height="@dimen/reply_smile_size"
+                android:contentDescription="@string/cd_emoji"
+                android:src="@drawable/ic_smile"
+                app:tint="@color/text_grey" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_send"
+            android:layout_width="@dimen/circle_button"
+            android:layout_height="@dimen/circle_button"
+            android:layout_marginStart="@dimen/reply_send_gap"
+            android:layout_marginEnd="@dimen/reply_send_end"
+            android:background="@drawable/bg_circle_teal"
+            android:contentDescription="@string/cd_send"
+            android:padding="@dimen/reply_send_padding"
+            android:src="@drawable/ic_send"
+            app:tint="@color/white" />
+    </LinearLayout>
+</LinearLayout>

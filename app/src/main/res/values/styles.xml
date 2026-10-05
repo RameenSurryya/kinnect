@@ -420,6 +420,82 @@
         <item name="android:paddingBottom">@dimen/comment_bubble_padding_v</item>
     </style>
 
+    <!-- Comments screen (06): bubble with a little more room under the text. -->
+    <style name="Kinnect.CommentBubble.Thread">
+        <item name="android:paddingBottom">@dimen/comment_bubble_padding_bottom</item>
+    </style>
+
+    <!-- Bold name at the top of a comment bubble (06). -->
+    <style name="Kinnect.Text.CommentName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_comment</item>
+    </style>
+
+    <!-- Comment text under the name (06), 17dp line pitch. -->
+    <style name="Kinnect.Text.CommentText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/comment_text_top</item>
+        <item name="android:textSize">@dimen/text_comment</item>
+        <item name="android:lineSpacingExtra">@dimen/body_line_spacing</item>
+    </style>
+
+    <!-- "2h" under a comment (grey). -->
+    <style name="Kinnect.Text.CommentMeta">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_comment</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <!-- "Like" / "Reply" after the time (bold grey; Like is teal once liked). -->
+    <style name="Kinnect.Text.CommentMeta.Action">
+        <item name="android:layout_marginStart">@dimen/comment_meta_gap</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <!-- White reaction count chip on the corner of a bubble ("24", "3"), soft shadow. -->
+    <style name="Kinnect.ReactionChip" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/reaction_chip_height</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:background">@drawable/bg_reaction_tray</item>
+        <item name="android:elevation">@dimen/reaction_chip_elevation</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">@dimen/reaction_chip_padding_start</item>
+        <item name="android:paddingEnd">@dimen/reaction_chip_padding_end</item>
+    </style>
+
+    <!-- Small reaction inside a chip: white ring around the disc. -->
+    <style name="Kinnect.ReactionChip.Icon" parent="">
+        <item name="android:layout_width">@dimen/reaction_chip_icon</item>
+        <item name="android:layout_height">@dimen/reaction_chip_icon</item>
+        <item name="android:background">@drawable/bg_avatar_circle</item>
+        <item name="android:padding">@dimen/reaction_ring</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <!-- Grey count after the reactions in a chip ("24", "3"). -->
+    <style name="Kinnect.Text.ChipCount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/reaction_chip_text_gap</item>
+        <item name="android:textSize">@dimen/text_chip_small</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <!-- Curved grey line from a comment down to one of its replies (bg_thread_line). -->
+    <style name="Kinnect.ThreadLine" parent="">
+        <item name="android:layout_width">@dimen/thread_line_width</item>
+        <item name="android:layout_height">@dimen/thread_line_height</item>
+        <item name="android:layout_marginStart">@dimen/thread_line_start</item>
+        <item name="android:layout_marginTop">@dimen/thread_line_top</item>
+        <item name="android:background">@drawable/bg_thread_line</item>
+    </style>
+
     <!-- ===== Top bar circles (include_top_bar.xml) =====
          Large set = Home (04). Small set = 14, 18, 19, 23, chosen per screen through
          ThemeOverlay.Kinnect.TopBarSmall in themes.xml. -->

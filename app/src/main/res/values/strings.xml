@@ -115,6 +115,38 @@
     <string name="reaction_angry">Angry</string>
     <string name="cd_close_reactions">Close reactions</string>
 
+    <!-- 06 Comments (people and comments are static sample content) -->
+    <string name="comments_title">Comments</string>
+    <string name="sample_reaction_total" translatable="false">1.2K</string>
+    <string name="sample_comment_aisha">That sky is unreal. Which part of the beach was this?</string>
+    <string name="sample_comment_lina">Near the old pier, right before the rain started!</string>
+    <string name="sample_name_zain" translatable="false">Zain Raza</string>
+    <string name="sample_initials_zain" translatable="false">ZR</string>
+    <!-- Mention in bold teal (#0B5F63 = @color/teal; string markup cannot point at colors.xml).
+         Shown with fontFamily @font/figtree so <b> uses the real Figtree Bold. -->
+    <string name="sample_comment_zain"><b><font color="#0B5F63">\@Lina Marsh</font></b> next time invite the rest of us</string>
+    <string name="sample_comment_hamza">Same spot, one year ago:</string>
+    <string name="sample_name_maya" translatable="false">Maya Chen</string>
+    <string name="sample_initials_maya" translatable="false">MC</string>
+    <string name="sample_comment_maya">Framing this one.</string>
+    <string name="sample_count_24" translatable="false">24</string>
+    <string name="sample_count_3" translatable="false">3</string>
+    <string name="sample_time_2h" translatable="false">2h</string>
+    <string name="sample_time_1h" translatable="false">1h</string>
+    <string name="sample_time_45m" translatable="false">45m</string>
+    <string name="comment_like">Like</string>
+    <string name="comment_reply">Reply</string>
+    <string name="comments_view_more">View 6 more replies</string>
+    <string name="reply_replying_to">Replying to</string>
+    <string name="reply_cancel">Cancel</string>
+    <string name="reply_hint">Write a reply…</string>
+    <string name="cd_reactions">See reactions</string>
+    <string name="cd_sort_comments">Sort comments</string>
+    <string name="cd_add_photo_reply">Add a photo</string>
+    <string name="cd_emoji">Emoji</string>
+    <string name="cd_send">Send</string>
+    <string name="cd_comment_photo">Photo comment</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

@@ -56,6 +56,7 @@ that value is kept.
 | section_band | #E6E3DA | thick gaps in the feed (04) |
 | track | #D6D0C9 | empty step bar and password meter (03: #D5D0CA / #D7D0C9), sheet handle (07) |
 | card_shadow | #E8E6E2 | soft line under the menu cards (19) |
+| thread_line | #D2D1CC | curved lines joining replies to a comment (06), 1.5 dp |
 | text_dark | #1C1B19 | names and body text (04, 14, 02), black swatch (07) |
 | text_grey | #5B5954 | subtitles, times, labels, inactive tab icons (#5C5D58) |
 | text_hint | #74726E | placeholders: Search (20), Write a reply (06), Aa (21), Website (16) |
