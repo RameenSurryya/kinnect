@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 16dp checkbox (03). Checked: teal box with a white tick (bg_checkbox_checked).
+     Otherwise: empty box with a grey outline. Used as android:button on the CheckBox. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/bg_checkbox_checked"
+        android:state_checked="true" />
+    <item>
+        <shape android:shape="rectangle">
+            <size
+                android:width="@dimen/checkbox_size"
+                android:height="@dimen/checkbox_size" />
+            <stroke
+                android:width="@dimen/stroke_dashed"
+                android:color="@color/text_hint" />
+            <corners android:radius="@dimen/radius_checkbox" />
+        </shape>
+    </item>
+</selector>

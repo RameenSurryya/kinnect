@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Empty profile photo (03): white circle with a dashed grey outline. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/surface" />
+    <stroke
+        android:width="@dimen/stroke_dashed"
+        android:color="@color/dashed_outline"
+        android:dashWidth="@dimen/signup_photo_dash"
+        android:dashGap="@dimen/signup_photo_dash_gap" />
+</shape>

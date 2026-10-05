@@ -1,7 +1,496 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 03 Sign up (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    03 Sign up (step 2 of 3): header with back arrow and step count, 3-part step bar, heading
+    with a photo circle, name fields, birthday dropdowns, gender options, e-mail, password with
+    a strength meter, terms checkbox, Create account and the "Log in" link.
+
+    The header and step bar are pinned; everything below scrolls (ScrollView).
+    Measurements in dp come from design/screens/screen-03.png (20dp side margins).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Header: back arrow, "Create account", "Step 2 of 3" on the right -->
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/touch_target"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/Kinnect.IconButton"
+            android:contentDescription="@string/cd_back"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/Kinnect.Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/signup_title" />
+
+        <TextView
+            android:id="@+id/tv_step"
+            style="@style/Kinnect.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/screen_margin_auth"
+            android:text="@string/signup_step"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_label" />
+    </LinearLayout>
+
+    <!-- Step bar: three equal segments, the first two done (teal), the last to do (grey) -->
+    <LinearLayout
+        android:id="@+id/ll_steps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/signup_progress_top"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/screen_margin_auth"
+        android:paddingEnd="@dimen/screen_margin_auth">
+
+        <View
+            style="@style/Kinnect.Segment"
+            android:backgroundTint="@color/teal" />
+
+        <View
+            style="@style/Kinnect.Segment"
+            android:layout_marginStart="@dimen/segment_gap"
+            android:backgroundTint="@color/teal" />
+
+        <View
+            style="@style/Kinnect.Segment"
+            android:layout_marginStart="@dimen/segment_gap"
+            android:backgroundTint="@color/track" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- focusableInTouchMode: the screen opens without a blinking cursor in the first field -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_margin_auth"
+            android:paddingEnd="@dimen/screen_margin_auth"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- Heading on the left, photo circle on the right (centred on each other) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_heading_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_heading"
+                    style="@style/Kinnect.Text.Heading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/signup_heading" />
+
+                <!-- Photo circle with the teal camera badge on its bottom-right edge.
+                     FrameLayout stacks its children: the badge (bottom|end) is drawn over the
+                     dashed circle, the person icon sits in the middle. Display only. -->
+                <FrameLayout
+                    android:id="@+id/fl_photo"
+                    android:layout_width="@dimen/signup_photo"
+                    android:layout_height="@dimen/signup_photo"
+                    android:background="@drawable/bg_photo_dashed"
+                    android:contentDescription="@string/cd_add_photo">
+
+                    <ImageView
+                        android:id="@+id/iv_photo_person"
+                        android:layout_width="@dimen/icon_size_signup_person"
+                        android:layout_height="@dimen/icon_size_signup_person"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_person"
+                        app:tint="@color/text_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_photo_camera"
+                        android:layout_width="@dimen/signup_camera_badge"
+                        android:layout_height="@dimen/signup_camera_badge"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="@dimen/signup_camera_inset"
+                        android:layout_marginBottom="@dimen/signup_camera_inset"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:backgroundTint="@color/teal"
+                        android:importantForAccessibility="no"
+                        android:padding="@dimen/signup_camera_padding"
+                        android:src="@drawable/ic_camera"
+                        app:tint="@color/white" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- First name and Last name side by side, equal width -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_fields_top"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_first_name"
+                    style="@style/Kinnect.Field"
+                    android:layout_width="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_first_name_label"
+                        style="@style/Kinnect.Text.FieldLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_first_name"
+                        android:text="@string/signup_first_name" />
+
+                    <EditText
+                        android:id="@+id/et_first_name"
+                        style="@style/Kinnect.FieldText"
+                        android:autofillHints="personGivenName"
+                        android:inputType="textPersonName|textCapWords"
+                        android:text="@string/sample_first_name" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_last_name"
+                    style="@style/Kinnect.Field"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="@dimen/signup_column_gap"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_last_name_label"
+                        style="@style/Kinnect.Text.FieldLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_last_name"
+                        android:text="@string/signup_last_name" />
+
+                    <EditText
+                        android:id="@+id/et_last_name"
+                        style="@style/Kinnect.FieldText"
+                        android:autofillHints="personFamilyName"
+                        android:inputType="textPersonName|textCapWords"
+                        android:text="@string/sample_last_name" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- "Birthday" with a small info icon -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_label_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_birthday"
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="@string/signup_birthday" />
+
+                <ImageView
+                    android:id="@+id/iv_birthday_info"
+                    android:layout_width="@dimen/icon_size_info"
+                    android:layout_height="@dimen/icon_size_info"
+                    android:layout_marginStart="@dimen/signup_info_gap"
+                    android:contentDescription="@string/cd_birthday_info"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/text_grey" />
+            </LinearLayout>
+
+            <!-- Day / Month / Year: three equal dropdowns. Each box is a FrameLayout with the
+                 Spinner filling it, the small label on top and the chevron at the right. The
+                 label is not clickable, so taps on it fall through to the Spinner. The
+                 sample value comes from a one-item android:entries array (no Kotlin). -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_label_gap"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:id="@+id/fl_day"
+                    style="@style/Kinnect.Dropdown">
+
+                    <Spinner
+                        android:id="@+id/sp_day"
+                        style="@style/Kinnect.Dropdown.Spinner"
+                        android:contentDescription="@string/signup_day"
+                        android:entries="@array/sample_day" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.FieldLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dropdown_padding"
+                        android:layout_marginTop="@dimen/dropdown_label_top"
+                        android:importantForAccessibility="no"
+                        android:text="@string/signup_day" />
+
+                    <ImageView
+                        style="@style/Kinnect.DropdownChevron"
+                        android:importantForAccessibility="no" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_month"
+                    style="@style/Kinnect.Dropdown"
+                    android:layout_marginStart="@dimen/dropdown_gap">
+
+                    <Spinner
+                        android:id="@+id/sp_month"
+                        style="@style/Kinnect.Dropdown.Spinner"
+                        android:contentDescription="@string/signup_month"
+                        android:entries="@array/sample_month" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.FieldLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dropdown_padding"
+                        android:layout_marginTop="@dimen/dropdown_label_top"
+                        android:importantForAccessibility="no"
+                        android:text="@string/signup_month" />
+
+                    <ImageView
+                        style="@style/Kinnect.DropdownChevron"
+                        android:importantForAccessibility="no" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_year"
+                    style="@style/Kinnect.Dropdown"
+                    android:layout_marginStart="@dimen/dropdown_gap">
+
+                    <Spinner
+                        android:id="@+id/sp_year"
+                        style="@style/Kinnect.Dropdown.Spinner"
+                        android:contentDescription="@string/signup_year"
+                        android:entries="@array/sample_year" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.FieldLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dropdown_padding"
+                        android:layout_marginTop="@dimen/dropdown_label_top"
+                        android:importantForAccessibility="no"
+                        android:text="@string/signup_year" />
+
+                    <ImageView
+                        style="@style/Kinnect.DropdownChevron"
+                        android:importantForAccessibility="no" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_gender"
+                style="@style/Kinnect.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_gender_top"
+                android:fontFamily="@font/figtree_bold"
+                android:text="@string/signup_gender" />
+
+            <!-- Gender: RadioGroup keeps one option checked. The card border and the radio
+                 circle are selectors (bg_option, bg_radio), so they change with no Kotlin. -->
+            <RadioGroup
+                android:id="@+id/rg_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_options_top"
+                android:checkedButton="@+id/rb_male"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_female"
+                    style="@style/Kinnect.Option"
+                    android:text="@string/signup_female" />
+
+                <!-- Bold as in the design (the selected option). Font weight cannot follow the
+                     checked state from XML, so it stays bold if another option is picked. -->
+                <RadioButton
+                    android:id="@+id/rb_male"
+                    style="@style/Kinnect.Option"
+                    android:layout_marginStart="@dimen/dropdown_gap"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="@string/signup_male" />
+
+                <RadioButton
+                    android:id="@+id/rb_custom"
+                    style="@style/Kinnect.Option"
+                    android:layout_marginStart="@dimen/dropdown_gap"
+                    android:text="@string/signup_custom" />
+            </RadioGroup>
+
+            <!-- E-mail field: small label above the value -->
+            <LinearLayout
+                android:id="@+id/ll_email"
+                style="@style/Kinnect.Field"
+                android:layout_marginTop="@dimen/signup_email_top">
+
+                <TextView
+                    android:id="@+id/tv_email_label"
+                    style="@style/Kinnect.Text.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/et_email"
+                    android:text="@string/signup_email" />
+
+                <EditText
+                    android:id="@+id/et_email"
+                    style="@style/Kinnect.FieldText"
+                    android:autofillHints="emailAddress"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/sample_email" />
+            </LinearLayout>
+
+            <!-- Password field: label and dots on the left, eye button on the right -->
+            <LinearLayout
+                android:id="@+id/ll_password"
+                style="@style/Kinnect.Field"
+                android:layout_height="@dimen/input_height_password"
+                android:layout_marginTop="@dimen/signup_password_top"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/login_eye_end">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_password_label"
+                        style="@style/Kinnect.Text.FieldLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_password"
+                        android:text="@string/signup_password" />
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        style="@style/Kinnect.FieldText"
+                        android:autofillHints="newPassword"
+                        android:inputType="textPassword"
+                        android:text="@string/sample_password_new" />
+                </LinearLayout>
+
+                <!-- Eye: shows or hides the password (SignUpActivity) -->
+                <ImageView
+                    android:id="@+id/iv_password_eye"
+                    style="@style/Kinnect.IconButton"
+                    android:contentDescription="@string/cd_show_password"
+                    android:padding="@dimen/login_eye_padding"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_eye"
+                    app:tint="@color/text_grey" />
+            </LinearLayout>
+
+            <!-- Password strength: two of three segments filled (orange-red) and "Medium" -->
+            <LinearLayout
+                android:id="@+id/ll_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_strength_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    style="@style/Kinnect.Segment"
+                    android:backgroundTint="@color/accent_orange" />
+
+                <View
+                    style="@style/Kinnect.Segment"
+                    android:layout_marginStart="@dimen/segment_gap"
+                    android:backgroundTint="@color/accent_orange" />
+
+                <View
+                    style="@style/Kinnect.Segment"
+                    android:layout_marginStart="@dimen/segment_gap"
+                    android:backgroundTint="@color/track" />
+
+                <TextView
+                    android:id="@+id/tv_strength"
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/strength_label_gap"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="@string/signup_strength_medium"
+                    android:textColor="@color/accent_orange"
+                    android:textSize="@dimen/text_strength" />
+            </LinearLayout>
+
+            <!-- Terms checkbox (checked in the design). bg_checkbox draws the teal box. -->
+            <CheckBox
+                android:id="@+id/cb_terms"
+                style="@style/Kinnect.Text.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_checkbox_top"
+                android:background="@null"
+                android:button="@drawable/bg_checkbox"
+                android:checked="true"
+                android:minHeight="@dimen/touch_target"
+                android:paddingStart="@dimen/checkbox_text_gap"
+                android:text="@string/signup_terms" />
+
+            <Button
+                android:id="@+id/btn_create_account"
+                style="@style/Kinnect.Button.Primary"
+                android:layout_marginTop="@dimen/signup_button_top"
+                android:text="@string/signup_button" />
+
+            <!-- "Already have an account? Log in": only "Log in" is tappable (48dp tall) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/signup_login_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_have_account"
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/signup_have_account"
+                    android:textColor="@color/text_grey" />
+
+                <TextView
+                    android:id="@+id/tv_log_in"
+                    style="@style/Kinnect.Text.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch_target"
+                    android:layout_marginStart="@dimen/signup_login_gap"
+                    android:fontFamily="@font/figtree_bold"
+                    android:gravity="center_vertical"
+                    android:text="@string/signup_log_in" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

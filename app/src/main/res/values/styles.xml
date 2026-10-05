@@ -248,6 +248,78 @@
         <item name="android:textSize">@dimen/text_body</item>
     </style>
 
+    <!-- Dropdown box (03 Day / Month / Year): a FrameLayout holding a Spinner, a small label
+         and a chevron. Width comes from layout_weight. -->
+    <style name="Kinnect.Dropdown" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_input</item>
+    </style>
+
+    <!-- The Spinner fills its box; padding places the selected value under the label. -->
+    <style name="Kinnect.Dropdown.Spinner" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingStart">@dimen/dropdown_padding</item>
+        <item name="android:paddingTop">@dimen/dropdown_value_top</item>
+        <item name="android:paddingEnd">@dimen/dropdown_value_end</item>
+        <item name="android:theme">@style/ThemeOverlay.Kinnect.Spinner</item>
+    </style>
+
+    <!-- Text of the selected Spinner value: same look as a field value. Applied through the
+         theme overlay below, because android:entries builds the item views itself. -->
+    <style name="Kinnect.SpinnerItem" parent="">
+        <item name="android:fontFamily">@font/figtree_regular</item>
+        <item name="android:textSize">@dimen/text_name</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <!-- Chevron at the right of a dropdown box, a little above the centre as in the design. -->
+    <style name="Kinnect.DropdownChevron" parent="">
+        <item name="android:layout_width">@dimen/icon_size_dropdown</item>
+        <item name="android:layout_height">@dimen/icon_size_dropdown</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+        <item name="android:layout_marginEnd">@dimen/dropdown_chevron_end</item>
+        <item name="android:translationY">@dimen/dropdown_chevron_shift</item>
+        <item name="android:src">@drawable/ic_chevron_down</item>
+        <item name="tint">@color/text_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Kinnect.Spinner" parent="">
+        <item name="android:spinnerItemStyle">@style/Kinnect.SpinnerItem</item>
+    </style>
+
+    <!-- Gender option card (03): RadioButton with the text on the left and the radio circle
+         drawn on the right (drawableEnd). Both drawables are selectors, so the teal border and
+         filled radio follow the checked state with no Kotlin. -->
+    <style name="Kinnect.Option" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/option_height</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_option</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableEnd">@drawable/bg_radio</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/dropdown_padding</item>
+        <item name="android:paddingEnd">@dimen/option_radio_end</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+        <item name="android:textSize">@dimen/text_name</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- 3dp rounded bar segment (step bar and password meter); colour via backgroundTint. -->
+    <style name="Kinnect.Segment" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/progress_segment</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_segment</item>
+    </style>
+
     <!-- ===== Chips ===== -->
 
     <!-- Unselected filter chip: grey pill, dark bold text. -->

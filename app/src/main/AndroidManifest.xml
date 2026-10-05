@@ -32,7 +32,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- 03 Sign up (placeholder) -->
+        <!-- 03 Sign up -->
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:screenOrientation="portrait"

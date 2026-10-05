@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gender option card (03). Checked: 2dp teal border. Otherwise: hairline grey border.
+     The RadioButton picks the matching item by itself (state_checked). -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/surface" />
+            <stroke
+                android:width="@dimen/stroke_selected"
+                android:color="@color/teal" />
+            <corners android:radius="@dimen/radius_input" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/bg_input" />
+</selector>

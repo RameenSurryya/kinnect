@@ -8,7 +8,7 @@
 
 - [ ] Real photos added
 
-- [x] 01 Splash   - [x] 02 Login   - [ ] 03 Sign up   - [ ] 04 Home feed   - [ ] 05 Reaction picker
+- [x] 01 Splash   - [x] 02 Login   - [x] 03 Sign up   - [ ] 04 Home feed   - [ ] 05 Reaction picker
 
 - [ ] 06 Comments   - [ ] 07 Create post   - [ ] 08 Photo picker   - [ ] 09 Camera   - [ ] 10 Story editor
 

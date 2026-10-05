@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded bar segment (03 step bar and password meter). White here; each View sets its
+     colour with android:backgroundTint (teal, track or accent_orange). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/white" />
+    <corners android:radius="@dimen/radius_pill" />
+</shape>

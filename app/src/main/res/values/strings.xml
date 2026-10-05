@@ -25,6 +25,36 @@
     <string name="cd_show_password">Show password</string>
     <string name="cd_hide_password">Hide password</string>
 
+    <!-- 03 Sign up (names, birthday and password are static sample content) -->
+    <string name="signup_title">Create account</string>
+    <string name="signup_step">Step 2 of 3</string>
+    <string name="signup_heading">What\'s your name and birthday?</string>
+    <string name="signup_first_name">First name</string>
+    <string name="signup_last_name">Last name</string>
+    <string name="sample_first_name" translatable="false">Jacob</string>
+    <string name="sample_last_name" translatable="false">West</string>
+    <string name="signup_birthday">Birthday</string>
+    <string name="signup_day">Day</string>
+    <string name="signup_month">Month</string>
+    <string name="signup_year">Year</string>
+    <string-array name="sample_day" translatable="false"><item>14</item></string-array>
+    <string-array name="sample_month" translatable="false"><item>Mar</item></string-array>
+    <string-array name="sample_year" translatable="false"><item>2004</item></string-array>
+    <string name="signup_gender">Gender</string>
+    <string name="signup_female">Female</string>
+    <string name="signup_male">Male</string>
+    <string name="signup_custom">Custom</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_password">New password</string>
+    <string name="sample_password_new" translatable="false">jacob2004!</string>
+    <string name="signup_strength_medium">Medium</string>
+    <string name="signup_terms">I agree to the Kinnect Terms and Privacy Policy.</string>
+    <string name="signup_button">Create account</string>
+    <string name="signup_have_account">Already have an account?</string>
+    <string name="signup_log_in">Log in</string>
+    <string name="cd_add_photo">Add profile photo</string>
+    <string name="cd_birthday_info">Why we ask for your birthday</string>
+
     <!-- Shared top bar (include_top_bar.xml) -->
     <string name="wordmark" translatable="false">kinnect</string>
     <string name="cd_search">Search</string>

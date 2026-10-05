@@ -203,6 +203,54 @@
     <dimen name="footer_logo_gap">7.5dp</dimen>
     <dimen name="login_footer_bottom">2.5dp</dimen>  <!-- footer to the gesture bar -->
 
+    <!-- Sign up (03) -->
+    <dimen name="progress_segment">3dp</dimen>       <!-- step bar and password meter thickness -->
+    <dimen name="segment_gap">5.5dp</dimen>          <!-- gap between bar segments -->
+    <dimen name="signup_progress_top">1dp</dimen>    <!-- header row to the step bar -->
+    <dimen name="signup_heading_top">15dp</dimen>    <!-- step bar to the photo circle -->
+    <dimen name="signup_photo">69dp</dimen>          <!-- dashed photo circle -->
+    <dimen name="signup_photo_dash">5dp</dimen>
+    <dimen name="signup_photo_dash_gap">4dp</dimen>
+    <dimen name="stroke_dashed">1.5dp</dimen>
+    <dimen name="icon_size_signup_person">26dp</dimen> <!-- person in the circle (ink 21dp) -->
+    <dimen name="signup_camera_badge">26dp</dimen>   <!-- teal camera disc -->
+    <dimen name="signup_camera_padding">6dp</dimen>  <!-- (26 - 14) / 2: a 14dp camera icon -->
+    <dimen name="signup_camera_inset">1.5dp</dimen>  <!-- badge centre 20dp right/below the circle centre -->
+    <dimen name="signup_fields_top">13dp</dimen>     <!-- photo circle to the name fields -->
+    <dimen name="signup_column_gap">10dp</dimen>     <!-- First name / Last name -->
+    <dimen name="signup_label_top">12dp</dimen>      <!-- field above to "Birthday" / "Gender" -->
+    <dimen name="signup_label_gap">10dp</dimen>      <!-- label to the boxes below it -->
+    <dimen name="icon_size_info">15dp</dimen>
+    <dimen name="signup_info_gap">5dp</dimen>
+    <dimen name="dropdown_gap">9dp</dimen>           <!-- between Day / Month / Year and the gender options -->
+    <dimen name="dropdown_padding">12dp</dimen>      <!-- left padding in dropdowns and gender options -->
+    <dimen name="dropdown_label_top">9dp</dimen>     <!-- "Day" centre 15.7dp into the box -->
+    <dimen name="dropdown_value_top">14.5dp</dimen>  <!-- "14" centre 32.7dp into the box -->
+    <dimen name="dropdown_value_end">30dp</dimen>    <!-- keeps the value clear of the chevron -->
+    <dimen name="icon_size_dropdown">14dp</dimen>
+    <dimen name="dropdown_chevron_end">10dp</dimen>  <!-- chevron centre 17dp from the box edge -->
+    <dimen name="dropdown_chevron_shift">-3dp</dimen> <!-- chevron sits 3dp above the box centre -->
+    <dimen name="option_radio_end">11dp</dimen>      <!-- radio centre 19.5dp from the box edge -->
+    <dimen name="radio_size">17dp</dimen>
+    <dimen name="radio_dot">8dp</dimen>              <!-- teal dot of the checked radio -->
+    <dimen name="radio_stroke">1dp</dimen>
+    <dimen name="signup_gender_top">10dp</dimen>     <!-- dropdowns to "Gender" -->
+    <dimen name="signup_options_top">8.5dp</dimen>   <!-- "Gender" to the option cards -->
+    <dimen name="signup_email_top">10dp</dimen>
+    <dimen name="signup_password_top">11dp</dimen>
+    <dimen name="signup_strength_top">7.5dp</dimen>
+    <dimen name="strength_label_gap">11dp</dimen>    <!-- last meter segment to "Medium" -->
+    <dimen name="text_strength">12.5sp</dimen>       <!-- "Medium" -->
+    <dimen name="checkbox_size">16dp</dimen>
+    <dimen name="radius_checkbox">3dp</dimen>
+    <dimen name="checkbox_text_gap">10dp</dimen>
+    <!-- The checkbox and "Log in" keep 48dp touch targets, which are taller than the gaps in
+         the design, so they overlap their neighbours a little (negative margins). -->
+    <dimen name="signup_checkbox_top">-4.5dp</dimen>
+    <dimen name="signup_button_top">-3.5dp</dimen>
+    <dimen name="signup_login_top">-5.5dp</dimen>
+    <dimen name="signup_login_gap">4dp</dimen>       <!-- "account?" to "Log in" (one space) -->
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->

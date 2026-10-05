@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Radio circle on the right of a gender option (03), 17dp.
+     Checked: teal ring with an 8dp teal dot. Otherwise: empty grey ring. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item
+                android:width="@dimen/radio_size"
+                android:height="@dimen/radio_size">
+                <shape android:shape="oval">
+                    <stroke
+                        android:width="@dimen/radio_stroke"
+                        android:color="@color/teal" />
+                </shape>
+            </item>
+            <item
+                android:width="@dimen/radio_dot"
+                android:height="@dimen/radio_dot"
+                android:gravity="center">
+                <shape android:shape="oval">
+                    <solid android:color="@color/teal" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <size
+                android:width="@dimen/radio_size"
+                android:height="@dimen/radio_size" />
+            <stroke
+                android:width="@dimen/radio_stroke"
+                android:color="@color/text_hint" />
+        </shape>
+    </item>
+</selector>
