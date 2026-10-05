@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Root background of the reaction picker (05): the page background with the same dim on
+     top, so the status bar and gesture bar areas look dimmed like the rest of the screen. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/background" />
+    <item android:drawable="@drawable/bg_overlay_dim" />
+</layer-list>

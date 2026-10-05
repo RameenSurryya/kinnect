@@ -1,7 +1,468 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 05 Reaction picker (placeholder until the screen is built). -->
+<!--
+    05 Reaction picker (opened by long-pressing Like on Home).
+    Three layers in one FrameLayout, drawn in order:
+      1. the post screen ("Lina's post": toolbar, post, full-width photo, Like row, one comment)
+      2. a dim View over all of it (black 30 %; tapping it closes the picker)
+      3. the "Love" tooltip and the white reaction pill, on top and not dimmed.
+    The pill and tooltip sit at fixed distances from the top so they land over the bottom of
+    the photo, as in design/screens/screen-05.png. clipChildren="false" lets the enlarged love
+    reaction stick out above the pill.
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:background="@drawable/bg_screen_dimmed"
+    android:clipChildren="false"
+    android:fitsSystemWindows="true">
+
+    <!-- ===== Layer 1: the post screen underneath ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <!-- Toolbar: back arrow and "Lina's post" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@color/surface"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                style="@style/Kinnect.IconButton"
+                android:contentDescription="@string/cd_back"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                style="@style/Kinnect.Text.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/post_title_lina" />
+        </LinearLayout>
+
+        <View style="@style/Kinnect.Divider" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- ===== The post (white) ===== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/surface"
+                    android:orientation="vertical">
+
+                    <!-- Header: LM avatar, "Lina Marsh is at Clifton Beach", "2h ·" globe -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/screen_margin"
+                        android:paddingTop="@dimen/post_header_top"
+                        android:paddingEnd="@dimen/screen_margin">
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:backgroundTint="@color/avatar_lm"
+                            android:text="@string/sample_initials_lina" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/post_name_gap"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <!-- Three TextViews: the two names semibold, "is at" regular -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/post_name_top"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Kinnect.Text.Body.Bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:text="@string/sample_name_lina" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/post_inline_gap"
+                                    android:layout_marginEnd="@dimen/post_inline_gap"
+                                    android:singleLine="true"
+                                    android:text="@string/home_is_at" />
+
+                                <TextView
+                                    style="@style/Kinnect.Text.Body.Bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="@string/sample_place" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/post_meta_top"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Kinnect.Text.Caption"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/sample_post_time" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_tiny"
+                                    android:layout_height="@dimen/icon_size_tiny"
+                                    android:layout_marginStart="@dimen/space_4"
+                                    android:contentDescription="@string/cd_public"
+                                    android:src="@drawable/ic_globe"
+                                    app:tint="@color/text_grey" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Post text -->
+                    <TextView
+                        style="@style/Kinnect.Text.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/post_body_top"
+                        android:paddingStart="@dimen/screen_margin"
+                        android:paddingEnd="@dimen/post_body_end"
+                        android:text="@string/sample_post_text" />
+
+                    <!-- Full-width photo (centerCrop of ph_sand: wide 1.19, see ICONS.md) -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/post_photo_large_height"
+                        android:layout_marginTop="@dimen/post_photos_top"
+                        android:importantForAccessibility="no"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ph_sand" />
+
+                    <!-- Reaction summary: like, love, haha overlapping, names, comment count -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/reaction_row_height_post"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/reaction_row_start"
+                        android:paddingEnd="@dimen/screen_margin"
+                        android:paddingBottom="@dimen/reaction_row_padding_bottom">
+
+                        <ImageView
+                            android:layout_width="@dimen/reaction_size_small"
+                            android:layout_height="@dimen/reaction_size_small"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:importantForAccessibility="no"
+                            android:padding="@dimen/reaction_ring"
+                            android:src="@drawable/reaction_like" />
+
+                        <ImageView
+                            android:layout_width="@dimen/reaction_size_small"
+                            android:layout_height="@dimen/reaction_size_small"
+                            android:layout_marginStart="@dimen/reaction_overlap"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:importantForAccessibility="no"
+                            android:padding="@dimen/reaction_ring"
+                            android:src="@drawable/reaction_love" />
+
+                        <ImageView
+                            android:layout_width="@dimen/reaction_size_small"
+                            android:layout_height="@dimen/reaction_size_small"
+                            android:layout_marginStart="@dimen/reaction_overlap"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:importantForAccessibility="no"
+                            android:padding="@dimen/reaction_ring"
+                            android:src="@drawable/reaction_haha" />
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/reaction_text_gap"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/sample_reactions_full"
+                            android:textColor="@color/text_grey"
+                            android:textSize="@dimen/text_label" />
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/sample_comments_count"
+                            android:textColor="@color/text_grey"
+                            android:textSize="@dimen/text_label" />
+                    </LinearLayout>
+
+                    <View
+                        style="@style/Kinnect.Divider"
+                        android:layout_marginStart="@dimen/post_divider_margin"
+                        android:layout_marginEnd="@dimen/post_divider_margin" />
+
+                    <!-- Like (teal: the reaction being chosen) / Comment / Share -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/action_row_height"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/post_divider_margin"
+                        android:paddingEnd="@dimen/post_divider_margin"
+                        android:paddingBottom="@dimen/action_row_padding_bottom_post">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_action"
+                                android:layout_height="@dimen/icon_size_action"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_like"
+                                app:tint="@color/teal" />
+
+                            <TextView
+                                style="@style/Kinnect.Text.Body.Bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/action_icon_gap"
+                                android:text="@string/action_like"
+                                android:textColor="@color/teal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_action"
+                                android:layout_height="@dimen/icon_size_action"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_comment"
+                                app:tint="@color/text_grey" />
+
+                            <TextView
+                                style="@style/Kinnect.Text.Body.Bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/action_icon_gap"
+                                android:text="@string/action_comment"
+                                android:textColor="@color/text_grey" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_action"
+                                android:layout_height="@dimen/icon_size_action"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_share"
+                                app:tint="@color/text_grey" />
+
+                            <TextView
+                                style="@style/Kinnect.Text.Body.Bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/action_icon_gap"
+                                android:text="@string/action_share"
+                                android:textColor="@color/text_grey" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ===== Comments (white, after a light gap) ===== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/post_band"
+                    android:background="@color/surface"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/screen_margin"
+                    android:paddingEnd="@dimen/screen_margin"
+                    android:paddingBottom="@dimen/comments_bottom">
+
+                    <!-- "Most relevant" with a chevron -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/comments_header_height"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/figtree_bold"
+                            android:text="@string/comments_most_relevant" />
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_chevron"
+                            android:layout_height="@dimen/icon_size_chevron"
+                            android:layout_marginStart="@dimen/chevron_gap"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_down"
+                            app:tint="@color/text_dark" />
+                    </LinearLayout>
+
+                    <!-- Aisha Khan's comment: AK avatar and a grey bubble -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:layout_width="@dimen/avatar_30"
+                            android:layout_height="@dimen/avatar_30"
+                            android:backgroundTint="@color/avatar_ak"
+                            android:text="@string/sample_initials_aisha"
+                            android:textSize="@dimen/text_avatar_30" />
+
+                        <LinearLayout
+                            style="@style/Kinnect.CommentBubble"
+                            android:layout_marginStart="@dimen/comment_bubble_gap"
+                            android:layout_marginTop="@dimen/comment_bubble_top">
+
+                            <TextView
+                                style="@style/Kinnect.Text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/figtree_bold"
+                                android:text="@string/sample_name_aisha"
+                                android:textSize="@dimen/text_label" />
+
+                            <TextView
+                                style="@style/Kinnect.Text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sample_comment_aisha_short" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- ===== Layer 2: dim over the whole post screen; tapping it closes the picker ===== -->
+    <View
+        android:id="@+id/v_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_overlay_dim"
+        android:contentDescription="@string/cd_close_reactions" />
+
+    <!-- ===== Layer 3: tooltip and reaction pill, not dimmed ===== -->
+
+    <!-- "Love" tooltip above the raised love reaction -->
+    <TextView
+        style="@style/Kinnect.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tooltip_height"
+        android:layout_marginStart="@dimen/tooltip_start"
+        android:layout_marginTop="@dimen/tooltip_top"
+        android:background="@drawable/bg_tooltip"
+        android:fontFamily="@font/figtree_bold"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:paddingStart="@dimen/tooltip_padding"
+        android:paddingEnd="@dimen/tooltip_padding"
+        android:text="@string/reaction_love"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_tooltip" />
+
+    <!-- White pill with the six reactions. Love is enlarged (scaleX / scaleY) and raised
+         (translationY), with extra margins so it does not cover its neighbours. -->
+    <LinearLayout
+        android:id="@+id/ll_reactions"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/reaction_tray_height"
+        android:layout_marginStart="@dimen/reaction_tray_start"
+        android:layout_marginTop="@dimen/reaction_tray_top"
+        android:background="@drawable/bg_reaction_tray"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="@dimen/reaction_tray_elevation"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/reaction_tray_padding"
+        android:paddingEnd="@dimen/reaction_tray_padding">
+
+        <ImageView
+            android:id="@+id/iv_reaction_like"
+            style="@style/Kinnect.Reaction"
+            android:contentDescription="@string/reaction_like"
+            android:src="@drawable/reaction_like" />
+
+        <ImageView
+            android:id="@+id/iv_reaction_love"
+            style="@style/Kinnect.Reaction"
+            android:layout_marginStart="@dimen/reaction_raised_margin"
+            android:layout_marginEnd="@dimen/reaction_raised_margin"
+            android:contentDescription="@string/reaction_love"
+            android:scaleX="@dimen/reaction_raised_scale"
+            android:scaleY="@dimen/reaction_raised_scale"
+            android:src="@drawable/reaction_love"
+            android:translationY="@dimen/reaction_raised_shift" />
+
+        <ImageView
+            android:id="@+id/iv_reaction_haha"
+            style="@style/Kinnect.Reaction"
+            android:contentDescription="@string/reaction_haha"
+            android:src="@drawable/reaction_haha" />
+
+        <ImageView
+            android:id="@+id/iv_reaction_wow"
+            style="@style/Kinnect.Reaction"
+            android:contentDescription="@string/reaction_wow"
+            android:src="@drawable/reaction_wow" />
+
+        <ImageView
+            android:id="@+id/iv_reaction_sad"
+            style="@style/Kinnect.Reaction"
+            android:contentDescription="@string/reaction_sad"
+            android:src="@drawable/reaction_sad" />
+
+        <ImageView
+            android:id="@+id/iv_reaction_angry"
+            style="@style/Kinnect.Reaction"
+            android:contentDescription="@string/reaction_angry"
+            android:src="@drawable/reaction_angry" />
+    </LinearLayout>
+</FrameLayout>

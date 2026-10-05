@@ -400,6 +400,26 @@
         <item name="tint">@color/text_dark</item>
     </style>
 
+    <!-- One reaction in the picker pill (05): a 32dp disc inside a 44dp touch area. -->
+    <style name="Kinnect.Reaction" parent="">
+        <item name="android:layout_width">@dimen/reaction_slot</item>
+        <item name="android:layout_height">@dimen/reaction_slot</item>
+        <item name="android:padding">@dimen/reaction_slot_padding</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <!-- Grey comment bubble: bold name on top, text below (05, 06). -->
+    <style name="Kinnect.CommentBubble" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_bubble_received</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">@dimen/comment_bubble_padding_h</item>
+        <item name="android:paddingEnd">@dimen/comment_bubble_padding_h</item>
+        <item name="android:paddingTop">@dimen/comment_bubble_padding_v</item>
+        <item name="android:paddingBottom">@dimen/comment_bubble_padding_v</item>
+    </style>
+
     <!-- ===== Top bar circles (include_top_bar.xml) =====
          Large set = Home (04). Small set = 14, 18, 19, 23, chosen per screen through
          ThemeOverlay.Kinnect.TopBarSmall in themes.xml. -->

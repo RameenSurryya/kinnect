@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Small dark pill with a white label: the "Love" tooltip above the raised reaction (05). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/text_dark" />
+    <corners android:radius="@dimen/radius_pill" />
+</shape>

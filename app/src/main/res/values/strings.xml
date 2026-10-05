@@ -99,6 +99,22 @@
     <string name="cd_post_photos">Photos from the post, 4 more</string>
     <string name="cd_public">Public</string>
 
+    <!-- 05 Reaction picker -->
+    <string name="post_title_lina">Lina\'s post</string>
+    <string name="sample_reactions_full">Aisha Khan and 1.2K others</string>
+    <string name="sample_comments_count">86 comments</string>
+    <string name="comments_most_relevant">Most relevant</string>
+    <string name="sample_name_aisha" translatable="false">Aisha Khan</string>
+    <string name="sample_initials_aisha" translatable="false">AK</string>
+    <string name="sample_comment_aisha_short">That sky is unreal.</string>
+    <string name="reaction_like">Like</string>
+    <string name="reaction_love">Love</string>
+    <string name="reaction_haha">Haha</string>
+    <string name="reaction_wow">Wow</string>
+    <string name="reaction_sad">Sad</string>
+    <string name="reaction_angry">Angry</string>
+    <string name="cd_close_reactions">Close reactions</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

@@ -71,7 +71,8 @@
     <color name="photo_button_dark">#80000000</color> <!-- black 50 %: expand button (08) -->
     <color name="story_scrim">#6B141414</color>      <!-- 42 %: name scrim on story cards (04) -->
     <color name="photo_dim">#80141414</color>        <!-- 50 %: "+4" tile (04) -->
-    <color name="overlay_dim">#5C1C1B19</color>      <!-- 36 %: whole-screen dim behind reactions (05) -->
+    <color name="overlay_dim">#4D000000</color>      <!-- black 30 %: whole-screen dim behind reactions (05);
+                                                          white reads #B3B3B3, #F3F2EE reads #ACABA7 -->
 
     <!-- Voice call (22) -->
     <color name="call_control">#24FFFFFF</color>     <!-- white 14 % on teal -->

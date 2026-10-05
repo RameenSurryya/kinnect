@@ -76,7 +76,7 @@ that value is kept.
 | photo_button_light | black 32 % | camera top buttons over the sage photo (09): #8C9582 over #CDDAC0 |
 | photo_button | black 40 % | story editor buttons (10): #798172 over #CDDAC0 |
 | photo_button_dark | black 50 % | expand button (08): #4A3D2D over #9E7B55 |
-| overlay_dim | #1C1B19 at 36 % | whole-screen dim (05): white reads #ACABA7 |
+| overlay_dim | black 30 % | whole-screen dim (05): white reads #B3B3B3, background #ACABA7, sand sky #A59888 |
 | call_control | white 14 % | call buttons on teal (22): #2E7579 |
 | call_halo_outer / inner | white 5 % / 12 % | rings around the call avatar (22): #17666A / #287278 |
 | call_end_red | #C62827 | end-call button (22) |
@@ -291,4 +291,4 @@ The same colours are in colors.xml as ph_<family>_sky / _sun / _back / _front.
 
 Overlays on top of placeholders (layout, not part of the drawable; fitted as a near-black
 #141414 layer): 04 "+4" tile ~50% (photo_dim), 04 story card name scrim ~42% over the bottom
-78 of 316 px (story_scrim), 05 whole-screen dim 36% (overlay_dim, re-fitted above).
+78 of 316 px (story_scrim), 05 whole-screen dim black 30% (overlay_dim, re-fitted on three colours when 05 was built).

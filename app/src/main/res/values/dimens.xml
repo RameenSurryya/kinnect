@@ -301,6 +301,37 @@
     <dimen name="icon_size_action">18dp</dimen>       <!-- Like / Comment / Share icons -->
     <dimen name="action_icon_gap">5dp</dimen>
 
+    <!-- Reaction picker (05): the post is the Home post (dimens above) shown full width -->
+    <dimen name="post_photo_large_height">303.5dp</dimen> <!-- full-width photo (wide 1.19 crop) -->
+    <dimen name="reaction_row_height_post">37.5dp</dimen> <!-- photo to the divider -->
+    <dimen name="reaction_row_padding_bottom">3dp</dimen> <!-- summary text sits 3dp above the row centre -->
+    <dimen name="action_row_height">41dp</dimen>      <!-- divider to the band under Like / Comment / Share -->
+    <dimen name="action_row_padding_bottom_post">4dp</dimen> <!-- labels centred 18.5dp below the divider -->
+    <dimen name="post_band">6dp</dimen>               <!-- light gap between the post and its comments -->
+    <dimen name="comments_header_height">40dp</dimen> <!-- "Most relevant" row -->
+    <dimen name="chevron_gap">6dp</dimen>             <!-- "Most relevant" to its chevron -->
+    <dimen name="comment_bubble_gap">7dp</dimen>      <!-- avatar to the comment bubble -->
+    <dimen name="comment_bubble_top">1.5dp</dimen>
+    <dimen name="comment_bubble_padding_h">11dp</dimen>
+    <dimen name="comment_bubble_padding_v">7dp</dimen>
+    <dimen name="comments_bottom">12dp</dimen>        <!-- bubble to the end of the white section -->
+    <!-- Pill: 6 x 44dp slots (32dp disc + 6dp padding = 12dp gaps and 44dp touch areas) -->
+    <dimen name="reaction_tray_top">425.5dp</dimen>   <!-- screen top to the pill (over the photo bottom) -->
+    <dimen name="reaction_tray_start">14dp</dimen>
+    <dimen name="reaction_tray_height">51.5dp</dimen>
+    <dimen name="reaction_tray_padding">8dp</dimen>   <!-- like disc 14dp inside the pill -->
+    <dimen name="reaction_tray_elevation">8dp</dimen>
+    <dimen name="reaction_slot">44dp</dimen>
+    <dimen name="reaction_slot_padding">6dp</dimen>
+    <dimen name="reaction_raised_margin">5.5dp</dimen> <!-- extra room on each side of the raised love -->
+    <dimen name="reaction_raised_shift">-16.5dp</dimen> <!-- love centre above the pill centre -->
+    <item name="reaction_raised_scale" format="float" type="dimen">1.44</item> <!-- 32dp -> 46dp -->
+    <dimen name="tooltip_start">71.5dp</dimen>        <!-- "Love" tooltip, centred over the love disc -->
+    <dimen name="tooltip_top">383.5dp</dimen>
+    <dimen name="tooltip_height">20.5dp</dimen>
+    <dimen name="tooltip_padding">9dp</dimen>
+    <dimen name="text_tooltip">12sp</dimen>
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->
