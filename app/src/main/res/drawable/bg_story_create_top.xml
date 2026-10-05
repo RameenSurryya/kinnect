@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pale teal top half of the "Create story" card (04). It sits 1dp inside the card's outline,
+     so its top corners are 1dp smaller than the card's 12dp. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/teal_tint" />
+    <corners
+        android:topLeftRadius="@dimen/radius_story_inner"
+        android:topRightRadius="@dimen/radius_story_inner" />
+</shape>

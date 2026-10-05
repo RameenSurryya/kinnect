@@ -117,8 +117,8 @@ values are rounded down to whole dp).
 - Toolbars with a back arrow: 52 dp (03, 05-08, 13, 15-17), chat header 56 dp (21).
   Bottom nav (20): 56 dp.
 - Avatars (every size in the design): 20, 24, 26, 30, 33, 35, 36, 40, 44, 48, 52, 55, 58, 66,
-  74, 103, 130 (+4 dp white ring), 144. Story ring (04): 38 dp outside, 1.5 dp teal + 1.5 dp
-  white around the disc. Profile ring (17): 3 dp teal + 3.5 dp white.
+  74, 103, 130 (+4 dp white ring), 144. Story ring (04): 36 dp outside (re-measured on 04; was
+  38), 1.5 dp teal + 1.5 dp white around a 30 dp disc. Profile ring (17): 3 dp teal + 3.5 dp white.
 - Icons: 24 dp default (tabs; Home tab 25 dp), 19 dp in the large top bar circles, 15 dp in the
   small ones, 21 dp composer image icon (04, icon_size_composer), 16 dp in chips, 12 dp globe.
   Reactions 32 dp (05 tray and 11; measured 32.1 and 31.6), hovered reaction 46 dp, small

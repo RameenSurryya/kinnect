@@ -24,6 +24,7 @@ chevron_right caret-right
 eye eye
 info info
 plus_circle plus-circle
+plus plus
 check check
 expand corners-out
 select_multiple copy

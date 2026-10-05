@@ -68,6 +68,37 @@
     <string name="cd_tab_notifications">Notifications</string>
     <string name="cd_tab_menu">Menu</string>
 
+    <!-- 04 Home feed (people, post and counts are static sample content) -->
+    <string name="home_composer_hint">What\'s on your mind, Jacob?</string>
+    <string name="home_create_story">Create story</string>
+    <string name="sample_name_omar" translatable="false">Omar Farooq</string>
+    <string name="sample_initials_omar" translatable="false">OF</string>
+    <string name="sample_name_sara" translatable="false">Sara Iqbal</string>
+    <string name="sample_initials_sara" translatable="false">SI</string>
+    <string name="sample_name_hamza" translatable="false">Hamza Ali</string>
+    <string name="sample_initials_hamza" translatable="false">HA</string>
+    <string name="sample_name_lina" translatable="false">Lina Marsh</string>
+    <string name="sample_initials_lina" translatable="false">LM</string>
+    <string name="home_is_at">is at</string>
+    <string name="sample_place" translatable="false">Clifton Beach</string>
+    <string name="sample_post_time">2h ·</string>
+    <string name="sample_post_text">Sunset walk with the crew. Worth every grain of sand in my shoes.</string>
+    <string name="sample_more_photos" translatable="false">+4</string>
+    <string name="sample_reactions">Aisha and 1.2K others</string>
+    <string name="sample_comments_shares">86 comments · 12 shares</string>
+    <string name="action_like">Like</string>
+    <string name="action_comment">Comment</string>
+    <string name="action_share">Share</string>
+    <string name="cd_your_profile">Your profile</string>
+    <string name="cd_add_photo_post">Add a photo to a post</string>
+    <string name="cd_create_story">Create story</string>
+    <string name="cd_story_omar">Omar Farooq\'s story</string>
+    <string name="cd_story_sara">Sara Iqbal\'s story</string>
+    <string name="cd_story_hamza">Hamza Ali\'s story</string>
+    <string name="cd_hide_post">Hide post</string>
+    <string name="cd_post_photos">Photos from the post, 4 more</string>
+    <string name="cd_public">Public</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

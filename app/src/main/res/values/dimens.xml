@@ -97,7 +97,7 @@
     <dimen name="avatar_144">144dp</dimen> <!-- other profile incl. ring (17), call avatar (22) -->
     <dimen name="avatar_ring">1.5dp</dimen>     <!-- teal story ring width (04) -->
     <dimen name="avatar_ring_gap">1.5dp</dimen> <!-- white gap between story ring and avatar -->
-    <dimen name="story_ring_size">38dp</dimen>  <!-- outer size of a ringed story avatar (04) -->
+    <dimen name="story_ring_size">36dp</dimen>  <!-- outer size of a ringed story avatar (04, measured 34-36) -->
 
     <!-- Icons -->
     <dimen name="icon_size">24dp</dimen>           <!-- default: tabs, toolbars, list icons -->
@@ -250,6 +250,56 @@
     <dimen name="signup_button_top">-3.5dp</dimen>
     <dimen name="signup_login_top">-5.5dp</dimen>
     <dimen name="signup_login_gap">4dp</dimen>       <!-- "account?" to "Log in" (one space) -->
+
+    <!-- Home feed (04) -->
+    <dimen name="composer_row_height">60.5dp</dimen>  <!-- tab divider to the first section band -->
+    <dimen name="composer_avatar_gap">10dp</dimen>    <!-- JW avatar to the pill -->
+    <dimen name="composer_pill_padding">16dp</dimen>  <!-- pill edge to the hint text -->
+    <dimen name="composer_icon_gap">3.5dp</dimen>     <!-- pill to the image icon's 48dp frame -->
+    <dimen name="composer_icon_end">9.5dp</dimen>     <!-- icon centred 33.5dp from the screen edge -->
+    <dimen name="composer_icon_padding">13.5dp</dimen> <!-- (48 - 21) / 2: icon_size_composer in a 48dp frame -->
+    <dimen name="stories_padding">11dp</dimen>        <!-- band to the story cards, above and below -->
+    <dimen name="story_card_width">96dp</dimen>
+    <dimen name="story_card_height">162dp</dimen>
+    <dimen name="story_card_gap">7dp</dimen>
+    <dimen name="radius_story_inner">11dp</dimen>     <!-- teal top half, 1dp inside the 12dp card -->
+    <dimen name="story_create_top_height">108.5dp</dimen> <!-- teal top half (card top to the + centre) -->
+    <dimen name="story_create_avatar_top">26.5dp</dimen>  <!-- card top to the 58dp JW avatar -->
+    <dimen name="story_plus_size">32dp</dimen>        <!-- 28dp teal disc + 2dp white ring -->
+    <dimen name="story_plus_top">93.5dp</dimen>       <!-- centred on the teal / white boundary -->
+    <dimen name="story_plus_padding">8dp</dimen>      <!-- (32 - 16) / 2: a 16dp plus -->
+    <dimen name="story_create_label_bottom">9.5dp</dimen> <!-- "Create story" to the card bottom -->
+    <dimen name="story_ring_inset">4dp</dimen>        <!-- card corner to the ringed avatar -->
+    <dimen name="story_ring_padding">3dp</dimen>      <!-- 1.5dp teal ring + 1.5dp white gap: 30dp disc -->
+    <dimen name="story_scrim_height">40dp</dimen>     <!-- dark strip behind the name -->
+    <dimen name="story_name_padding">8dp</dimen>
+    <dimen name="story_name_bottom">7dp</dimen>
+    <dimen name="text_avatar_58">21sp</dimen>         <!-- 0.36 x 58dp -->
+    <dimen name="text_avatar_30">11sp</dimen>         <!-- 0.36 x 30dp -->
+    <dimen name="post_header_top">12dp</dimen>        <!-- section band to the author avatar -->
+    <dimen name="post_name_gap">10dp</dimen>          <!-- avatar to "Lina Marsh" -->
+    <dimen name="post_name_top">1dp</dimen>           <!-- name line centre 21.5dp below the band -->
+    <dimen name="post_meta_top">1.5dp</dimen>         <!-- "2h" line under the name -->
+    <dimen name="post_inline_gap">4dp</dimen>         <!-- one space between "Lina Marsh", "is at", "Clifton Beach" -->
+    <dimen name="post_action_shift">-6dp</dimen>      <!-- 48dp "..." / X frames centred on the avatar,
+                                                           without making the header taller than it -->
+    <dimen name="post_more_end">-11dp</dimen>         <!-- "..." centred 37dp left of the X -->
+    <dimen name="post_close_end">2dp</dimen>          <!-- X centred 26dp from the screen edge -->
+    <dimen name="post_body_top">10dp</dimen>          <!-- avatar to the post text -->
+    <dimen name="post_body_end">10dp</dimen>          <!-- keeps "...grain of sand" on the first line -->
+    <dimen name="post_photos_top">10dp</dimen>        <!-- post text to the photos -->
+    <dimen name="post_photos_height">240dp</dimen>
+    <dimen name="photo_gap">3dp</dimen>               <!-- white gap between collage photos -->
+    <dimen name="text_photo_more">27sp</dimen>        <!-- "+4" -->
+    <dimen name="reaction_row_height">35.5dp</dimen>  <!-- photos to the divider -->
+    <dimen name="reaction_ring">1.5dp</dimen>         <!-- white ring around each summary reaction -->
+    <dimen name="reaction_overlap">-4dp</dimen>       <!-- reactions 14dp apart -->
+    <dimen name="reaction_row_start">15dp</dimen>
+    <dimen name="reaction_text_gap">5dp</dimen>
+    <dimen name="post_divider_margin">12dp</dimen>
+    <dimen name="action_row_padding_bottom">6dp</dimen> <!-- labels centred 21dp below the divider -->
+    <dimen name="icon_size_action">18dp</dimen>       <!-- Like / Comment / Share icons -->
+    <dimen name="action_icon_gap">5dp</dimen>
 
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->

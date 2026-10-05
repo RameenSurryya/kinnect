@@ -38,7 +38,8 @@ ic_speaker=speaker-high, ic_transcript=article
 
 Menu: ic_logout=sign-out, ic_help=question, ic_settings=sun, ic_apps=squares-four, ic_memories=clock-counter-clockwise
 
-Added after checking the screens: ic_lock=lock ("End-to-end encrypted", screen 22).
+Added after checking the screens: ic_lock=lock ("End-to-end encrypted", screen 22),
+ic_plus=plus (white "+" on the Create story card, screen 04).
 Filled variants (Phosphor Fill): ic_like_filled=thumbs-up-fill, ic_heart_filled=heart-fill.
 No ic_home_filled: the active tab in the design is still an outline icon (teal).
 All names above resolved on Phosphor with no 404s. SVG sources are in design/svg/.

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Teal "+" circle on the "Create story" card (04): the 2dp white stroke is drawn inside the
+     bounds and separates the disc from the pale teal and white halves behind it. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/teal" />
+    <stroke
+        android:width="@dimen/badge_ring"
+        android:color="@color/white" />
+</shape>

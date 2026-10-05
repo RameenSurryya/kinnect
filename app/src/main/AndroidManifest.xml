@@ -38,9 +38,70 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- 04 Home (placeholder) -->
+        <!-- 04 Home feed -->
         <activity
             android:name=".ui.home.HomeActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Placeholders (screen background only) until each screen is built -->
+        <!-- 05 Reaction picker -->
+        <activity
+            android:name=".ui.home.ReactionPickerActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 06 Comments -->
+        <activity
+            android:name=".ui.home.CommentsActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 07 Create post -->
+        <activity
+            android:name=".ui.home.CreatePostActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 09 Camera -->
+        <activity
+            android:name=".ui.home.CameraActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 11 Story viewer -->
+        <activity
+            android:name=".ui.home.StoryViewerActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 13 Search -->
+        <activity
+            android:name=".ui.home.SearchActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 14 Friends -->
+        <activity
+            android:name=".ui.social.FriendsActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 15 Profile -->
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 18 Notifications -->
+        <activity
+            android:name=".ui.social.NotificationsActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 19 Menu -->
+        <activity
+            android:name=".ui.social.MenuActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 20 Chats -->
+        <activity
+            android:name=".ui.chat.ChatsActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 23 Marketplace -->
+        <activity
+            android:name=".ui.market.MarketplaceActivity"
             android:screenOrientation="portrait" />
     </application>
 

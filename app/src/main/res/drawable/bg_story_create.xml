@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Create story" card (04): white, 12dp corners, 1dp light outline. The pale teal top half
+     is a separate view on top (bg_story_create_top). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/surface" />
+    <stroke
+        android:width="@dimen/divider"
+        android:color="@color/divider" />
+    <corners android:radius="@dimen/radius_card" />
+</shape>

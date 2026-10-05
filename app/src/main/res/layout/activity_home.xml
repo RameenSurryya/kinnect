@@ -1,7 +1,640 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 04 Home feed (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    04 Home feed. The top bar (wordmark, search, messenger) and the five tabs stay pinned; the
+    rest scrolls: composer row, stories row, then one post with a photo collage.
+    Sizes are in dimens.xml (Home feed section); photos are ph_* placeholders with centerCrop,
+    so each frame shows the crop listed in docs/ICONS.md.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Pinned: "kinnect" wordmark + search / messenger (large circles on Home) -->
+    <include layout="@layout/include_top_bar" />
+
+    <!-- Pinned: five tabs, Home active (set in HomeActivity) -->
+    <include layout="@layout/include_top_tabs" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ===== Composer row: avatar, "What's on your mind" pill, image icon ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/composer_row_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin">
+
+                <!-- JW avatar: opens your profile -->
+                <TextView
+                    android:id="@+id/tv_composer_avatar"
+                    style="@style/Kinnect.Avatar"
+                    android:backgroundTint="@color/avatar_jw"
+                    android:contentDescription="@string/cd_your_profile"
+                    android:importantForAccessibility="yes"
+                    android:text="@string/sample_initials_jacob" />
+
+                <!-- Looks like a text field, but it is a TextView: tapping opens Create post -->
+                <TextView
+                    android:id="@+id/tv_composer"
+                    style="@style/Kinnect.Text"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/input_height_search"
+                    android:layout_marginStart="@dimen/composer_avatar_gap"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_composer"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/composer_pill_padding"
+                    android:paddingEnd="@dimen/composer_pill_padding"
+                    android:singleLine="true"
+                    android:text="@string/home_composer_hint"
+                    android:textColor="@color/text_grey" />
+
+                <!-- Teal image icon (21dp) in a 48dp touch frame -->
+                <ImageView
+                    android:id="@+id/iv_composer_photo"
+                    android:layout_width="@dimen/touch_target"
+                    android:layout_height="@dimen/touch_target"
+                    android:layout_marginStart="@dimen/composer_icon_gap"
+                    android:layout_marginEnd="@dimen/composer_icon_end"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/cd_add_photo_post"
+                    android:padding="@dimen/composer_icon_padding"
+                    android:src="@drawable/ic_image"
+                    app:tint="@color/teal" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.SectionBand" />
+
+            <!-- ===== Stories row: scrolls sideways, the last card is cut by the screen edge ===== -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/stories_padding"
+                android:paddingBottom="@dimen/stories_padding"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/screen_margin"
+                    android:paddingEnd="@dimen/screen_margin">
+
+                    <!-- Create story: pale teal top half, big JW avatar, "+" circle on the
+                         boundary, label in the white bottom half (FrameLayout overlaps) -->
+                    <FrameLayout
+                        android:id="@+id/fl_create_story"
+                        android:layout_width="@dimen/story_card_width"
+                        android:layout_height="@dimen/story_card_height"
+                        android:layout_marginEnd="@dimen/story_card_gap"
+                        android:background="@drawable/bg_story_create"
+                        android:contentDescription="@string/cd_create_story"
+                        android:foreground="?attr/selectableItemBackground">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/story_create_top_height"
+                            android:layout_margin="@dimen/divider"
+                            android:background="@drawable/bg_story_create_top" />
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:layout_width="@dimen/avatar_58"
+                            android:layout_height="@dimen/avatar_58"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/story_create_avatar_top"
+                            android:backgroundTint="@color/avatar_jw"
+                            android:text="@string/sample_initials_jacob"
+                            android:textSize="@dimen/text_avatar_58" />
+
+                        <ImageView
+                            android:layout_width="@dimen/story_plus_size"
+                            android:layout_height="@dimen/story_plus_size"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/story_plus_top"
+                            android:background="@drawable/bg_story_plus"
+                            android:importantForAccessibility="no"
+                            android:padding="@dimen/story_plus_padding"
+                            android:src="@drawable/ic_plus"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="@dimen/story_create_label_bottom"
+                            android:fontFamily="@font/figtree_bold"
+                            android:text="@string/home_create_story"
+                            android:textSize="@dimen/text_small" />
+                    </FrameLayout>
+
+                    <!-- Omar Farooq: photo, ringed avatar top-left, dark name strip at the bottom -->
+                    <FrameLayout
+                        android:id="@+id/fl_story_omar"
+                        android:layout_width="@dimen/story_card_width"
+                        android:layout_height="@dimen/story_card_height"
+                        android:layout_marginEnd="@dimen/story_card_gap"
+                        android:background="@drawable/bg_story_card"
+                        android:contentDescription="@string/cd_story_omar"
+                        android:foreground="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ph_night" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/story_scrim_height"
+                            android:layout_gravity="bottom"
+                            android:background="@color/story_scrim" />
+
+                        <!-- Teal ring + white gap (bg_avatar_ring), initials disc inside -->
+                        <FrameLayout
+                            android:layout_width="@dimen/story_ring_size"
+                            android:layout_height="@dimen/story_ring_size"
+                            android:layout_margin="@dimen/story_ring_inset"
+                            android:background="@drawable/bg_avatar_ring"
+                            android:padding="@dimen/story_ring_padding">
+
+                            <TextView
+                                style="@style/Kinnect.Avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/avatar_of"
+                                android:text="@string/sample_initials_omar"
+                                android:textSize="@dimen/text_avatar_30" />
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/story_name_bottom"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/figtree_semibold"
+                            android:paddingStart="@dimen/story_name_padding"
+                            android:paddingEnd="@dimen/story_name_padding"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_omar"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_small" />
+                    </FrameLayout>
+
+                    <!-- Sara Iqbal -->
+                    <FrameLayout
+                        android:id="@+id/fl_story_sara"
+                        android:layout_width="@dimen/story_card_width"
+                        android:layout_height="@dimen/story_card_height"
+                        android:layout_marginEnd="@dimen/story_card_gap"
+                        android:background="@drawable/bg_story_card"
+                        android:contentDescription="@string/cd_story_sara"
+                        android:foreground="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ph_rose" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/story_scrim_height"
+                            android:layout_gravity="bottom"
+                            android:background="@color/story_scrim" />
+
+                        <FrameLayout
+                            android:layout_width="@dimen/story_ring_size"
+                            android:layout_height="@dimen/story_ring_size"
+                            android:layout_margin="@dimen/story_ring_inset"
+                            android:background="@drawable/bg_avatar_ring"
+                            android:padding="@dimen/story_ring_padding">
+
+                            <TextView
+                                style="@style/Kinnect.Avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/avatar_si"
+                                android:text="@string/sample_initials_sara"
+                                android:textSize="@dimen/text_avatar_30" />
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/story_name_bottom"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/figtree_semibold"
+                            android:paddingStart="@dimen/story_name_padding"
+                            android:paddingEnd="@dimen/story_name_padding"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_sara"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_small" />
+                    </FrameLayout>
+
+                    <!-- Hamza Ali (cut off by the screen edge until you scroll) -->
+                    <FrameLayout
+                        android:id="@+id/fl_story_hamza"
+                        android:layout_width="@dimen/story_card_width"
+                        android:layout_height="@dimen/story_card_height"
+                        android:background="@drawable/bg_story_card"
+                        android:contentDescription="@string/cd_story_hamza"
+                        android:foreground="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ph_sage" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/story_scrim_height"
+                            android:layout_gravity="bottom"
+                            android:background="@color/story_scrim" />
+
+                        <FrameLayout
+                            android:layout_width="@dimen/story_ring_size"
+                            android:layout_height="@dimen/story_ring_size"
+                            android:layout_margin="@dimen/story_ring_inset"
+                            android:background="@drawable/bg_avatar_ring"
+                            android:padding="@dimen/story_ring_padding">
+
+                            <TextView
+                                style="@style/Kinnect.Avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/avatar_ha"
+                                android:text="@string/sample_initials_hamza"
+                                android:textSize="@dimen/text_avatar_30" />
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/story_name_bottom"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/figtree_semibold"
+                            android:paddingStart="@dimen/story_name_padding"
+                            android:paddingEnd="@dimen/story_name_padding"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_hamza"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_small" />
+                    </FrameLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <View style="@style/Kinnect.SectionBand" />
+
+            <!-- ===== Post header: avatar, "Lina Marsh is at Clifton Beach", 2h · globe, ... and X ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingTop="@dimen/post_header_top">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:backgroundTint="@color/avatar_lm"
+                    android:text="@string/sample_initials_lina" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/post_name_gap"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Three TextViews so the two names are semibold and "is at" is regular -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/post_name_top"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Body.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_lina" />
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/post_inline_gap"
+                            android:layout_marginEnd="@dimen/post_inline_gap"
+                            android:singleLine="true"
+                            android:text="@string/home_is_at" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Body.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/sample_place" />
+                    </LinearLayout>
+
+                    <!-- "2h ·" and the small globe (post is public) -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/post_meta_top"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sample_post_time" />
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_tiny"
+                            android:layout_height="@dimen/icon_size_tiny"
+                            android:layout_marginStart="@dimen/space_4"
+                            android:contentDescription="@string/cd_public"
+                            android:src="@drawable/ic_globe"
+                            app:tint="@color/text_grey" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- "..." and X: no action in this UI-only app -->
+                <ImageView
+                    android:id="@+id/iv_post_more"
+                    style="@style/Kinnect.IconButton"
+                    android:layout_marginTop="@dimen/post_action_shift"
+                    android:layout_marginEnd="@dimen/post_more_end"
+                    android:layout_marginBottom="@dimen/post_action_shift"
+                    android:contentDescription="@string/cd_more"
+                    android:src="@drawable/ic_more" />
+
+                <ImageView
+                    android:id="@+id/iv_post_close"
+                    style="@style/Kinnect.IconButton"
+                    android:layout_marginTop="@dimen/post_action_shift"
+                    android:layout_marginEnd="@dimen/post_close_end"
+                    android:layout_marginBottom="@dimen/post_action_shift"
+                    android:contentDescription="@string/cd_hide_post"
+                    android:src="@drawable/ic_close" />
+            </LinearLayout>
+
+            <!-- Post text -->
+            <TextView
+                style="@style/Kinnect.Text.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/post_body_top"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/post_body_end"
+                android:text="@string/sample_post_text" />
+
+            <!-- ===== Photo collage: tall photo left, two stacked right, "+4" on the last ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/post_photos_height"
+                android:layout_marginTop="@dimen/post_photos_top"
+                android:contentDescription="@string/cd_post_photos"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/photo_gap"
+                    android:layout_weight="1"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ph_sand" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:importantForAccessibility="no"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ph_teal" />
+
+                    <!-- Last tile: photo, 50% dark layer, "+4" on top (FrameLayout overlap) -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/photo_gap"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ph_lilac" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/photo_dim" />
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/figtree_bold"
+                            android:text="@string/sample_more_photos"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_photo_more" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Reaction summary: like, love, haha overlapping with white rings ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/reaction_row_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/reaction_row_start"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <!-- Each icon sits on a white disc (padding = ring width); the negative margin
+                     makes the next one overlap it, and later views draw on top. -->
+                <ImageView
+                    android:layout_width="@dimen/reaction_size_small"
+                    android:layout_height="@dimen/reaction_size_small"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/reaction_ring"
+                    android:src="@drawable/reaction_like" />
+
+                <ImageView
+                    android:layout_width="@dimen/reaction_size_small"
+                    android:layout_height="@dimen/reaction_size_small"
+                    android:layout_marginStart="@dimen/reaction_overlap"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/reaction_ring"
+                    android:src="@drawable/reaction_love" />
+
+                <ImageView
+                    android:layout_width="@dimen/reaction_size_small"
+                    android:layout_height="@dimen/reaction_size_small"
+                    android:layout_marginStart="@dimen/reaction_overlap"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/reaction_ring"
+                    android:src="@drawable/reaction_haha" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/reaction_text_gap"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/sample_reactions"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_label" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="@string/sample_comments_shares"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_label" />
+            </LinearLayout>
+
+            <View
+                style="@style/Kinnect.Divider"
+                android:layout_marginStart="@dimen/post_divider_margin"
+                android:layout_marginEnd="@dimen/post_divider_margin" />
+
+            <!-- ===== Like / Comment / Share: three equal columns ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_target"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/post_divider_margin"
+                android:paddingEnd="@dimen/post_divider_margin">
+
+                <!-- Like: long-press opens the reaction picker -->
+                <LinearLayout
+                    android:id="@+id/ll_like"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/action_row_padding_bottom">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_action"
+                        android:layout_height="@dimen/icon_size_action"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_like"
+                        app:tint="@color/text_grey" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Body.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/action_icon_gap"
+                        android:text="@string/action_like"
+                        android:textColor="@color/text_grey" />
+                </LinearLayout>
+
+                <!-- Comment: opens Comments -->
+                <LinearLayout
+                    android:id="@+id/ll_comment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/action_row_padding_bottom">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_action"
+                        android:layout_height="@dimen/icon_size_action"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_comment"
+                        app:tint="@color/text_grey" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Body.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/action_icon_gap"
+                        android:text="@string/action_comment"
+                        android:textColor="@color/text_grey" />
+                </LinearLayout>
+
+                <!-- Share: no action -->
+                <LinearLayout
+                    android:id="@+id/ll_share"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/action_row_padding_bottom">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_action"
+                        android:layout_height="@dimen/icon_size_action"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_share"
+                        app:tint="@color/text_grey" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Body.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/action_icon_gap"
+                        android:text="@string/action_share"
+                        android:textColor="@color/text_grey" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
