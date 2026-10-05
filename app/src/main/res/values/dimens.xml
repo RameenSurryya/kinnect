@@ -138,7 +138,6 @@
     <dimen name="chip_height">33dp</dimen>           <!-- Suggestions (14), Posts tab (15) -->
     <dimen name="chip_height_small">31dp</dimen>     <!-- search filters (13) -->
     <dimen name="chip_height_large">35dp</dimen>     <!-- Sell / Categories (23) -->
-    <dimen name="chip_height_tiny">24dp</dimen>      <!-- Public / Album (07) -->
     <dimen name="chip_padding">12dp</dimen>
 
     <!-- Text sizes (sp) -->
@@ -385,6 +384,39 @@
     <dimen name="reply_send_gap">5.5dp</dimen>
     <dimen name="reply_send_end">11.5dp</dimen>
     <dimen name="reply_send_padding">9dp</dimen>      <!-- (36 - 18) / 2: an 18dp send icon -->
+
+    <!-- Create post (07) -->
+    <dimen name="close_icon_padding">13.5dp</dimen>    <!-- (48 - 21) / 2: a 21dp X in a 48dp frame -->
+    <dimen name="post_button_end">12dp</dimen>         <!-- "Post" pill to the screen edge -->
+    <dimen name="create_author_top">13dp</dimen>       <!-- divider to the 44dp JW avatar -->
+    <dimen name="text_avatar_44">16sp</dimen>          <!-- 0.36 x 44dp -->
+    <dimen name="create_name_gap">11dp</dimen>         <!-- avatar to "Jacob West" and the chips -->
+    <dimen name="create_name_top">1dp</dimen>
+    <dimen name="create_chips_top">6.5dp</dimen>       <!-- "Jacob West" to the chips -->
+    <dimen name="audience_chip_height">26dp</dimen>    <!-- Public / Album (measured 26, not 24) -->
+    <dimen name="audience_chip_padding">8dp</dimen>
+    <dimen name="audience_chip_gap">5.5dp</dimen>      <!-- Public to Album -->
+    <dimen name="audience_icon">14dp</dimen>           <!-- globe and plus in the chips -->
+    <dimen name="audience_text_gap">3.5dp</dimen>      <!-- icon to label -->
+    <dimen name="audience_chevron_gap">4.5dp</dimen>   <!-- label to chevron -->
+    <dimen name="text_post_large">22sp</dimen>         <!-- "Weekend plan: ..." (ink width and height
+                                                            both match 22sp, not 24sp) -->
+    <dimen name="post_large_line_spacing">3dp</dimen>  <!-- line pitch 29.5dp -->
+    <dimen name="text_audience_chip">12sp</dimen>      <!-- "Public" / "Album" -->
+    <dimen name="create_text_top">17dp</dimen>         <!-- chips to the post text -->
+    <dimen name="swatch_size">31dp</dimen>
+    <dimen name="swatch_gap">7.7dp</dimen>             <!-- 8 swatches from x 15.3 to 317.2 -->
+    <dimen name="swatch_row_top">44dp</dimen>          <!-- post text to the swatches -->
+    <dimen name="sheet_elevation">8dp</dimen>          <!-- soft shadow above the bottom sheet -->
+    <dimen name="sheet_handle_width">36dp</dimen>
+    <dimen name="sheet_handle_height">3.5dp</dimen>
+    <dimen name="sheet_handle_top">9dp</dimen>         <!-- sheet top to the handle -->
+    <dimen name="sheet_rows_top">9.5dp</dimen>         <!-- handle to the first row -->
+    <dimen name="sheet_rows_bottom">15.5dp</dimen>     <!-- last row to the screen bottom -->
+    <dimen name="sheet_row_height">44dp</dimen>        <!-- rows 44dp apart -->
+    <dimen name="sheet_icon">22dp</dimen>              <!-- row icons (ink 17dp in the design) -->
+    <dimen name="sheet_icon_start">19dp</dimen>        <!-- icon centred 30dp from the edge -->
+    <dimen name="sheet_text_gap">13.5dp</dimen>        <!-- icon to the row label -->
 
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->

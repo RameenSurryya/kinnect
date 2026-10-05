@@ -132,7 +132,8 @@ values are rounded down to whole dp).
 - Inputs: 51 dp (with floating label; 49.9 dp white inside a 0.5 dp outline), 55 dp
   (password with eye; outline to outline 55.5 dp on 02, 55 dp on 03; the earlier 54 dp was the
   white inside), 37 dp search / reply / Aa, gender options 44 dp.
-- Chips: 33 dp (14, 15), 31 dp (13 filters), 35 dp (23 Sell / Categories), 24 dp (07 Public);
+- Chips: 33 dp (14, 15), 31 dp (13 filters), 35 dp (23 Sell / Categories), 26 dp (07 Public / Album,
+  6 dp corners, 1 dp teal outline; re-measured when 07 was built, was 24);
   12 dp left/right padding.
 - Section band 7 dp (04). Dividers 1 dp; input and card outlines 0.5 dp.
 

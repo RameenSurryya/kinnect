@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Background colour swatch (07): 10dp rounded square. White here; each View sets its
+     colour with android:backgroundTint (teal, accent_orange, indigo ...). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/white" />
+    <corners android:radius="@dimen/radius_button_small" />
+</shape>

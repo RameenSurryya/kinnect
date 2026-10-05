@@ -147,6 +147,32 @@
     <string name="cd_send">Send</string>
     <string name="cd_comment_photo">Photo comment</string>
 
+    <!-- 07 Create post (post text is static sample content) -->
+    <string name="create_post_title">Create post</string>
+    <string name="create_post_button">Post</string>
+    <string name="create_post_public">Public</string>
+    <string name="create_post_album">Album</string>
+    <string name="sample_create_post_text">Weekend plan: coffee, sketching, and absolutely no email.</string>
+    <string name="create_post_aa" translatable="false">Aa</string>
+    <string name="create_photo_video">Photo/video</string>
+    <string name="create_tag_people">Tag people</string>
+    <string name="create_feeling">Feeling/activity</string>
+    <string name="create_check_in">Check in</string>
+    <string name="create_live_video">Live video</string>
+    <string name="create_camera">Camera</string>
+    <string name="create_event">Create event</string>
+    <string name="cd_close">Close</string>
+    <string name="cd_audience">Audience: Public</string>
+    <string name="cd_add_to_album">Add to album</string>
+    <string name="cd_bg_plain">Plain background, selected</string>
+    <string name="cd_bg_teal">Teal background</string>
+    <string name="cd_bg_orange">Orange background</string>
+    <string name="cd_bg_indigo">Indigo background</string>
+    <string name="cd_bg_green">Green background</string>
+    <string name="cd_bg_mustard">Mustard background</string>
+    <string name="cd_bg_purple">Purple background</string>
+    <string name="cd_bg_black">Black background</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

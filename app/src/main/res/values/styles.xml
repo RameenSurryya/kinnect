@@ -496,6 +496,76 @@
         <item name="android:background">@drawable/bg_thread_line</item>
     </style>
 
+    <!-- ===== Create post (07) ===== -->
+
+    <!-- "Public" / "Album" chip: light teal box with icon, bold teal label and chevron. -->
+    <style name="Kinnect.AudienceChip" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/audience_chip_height</item>
+        <item name="android:background">@drawable/bg_chip_audience</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">@dimen/audience_chip_padding</item>
+        <item name="android:paddingEnd">@dimen/audience_chip_padding</item>
+    </style>
+
+    <style name="Kinnect.AudienceChip.Icon" parent="">
+        <item name="android:layout_width">@dimen/audience_icon</item>
+        <item name="android:layout_height">@dimen/audience_icon</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="tint">@color/teal</item>
+    </style>
+
+    <style name="Kinnect.AudienceChip.Chevron" parent="Kinnect.AudienceChip.Icon">
+        <item name="android:layout_width">@dimen/icon_size_chevron</item>
+        <item name="android:layout_height">@dimen/icon_size_chevron</item>
+        <item name="android:layout_marginStart">@dimen/audience_chevron_gap</item>
+        <item name="android:src">@drawable/ic_chevron_down</item>
+    </style>
+
+    <style name="Kinnect.Text.AudienceChip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/audience_text_gap</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_audience_chip</item>
+        <item name="android:textColor">@color/teal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Coloured background swatch: set android:backgroundTint to the colour. -->
+    <style name="Kinnect.Swatch" parent="">
+        <item name="android:layout_width">@dimen/swatch_size</item>
+        <item name="android:layout_height">@dimen/swatch_size</item>
+        <item name="android:layout_marginStart">@dimen/swatch_gap</item>
+        <item name="android:background">@drawable/bg_swatch</item>
+    </style>
+
+    <!-- One row of the bottom sheet: coloured 22dp icon + label, 44dp tall. -->
+    <style name="Kinnect.SheetRow" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/sheet_row_height</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">@dimen/sheet_icon_start</item>
+        <item name="android:paddingEnd">@dimen/screen_margin</item>
+    </style>
+
+    <style name="Kinnect.SheetRow.Icon" parent="">
+        <item name="android:layout_width">@dimen/sheet_icon</item>
+        <item name="android:layout_height">@dimen/sheet_icon</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <style name="Kinnect.Text.SheetRow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/sheet_text_gap</item>
+        <item name="android:textSize">@dimen/text_name</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <!-- ===== Top bar circles (include_top_bar.xml) =====
          Large set = Home (04). Small set = 14, 18, 19, 23, chosen per screen through
          ThemeOverlay.Kinnect.TopBarSmall in themes.xml. -->
