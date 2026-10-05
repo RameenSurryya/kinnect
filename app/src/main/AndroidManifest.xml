@@ -59,6 +59,11 @@
             android:name=".ui.home.CreatePostActivity"
             android:screenOrientation="portrait" />
 
+        <!-- 08 Photo picker -->
+        <activity
+            android:name=".ui.home.PhotoPickerActivity"
+            android:screenOrientation="portrait" />
+
         <!-- 09 Camera -->
         <activity
             android:name=".ui.home.CameraActivity"

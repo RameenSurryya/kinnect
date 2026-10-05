@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Numbered selection circle on a chosen photo (08): teal disc inside a 2dp white ring.
+     The number is the TextView's text. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/teal" />
+    <stroke
+        android:width="@dimen/stroke_selected"
+        android:color="@color/white" />
+</shape>

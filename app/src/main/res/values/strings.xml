@@ -173,6 +173,21 @@
     <string name="cd_bg_purple">Purple background</string>
     <string name="cd_bg_black">Black background</string>
 
+    <!-- 08 Photo picker (photos are the ph_* placeholders) -->
+    <string name="picker_cancel">Cancel</string>
+    <string name="picker_recents">Recents</string>
+    <string name="picker_next">Next (2)</string>
+    <string name="picker_select_multiple">SELECT MULTIPLE</string>
+    <string name="picker_gallery">Gallery</string>
+    <string name="picker_photo">Photo</string>
+    <string name="picker_video">Video</string>
+    <string name="sample_video_length" translatable="false">0:23</string>
+    <string name="sample_selected_1" translatable="false">1</string>
+    <string name="sample_selected_2" translatable="false">2</string>
+    <string name="cd_choose_album">Choose album</string>
+    <string name="cd_preview">Selected photo</string>
+    <string name="cd_expand">Expand photo</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

@@ -566,6 +566,61 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <!-- ===== Photo picker (08) ===== -->
+
+    <!-- One square-ish photo cell of the 4-column GridLayout: equal column weights, 1dp side
+         and 0.75dp top/bottom margins so neighbours are 2dp / 1.5dp apart. -->
+    <style name="Kinnect.PickerTile" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/tile_height</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_marginStart">@dimen/tile_gap_half_h</item>
+        <item name="android:layout_marginEnd">@dimen/tile_gap_half_h</item>
+        <item name="android:layout_marginTop">@dimen/tile_gap_half_v</item>
+        <item name="android:layout_marginBottom">@dimen/tile_gap_half_v</item>
+    </style>
+
+    <!-- The placeholder photo filling a tile (whole square picture, centre-cropped). -->
+    <style name="Kinnect.PickerTile.Photo" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <!-- Empty white selection circle in a tile's top-right corner. -->
+    <style name="Kinnect.PickerTile.Ring" parent="">
+        <item name="android:layout_width">@dimen/select_ring</item>
+        <item name="android:layout_height">@dimen/select_ring</item>
+        <item name="android:layout_gravity">top|end</item>
+        <item name="android:layout_margin">@dimen/select_ring_margin</item>
+        <item name="android:background">@drawable/bg_select_ring</item>
+    </style>
+
+    <!-- Teal numbered circle on a chosen photo ("1", "2"). -->
+    <style name="Kinnect.PickerTile.Number" parent="">
+        <item name="android:layout_width">@dimen/select_number</item>
+        <item name="android:layout_height">@dimen/select_number</item>
+        <item name="android:layout_gravity">top|end</item>
+        <item name="android:layout_margin">@dimen/select_number_margin</item>
+        <item name="android:background">@drawable/bg_select_number</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_caption</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Gallery / Photo / Video label in the bottom strip (grey; Gallery is teal). -->
+    <style name="Kinnect.Text.PickerTab">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
     <!-- ===== Top bar circles (include_top_bar.xml) =====
          Large set = Home (04). Small set = 14, 18, 19, 23, chosen per screen through
          ThemeOverlay.Kinnect.TopBarSmall in themes.xml. -->

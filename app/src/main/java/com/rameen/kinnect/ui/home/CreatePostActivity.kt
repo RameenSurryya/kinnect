@@ -24,8 +24,7 @@ class CreatePostActivity : BaseActivity() {
         setupBackButton(R.id.iv_close)
         binding.btnPost.setOnClickListener { finish() }
 
-        // Photo picker is named by class name until screen 08 exists (openScreen skips it).
-        binding.llPhotoVideo.setOnClickListener { openScreen("com.rameen.kinnect.ui.home.PhotoPickerActivity") }
+        binding.llPhotoVideo.setOnClickListener { startActivity(Intent(this, PhotoPickerActivity::class.java)) }
         binding.llCamera.setOnClickListener { startActivity(Intent(this, CameraActivity::class.java)) }
     }
 }

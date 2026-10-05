@@ -418,6 +418,27 @@
     <dimen name="sheet_icon_start">19dp</dimen>        <!-- icon centred 30dp from the edge -->
     <dimen name="sheet_text_gap">13.5dp</dimen>        <!-- icon to the row label -->
 
+    <!-- Photo picker (08) -->
+    <dimen name="picker_overlay_margin">12dp</dimen>   <!-- expand circle / SELECT MULTIPLE to the photo edges -->
+    <dimen name="picker_overlay_bottom">11.5dp</dimen>
+    <dimen name="picker_expand_padding">8dp</dimen>    <!-- (36 - 20) / 2: a 20dp expand icon -->
+    <dimen name="select_multiple_padding">13dp</dimen>
+    <dimen name="select_multiple_text_gap">6dp</dimen> <!-- copy icon to the label -->
+    <dimen name="text_select_multiple">11.5sp</dimen>
+    <dimen name="tile_height">88.5dp</dimen>           <!-- 4 columns of 88.5dp with 2dp gaps -->
+    <dimen name="tile_gap_half_h">1dp</dimen>          <!-- each tile's side margin: 2dp between columns -->
+    <dimen name="tile_gap_half_v">0.75dp</dimen>       <!-- each tile's top/bottom margin: 1.5dp between rows -->
+    <dimen name="tile_selected_stroke">3dp</dimen>     <!-- teal frame on photo 1 -->
+    <dimen name="select_ring">19dp</dimen>             <!-- empty circle, 2dp white ring -->
+    <dimen name="select_ring_margin">5dp</dimen>
+    <dimen name="select_number">23dp</dimen>           <!-- teal numbered circle incl. 2dp ring -->
+    <dimen name="select_number_margin">6dp</dimen>
+    <dimen name="video_label_margin">5dp</dimen>       <!-- "0:23" to the tile's bottom-right corner -->
+    <dimen name="picker_grid_bottom">8dp</dimen>       <!-- last row to the tab strip divider -->
+    <dimen name="picker_tabs_height">52dp</dimen>      <!-- Gallery / Photo / Video, under the divider -->
+    <dimen name="picker_tabs_shift">-3dp</dimen>       <!-- labels row overlaps the 3dp teal line -->
+    <dimen name="picker_title_shift">-4dp</dimen>      <!-- "Recents" group sits 4dp left of centre -->
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->
