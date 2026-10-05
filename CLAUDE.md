@@ -110,6 +110,26 @@ Mark it in XML with <!-- ADVANCED: reason -->.
 
 - On Windows the Bash tool can hang. Run builds and scripts through PowerShell (.\gradlew.bat assembleDebug, python script.py), and never use heredocs (<<'EOF'); write the script to a file first.
 
+## Build effort and tolerance
+
+Follow these for every screen.
+
+- Goal: each screen must look like its PNG at a glance and side by side, about 99% the same.
+  Accept differences of up to 2dp in position or size, up to 1sp in text size, and colours
+  within a few shades. Do not chase anything smaller.
+- Use the existing tokens, styles, drawables and includes. Do not re-measure things that are
+  already in dimens.xml, colors.xml or DESIGN_TOKENS.md. Only measure what is new on this screen.
+- Do not write new measuring, rendering or comparison scripts. Reuse the existing tools/ scripts
+  only if they help, and never spend time on anti-aliasing, blur or compression noise.
+- Verify with at most ONE round: build, install on the 360dp emulator, take one screenshot,
+  compare it with the PNG, and fix only differences that are visible at normal size (wrong
+  colour, wrong size, missing element, wrong overlap, wrong alignment, wrong order or spacing
+  off by more than 2dp). Then stop.
+- Do not test on a second emulator during screens. That is done once in the final responsive pass.
+- Overlaps, rotations, badges and photo crops must be correct. Those are the visible things.
+- Finish with a short list of at most 5 remaining differences, then commit and tell the user to
+  push. Do not keep iterating after that.
+
 ## After every screen
 
 1. Build with gradlew.bat assembleDebug (Command Prompt) and fix errors.
