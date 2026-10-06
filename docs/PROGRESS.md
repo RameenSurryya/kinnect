@@ -16,7 +16,7 @@
 
 - [x] 16 Edit profile   - [x] 17 Other profile   - [x] 18 Notifications   - [x] 19 Menu   - [x] 20 Chats
 
-- [ ] 21 Chat   - [ ] 22 Voice call   - [ ] 23 Marketplace
+- [x] 21 Chat   - [ ] 22 Voice call   - [ ] 23 Marketplace
 
 - [ ] Navigation / back stack audit   - [ ] Responsive + accessibility pass
 

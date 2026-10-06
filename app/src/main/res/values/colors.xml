@@ -83,6 +83,10 @@
     <color name="call_halo_outer">#0DFFFFFF</color>  <!-- white 5 % -->
     <color name="call_halo_inner">#1FFFFFFF</color>  <!-- white 12 % -->
     <color name="call_end_red">#C62827</color>
+    <!-- Chat (21): the three typing dots fade from dark to light -->
+    <color name="typing_dot_1">#8A8780</color>
+    <color name="typing_dot_2">#A9A39D</color>
+    <color name="typing_dot_3">#C4C1BA</color>
     <color name="search_clear">#AAA198</color>      <!-- clear (X) circle in the search field (13) -->
 
     <!-- Photo placeholders (ph_* drawables): sky, sun, back hill, front hill -->

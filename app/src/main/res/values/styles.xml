@@ -1032,4 +1032,51 @@
         <item name="android:textColor">@color/text_grey</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+
+    <!-- ===== Chat (21) ===== -->
+
+    <!-- Teal 20dp icon in the header (phone, video, info): 44 x 48dp touch area. -->
+    <style name="Kinnect.ChatHeaderIcon" parent="">
+        <item name="android:layout_width">@dimen/chat_header_icon_width</item>
+        <item name="android:layout_height">@dimen/touch_target</item>
+        <item name="android:paddingStart">@dimen/chat_header_icon_pad_h</item>
+        <item name="android:paddingEnd">@dimen/chat_header_icon_pad_h</item>
+        <item name="android:paddingTop">@dimen/chat_header_icon_pad_v</item>
+        <item name="android:paddingBottom">@dimen/chat_header_icon_pad_v</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="tint">@color/teal</item>
+    </style>
+
+    <!-- Teal 20dp icon at the left of the input bar (plus, camera, gallery, mic). -->
+    <style name="Kinnect.ChatBarIcon" parent="Kinnect.ChatHeaderIcon">
+        <item name="android:layout_width">@dimen/chat_bar_icon_width</item>
+        <item name="android:paddingStart">@dimen/chat_bar_icon_pad_h</item>
+        <item name="android:paddingEnd">@dimen/chat_bar_icon_pad_h</item>
+    </style>
+
+    <!-- One text bubble. Pick the background per position in its group:
+         bg_bubble_received(_first/_middle/_last) or bg_bubble_sent(...). -->
+    <style name="Kinnect.Text.Bubble">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/chat_bubble_pad_h</item>
+        <item name="android:paddingEnd">@dimen/chat_bubble_pad_h</item>
+        <item name="android:paddingTop">@dimen/chat_bubble_pad_v</item>
+        <item name="android:paddingBottom">@dimen/chat_bubble_pad_v</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Sent bubble: white text on teal, pushed to the right edge. -->
+    <style name="Kinnect.Text.Bubble.Sent">
+        <item name="android:layout_gravity">end</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- One of the three typing dots (tint sets its shade). -->
+    <style name="Kinnect.TypingDot" parent="">
+        <item name="android:layout_width">@dimen/chat_typing_dot</item>
+        <item name="android:layout_height">@dimen/chat_typing_dot</item>
+        <item name="android:background">@drawable/bg_avatar_circle</item>
+    </style>
 </resources>

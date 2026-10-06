@@ -407,4 +407,27 @@
     <string name="chats_nav_chats">Chats</string>
     <string name="chats_nav_people">People</string>
     <string name="chats_nav_stories">Stories</string>
+
+    <!-- 21 Chat -->
+    <string name="chat_status">Active now</string>
+    <string name="chat_intro">You\'re friends on Kinnect · Lives in Karachi</string>
+    <string name="chat_time_today">TODAY 4:49 PM</string>
+    <string name="chat_msg_saturday">Hey! Are you still coming Saturday?</string>
+    <string name="chat_msg_table">Lina booked the table for 8</string>
+    <string name="chat_msg_camera">Bring the camera</string>
+    <string name="chat_msg_obviously">Yes, obviously</string>
+    <string name="chat_msg_batteries">Already charged both batteries</string>
+    <string name="chat_replied">You replied to Aisha</string>
+    <string name="chat_msg_perfect">Perfect, I\'ll be there by 7:45</string>
+    <string name="chat_hint">Aa</string>
+    <string name="cd_voice_call">Voice call</string>
+    <string name="cd_video_call">Video call</string>
+    <string name="cd_chat_info">Conversation info</string>
+    <string name="cd_more_actions">More actions</string>
+    <string name="cd_camera">Camera</string>
+    <string name="cd_voice_clip">Voice clip</string>
+    <string name="cd_send_like">Send a like</string>
+    <string name="cd_loved">Loved by Aisha</string>
+    <string name="cd_seen_aisha">Seen by Aisha</string>
+    <string name="cd_typing">Aisha is typing</string>
 </resources>
