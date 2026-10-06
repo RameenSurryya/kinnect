@@ -725,4 +725,34 @@
     <dimen name="menu_logout_top">12dp</dimen>           <!-- last row to Log out -->
     <dimen name="menu_logout_icon_gap">7dp</dimen>
     <dimen name="menu_white_top">160dp</dimen>           <!-- white behind status bar + top bar + tabs -->
+
+    <!-- 20 Chats (measured on screen-20.png; text views use includeFontPadding="false").
+         Toolbar 52dp (toolbar_height), avatars 52dp (avatar_52), bottom nav 56dp incl. its divider. -->
+    <dimen name="chats_compose_end">6dp</dimen>          <!-- 48dp touch frame: the 36dp circle ends 12dp from the edge -->
+    <dimen name="chats_compose_padding">9dp</dimen>      <!-- (36 - 18) / 2: an 18dp pencil -->
+    <dimen name="chats_search_top">3.5dp</dimen>         <!-- toolbar to the search field -->
+    <dimen name="chats_search_padding">14dp</dimen>      <!-- field edge to the magnifier -->
+    <dimen name="chats_search_text_start">10.5dp</dimen> <!-- magnifier to "Search" -->
+    <dimen name="chats_notes_top">12.5dp</dimen>         <!-- search field to the note circles -->
+    <dimen name="chats_notes_start">15dp</dimen>         <!-- first 60dp column centred at x 45 -->
+    <dimen name="chats_note_width">60dp</dimen>          <!-- one note column: circle centred, name below -->
+    <dimen name="chats_note_gap">8dp</dimen>             <!-- columns 68dp apart -->
+    <dimen name="chats_note_name_top">5dp</dimen>        <!-- circle to the first name -->
+    <dimen name="chats_note_plus_padding">16dp</dimen>   <!-- (52 - 20) / 2: a 20dp plus -->
+    <dimen name="chats_online_frame">12dp</dimen>        <!-- 8dp green dot + 2dp white ring -->
+    <dimen name="chats_online_inset">1dp</dimen>         <!-- dot centre 19dp right / below the avatar centre -->
+    <dimen name="chats_list_top">10.5dp</dimen>          <!-- note names to the first conversation row -->
+    <dimen name="chats_row_height">66.3dp</dimen>        <!-- rows 66.3dp apart -->
+    <dimen name="chats_text_start">11dp</dimen>          <!-- avatar to the name -->
+    <dimen name="chats_text_end">8dp</dimen>             <!-- text column to the unread dot -->
+    <dimen name="chats_message_top">1.5dp</dimen>        <!-- name to message: baselines 17.8dp apart -->
+    <dimen name="chats_seen_dot">14dp</dimen>            <!-- maroon dot on Lina Marsh's row -->
+    <dimen name="chats_pair_ring">1.5dp</dimen>          <!-- white ring around the front (ZR) group avatar -->
+    <dimen name="chats_pair_front">36dp</dimen>          <!-- 33dp disc + 1.5dp ring -->
+    <dimen name="chats_pair_inset">2dp</dimen>           <!-- front avatar to the frame's bottom-left -->
+    <dimen name="chats_nav_content">55dp</dimen>         <!-- bottom nav below its 1dp divider -->
+    <dimen name="chats_nav_label_top">1dp</dimen>        <!-- icon to label -->
+    <dimen name="text_chats_note">11.5sp</dimen>         <!-- "Your note", "Aisha" -->
+    <dimen name="text_chat_message">13sp</dimen>        <!-- "Sending the photos tonight · 2m" -->
+    <dimen name="text_nav_label">12sp</dimen>            <!-- Chats / People / Stories (cap height 8.7dp) -->
 </resources>

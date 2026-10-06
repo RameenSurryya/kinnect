@@ -880,4 +880,156 @@
         <item name="android:importantForAccessibility">no</item>
         <item name="tint">@color/text_grey</item>
     </style>
+
+    <!-- ===== Chats (20) ===== -->
+
+    <!-- One column in the notes row: 52dp circle centred, first name below. -->
+    <style name="Kinnect.ChatNote" parent="">
+        <item name="android:layout_width">@dimen/chats_note_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <!-- Name under a note circle ("Aisha"); "Your note" overrides the colour to grey. -->
+    <style name="Kinnect.Text.ChatNote">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/chats_note_name_top</item>
+        <item name="android:textSize">@dimen/text_chats_note</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Green online dot, drawn last inside the avatar's FrameLayout so it overlaps the
+         avatar's bottom-right edge. -->
+    <style name="Kinnect.OnlineDot" parent="">
+        <item name="android:layout_width">@dimen/chats_online_frame</item>
+        <item name="android:layout_height">@dimen/chats_online_frame</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_marginEnd">@dimen/chats_online_inset</item>
+        <item name="android:layout_marginBottom">@dimen/chats_online_inset</item>
+        <item name="android:background">@drawable/bg_online_dot</item>
+    </style>
+
+    <!-- One conversation row: avatar, text column, optional unread dot. -->
+    <style name="Kinnect.ChatRow" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/chats_row_height</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/screen_margin</item>
+        <item name="android:paddingEnd">@dimen/screen_margin</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- 52dp frame that holds the avatar and its online dot. -->
+    <style name="Kinnect.ChatRow.Avatar" parent="">
+        <item name="android:layout_width">@dimen/avatar_52</item>
+        <item name="android:layout_height">@dimen/avatar_52</item>
+    </style>
+
+    <!-- Name + message column: takes the width left over, so long text ellipsizes. -->
+    <style name="Kinnect.ChatRow.Text" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">@dimen/chats_text_start</item>
+        <item name="android:layout_marginEnd">@dimen/chats_text_end</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Message + time line. wrap_content width with a weighted message: when the line fits,
+         the time sits right after the message; when it is too long, only the message shrinks
+         (ellipsized) and the time stays visible. -->
+    <style name="Kinnect.ChatRow.MessageLine" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/chats_message_top</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- Read conversation: Figtree Medium name. -->
+    <style name="Kinnect.Text.ChatName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+        <item name="android:textSize">@dimen/text_name</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Unread conversation: bold name. -->
+    <style name="Kinnect.Text.ChatName.Unread">
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <!-- Read message: grey, ellipsized when too long (see MessageLine). -->
+    <style name="Kinnect.Text.ChatMessage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/text_chat_message</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Unread message: SemiBold and dark. -->
+    <style name="Kinnect.Text.ChatMessage.Unread">
+        <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+
+    <!-- " · 2m" after the message; never shrinks. -->
+    <style name="Kinnect.Text.ChatTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_chat_message</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="Kinnect.Text.ChatTime.Unread">
+        <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+
+    <!-- 11dp teal unread dot at the end of a row. -->
+    <style name="Kinnect.UnreadDot" parent="">
+        <item name="android:layout_width">@dimen/unread_dot</item>
+        <item name="android:layout_height">@dimen/unread_dot</item>
+        <item name="android:background">@drawable/bg_avatar_circle</item>
+        <item name="android:backgroundTint">@color/teal</item>
+    </style>
+
+    <!-- One item of the bottom nav (Chats / People / Stories): icon above a label. -->
+    <style name="Kinnect.NavItem" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="Kinnect.NavItem.Icon" parent="">
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="tint">@color/text_grey</item>
+    </style>
+
+    <style name="Kinnect.Text.NavLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/chats_nav_label_top</item>
+        <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="android:textSize">@dimen/text_nav_label</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
 </resources>

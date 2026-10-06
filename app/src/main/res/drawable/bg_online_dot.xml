@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Green "online" dot on an avatar (20). Used on a 12dp view: the 2dp white stroke is drawn
+     inside the bounds, leaving an 8dp green disc that stands out from the avatar colour. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/online_green" />
+    <stroke
+        android:width="@dimen/badge_ring"
+        android:color="@color/white" />
+</shape>

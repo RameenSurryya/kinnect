@@ -1,7 +1,517 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 20 Chats (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    20 Chats. Pinned at the top: back arrow, "Chats" and the grey compose circle. Pinned at the
+    bottom: the Chats / People / Stories nav (Chats active, visual only). The middle scrolls:
+      1. the grey "Search" pill,
+      2. the notes row (HorizontalScrollView): "Your note" + four friends, each a 52dp avatar in a
+         FrameLayout with the green online dot drawn last at bottom|end so it overlaps the edge,
+      3. six conversation rows: avatar (Design crew = two overlapping 33dp avatars), a text
+         column with the name and "message · time", and the unread / seen dot on the right.
+         Unread rows use the .Unread text styles (bold name, SemiBold dark message).
+    Every row opens the Chat screen (ChatsActivity).
+    Measurements in dp come from design/screens/screen-20.png (dimens.xml, 20 Chats).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== Pinned toolbar: back, "Chats", compose ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/Kinnect.IconButton"
+            android:contentDescription="@string/cd_back"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/Kinnect.Text.Heading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="@string/title_chats" />
+
+        <!-- Compose: 36dp grey circle inside a 48dp touch frame (visual only) -->
+        <FrameLayout
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:layout_marginEnd="@dimen/chats_compose_end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_new_message">
+
+            <ImageView
+                android:layout_width="@dimen/circle_button"
+                android:layout_height="@dimen/circle_button"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_circle_grey"
+                android:importantForAccessibility="no"
+                android:padding="@dimen/chats_compose_padding"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/text_dark" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- ===== Search pill (visual only: a TextView, so no keyboard pops up) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height_search"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/chats_search_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:background="@drawable/bg_chip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/chats_search_padding"
+                android:paddingEnd="@dimen/chats_search_padding">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/text_grey" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/chats_search_text_start"
+                    android:includeFontPadding="false"
+                    android:text="@string/chats_search_hint"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_name" />
+            </LinearLayout>
+
+            <!-- ===== Notes row: scrolls sideways if there are more friends than fit ===== -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/chats_notes_top"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/chats_notes_start"
+                    android:paddingEnd="@dimen/chats_notes_start">
+
+                    <!-- Your note: grey circle with a plus -->
+                    <LinearLayout style="@style/Kinnect.ChatNote">
+
+                        <ImageView
+                            android:layout_width="@dimen/avatar_52"
+                            android:layout_height="@dimen/avatar_52"
+                            android:background="@drawable/bg_circle_grey"
+                            android:contentDescription="@string/cd_add_note"
+                            android:padding="@dimen/chats_note_plus_padding"
+                            android:src="@drawable/ic_plus"
+                            app:tint="@color/text_dark" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatNote"
+                            android:text="@string/chats_your_note"
+                            android:textColor="@color/text_grey" />
+                    </LinearLayout>
+
+                    <!-- Aisha (online) -->
+                    <LinearLayout
+                        style="@style/Kinnect.ChatNote"
+                        android:layout_marginStart="@dimen/chats_note_gap">
+
+                        <FrameLayout style="@style/Kinnect.ChatRow.Avatar">
+
+                            <TextView
+                                style="@style/Kinnect.Avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/avatar_ak"
+                                android:text="@string/sample_initials_aisha"
+                                android:textSize="@dimen/text_avatar_52" />
+
+                            <View style="@style/Kinnect.OnlineDot" />
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatNote"
+                            android:text="@string/sample_first_aisha" />
+                    </LinearLayout>
+
+                    <!-- Omar (online) -->
+                    <LinearLayout
+                        style="@style/Kinnect.ChatNote"
+                        android:layout_marginStart="@dimen/chats_note_gap">
+
+                        <FrameLayout style="@style/Kinnect.ChatRow.Avatar">
+
+                            <TextView
+                                style="@style/Kinnect.Avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/avatar_of"
+                                android:text="@string/sample_initials_omar"
+                                android:textSize="@dimen/text_avatar_52" />
+
+                            <View style="@style/Kinnect.OnlineDot" />
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatNote"
+                            android:text="@string/sample_first_omar" />
+                    </LinearLayout>
+
+                    <!-- Sara (online) -->
+                    <LinearLayout
+                        style="@style/Kinnect.ChatNote"
+                        android:layout_marginStart="@dimen/chats_note_gap">
+
+                        <FrameLayout style="@style/Kinnect.ChatRow.Avatar">
+
+                            <TextView
+                                style="@style/Kinnect.Avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/avatar_si"
+                                android:text="@string/sample_initials_sara"
+                                android:textSize="@dimen/text_avatar_52" />
+
+                            <View style="@style/Kinnect.OnlineDot" />
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatNote"
+                            android:text="@string/sample_first_sara" />
+                    </LinearLayout>
+
+                    <!-- Hamza (online) -->
+                    <LinearLayout
+                        style="@style/Kinnect.ChatNote"
+                        android:layout_marginStart="@dimen/chats_note_gap">
+
+                        <FrameLayout style="@style/Kinnect.ChatRow.Avatar">
+
+                            <TextView
+                                style="@style/Kinnect.Avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/avatar_ha"
+                                android:text="@string/sample_initials_hamza"
+                                android:textSize="@dimen/text_avatar_52" />
+
+                            <View style="@style/Kinnect.OnlineDot" />
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatNote"
+                            android:text="@string/sample_first_hamza" />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- ===== Conversations ===== -->
+
+            <!-- Aisha Khan: online, unread -->
+            <LinearLayout
+                android:id="@+id/ll_chat_aisha"
+                style="@style/Kinnect.ChatRow"
+                android:layout_marginTop="@dimen/chats_list_top">
+
+                <FrameLayout style="@style/Kinnect.ChatRow.Avatar">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/avatar_ak"
+                        android:text="@string/sample_initials_aisha"
+                        android:textSize="@dimen/text_avatar_52" />
+
+                    <View style="@style/Kinnect.OnlineDot" />
+                </FrameLayout>
+
+                <LinearLayout style="@style/Kinnect.ChatRow.Text">
+
+                    <TextView
+                        style="@style/Kinnect.Text.ChatName.Unread"
+                        android:text="@string/sample_name_aisha" />
+
+                    <LinearLayout style="@style/Kinnect.ChatRow.MessageLine">
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatMessage.Unread"
+                            android:text="@string/chats_msg_aisha" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatTime.Unread"
+                            android:text="@string/chats_time_aisha" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/Kinnect.UnreadDot" />
+            </LinearLayout>
+
+            <!-- Design crew: group, unread. Two 33dp avatars: MC behind (top-right),
+                 ZR in front (bottom-left) with a white ring that cuts into MC. -->
+            <LinearLayout
+                android:id="@+id/ll_chat_design_crew"
+                style="@style/Kinnect.ChatRow">
+
+                <FrameLayout style="@style/Kinnect.ChatRow.Avatar">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="@dimen/avatar_33"
+                        android:layout_height="@dimen/avatar_33"
+                        android:layout_gravity="top|end"
+                        android:backgroundTint="@color/avatar_mc"
+                        android:text="@string/sample_initials_maya"
+                        android:textSize="@dimen/text_avatar_33" />
+
+                    <!-- Front avatar: white circle (the ring) with the ZR disc inside -->
+                    <FrameLayout
+                        android:layout_width="@dimen/chats_pair_front"
+                        android:layout_height="@dimen/chats_pair_front"
+                        android:layout_gravity="bottom|start"
+                        android:layout_marginStart="@dimen/chats_pair_inset"
+                        android:layout_marginBottom="@dimen/chats_pair_inset"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:padding="@dimen/chats_pair_ring">
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/avatar_zr"
+                            android:text="@string/sample_initials_zain"
+                            android:textSize="@dimen/text_avatar_33" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <LinearLayout style="@style/Kinnect.ChatRow.Text">
+
+                    <TextView
+                        style="@style/Kinnect.Text.ChatName.Unread"
+                        android:text="@string/chats_name_design_crew" />
+
+                    <LinearLayout style="@style/Kinnect.ChatRow.MessageLine">
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatMessage.Unread"
+                            android:text="@string/chats_msg_design_crew" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatTime.Unread"
+                            android:text="@string/chats_time_design_crew" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/Kinnect.UnreadDot" />
+            </LinearLayout>
+
+            <!-- Lina Marsh: read, larger maroon dot on the right -->
+            <LinearLayout
+                android:id="@+id/ll_chat_lina"
+                style="@style/Kinnect.ChatRow">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_52"
+                    android:layout_height="@dimen/avatar_52"
+                    android:backgroundTint="@color/avatar_lm"
+                    android:text="@string/sample_initials_lina"
+                    android:textSize="@dimen/text_avatar_52" />
+
+                <LinearLayout style="@style/Kinnect.ChatRow.Text">
+
+                    <TextView
+                        style="@style/Kinnect.Text.ChatName"
+                        android:text="@string/sample_name_lina" />
+
+                    <LinearLayout style="@style/Kinnect.ChatRow.MessageLine">
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatMessage"
+                            android:text="@string/chats_msg_lina" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatTime"
+                            android:text="@string/chats_time_lina" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    style="@style/Kinnect.UnreadDot"
+                    android:layout_width="@dimen/chats_seen_dot"
+                    android:layout_height="@dimen/chats_seen_dot"
+                    android:backgroundTint="@color/maroon" />
+            </LinearLayout>
+
+            <!-- Omar Farooq: online, read -->
+            <LinearLayout
+                android:id="@+id/ll_chat_omar"
+                style="@style/Kinnect.ChatRow">
+
+                <FrameLayout style="@style/Kinnect.ChatRow.Avatar">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/avatar_of"
+                        android:text="@string/sample_initials_omar"
+                        android:textSize="@dimen/text_avatar_52" />
+
+                    <View style="@style/Kinnect.OnlineDot" />
+                </FrameLayout>
+
+                <LinearLayout style="@style/Kinnect.ChatRow.Text">
+
+                    <TextView
+                        style="@style/Kinnect.Text.ChatName"
+                        android:text="@string/sample_name_omar" />
+
+                    <LinearLayout style="@style/Kinnect.ChatRow.MessageLine">
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatMessage"
+                            android:text="@string/chats_msg_omar" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatTime"
+                            android:text="@string/chats_time_omar" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Bilal Ahmed: read -->
+            <LinearLayout
+                android:id="@+id/ll_chat_bilal"
+                style="@style/Kinnect.ChatRow">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_52"
+                    android:layout_height="@dimen/avatar_52"
+                    android:backgroundTint="@color/avatar_ba"
+                    android:text="@string/sample_initials_bilal"
+                    android:textSize="@dimen/text_avatar_52" />
+
+                <LinearLayout style="@style/Kinnect.ChatRow.Text">
+
+                    <TextView
+                        style="@style/Kinnect.Text.ChatName"
+                        android:text="@string/sample_name_bilal" />
+
+                    <LinearLayout style="@style/Kinnect.ChatRow.MessageLine">
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatMessage"
+                            android:text="@string/chats_msg_bilal" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatTime"
+                            android:text="@string/chats_time_bilal" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Noor Fatima: read -->
+            <LinearLayout
+                android:id="@+id/ll_chat_noor"
+                style="@style/Kinnect.ChatRow">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_52"
+                    android:layout_height="@dimen/avatar_52"
+                    android:backgroundTint="@color/avatar_nf"
+                    android:text="@string/sample_initials_noor"
+                    android:textSize="@dimen/text_avatar_52" />
+
+                <LinearLayout style="@style/Kinnect.ChatRow.Text">
+
+                    <TextView
+                        style="@style/Kinnect.Text.ChatName"
+                        android:text="@string/sample_name_noor" />
+
+                    <LinearLayout style="@style/Kinnect.ChatRow.MessageLine">
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatMessage"
+                            android:text="@string/chats_msg_noor" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.ChatTime"
+                            android:text="@string/chats_time_noor" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ===== Pinned bottom nav: Chats (active, teal), People, Stories. Visual only. ===== -->
+    <View style="@style/Kinnect.Divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/chats_nav_content"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/Kinnect.NavItem">
+
+            <ImageView
+                style="@style/Kinnect.NavItem.Icon"
+                android:src="@drawable/ic_messenger"
+                app:tint="@color/teal" />
+
+            <TextView
+                style="@style/Kinnect.Text.NavLabel"
+                android:text="@string/chats_nav_chats"
+                android:textColor="@color/teal" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Kinnect.NavItem">
+
+            <ImageView
+                style="@style/Kinnect.NavItem.Icon"
+                android:src="@drawable/ic_friends" />
+
+            <TextView
+                style="@style/Kinnect.Text.NavLabel"
+                android:text="@string/chats_nav_people" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Kinnect.NavItem">
+
+            <ImageView
+                style="@style/Kinnect.NavItem.Icon"
+                android:src="@drawable/ic_create_reel" />
+
+            <TextView
+                style="@style/Kinnect.Text.NavLabel"
+                android:text="@string/chats_nav_stories" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

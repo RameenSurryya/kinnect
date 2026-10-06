@@ -380,4 +380,31 @@
     <string name="menu_also_from">Also from SMD</string>
     <string name="menu_log_out">Log out</string>
     <string name="cd_see_profile">See your profile, Jacob West</string>
+
+    <!-- 20 Chats. Times start with a quoted space so they follow the message: "tonight · 2m". -->
+    <string name="title_chats">Chats</string>
+    <string name="cd_new_message">New message</string>
+    <string name="chats_search_hint">Search</string>
+    <string name="chats_your_note">Your note</string>
+    <string name="cd_add_note">Add a note</string>
+    <string name="sample_first_aisha" translatable="false">Aisha</string>
+    <string name="sample_first_omar" translatable="false">Omar</string>
+    <string name="sample_first_sara" translatable="false">Sara</string>
+    <string name="sample_first_hamza" translatable="false">Hamza</string>
+    <string name="chats_name_design_crew" translatable="false">Design crew</string>
+    <string name="chats_msg_aisha">Sending the photos tonight</string>
+    <string name="chats_msg_design_crew">Maya: the new mockups look clean</string>
+    <string name="chats_msg_lina">You: See you at the pier</string>
+    <string name="chats_msg_omar">Haha that story was wild</string>
+    <string name="chats_msg_bilal">Thanks, bro!</string>
+    <string name="chats_msg_noor">You: Happy birthday!</string>
+    <string name="chats_time_aisha" translatable="false">" · 2m"</string>
+    <string name="chats_time_design_crew" translatable="false">" · 15m"</string>
+    <string name="chats_time_lina" translatable="false">" · 1h"</string>
+    <string name="chats_time_omar" translatable="false">" · 3h"</string>
+    <string name="chats_time_bilal">" · Mon"</string>
+    <string name="chats_time_noor">" · Sun"</string>
+    <string name="chats_nav_chats">Chats</string>
+    <string name="chats_nav_people">People</string>
+    <string name="chats_nav_stories">Stories</string>
 </resources>
