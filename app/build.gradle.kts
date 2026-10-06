@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.rameen.kinnect"
+    namespace = "com.rameen.i230806"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.rameen.kinnect"
+        applicationId = "com.rameen.i230806"
         minSdk = 26
         targetSdk = 37
         versionCode = 1

@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Kinnect"
+rootProject.name = "i230806"
 include(":app")
  

@@ -1,6 +1,6 @@
 # Kinnect – rules for Claude Code
 
-Android app (package com.rameen.kinnect). 23 screens copied from design/screens/screen-NN.png.
+Android app (package com.rameen.i230806). 23 screens copied from design/screens/screen-NN.png.
 
 Read first: @docs/SCREENS.md @docs/DESIGN_TOKENS.md @docs/ICONS.md @docs/PROGRESS.md
 
