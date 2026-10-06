@@ -83,6 +83,7 @@
     <color name="call_halo_outer">#0DFFFFFF</color>  <!-- white 5 % -->
     <color name="call_halo_inner">#1FFFFFFF</color>  <!-- white 12 % -->
     <color name="call_end_red">#C62827</color>
+    <color name="search_clear">#AAA198</color>      <!-- clear (X) circle in the search field (13) -->
 
     <!-- Photo placeholders (ph_* drawables): sky, sun, back hill, front hill -->
     <color name="ph_sand_sky">#E9D7BF</color>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded-square initials avatar for groups (OP in 13). The colour comes from the view:
+     android:backgroundTint="@color/avatar_op", like bg_avatar_circle. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/white" />
+    <corners android:radius="@dimen/radius_avatar_square" />
+</shape>

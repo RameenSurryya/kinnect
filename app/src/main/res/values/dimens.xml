@@ -540,4 +540,33 @@
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->
+
+    <!-- 13 Search (measured on screen-13.png) -->
+    <dimen name="search_bar_height">56dp</dimen>         <!-- back arrow + search field row -->
+    <dimen name="search_field_start">1dp</dimen>         <!-- gap after the 48dp back button -->
+    <dimen name="search_field_padding">13dp</dimen>      <!-- field edge to magnifier -->
+    <dimen name="search_text_start">9dp</dimen>          <!-- magnifier to "omar" -->
+    <dimen name="search_clear">26dp</dimen>              <!-- grey clear circle -->
+    <dimen name="search_clear_end">5.5dp</dimen>
+    <dimen name="search_clear_padding">7dp</dimen>       <!-- 12dp X inside the 26dp circle -->
+    <dimen name="search_chips_top">1.5dp</dimen>
+    <dimen name="search_chips_bottom">10.5dp</dimen>
+    <dimen name="chip_gap">8dp</dimen>
+    <dimen name="search_title_top">12.5dp</dimen>        <!-- divider to "People" -->
+    <dimen name="search_rows_top">5dp</dimen>            <!-- section title to first row -->
+    <dimen name="search_person_row">62.5dp</dimen>       <!-- row pitch: People, Groups -->
+    <dimen name="search_recent_row">44dp</dimen>         <!-- row pitch: Recent searches -->
+    <dimen name="search_row_gap">11.5dp</dimen>          <!-- avatar / clock circle to text -->
+    <dimen name="search_subtitle_top">2dp</dimen>
+    <dimen name="search_see_all_top">4dp</dimen>
+    <dimen name="search_groups_top">18dp</dimen>         <!-- See all people to "Groups" -->
+    <dimen name="search_recent_top">15dp</dimen>         <!-- group row to "Recent searches" -->
+    <dimen name="search_recent_rows_top">4.5dp</dimen>
+    <dimen name="search_recent_end">4dp</dimen>          <!-- puts the X 10dp from the margin -->
+    <dimen name="search_join_gap">16dp</dimen>
+    <dimen name="join_padding">15dp</dimen>              <!-- Join is 55dp wide -->
+    <dimen name="icon_size_clock">20dp</dimen>
+    <dimen name="icon_size_clear">13dp</dimen>
+    <dimen name="text_avatar_48">17.5sp</dimen>          <!-- 0.36 x 48dp -->
+    <dimen name="text_search_recent">13.5sp</dimen>      <!-- lina marsh, study desk karachi -->
 </resources>

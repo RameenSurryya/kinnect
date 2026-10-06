@@ -87,7 +87,8 @@
         <!-- 13 Search -->
         <activity
             android:name=".ui.home.SearchActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <!-- 14 Friends -->
         <activity
@@ -97,6 +98,11 @@
         <!-- 15 Profile -->
         <activity
             android:name=".ui.profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 17 Other profile -->
+        <activity
+            android:name=".ui.profile.OtherProfileActivity"
             android:screenOrientation="portrait" />
 
         <!-- 18 Notifications -->

@@ -1,7 +1,533 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 13 Search (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    13 Search. Pinned at the top: back arrow + grey search field ("omar" typed in it), the
+    filter chips and a divider. Below, a ScrollView with the static results: People (three
+    person rows + See all people), Groups (one group row with Join) and Recent searches.
+
+    Every result row is a horizontal LinearLayout: avatar, a text column with layout_weight 1
+    (so long text ellipsizes instead of pushing the right-hand button off screen), then the
+    optional button on the right. Rows have a fixed height and centre their content, which gives
+    the same row pitch as the design (62.5dp person rows, 44dp recent rows).
+    Measurements in dp come from design/screens/screen-13.png (dimens.xml, 13 Search section).
+
+    focusableInTouchMode on the root keeps the search field from grabbing focus (and showing a
+    blinking cursor) when the screen opens.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <!-- ===== Top row: back arrow + search field ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_bar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/Kinnect.IconButton"
+            android:contentDescription="@string/cd_back"
+            android:src="@drawable/ic_back" />
+
+        <!-- Grey pill: magnifier, the typed text and the round clear button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/input_height_search"
+            android:layout_marginStart="@dimen/search_field_start"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_chip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/search_field_padding"
+            android:paddingEnd="@dimen/search_clear_end">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_search"
+                app:tint="@color/text_grey" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/search_text_start"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/figtree_regular"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="0dp"
+                android:singleLine="true"
+                android:text="@string/search_query"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/text_body" />
+
+            <!-- Clear button: visual only. Grey circle (bg_circle_grey re-tinted) with a white X. -->
+            <ImageView
+                android:id="@+id/iv_clear"
+                android:layout_width="@dimen/search_clear"
+                android:layout_height="@dimen/search_clear"
+                android:background="@drawable/bg_circle_grey"
+                android:backgroundTint="@color/search_clear"
+                android:contentDescription="@string/cd_clear_search"
+                android:padding="@dimen/search_clear_padding"
+                android:src="@drawable/ic_close"
+                app:tint="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ===== Filter chips: "All" selected. The row scrolls sideways; Marketplace runs off the edge. ===== -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/search_chips_top"
+        android:layout_marginBottom="@dimen/search_chips_bottom"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/screen_margin"
+            android:paddingEnd="@dimen/screen_margin">
+
+            <TextView
+                style="@style/Kinnect.Chip.Selected"
+                android:layout_height="@dimen/chip_height_small"
+                android:text="@string/search_all" />
+
+            <TextView
+                style="@style/Kinnect.Chip"
+                android:layout_height="@dimen/chip_height_small"
+                android:layout_marginStart="@dimen/chip_gap"
+                android:text="@string/search_people" />
+
+            <TextView
+                style="@style/Kinnect.Chip"
+                android:layout_height="@dimen/chip_height_small"
+                android:layout_marginStart="@dimen/chip_gap"
+                android:text="@string/search_posts" />
+
+            <TextView
+                style="@style/Kinnect.Chip"
+                android:layout_height="@dimen/chip_height_small"
+                android:layout_marginStart="@dimen/chip_gap"
+                android:text="@string/search_groups" />
+
+            <TextView
+                style="@style/Kinnect.Chip"
+                android:layout_height="@dimen/chip_height_small"
+                android:layout_marginStart="@dimen/chip_gap"
+                android:text="@string/search_marketplace" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <View style="@style/Kinnect.Divider" />
+
+    <!-- ===== Scrolling results ===== -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- ===== People ===== -->
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/search_title_top"
+                android:includeFontPadding="false"
+                android:text="@string/search_people" />
+
+            <!-- Omar Farooq (friend: no button). Tapping a person opens their profile. -->
+            <LinearLayout
+                android:id="@+id/ll_person_omar_f"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_person_row"
+                android:layout_marginTop="@dimen/search_rows_top"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_48"
+                    android:layout_height="@dimen/avatar_48"
+                    android:backgroundTint="@color/avatar_of"
+                    android:text="@string/sample_initials_omar"
+                    android:textSize="@dimen/text_avatar_48" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_row_gap"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/sample_name_omar" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/search_subtitle_top"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/search_of_subtitle" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Omar Siddiqui + add-friend button (visual only) -->
+            <LinearLayout
+                android:id="@+id/ll_person_omar_s"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_person_row"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_48"
+                    android:layout_height="@dimen/avatar_48"
+                    android:backgroundTint="@color/avatar_os"
+                    android:text="@string/sample_initials_omar_s"
+                    android:textSize="@dimen/text_avatar_48" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_row_gap"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/sample_name_omar_s" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/search_subtitle_top"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/search_os_subtitle" />
+                </LinearLayout>
+
+                <!-- Light teal circle (bg_circle_grey re-tinted) with a teal person-plus icon -->
+                <ImageView
+                    android:layout_width="@dimen/circle_button"
+                    android:layout_height="@dimen/circle_button"
+                    android:background="@drawable/bg_circle_grey"
+                    android:backgroundTint="@color/teal_tint"
+                    android:contentDescription="@string/cd_add_friend"
+                    android:padding="@dimen/space_10"
+                    android:src="@drawable/ic_add_person"
+                    app:tint="@color/teal" />
+            </LinearLayout>
+
+            <!-- Omar Tariq + add-friend button (visual only) -->
+            <LinearLayout
+                android:id="@+id/ll_person_omar_t"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_person_row"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_48"
+                    android:layout_height="@dimen/avatar_48"
+                    android:backgroundTint="@color/avatar_ot"
+                    android:text="@string/sample_initials_omar_t"
+                    android:textSize="@dimen/text_avatar_48" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_row_gap"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/sample_name_omar_t" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/search_subtitle_top"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/search_ot_subtitle" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/circle_button"
+                    android:layout_height="@dimen/circle_button"
+                    android:background="@drawable/bg_circle_grey"
+                    android:backgroundTint="@color/teal_tint"
+                    android:contentDescription="@string/cd_add_friend"
+                    android:padding="@dimen/space_10"
+                    android:src="@drawable/ic_add_person"
+                    app:tint="@color/teal" />
+            </LinearLayout>
+
+            <!-- See all people: visual only -->
+            <Button
+                style="@style/Kinnect.Button.Grey"
+                android:layout_height="@dimen/button_height_small"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/search_see_all_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:text="@string/search_see_all_people" />
+
+            <!-- ===== Groups ===== -->
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/search_groups_top"
+                android:includeFontPadding="false"
+                android:text="@string/search_groups" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_person_row"
+                android:layout_marginTop="@dimen/search_rows_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <!-- Groups use a rounded square instead of a circle -->
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_48"
+                    android:layout_height="@dimen/avatar_48"
+                    android:background="@drawable/bg_avatar_square"
+                    android:backgroundTint="@color/avatar_op"
+                    android:text="@string/sample_initials_photography"
+                    android:textSize="@dimen/text_avatar_48" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_row_gap"
+                    android:layout_marginEnd="@dimen/search_join_gap"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/sample_group_photography" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/search_subtitle_top"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/search_op_subtitle" />
+                </LinearLayout>
+
+                <!-- Join: visual only -->
+                <Button
+                    style="@style/Kinnect.Button.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height_join"
+                    android:paddingStart="@dimen/join_padding"
+                    android:paddingEnd="@dimen/join_padding"
+                    android:text="@string/search_join"
+                    android:textSize="@dimen/text_label" />
+            </LinearLayout>
+
+            <!-- ===== Recent searches: clock circle, the search text, X (all visual only) ===== -->
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/search_recent_top"
+                android:includeFontPadding="false"
+                android:text="@string/search_recent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_recent_row"
+                android:layout_marginTop="@dimen/search_recent_rows_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/search_recent_end">
+
+                <ImageView
+                    android:layout_width="@dimen/circle_button"
+                    android:layout_height="@dimen/circle_button"
+                    android:background="@drawable/bg_circle_grey"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitCenter"
+                    android:padding="@dimen/space_8"
+                    android:src="@drawable/ic_clock"
+                    app:tint="@color/text_grey" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_row_gap"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/search_recent_1"
+                    android:textSize="@dimen/text_search_recent" />
+
+                <ImageView
+                    android:layout_width="@dimen/search_recent_row"
+                    android:layout_height="@dimen/search_recent_row"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/cd_remove_recent"
+                    android:padding="@dimen/space_16"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/text_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_recent_row"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/search_recent_end">
+
+                <ImageView
+                    android:layout_width="@dimen/circle_button"
+                    android:layout_height="@dimen/circle_button"
+                    android:background="@drawable/bg_circle_grey"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/space_8"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_clock"
+                    app:tint="@color/text_grey" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_row_gap"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/search_recent_2"
+                    android:textSize="@dimen/text_search_recent" />
+
+                <ImageView
+                    android:layout_width="@dimen/search_recent_row"
+                    android:layout_height="@dimen/search_recent_row"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/cd_remove_recent"
+                    android:padding="@dimen/space_16"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/text_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_recent_row"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/search_recent_end">
+
+                <ImageView
+                    android:layout_width="@dimen/circle_button"
+                    android:layout_height="@dimen/circle_button"
+                    android:background="@drawable/bg_circle_grey"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/space_8"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_clock"
+                    app:tint="@color/text_grey" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_row_gap"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/search_recent_3"
+                    android:textSize="@dimen/text_search_recent" />
+
+                <ImageView
+                    android:layout_width="@dimen/search_recent_row"
+                    android:layout_height="@dimen/search_recent_row"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/cd_remove_recent"
+                    android:padding="@dimen/space_16"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/text_dark" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
