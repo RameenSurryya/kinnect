@@ -1,7 +1,527 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 15 Profile (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    15 Profile (your own profile, Jacob West). Pinned at the top: back arrow, name and search.
+    Everything below scrolls: cover photo with the big JW avatar, name, friend count, bio,
+    the three buttons, the section pills, Details and the Friends tiles.
+
+    Overlaps: the cover and the avatar share a FrameLayout. The avatar frame starts 109dp below
+    the cover's top, so its top half sits on the cover and its bottom half below it. The white
+    ring is the frame's own white circle with the 130dp JW disc 4dp inside it. Each camera badge
+    is drawn last in its FrameLayout, at bottom|end, so it sits on top.
+
+    Text views use includeFontPadding="false", so the margins below are the real gaps.
+    Measurements in dp come from design/screens/screen-15.png (dimens.xml, 15 Profile section).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== Toolbar: back arrow, name, search ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/Kinnect.IconButton"
+            android:contentDescription="@string/cd_back"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/Kinnect.Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/sample_name_jacob" />
+
+        <!-- Search: visual only on this screen -->
+        <ImageView
+            android:id="@+id/iv_search"
+            style="@style/Kinnect.IconButton"
+            android:layout_marginEnd="@dimen/profile_search_end"
+            android:contentDescription="@string/cd_search"
+            android:padding="@dimen/profile_search_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_search" />
+    </LinearLayout>
+
+    <View style="@style/Kinnect.Divider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- ===== Cover photo + overlapping avatar ===== -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Cover: full width, fixed height; centerCrop shows the wide 2:1 crop -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_cover_height">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAccessibility="no"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ph_teal" />
+
+                    <!-- Camera badge on the cover (visual only) -->
+                    <ImageView
+                        android:layout_width="@dimen/profile_cover_badge"
+                        android:layout_height="@dimen/profile_cover_badge"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="@dimen/profile_cover_badge_end"
+                        android:layout_marginBottom="@dimen/profile_cover_badge_bottom"
+                        android:background="@drawable/bg_circle_grey"
+                        android:contentDescription="@string/cd_change_cover"
+                        android:padding="@dimen/profile_badge_padding"
+                        android:src="@drawable/ic_camera"
+                        app:tint="@color/text_dark" />
+                </FrameLayout>
+
+                <!-- Avatar: white circle (the ring) with the JW disc inside and the badge on top -->
+                <FrameLayout
+                    android:layout_width="@dimen/profile_avatar_frame"
+                    android:layout_height="@dimen/profile_avatar_frame"
+                    android:layout_marginStart="@dimen/profile_avatar_start"
+                    android:layout_marginTop="@dimen/profile_avatar_top"
+                    android:background="@drawable/bg_avatar_circle">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/profile_avatar_ring"
+                        android:backgroundTint="@color/avatar_jw"
+                        android:paddingBottom="@dimen/profile_initials_lift"
+                        android:text="@string/sample_initials_jacob"
+                        android:textSize="@dimen/text_avatar_130" />
+
+                    <!-- Camera badge on the avatar (visual only) -->
+                    <ImageView
+                        android:layout_width="@dimen/profile_avatar_badge"
+                        android:layout_height="@dimen/profile_avatar_badge"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="@dimen/profile_avatar_badge_end"
+                        android:layout_marginBottom="@dimen/profile_avatar_badge_bottom"
+                        android:background="@drawable/bg_camera_badge"
+                        android:contentDescription="@string/cd_change_profile_picture"
+                        android:padding="@dimen/profile_badge_padding"
+                        android:src="@drawable/ic_camera"
+                        app:tint="@color/text_dark" />
+                </FrameLayout>
+            </FrameLayout>
+
+            <!-- ===== Name, friend count, bio ===== -->
+            <TextView
+                style="@style/Kinnect.Text.ProfileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_name_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text="@string/sample_name_jacob" />
+
+            <!-- "834" bold + " friends" grey: two TextViews side by side -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_count_top"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Text.Body.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_friend_count" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_friends_word"
+                    android:textColor="@color/text_grey" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_bio_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:includeFontPadding="false"
+                android:text="@string/profile_bio" />
+
+            <!-- ===== Buttons: Add to story | Edit profile | ... =====
+                 The two labelled buttons share the width equally (layout_weight 1). -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_medium"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_buttons_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:orientation="horizontal">
+
+                <!-- Add to story: visual only -->
+                <LinearLayout
+                    android:id="@+id/ll_add_to_story"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_small"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_plus"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        style="@style/Kinnect.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/profile_button_icon_gap"
+                        android:fontFamily="@font/figtree_bold"
+                        android:singleLine="true"
+                        android:text="@string/profile_add_to_story"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <!-- Edit profile: opens Edit profile -->
+                <LinearLayout
+                    android:id="@+id/ll_edit_profile"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_button_gap"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_grey"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_edit"
+                        app:tint="@color/text_dark" />
+
+                    <TextView
+                        style="@style/Kinnect.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/profile_button_icon_gap"
+                        android:fontFamily="@font/figtree_bold"
+                        android:singleLine="true"
+                        android:text="@string/profile_edit_profile" />
+                </LinearLayout>
+
+                <!-- More: visual only -->
+                <ImageView
+                    android:id="@+id/iv_more"
+                    android:layout_width="@dimen/profile_more_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_button_gap"
+                    android:background="@drawable/bg_button_grey"
+                    android:contentDescription="@string/cd_more"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_more"
+                    app:tint="@color/text_dark" />
+            </LinearLayout>
+
+            <!-- ===== Section pills: Posts (selected) | Photos | Videos | Groups (visual only) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/chip_height_small"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_tabs_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Chip.Selected"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/profile_tab_padding"
+                    android:paddingEnd="@dimen/profile_tab_padding"
+                    android:text="@string/profile_tab_posts" />
+
+                <TextView
+                    style="@style/Kinnect.Chip"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_tab_gap"
+                    android:background="@null"
+                    android:paddingStart="@dimen/profile_tab_padding"
+                    android:paddingEnd="@dimen/profile_tab_padding"
+                    android:text="@string/profile_tab_photos"
+                    android:textColor="@color/text_grey" />
+
+                <TextView
+                    style="@style/Kinnect.Chip"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_tab_gap"
+                    android:background="@null"
+                    android:paddingStart="@dimen/profile_tab_padding"
+                    android:paddingEnd="@dimen/profile_tab_padding"
+                    android:text="@string/profile_tab_videos"
+                    android:textColor="@color/text_grey" />
+
+                <TextView
+                    style="@style/Kinnect.Chip"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_tab_gap"
+                    android:background="@null"
+                    android:paddingStart="@dimen/profile_tab_padding"
+                    android:paddingEnd="@dimen/profile_tab_padding"
+                    android:text="@string/profile_tab_groups"
+                    android:textColor="@color/text_grey" />
+            </LinearLayout>
+
+            <View
+                style="@style/Kinnect.Divider"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_divider_top"
+                android:layout_marginEnd="@dimen/screen_margin" />
+
+            <!-- ===== Details: icon + text rows, the value part in bold ===== -->
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_details_top"
+                android:includeFontPadding="false"
+                android:text="@string/profile_details" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_detail_row"
+                android:layout_marginTop="@dimen/profile_rows_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_clock"
+                    android:layout_height="@dimen/icon_size_clock"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_briefcase"
+                    app:tint="@color/text_dark" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/profile_detail_text_start"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_work_prefix" />
+
+                <TextView
+                    style="@style/Kinnect.Text.Body.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="@string/profile_work" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_detail_row"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_clock"
+                    android:layout_height="@dimen/icon_size_clock"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_graduation"
+                    app:tint="@color/text_dark" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/profile_detail_text_start"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_study_prefix" />
+
+                <TextView
+                    style="@style/Kinnect.Text.Body.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="@string/profile_study" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_detail_row"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_clock"
+                    android:layout_height="@dimen/icon_size_clock"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_pin"
+                    app:tint="@color/text_dark" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/profile_detail_text_start"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_lives_prefix" />
+
+                <TextView
+                    style="@style/Kinnect.Text.Body.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="@string/profile_lives" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_detail_row"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_clock"
+                    android:layout_height="@dimen/icon_size_clock"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_clock"
+                    app:tint="@color/text_dark" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/profile_detail_text_start"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_joined" />
+            </LinearLayout>
+
+            <!-- ===== Friends: title + "Find friends" link, count, three tiles ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_friends_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Text.SectionTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_friends" />
+
+                <!-- Find friends: visual only -->
+                <TextView
+                    style="@style/Kinnect.Text.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/profile_find_friends_top"
+                    android:includeFontPadding="false"
+                    android:text="@string/profile_find_friends" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_friends_count_top"
+                android:includeFontPadding="false"
+                android:text="@string/profile_friends_total"
+                android:textColor="@color/text_grey" />
+
+            <!-- Three square-ish friend tiles sharing the width (layout_weight 1 each) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_tile_height"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/profile_tiles_top"
+                android:layout_marginEnd="@dimen/profile_tiles_end"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_avatar_square"
+                    android:backgroundTint="@color/avatar_lm"
+                    android:text="@string/sample_initials_lina"
+                    android:textSize="@dimen/text_avatar_tile" />
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_tile_gap"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_avatar_square"
+                    android:backgroundTint="@color/avatar_ak"
+                    android:text="@string/sample_initials_aisha"
+                    android:textSize="@dimen/text_avatar_tile" />
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_tile_gap"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_avatar_square"
+                    android:backgroundTint="@color/avatar_of"
+                    android:text="@string/sample_initials_omar"
+                    android:textSize="@dimen/text_avatar_tile" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

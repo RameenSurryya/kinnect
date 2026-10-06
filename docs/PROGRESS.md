@@ -12,7 +12,7 @@
 
 - [x] 06 Comments   - [x] 07 Create post   - [x] 08 Photo picker   - [x] 09 Camera   - [x] 10 Story editor
 
-- [x] 11 Story viewer   - [x] 12 Your story   - [x] 13 Search   - [x] 14 Friends   - [ ] 15 Profile
+- [x] 11 Story viewer   - [x] 12 Your story   - [x] 13 Search   - [x] 14 Friends   - [x] 15 Profile
 
 - [ ] 16 Edit profile   - [ ] 17 Other profile   - [ ] 18 Notifications   - [ ] 19 Menu   - [ ] 20 Chats
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Camera badge on the profile avatar (15): a grey disc inside a 2dp white ring, so it
+     stands out where it overlaps the teal JW circle. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- White disc: only its 2dp edge stays visible -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+    <!-- Grey disc inset by the ring width -->
+    <item
+        android:bottom="@dimen/profile_avatar_badge_ring"
+        android:left="@dimen/profile_avatar_badge_ring"
+        android:right="@dimen/profile_avatar_badge_ring"
+        android:top="@dimen/profile_avatar_badge_ring">
+        <shape android:shape="oval">
+            <solid android:color="@color/chip_fill" />
+        </shape>
+    </item>
+</layer-list>

@@ -284,4 +284,28 @@
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>
+
+    <!-- 15 Profile (static sample profile of Jacob West). Quoted strings keep their end space. -->
+    <string name="cd_change_cover">Change cover photo</string>
+    <string name="cd_change_profile_picture">Change profile picture</string>
+    <string name="profile_friend_count" translatable="false">834</string>
+    <string name="profile_friends_word">" friends"</string>
+    <string name="profile_bio">Digital goodies designer. Everything is designed.</string>
+    <string name="profile_add_to_story">Add to story</string>
+    <string name="profile_edit_profile">Edit profile</string>
+    <string name="profile_tab_posts">Posts</string>
+    <string name="profile_tab_photos">Photos</string>
+    <string name="profile_tab_videos">Videos</string>
+    <string name="profile_tab_groups">Groups</string>
+    <string name="profile_details">Details</string>
+    <string name="profile_work_prefix">"Designer at "</string>
+    <string name="profile_work" translatable="false">Pixsellz</string>
+    <string name="profile_study_prefix">"Studied at "</string>
+    <string name="profile_study" translatable="false">FAST-NUCES</string>
+    <string name="profile_lives_prefix">"Lives in "</string>
+    <string name="profile_lives" translatable="false">Karachi, Pakistan</string>
+    <string name="profile_joined">Joined March 2019</string>
+    <string name="profile_friends">Friends</string>
+    <string name="profile_find_friends">Find friends</string>
+    <string name="profile_friends_total">834 friends</string>
 </resources>
