@@ -20,5 +20,5 @@
 
 - [x] Navigation / back stack audit   - [x] Responsive + accessibility pass
 
-- [ ] Espresso test 1 (multi-step)   - [ ] Espresso test 2 (login â†’ menu â†’ logout)
+- [x] Espresso test 1 (multi-step)   - [x] Espresso test 2 (login â†’ menu â†’ logout)
 

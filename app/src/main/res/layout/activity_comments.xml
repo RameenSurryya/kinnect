@@ -33,6 +33,7 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/tv_comments_title"
             style="@style/Kinnect.Text.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
