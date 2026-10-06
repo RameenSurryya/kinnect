@@ -1091,4 +1091,97 @@
         <item name="android:scaleType">fitCenter</item>
         <item name="tint">@color/white</item>
     </style>
+
+    <!-- ===== Marketplace (23) ===== -->
+
+    <!-- Sell / Categories: grey 35dp pill sharing the width; holds an icon and a label. -->
+    <style name="Kinnect.MarketPill" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/chip_height_large</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_chip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Kinnect.MarketPill.Icon" parent="">
+        <item name="android:layout_width">@dimen/icon_size_small</item>
+        <item name="android:layout_height">@dimen/icon_size_small</item>
+        <item name="android:layout_marginEnd">@dimen/market_chip_icon_gap</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="tint">@color/text_dark</item>
+    </style>
+
+    <style name="Kinnect.MarketPill.Label" parent="Kinnect.Text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- One product: photo on top, then price, title and location. Shares the row width. -->
+    <style name="Kinnect.Product" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Square placeholder photo with 12dp corners (the activity turns on clipToOutline). -->
+    <style name="Kinnect.Product.Photo" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/bg_photo_rounded</item>
+        <item name="android:contentDescription">@string/cd_photo</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <!-- Orange "JUST LISTED" label over the photo's top-left corner (FrameLayout overlap). -->
+    <style name="Kinnect.Product.Label" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/market_label_height</item>
+        <item name="android:layout_margin">@dimen/market_label_margin</item>
+        <item name="android:background">@drawable/bg_just_listed</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/market_label_padding</item>
+        <item name="android:paddingEnd">@dimen/market_label_padding</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_tiny</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:text">@string/market_just_listed</item>
+    </style>
+
+    <!-- "Rs 45,000": bold, dark. -->
+    <style name="Kinnect.Text.Price">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/market_price_top</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_price</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- "Road bike, 21-speed": regular body text, one line. -->
+    <style name="Kinnect.Text.ProductTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- "Clifton": grey caption under the title. -->
+    <style name="Kinnect.Text.Caption.Place">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/market_place_top</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 </resources>

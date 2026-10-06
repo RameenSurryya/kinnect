@@ -441,4 +441,24 @@
     <string name="cd_mute">Mute</string>
     <string name="cd_end_call">End call</string>
     <string name="cd_speaker">Speaker</string>
+
+    <!-- 23 Marketplace -->
+    <string name="title_marketplace">Marketplace</string>
+    <string name="market_sell">Sell</string>
+    <string name="market_categories">Categories</string>
+    <string name="market_todays_picks">Today\'s picks</string>
+    <string name="market_location" translatable="false">Karachi · 40 km</string>
+    <string name="market_just_listed">JUST LISTED</string>
+    <string name="market_price_bike" translatable="false">Rs 45,000</string>
+    <string name="market_title_bike" translatable="false">Road bike, 21-speed</string>
+    <string name="market_place_bike" translatable="false">Clifton</string>
+    <string name="market_price_chair" translatable="false">Rs 8,500</string>
+    <string name="market_title_chair" translatable="false">Rattan armchair</string>
+    <string name="market_place_chair" translatable="false">DHA Phase 6</string>
+    <string name="market_price_desk" translatable="false">Rs 15,000</string>
+    <string name="market_title_desk" translatable="false">Solid wood study desk</string>
+    <string name="market_place_desk" translatable="false">Gulshan</string>
+    <string name="market_price_pots" translatable="false">Rs 3,200</string>
+    <string name="market_title_pots" translatable="false">Ceramic plant pots, set of 3</string>
+    <string name="market_place_pots" translatable="false">Saddar</string>
 </resources>

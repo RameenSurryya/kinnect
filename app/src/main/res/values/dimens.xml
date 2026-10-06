@@ -841,4 +841,21 @@
     <dimen name="text_call_name">28sp</dimen>             <!-- "Ammi", Bricolage ExtraBold -->
     <dimen name="text_call_timer">17sp</dimen>            <!-- "03:12" -->
     <dimen name="text_avatar_144">52sp</dimen>            <!-- 0.36 x 144dp -->
+
+    <!-- 23 Marketplace (screen-23.png, dp from the top of the screen) -->
+    <dimen name="market_chips_top">11dp</dimen>           <!-- tab divider (y 97) to the pills (y 108) -->
+    <dimen name="market_chip_icon_gap">6dp</dimen>        <!-- pencil / grid icon to the label -->
+    <dimen name="market_title_top">16dp</dimen>           <!-- pills to "Today's picks" -->
+    <dimen name="market_pin_gap">5dp</dimen>              <!-- pin icon to "Karachi" -->
+    <dimen name="icon_size_pin">14dp</dimen>              <!-- pin glyph 9 x 11dp -->
+    <dimen name="market_grid_top">13dp</dimen>            <!-- "Today's picks" to the first photos (y 194) -->
+    <dimen name="market_gap">8dp</dimen>                  <!-- between the two columns -->
+    <dimen name="market_row_gap">16dp</dimen>             <!-- location line to the next photos -->
+    <dimen name="market_photo_height">161dp</dimen>       <!-- square on a 360dp phone: (360 - 2 x 16 - 8) / 2 -->
+    <dimen name="market_price_top">7dp</dimen>            <!-- photo to the price -->
+    <dimen name="market_place_top">2dp</dimen>            <!-- title to the location -->
+    <dimen name="market_label_margin">7.5dp</dimen>       <!-- JUST LISTED from the photo's top-left corner -->
+    <dimen name="market_label_height">18.5dp</dimen>
+    <dimen name="market_label_padding">7.5dp</dimen>
+    <dimen name="text_price">14sp</dimen>                 <!-- "Rs 45,000" -->
 </resources>

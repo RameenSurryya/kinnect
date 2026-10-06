@@ -1,7 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 23 Marketplace (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    23 Marketplace. Pinned at the top: the shared top bar ("Marketplace", small search /
+    messenger circles via ThemeOverlay.Kinnect.TopBarSmall) and the five tabs (Marketplace
+    active, set in MarketplaceActivity). The rest scrolls: the Sell / Categories pills, the
+    "Today's picks" header with the location, and a 2 x 2 product grid.
+
+    Product grid = two horizontal LinearLayouts (rows), each holding two products with
+    layout_weight 1, so both columns share the width on every phone. A product is a vertical
+    LinearLayout: a FrameLayout with the photo (and, on two of them, the orange "JUST LISTED"
+    label on top of it), then price, title and location.
+    Measurements in dp come from design/screens/screen-23.png (dimens.xml, 23 Marketplace).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Pinned: "Marketplace" + small search / messenger circles -->
+    <include
+        layout="@layout/include_top_bar"
+        android:theme="@style/ThemeOverlay.Kinnect.TopBarSmall" />
+
+    <!-- Pinned: five tabs, Marketplace active -->
+    <include layout="@layout/include_top_tabs" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_margin"
+            android:paddingEnd="@dimen/screen_margin"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- ===== Sell / Categories: two equal grey pills (visual only) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/market_chips_top"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/Kinnect.MarketPill">
+
+                    <ImageView
+                        style="@style/Kinnect.MarketPill.Icon"
+                        android:src="@drawable/ic_edit" />
+
+                    <TextView
+                        style="@style/Kinnect.MarketPill.Label"
+                        android:text="@string/market_sell" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Kinnect.MarketPill"
+                    android:layout_marginStart="@dimen/market_gap">
+
+                    <ImageView
+                        style="@style/Kinnect.MarketPill.Icon"
+                        android:src="@drawable/ic_apps" />
+
+                    <TextView
+                        style="@style/Kinnect.MarketPill.Label"
+                        android:text="@string/market_categories" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== "Today's picks" ...... pin "Karachi · 40 km" (baseline aligned) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/market_title_top"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Text.SectionTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/market_todays_picks" />
+
+                <!-- Pin + location. baselineAlignedChildIndex="1" lines the text (child 1)
+                     up with the title's baseline; the pin is centred on the text. -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:baselineAlignedChildIndex="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_pin"
+                        android:layout_height="@dimen/icon_size_pin"
+                        android:layout_marginEnd="@dimen/market_pin_gap"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_pin"
+                        app:tint="@color/teal" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_bold"
+                        android:includeFontPadding="false"
+                        android:text="@string/market_location"
+                        android:textSize="@dimen/text_label" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Row 1: road bike (JUST LISTED, sage) | rattan armchair (rose) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/market_grid_top"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/Kinnect.Product">
+
+                    <!-- FrameLayout: the label overlaps the photo's top-left corner -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/market_photo_height">
+
+                        <ImageView
+                            android:id="@+id/iv_product_bike"
+                            style="@style/Kinnect.Product.Photo"
+                            android:src="@drawable/ph_sage" />
+
+                        <TextView style="@style/Kinnect.Product.Label" />
+                    </FrameLayout>
+
+                    <TextView
+                        style="@style/Kinnect.Text.Price"
+                        android:text="@string/market_price_bike" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.ProductTitle"
+                        android:text="@string/market_title_bike" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption.Place"
+                        android:text="@string/market_place_bike" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Kinnect.Product"
+                    android:layout_marginStart="@dimen/market_gap">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/market_photo_height">
+
+                        <ImageView
+                            android:id="@+id/iv_product_chair"
+                            style="@style/Kinnect.Product.Photo"
+                            android:src="@drawable/ph_rose" />
+                    </FrameLayout>
+
+                    <TextView
+                        style="@style/Kinnect.Text.Price"
+                        android:text="@string/market_price_chair" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.ProductTitle"
+                        android:text="@string/market_title_chair" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption.Place"
+                        android:text="@string/market_place_chair" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Row 2: study desk (sky) | plant pots (JUST LISTED, sand) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/market_row_gap"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/Kinnect.Product">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/market_photo_height">
+
+                        <ImageView
+                            android:id="@+id/iv_product_desk"
+                            style="@style/Kinnect.Product.Photo"
+                            android:src="@drawable/ph_sky" />
+                    </FrameLayout>
+
+                    <TextView
+                        style="@style/Kinnect.Text.Price"
+                        android:text="@string/market_price_desk" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.ProductTitle"
+                        android:text="@string/market_title_desk" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption.Place"
+                        android:text="@string/market_place_desk" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Kinnect.Product"
+                    android:layout_marginStart="@dimen/market_gap">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/market_photo_height">
+
+                        <ImageView
+                            android:id="@+id/iv_product_pots"
+                            style="@style/Kinnect.Product.Photo"
+                            android:src="@drawable/ph_sand" />
+
+                        <TextView style="@style/Kinnect.Product.Label" />
+                    </FrameLayout>
+
+                    <TextView
+                        style="@style/Kinnect.Text.Price"
+                        android:text="@string/market_price_pots" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.ProductTitle"
+                        android:text="@string/market_title_pots" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption.Place"
+                        android:text="@string/market_place_pots" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
