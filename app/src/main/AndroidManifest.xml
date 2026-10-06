@@ -69,6 +69,11 @@
             android:name=".ui.home.CameraActivity"
             android:screenOrientation="portrait" />
 
+        <!-- 10 Story editor -->
+        <activity
+            android:name=".ui.home.StoryEditorActivity"
+            android:screenOrientation="portrait" />
+
         <!-- 11 Story viewer -->
         <activity
             android:name=".ui.home.StoryViewerActivity"

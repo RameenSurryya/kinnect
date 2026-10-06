@@ -42,8 +42,8 @@ star star
 send paper-plane-tilt
 heart heart
 text_aa text-aa
-music music-notes
-sparkle sparkle
+music music-notes-simple
+sparkle star-four
 brightness sun
 create_reel custom
 phone phone
@@ -60,3 +60,4 @@ memories clock-counter-clockwise
 lock lock
 like_filled thumbs-up-fill
 heart_filled heart-fill
+arrow_right arrow-right

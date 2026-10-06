@@ -465,6 +465,26 @@
     <dimen name="camera_mode_underline">2dp</dimen>
     <dimen name="camera_mode_underline_top">6.5dp</dimen>
 
+    <!-- Story editor (10); the viewport and the round buttons are shared with the camera (09) -->
+    <dimen name="editor_button_side">4dp</dimen>       <!-- circles 8dp from the viewport sides -->
+    <dimen name="editor_button_top">5.5dp</dimen>      <!-- circles 9.5dp below the viewport top -->
+    <dimen name="editor_button_overlap">-2dp</dimen>   <!-- 48dp touch areas, circles 6dp apart -->
+    <dimen name="editor_sparkle_padding">16dp</dimen>  <!-- (48 - 16) / 2: the star is drawn smaller -->
+    <dimen name="text_editor_aa">15sp</dimen>          <!-- bold "Aa" in its circle -->
+    <dimen name="sticker_height">36dp</dimen>
+    <dimen name="sticker_padding">14dp</dimen>         <!-- 175dp wide with the text -->
+    <dimen name="sticker_start">22.5dp</dimen>         <!-- sticker centre 110dp from the viewport left -->
+    <dimen name="sticker_below_centre">74dp</dimen>    <!-- sticker centre 74dp below the viewport centre -->
+    <dimen name="text_sticker">20sp</dimen>
+    <dimen name="editor_bar_vertical">22.5dp</dimen>   <!-- 44dp pills centred in the 89dp black strip -->
+    <dimen name="editor_bar_start">12dp</dimen>
+    <dimen name="editor_bar_end">10dp</dimen>
+    <dimen name="editor_bar_gap">8dp</dimen>           <!-- between the pills and the arrow -->
+    <dimen name="story_pill_icon_gap">7dp</dimen>      <!-- avatar / star circle to the label -->
+    <dimen name="text_avatar_24">8.5sp</dimen>         <!-- 0.36 x 24dp -->
+    <dimen name="close_friends_star_padding">5dp</dimen> <!-- (24 - 14) / 2: a 14dp star -->
+    <dimen name="next_arrow_padding">12dp</dimen>      <!-- (44 - 20) / 2: a 20dp arrow -->
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->

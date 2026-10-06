@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark grey pill: "Your story" / "Close friends" (10). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/story_pill" />
+    <corners android:radius="@dimen/radius_pill" />
+</shape>

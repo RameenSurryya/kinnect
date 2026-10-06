@@ -28,7 +28,7 @@ ic_bookmark=bookmark-simple
 
 Camera/story: ic_flash=lightning, ic_flip=arrows-clockwise (two arrows as in 09; was camera-rotate), ic_star=star, ic_send=paper-plane-tilt,
 
-ic_heart=heart, ic_text_aa=text-aa, ic_music=music-notes, ic_sparkle=sparkle, ic_brightness=sun,
+ic_heart=heart, ic_text_aa=text-aa, ic_music=music-notes-simple (one beam as in 10; was music-notes), ic_sparkle=star-four (as in 10; was sparkle), ic_brightness=sun,
 
 ic_create_reel=hand-drawn (see Custom; film-slate had no play triangle)
 
@@ -39,6 +39,7 @@ ic_speaker=speaker-high, ic_transcript=article
 Menu: ic_logout=sign-out, ic_help=question, ic_settings=sun, ic_apps=squares-four, ic_memories=clock-counter-clockwise
 
 Added after checking the screens: ic_lock=lock ("End-to-end encrypted", screen 22),
+ic_arrow_right=arrow-right (next button, screen 10),
 ic_plus=plus (white "+" on the Create story card, screen 04).
 Filled variants (Phosphor Fill): ic_like_filled=thumbs-up-fill, ic_heart_filled=heart-fill.
 No ic_home_filled: the active tab in the design is still an outline icon (teal).

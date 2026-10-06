@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Orange-red "Saturday plans" sticker (10): 6dp corners. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/accent_orange" />
+    <corners android:radius="@dimen/radius_label" />
+</shape>

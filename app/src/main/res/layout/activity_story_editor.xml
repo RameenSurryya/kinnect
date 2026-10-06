@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    10 Story editor. Visual only: the photo is the ph_sage placeholder.
+
+    Near-black screen with two parts:
+     1. The rounded viewport (FrameLayout, weight 1), same as the camera (09): the photo,
+        the close circle (top-left), five tool circles (top-right) and the rotated
+        "Saturday plans" sticker. StoryEditorActivity turns on clipToOutline for the corners.
+     2. The bottom bar: "Your story" and "Close friends" pills (equal weights, content
+        centred) and the teal next arrow.
+
+    The tool circles are 48dp touch areas with a 40dp visible circle; the circles are 6dp
+    apart in the design, so the 48dp views overlap by 2dp (negative margin).
+    The sticker is a TextView turned 3 degrees clockwise with android:rotation (the right
+    end is lower in the PNG). It is centred vertically and pushed 74dp down, so it keeps its
+    place on the picture (centerCrop also centres the picture) on taller or shorter phones.
+    Measurements in dp come from design/screens/screen-10.png (dimens.xml, Story editor section).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/camera_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== 1. Rounded viewport ===== -->
+    <FrameLayout
+        android:id="@+id/fl_viewport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/camera_frame_margin"
+        android:layout_marginTop="@dimen/camera_frame_margin"
+        android:layout_marginEnd="@dimen/camera_frame_margin"
+        android:layout_weight="1"
+        android:background="@drawable/bg_camera_frame">
+
+        <!-- The photo being edited: tall story crop of the square placeholder -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/cd_preview"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ph_sage" />
+
+        <!-- Close: back to the camera -->
+        <ImageView
+            android:id="@+id/iv_close"
+            style="@style/Kinnect.CameraButton"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="@dimen/editor_button_side"
+            android:layout_marginTop="@dimen/editor_button_top"
+            android:backgroundTint="@color/photo_button"
+            android:contentDescription="@string/cd_close"
+            android:src="@drawable/ic_close" />
+
+        <!-- Editing tools (visual only): tag people, text, stickers, music, effects -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/editor_button_top"
+            android:layout_marginEnd="@dimen/editor_button_side"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/Kinnect.CameraButton"
+                android:backgroundTint="@color/photo_button"
+                android:contentDescription="@string/cd_tag_people"
+                android:src="@drawable/ic_add_person" />
+
+            <!-- "Aa" is bold text in the design, not an outline icon -->
+            <TextView
+                android:layout_width="@dimen/camera_button"
+                android:layout_height="@dimen/camera_button"
+                android:layout_marginStart="@dimen/editor_button_overlap"
+                android:background="@drawable/bg_camera_button"
+                android:backgroundTint="@color/photo_button"
+                android:contentDescription="@string/cd_add_text"
+                android:fontFamily="@font/figtree_bold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/editor_aa"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_editor_aa" />
+
+            <ImageView
+                style="@style/Kinnect.CameraButton"
+                android:layout_marginStart="@dimen/editor_button_overlap"
+                android:backgroundTint="@color/photo_button"
+                android:contentDescription="@string/cd_stickers"
+                android:src="@drawable/ic_smile" />
+
+            <ImageView
+                style="@style/Kinnect.CameraButton"
+                android:layout_marginStart="@dimen/editor_button_overlap"
+                android:backgroundTint="@color/photo_button"
+                android:contentDescription="@string/cd_music"
+                android:src="@drawable/ic_music" />
+
+            <ImageView
+                style="@style/Kinnect.CameraButton"
+                android:layout_marginStart="@dimen/editor_button_overlap"
+                android:backgroundTint="@color/photo_button"
+                android:contentDescription="@string/cd_effects_sparkle"
+                android:padding="@dimen/editor_sparkle_padding"
+                android:src="@drawable/ic_sparkle" />
+        </LinearLayout>
+
+        <!-- Rotated text sticker -->
+        <TextView
+            android:id="@+id/tv_sticker"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/sticker_height"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="@dimen/sticker_start"
+            android:layout_marginTop="@dimen/sticker_below_centre"
+            android:background="@drawable/bg_sticker"
+            android:fontFamily="@font/bricolage_grotesque_extrabold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingStart="@dimen/sticker_padding"
+            android:paddingEnd="@dimen/sticker_padding"
+            android:rotation="3"
+            android:singleLine="true"
+            android:text="@string/editor_sticker"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_sticker" />
+    </FrameLayout>
+
+    <!-- ===== 2. Bottom bar ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="@dimen/editor_bar_start"
+        android:layout_marginTop="@dimen/editor_bar_vertical"
+        android:layout_marginEnd="@dimen/editor_bar_end"
+        android:layout_marginBottom="@dimen/editor_bar_vertical"
+        android:orientation="horizontal">
+
+        <!-- "Your story": opens the posted story -->
+        <LinearLayout
+            android:id="@+id/ll_your_story"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_story_pill"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Kinnect.Avatar"
+                android:layout_width="@dimen/avatar_24"
+                android:layout_height="@dimen/avatar_24"
+                android:backgroundTint="@color/avatar_jw"
+                android:importantForAccessibility="no"
+                android:text="@string/sample_initials_jacob"
+                android:textSize="@dimen/text_avatar_24" />
+
+            <TextView
+                style="@style/Kinnect.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/story_pill_icon_gap"
+                android:fontFamily="@font/figtree_bold"
+                android:singleLine="true"
+                android:text="@string/editor_your_story"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_label" />
+        </LinearLayout>
+
+        <!-- "Close friends" (visual only) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/editor_bar_gap"
+            android:layout_weight="1"
+            android:background="@drawable/bg_story_pill"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/avatar_24"
+                android:layout_height="@dimen/avatar_24"
+                android:background="@drawable/bg_avatar_circle"
+                android:backgroundTint="@color/online_green"
+                android:importantForAccessibility="no"
+                android:padding="@dimen/close_friends_star_padding"
+                android:src="@drawable/ic_star"
+                app:tint="@color/white" />
+
+            <TextView
+                style="@style/Kinnect.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/story_pill_icon_gap"
+                android:fontFamily="@font/figtree_bold"
+                android:singleLine="true"
+                android:text="@string/editor_close_friends"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_label" />
+        </LinearLayout>
+
+        <!-- Next: share and open the posted story -->
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="@dimen/circle_button_large"
+            android:layout_height="@dimen/circle_button_large"
+            android:layout_marginStart="@dimen/editor_bar_gap"
+            android:background="@drawable/bg_circle_teal"
+            android:contentDescription="@string/cd_share_story"
+            android:padding="@dimen/next_arrow_padding"
+            android:src="@drawable/ic_arrow_right"
+            app:tint="@color/white" />
+    </LinearLayout>
+</LinearLayout>
