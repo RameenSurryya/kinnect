@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    16 Edit profile. Pinned at the top: Cancel, "Edit profile" and Save, then a divider.
+    Everything below scrolls: Profile picture (JW avatar), Cover photo (rounded wide photo with
+    a white camera badge), the form rows (Name, Username, Website, Bio), the professional mode
+    link and Private information (Email, Phone, Gender).
+
+    Each form row is a horizontal LinearLayout (style Kinnect.EditRow): a fixed-width label
+    column and an EditText that fills the rest. The thin line under each value starts at the
+    value column (style Kinnect.EditRow.Line), as in the design.
+    The cover photo is rounded by its FrameLayout (bg_photo_rounded + clipToOutline set in the
+    activity); the badge is drawn last, at bottom|end, so it sits on top of the photo.
+
+    focusableInTouchMode on the root keeps the first field from grabbing focus (and opening the
+    keyboard) when the screen opens. Text views use includeFontPadding="false".
+    Measurements in dp come from design/screens/screen-16.png (dimens.xml, 16 Edit profile).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <!-- ===== Toolbar: Cancel | Edit profile | Save =====
+         The title takes the space between the two buttons (layout_weight 1) and centres in it. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/Kinnect.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/screen_margin"
+            android:paddingEnd="@dimen/space_8"
+            android:text="@string/edit_cancel"
+            android:textSize="@dimen/text_name" />
+
+        <TextView
+            style="@style/Kinnect.Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/edit_title" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            style="@style/Kinnect.Text.Link"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:fontFamily="@font/figtree_bold"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/space_8"
+            android:paddingEnd="@dimen/screen_margin"
+            android:text="@string/edit_save"
+            android:textSize="@dimen/text_name" />
+    </LinearLayout>
+
+    <View style="@style/Kinnect.Divider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- ===== Profile picture: title + Edit, centred JW avatar ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/edit_section_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Text.SectionTitle.Small"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/edit_profile_picture" />
+
+                <!-- Edit: visual only -->
+                <TextView
+                    style="@style/Kinnect.Text.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_link_top"
+                    android:contentDescription="@string/cd_edit_profile_picture"
+                    android:includeFontPadding="false"
+                    android:text="@string/edit_link" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.Avatar"
+                android:layout_width="@dimen/avatar_103"
+                android:layout_height="@dimen/avatar_103"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/edit_avatar_top"
+                android:backgroundTint="@color/avatar_jw"
+                android:text="@string/sample_initials_jacob"
+                android:textSize="@dimen/text_avatar_103" />
+
+            <!-- ===== Cover photo: title + Edit, rounded wide photo with the camera badge ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/edit_cover_title_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Text.SectionTitle.Small"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/edit_cover_photo" />
+
+                <!-- Edit: visual only -->
+                <TextView
+                    style="@style/Kinnect.Text.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_link_top"
+                    android:contentDescription="@string/cd_edit_cover_photo"
+                    android:includeFontPadding="false"
+                    android:text="@string/edit_link" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_cover"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_cover_height"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/edit_cover_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:background="@drawable/bg_photo_rounded">
+
+                <!-- centerCrop of the square picture in a 3:1 frame: only the sun's bottom shows -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ph_teal" />
+
+                <!-- White camera circle (visual only) -->
+                <ImageView
+                    android:layout_width="@dimen/profile_cover_badge"
+                    android:layout_height="@dimen/profile_cover_badge"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/edit_cover_badge_margin"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:contentDescription="@string/cd_change_cover"
+                    android:padding="@dimen/profile_badge_padding"
+                    android:src="@drawable/ic_camera"
+                    app:tint="@color/text_dark" />
+            </FrameLayout>
+
+            <View
+                style="@style/Kinnect.Divider"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/edit_divider_top"
+                android:layout_marginEnd="@dimen/screen_margin" />
+
+            <!-- ===== Public details ===== -->
+            <LinearLayout
+                style="@style/Kinnect.EditRow"
+                android:layout_marginTop="@dimen/edit_rows_top">
+
+                <TextView
+                    style="@style/Kinnect.EditRow.Label"
+                    android:includeFontPadding="false"
+                    android:labelFor="@id/et_name"
+                    android:text="@string/edit_label_name" />
+
+                <EditText
+                    android:id="@+id/et_name"
+                    style="@style/Kinnect.EditRow.Value"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:text="@string/sample_name_jacob" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.EditRow.Line" />
+
+            <LinearLayout style="@style/Kinnect.EditRow">
+
+                <TextView
+                    style="@style/Kinnect.EditRow.Label"
+                    android:includeFontPadding="false"
+                    android:labelFor="@id/et_username"
+                    android:text="@string/edit_label_username" />
+
+                <EditText
+                    android:id="@+id/et_username"
+                    style="@style/Kinnect.EditRow.Value"
+                    android:importantForAutofill="no"
+                    android:text="@string/edit_username" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.EditRow.Line" />
+
+            <LinearLayout style="@style/Kinnect.EditRow">
+
+                <TextView
+                    style="@style/Kinnect.EditRow.Label"
+                    android:includeFontPadding="false"
+                    android:labelFor="@id/et_website"
+                    android:text="@string/edit_label_website" />
+
+                <!-- Empty field: shows the grey hint "Website" -->
+                <EditText
+                    android:id="@+id/et_website"
+                    style="@style/Kinnect.EditRow.Value"
+                    android:hint="@string/edit_label_website"
+                    android:importantForAutofill="no"
+                    android:inputType="textUri" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.EditRow.Line" />
+
+            <LinearLayout style="@style/Kinnect.EditRow">
+
+                <TextView
+                    style="@style/Kinnect.EditRow.Label"
+                    android:includeFontPadding="false"
+                    android:labelFor="@id/et_bio"
+                    android:text="@string/edit_label_bio" />
+
+                <EditText
+                    android:id="@+id/et_bio"
+                    style="@style/Kinnect.EditRow.Value"
+                    android:importantForAutofill="no"
+                    android:text="@string/edit_bio" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.EditRow.Line" />
+
+            <!-- Switch to professional mode: visual only -->
+            <TextView
+                style="@style/Kinnect.Text.Link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/edit_switch_top"
+                android:fontFamily="@font/figtree_bold"
+                android:includeFontPadding="false"
+                android:text="@string/edit_switch_professional" />
+
+            <!-- ===== Private information ===== -->
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/edit_private_top"
+                android:includeFontPadding="false"
+                android:text="@string/edit_private_information" />
+
+            <LinearLayout
+                style="@style/Kinnect.EditRow"
+                android:layout_marginTop="@dimen/edit_private_rows_top">
+
+                <TextView
+                    style="@style/Kinnect.EditRow.Label"
+                    android:includeFontPadding="false"
+                    android:labelFor="@id/et_email"
+                    android:text="@string/edit_label_email" />
+
+                <EditText
+                    android:id="@+id/et_email"
+                    style="@style/Kinnect.EditRow.Value"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/edit_email" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.EditRow.Line" />
+
+            <LinearLayout style="@style/Kinnect.EditRow">
+
+                <TextView
+                    style="@style/Kinnect.EditRow.Label"
+                    android:includeFontPadding="false"
+                    android:labelFor="@id/et_phone"
+                    android:text="@string/edit_label_phone" />
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    style="@style/Kinnect.EditRow.Value"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:text="@string/edit_phone" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.EditRow.Line" />
+
+            <!-- Gender is a fixed value here (not typed), so a plain TextView -->
+            <LinearLayout style="@style/Kinnect.EditRow">
+
+                <TextView
+                    style="@style/Kinnect.EditRow.Label"
+                    android:includeFontPadding="false"
+                    android:text="@string/edit_label_gender" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:letterSpacing="-0.01"
+                    android:singleLine="true"
+                    android:text="@string/edit_gender"
+                    android:textSize="@dimen/text_name" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.EditRow.Line" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

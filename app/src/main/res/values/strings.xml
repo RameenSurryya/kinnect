@@ -308,4 +308,28 @@
     <string name="profile_friends">Friends</string>
     <string name="profile_find_friends">Find friends</string>
     <string name="profile_friends_total">834 friends</string>
+
+    <!-- 16 Edit profile (static sample values) -->
+    <string name="edit_cancel">Cancel</string>
+    <string name="edit_title">Edit profile</string>
+    <string name="edit_save">Save</string>
+    <string name="edit_profile_picture">Profile picture</string>
+    <string name="edit_cover_photo">Cover photo</string>
+    <string name="edit_link">Edit</string>
+    <string name="cd_edit_profile_picture">Edit profile picture</string>
+    <string name="cd_edit_cover_photo">Edit cover photo</string>
+    <string name="edit_label_name">Name</string>
+    <string name="edit_label_username">Username</string>
+    <string name="edit_label_website">Website</string>
+    <string name="edit_label_bio">Bio</string>
+    <string name="edit_label_email">Email</string>
+    <string name="edit_label_phone">Phone</string>
+    <string name="edit_label_gender">Gender</string>
+    <string name="edit_username" translatable="false">jacob.west</string>
+    <string name="edit_bio">Digital goodies designer.</string>
+    <string name="edit_email" translatable="false">jacob.west@mail.com</string>
+    <string name="edit_phone" translatable="false">+92 300 1234567</string>
+    <string name="edit_gender">Male</string>
+    <string name="edit_switch_professional">Switch to professional mode</string>
+    <string name="edit_private_information">Private information</string>
 </resources>

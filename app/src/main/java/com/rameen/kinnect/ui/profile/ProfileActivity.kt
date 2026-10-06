@@ -1,5 +1,6 @@
 package com.rameen.kinnect.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import com.rameen.kinnect.databinding.ActivityProfileBinding
 import com.rameen.kinnect.ui.BaseActivity
@@ -21,7 +22,7 @@ class ProfileActivity : BaseActivity() {
 
         binding.ivBack.setOnClickListener { finish() }
         binding.llEditProfile.setOnClickListener {
-            openScreen("com.rameen.kinnect.ui.profile.EditProfileActivity")
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
     }
 }

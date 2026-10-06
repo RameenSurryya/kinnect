@@ -750,4 +750,38 @@
     <style name="Kinnect.Text.CameraMode.Selected">
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <!-- ===== Edit profile form rows (16) ===== -->
+    <!-- One row: label on the left (fixed column), value on the right. -->
+    <style name="Kinnect.EditRow" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/edit_row_height</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">@dimen/screen_margin</item>
+        <item name="android:paddingEnd">@dimen/screen_margin</item>
+    </style>
+
+    <!-- Label column: "Name", "Username", "Email" ... -->
+    <style name="Kinnect.EditRow.Label" parent="Kinnect.Text">
+        <item name="android:layout_width">@dimen/edit_label_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Value: an EditText without a box, filling the rest of the row. -->
+    <style name="Kinnect.EditRow.Value" parent="Kinnect.FieldText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <!-- Thin line under a value; it starts at the value column, not under the label. -->
+    <style name="Kinnect.EditRow.Line" parent="Kinnect.Divider">
+        <item name="android:layout_marginStart">@dimen/edit_line_start</item>
+        <item name="android:layout_marginEnd">@dimen/screen_margin</item>
+    </style>
 </resources>

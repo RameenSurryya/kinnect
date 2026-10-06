@@ -14,7 +14,7 @@
 
 - [x] 11 Story viewer   - [x] 12 Your story   - [x] 13 Search   - [x] 14 Friends   - [x] 15 Profile
 
-- [ ] 16 Edit profile   - [ ] 17 Other profile   - [ ] 18 Notifications   - [ ] 19 Menu   - [ ] 20 Chats
+- [x] 16 Edit profile   - [ ] 17 Other profile   - [ ] 18 Notifications   - [ ] 19 Menu   - [ ] 20 Chats
 
 - [ ] 21 Chat   - [ ] 22 Voice call   - [ ] 23 Marketplace
 

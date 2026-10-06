@@ -628,4 +628,22 @@
     <dimen name="profile_tile_height">101dp</dimen>      <!-- square friend tiles -->
     <dimen name="profile_tile_gap">11dp</dimen>
     <dimen name="text_avatar_tile">36sp</dimen>          <!-- 0.36 x 101dp -->
+
+    <!-- 16 Edit profile (measured on screen-16.png; text views use includeFontPadding="false") -->
+    <dimen name="edit_section_top">13dp</dimen>        <!-- toolbar divider to "Profile picture" -->
+    <dimen name="edit_link_top">3.5dp</dimen>              <!-- "Edit" sits lower than the section title -->
+    <dimen name="edit_avatar_top">13.5dp</dimen>
+    <dimen name="text_avatar_103">37sp</dimen>           <!-- 0.36 x 103dp -->
+    <dimen name="edit_cover_title_top">9dp</dimen>       <!-- avatar to "Cover photo" -->
+    <dimen name="edit_cover_top">13dp</dimen>
+    <dimen name="edit_cover_height">110dp</dimen>        <!-- 330 x 110: the wide 3:1 crop -->
+    <dimen name="edit_cover_badge_margin">9.5dp</dimen>  <!-- white camera circle to the cover edges -->
+    <dimen name="edit_divider_top">13dp</dimen>
+    <dimen name="edit_rows_top">9dp</dimen>              <!-- divider to the first row -->
+    <dimen name="edit_row_height">47dp</dimen>           <!-- + 1dp line = 48dp row pitch -->
+    <dimen name="edit_label_width">95dp</dimen>          <!-- values start at x 111 -->
+    <dimen name="edit_line_start">111dp</dimen>          <!-- screen_margin + edit_label_width -->
+    <dimen name="edit_switch_top">14dp</dimen>           <!-- last line to "Switch to professional mode" -->
+    <dimen name="edit_private_top">15dp</dimen>
+    <dimen name="edit_private_rows_top">12dp</dimen>
 </resources>
