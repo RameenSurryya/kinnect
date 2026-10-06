@@ -155,6 +155,7 @@
                 android:id="@+id/iv_recent_more"
                 style="@style/Kinnect.IconButton"
                 android:layout_marginEnd="@dimen/login_more_end"
+                android:paddingStart="@dimen/login_more_pad_start"
                 android:translationY="@dimen/login_more_shift"
                 android:clickable="true"
                 android:contentDescription="@string/cd_more"
@@ -189,15 +190,17 @@
         <LinearLayout
             android:id="@+id/ll_password"
             style="@style/Kinnect.Field"
-            android:layout_height="@dimen/input_height_password"
+            android:minHeight="@dimen/input_height_password"
             android:layout_marginTop="@dimen/login_field_gap"
             android:orientation="horizontal"
             android:paddingEnd="@dimen/login_eye_end">
 
+            <!-- Full field height, content centred: the EditText can reach the whole box (48dp touch target) -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView

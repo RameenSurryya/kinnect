@@ -167,7 +167,10 @@
                     android:layout_width="@dimen/touch_target"
                     android:layout_height="@dimen/touch_target"
                     android:contentDescription="@string/cd_close"
-                    android:padding="@dimen/story_close_padding"
+                    android:paddingStart="@dimen/story_close_pad_start"
+                    android:paddingTop="@dimen/story_close_padding"
+                    android:paddingEnd="@dimen/story_close_pad_end"
+                    android:paddingBottom="@dimen/story_close_padding"
                     android:src="@drawable/ic_close"
                     app:tint="@color/white" />
             </LinearLayout>

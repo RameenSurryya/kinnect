@@ -189,15 +189,15 @@
     <dimen name="badge_size_large">20dp</dimen>      <!-- "2" badge: 16dp red disc + 2dp white ring -->
     <dimen name="login_name_start">8dp</dimen>       <!-- avatar frame to "Jacob West" -->
     <dimen name="login_hint_top">2dp</dimen>        <!-- "Jacob West" to "Tap to log in" -->
-    <dimen name="login_more_end">-3dp</dimen>        <!-- dots centred 21dp from the card edge -->
+    <dimen name="login_more_end">0dp</dimen>        <!-- dots centred 21dp from the card edge; frame kept inside the card; paddingStart moves the dots instead -->
     <dimen name="login_more_shift">-2dp</dimen>      <!-- dots sit 2.5dp above the card centre -->
     <dimen name="login_fields_top">21dp</dimen>      <!-- card to the first field -->
     <dimen name="login_field_gap">11dp</dimen>       <!-- between the two fields -->
-    <dimen name="login_button_top">11.5dp</dimen>    <!-- password field to Log in -->
+    <dimen name="login_button_top">9.5dp</dimen>    <!-- password field to Log in; Log in is 48dp tall, pill 44dp: 2dp inset -->
     <dimen name="login_eye_padding">14.5dp</dimen>   <!-- (48 - 19) / 2: a 19dp eye in a 48dp target -->
     <dimen name="login_eye_end">9dp</dimen>          <!-- eye centred 33dp from the field edge -->
-    <dimen name="login_forgot_top">21dp</dimen>
-    <dimen name="login_create_bottom">15.5dp</dimen> <!-- Create new account to the footer -->
+    <dimen name="login_forgot_top">19dp</dimen>
+    <dimen name="login_create_bottom">14.5dp</dimen> <!-- Create new account to the footer -->
     <dimen name="footer_logo">11.5dp</dimen>
     <dimen name="footer_logo_gap">7.5dp</dimen>
     <dimen name="login_footer_bottom">2.5dp</dimen>  <!-- footer to the gesture bar -->
@@ -224,7 +224,8 @@
     <dimen name="dropdown_gap">9dp</dimen>           <!-- between Day / Month / Year and the gender options -->
     <dimen name="dropdown_padding">12dp</dimen>      <!-- left padding in dropdowns and gender options -->
     <dimen name="dropdown_label_top">9dp</dimen>     <!-- "Day" centre 15.7dp into the box -->
-    <dimen name="dropdown_value_top">14.5dp</dimen>  <!-- "14" centre 32.7dp into the box -->
+    <dimen name="dropdown_value_top">14.5sp</dimen>  <!-- "14" centre 32.7dp into the box. In sp (same as dp at normal
+         text size) so the value moves down under a bigger label when the user enlarges text. -->
     <dimen name="dropdown_value_end">30dp</dimen>    <!-- keeps the value clear of the chevron -->
     <dimen name="icon_size_dropdown">14dp</dimen>
     <dimen name="dropdown_chevron_end">10dp</dimen>  <!-- chevron centre 17dp from the box edge -->
@@ -234,8 +235,8 @@
     <dimen name="radio_dot">8dp</dimen>              <!-- teal dot of the checked radio -->
     <dimen name="radio_stroke">1dp</dimen>
     <dimen name="signup_gender_top">10dp</dimen>     <!-- dropdowns to "Gender" -->
-    <dimen name="signup_options_top">8.5dp</dimen>   <!-- "Gender" to the option cards -->
-    <dimen name="signup_email_top">10dp</dimen>
+    <dimen name="signup_options_top">6.5dp</dimen>   <!-- "Gender" to the option cards; 48dp options, 44dp boxes: 2dp inset -->
+    <dimen name="signup_email_top">8dp</dimen>  <!-- 2dp inset of the options above -->
     <dimen name="signup_password_top">11dp</dimen>
     <dimen name="signup_strength_top">7.5dp</dimen>
     <dimen name="strength_label_gap">11dp</dimen>    <!-- last meter segment to "Medium" -->
@@ -246,8 +247,8 @@
     <!-- The checkbox and "Log in" keep 48dp touch targets, which are taller than the gaps in
          the design, so they overlap their neighbours a little (negative margins). -->
     <dimen name="signup_checkbox_top">-4.5dp</dimen>
-    <dimen name="signup_button_top">-3.5dp</dimen>
-    <dimen name="signup_login_top">-5.5dp</dimen>
+    <dimen name="signup_button_top">-5.5dp</dimen>
+    <dimen name="signup_login_top">-7.5dp</dimen>
     <dimen name="signup_login_gap">4dp</dimen>       <!-- "account?" to "Log in" (one space) -->
 
     <!-- Home feed (04) -->
@@ -320,9 +321,9 @@
     <dimen name="reaction_tray_height">51.5dp</dimen>
     <dimen name="reaction_tray_padding">8dp</dimen>   <!-- like disc 14dp inside the pill -->
     <dimen name="reaction_tray_elevation">8dp</dimen>
-    <dimen name="reaction_slot">44dp</dimen>
-    <dimen name="reaction_slot_padding">6dp</dimen>
-    <dimen name="reaction_raised_margin">5.5dp</dimen> <!-- extra room on each side of the raised love -->
+    <dimen name="reaction_slot">48dp</dimen>  <!-- 32dp disc + 8dp padding; slots overlap 4dp (Kinnect.Reaction margins) -->
+    <dimen name="reaction_slot_padding">8dp</dimen>
+    <dimen name="reaction_raised_margin">3.5dp</dimen> <!-- extra room on each side of the raised love; minus the 2dp slot overlap -->
     <dimen name="reaction_raised_shift">-16.5dp</dimen> <!-- love centre above the pill centre -->
     <item name="reaction_raised_scale" format="float" type="dimen">1.44</item> <!-- 32dp -> 46dp -->
     <dimen name="tooltip_start">71.5dp</dimen>        <!-- "Love" tooltip, centred over the love disc -->
@@ -411,8 +412,8 @@
     <dimen name="sheet_handle_width">36dp</dimen>
     <dimen name="sheet_handle_height">3.5dp</dimen>
     <dimen name="sheet_handle_top">9dp</dimen>         <!-- sheet top to the handle -->
-    <dimen name="sheet_rows_top">9.5dp</dimen>         <!-- handle to the first row -->
-    <dimen name="sheet_rows_bottom">15.5dp</dimen>     <!-- last row to the screen bottom -->
+    <dimen name="sheet_rows_top">11.5dp</dimen>         <!-- handle to the first row; 48dp rows overlap 4dp: the 44dp pitch is unchanged -->
+    <dimen name="sheet_rows_bottom">13.5dp</dimen>     <!-- last row to the screen bottom -->
     <dimen name="sheet_row_height">44dp</dimen>        <!-- rows 44dp apart -->
     <dimen name="sheet_icon">22dp</dimen>              <!-- row icons (ink 17dp in the design) -->
     <dimen name="sheet_icon_start">19dp</dimen>        <!-- icon centred 30dp from the edge -->
@@ -493,11 +494,11 @@
     <dimen name="story_progress_gap">5dp</dimen>      <!-- between segments -->
     <dimen name="story_header_top">4.5dp</dimen>      <!-- segments to the 48dp header row -->
     <dimen name="story_header_start">9.5dp</dimen>    <!-- viewport left to the avatar -->
-    <dimen name="story_header_end">-2dp</dimen>       <!-- X glyph 15dp from the viewport right: its 48dp frame sticks out 2dp -->
+    <dimen name="story_header_end">0dp</dimen>       <!-- X glyph 15dp from the viewport right: its 48dp frame sticks out 2dp; whole 48dp X frame inside the viewport; padding moves the glyph instead -->
     <dimen name="story_name_gap">9.5dp</dimen>        <!-- avatar to the name -->
     <dimen name="story_time_top">2dp</dimen>          <!-- name to "5h" -->
     <dimen name="story_more_padding">10dp</dimen>     <!-- (48 - 28) / 2: the dots are drawn at 28dp -->
-    <dimen name="story_more_end">1.5dp</dimen>
+    <dimen name="story_more_end">-0.5dp</dimen>
     <dimen name="story_close_padding">12dp</dimen>    <!-- (48 - 24) / 2 -->
     <dimen name="text_avatar_35">12.5sp</dimen>       <!-- 0.36 x 35dp -->
     <dimen name="text_story_name">14sp</dimen>        <!-- "Omar Farooq", Figtree Bold -->
@@ -558,8 +559,8 @@
     <dimen name="search_recent_row">44dp</dimen>         <!-- row pitch: Recent searches -->
     <dimen name="search_row_gap">11.5dp</dimen>          <!-- avatar / clock circle to text -->
     <dimen name="search_subtitle_top">2dp</dimen>
-    <dimen name="search_see_all_top">4dp</dimen>
-    <dimen name="search_groups_top">18dp</dimen>         <!-- See all people to "Groups" -->
+    <dimen name="search_see_all_top">-2.5dp</dimen>  <!-- See all people 48dp tall, shape 35dp: 6.5dp inset -->
+    <dimen name="search_groups_top">11.5dp</dimen>         <!-- See all people to "Groups" -->
     <dimen name="search_recent_top">15dp</dimen>         <!-- group row to "Recent searches" -->
     <dimen name="search_recent_rows_top">4.5dp</dimen>
     <dimen name="search_recent_end">4dp</dimen>          <!-- puts the X 10dp from the margin -->
@@ -575,15 +576,15 @@
     <dimen name="friends_title_top">16dp</dimen>         <!-- chips to "Friend requests" -->
     <dimen name="friends_count_gap">5dp</dimen>          <!-- "Friend requests" to the orange "12" -->
     <dimen name="friends_rows_top">12.5dp</dimen>        <!-- section title to the first request -->
-    <dimen name="request_gap">17.5dp</dimen>             <!-- between requests, and above the divider -->
+    <dimen name="request_gap">11dp</dimen>             <!-- between requests, and above the divider -->
     <dimen name="request_text_gap">11.5dp</dimen>        <!-- avatar to the text column -->
     <dimen name="request_name_top">1dp</dimen>
     <dimen name="request_mutual_top">6dp</dimen>
-    <dimen name="request_buttons_top">8.5dp</dimen>
+    <dimen name="request_buttons_top">2dp</dimen>  <!-- Confirm / Delete 48dp tall, shapes 35dp: 6.5dp inset -->
     <dimen name="mutual_dot">15dp</dimen>                <!-- two overlapping mutual-friend discs -->
     <dimen name="mutual_dot_overlap">-4dp</dimen>
     <dimen name="mutual_text_gap">7dp</dimen>
-    <dimen name="friends_divider_top">15dp</dimen>       <!-- last request to the divider -->
+    <dimen name="friends_divider_top">8.5dp</dimen>       <!-- last request to the divider -->
     <dimen name="friends_more_top">13.5dp</dimen>        <!-- divider to "People you may know" -->
     <dimen name="text_avatar_74">26.5sp</dimen>          <!-- 0.36 x 74dp -->
 
@@ -608,11 +609,11 @@
     <dimen name="profile_name_top">1.5dp</dimen>
     <dimen name="profile_count_top">6dp</dimen>
     <dimen name="profile_bio_top">7dp</dimen>
-    <dimen name="profile_buttons_top">12dp</dimen>
+    <dimen name="profile_buttons_top">6.5dp</dimen>  <!-- button row 48dp tall, shapes 37dp: 5.5dp inset -->
     <dimen name="profile_button_gap">8dp</dimen>
     <dimen name="profile_button_icon_gap">6dp</dimen>   <!-- + / pencil to the label -->
     <dimen name="profile_more_width">40dp</dimen>
-    <dimen name="profile_tabs_top">12.5dp</dimen>
+    <dimen name="profile_tabs_top">7dp</dimen>
     <dimen name="profile_tab_padding">13.5dp</dimen>     <!-- Posts pill is 58dp wide -->
     <dimen name="profile_tab_gap">6dp</dimen>
     <dimen name="profile_divider_top">10.5dp</dimen>
@@ -657,8 +658,8 @@
     <dimen name="other_name_top">6dp</dimen>
     <dimen name="other_count_top">4dp</dimen>
     <dimen name="other_bio_top">7dp</dimen>
-    <dimen name="other_buttons_top">14dp</dimen>
-    <dimen name="other_mutual_top">13dp</dimen>
+    <dimen name="other_buttons_top">8.5dp</dimen>  <!-- button row 48dp tall, shapes 37dp: 5.5dp inset -->
+    <dimen name="other_mutual_top">7.5dp</dimen>
     <dimen name="text_mutual">12.75sp</dimen>            <!-- "Friends with ..." (line 1 measured 249dp wide) -->
     <dimen name="mutual_avatar_size">24dp</dimen>        <!-- 22dp disc + 1dp white ring -->
     <dimen name="mutual_avatar_ring">1dp</dimen>
@@ -678,7 +679,7 @@
     <dimen name="notif_new_top">13.5dp</dimen>           <!-- tab divider to "New" -->
     <dimen name="notif_band_top">3.5dp</dimen>           <!-- "New" to the light teal band -->
     <dimen name="notif_band_padding_top">9.5dp</dimen>   <!-- band top to the first avatar -->
-    <dimen name="notif_band_padding_bottom">8.5dp</dimen> <!-- Confirm / Delete to the band bottom -->
+    <dimen name="notif_band_padding_bottom">1dp</dimen> <!-- Confirm / Delete to the band bottom -->
     <dimen name="notif_earlier_top">11dp</dimen>         <!-- band bottom to "Earlier" -->
     <dimen name="notif_earlier_rows_top">16dp</dimen>    <!-- "Earlier" to the first avatar -->
     <dimen name="notif_row_gap">14.5dp</dimen>           <!-- avatar frame bottom to the next avatar (rows 73.5dp apart) -->
@@ -692,10 +693,10 @@
     <dimen name="notif_text_start">7.5dp</dimen>         <!-- avatar frame to the text (x 82) -->
     <dimen name="notif_text_end">2.5dp</dimen>           <!-- text column 225dp wide: "request." wraps as in the design -->
     <dimen name="notif_line_spacing">2.8dp</dimen>       <!-- line pitch 19.6dp, also used above the time -->
-    <dimen name="notif_buttons_top">8.5dp</dimen>        <!-- time to Confirm / Delete -->
+    <dimen name="notif_buttons_top">1dp</dimen>        <!-- time to Confirm / Delete; Confirm / Delete 48dp tall, shapes 33dp: 7.5dp inset -->
     <dimen name="notif_buttons_end">3dp</dimen>          <!-- buttons end at x 304 -->
     <dimen name="notif_more_end">2dp</dimen>             <!-- "..." centre 26dp from the right -->
-    <dimen name="notif_see_previous_top">13dp</dimen>
+    <dimen name="notif_see_previous_top">7.5dp</dimen>
 
     <!-- 19 Menu (measured on screen-19.png; text views use includeFontPadding="false").
          Cards use bg_card, whose 1.5dp bottom shadow is part of the view height. -->
@@ -714,15 +715,15 @@
     <dimen name="menu_grid_row_gap">5.5dp</dimen>        <!-- card shadow to the next card (rows 79dp apart) -->
     <dimen name="menu_shortcut_label_top">8dp</dimen>    <!-- icon to "Memories" -->
     <dimen name="menu_shortcut_padding_bottom">13.5dp</dimen> <!-- 12dp + the 1.5dp shadow -->
-    <dimen name="menu_see_more_top">10.5dp</dimen>       <!-- last card to See more -->
-    <dimen name="menu_rows_top">10.5dp</dimen>           <!-- See more to the first divider -->
+    <dimen name="menu_see_more_top">5dp</dimen>       <!-- last card to See more; See more 48dp tall, shape 37dp: 5.5dp inset -->
+    <dimen name="menu_rows_top">5dp</dimen>           <!-- See more to the first divider -->
     <dimen name="menu_row_height">47dp</dimen>           <!-- rows 47.8dp apart incl. the 1dp divider -->
     <dimen name="menu_row_padding_start">4dp</dimen>     <!-- divider start to the grey circle -->
     <dimen name="menu_row_icon_size">18dp</dimen>
     <dimen name="menu_row_icon_padding">7.5dp</dimen>    <!-- (33 - 18) / 2 -->
     <dimen name="menu_row_text_start">11.5dp</dimen>     <!-- circle to the label -->
     <dimen name="menu_row_chevron_end">5dp</dimen>       <!-- chevron centre 13dp from the divider end -->
-    <dimen name="menu_logout_top">12dp</dimen>           <!-- last row to Log out -->
+    <dimen name="menu_logout_top">8.5dp</dimen>           <!-- last row to Log out; Log out 48dp tall, shape 41dp: 3.5dp inset -->
     <dimen name="menu_logout_icon_gap">7dp</dimen>
     <dimen name="menu_white_top">160dp</dimen>           <!-- white behind status bar + top bar + tabs -->
 
@@ -760,10 +761,10 @@
     <dimen name="chat_avatar_start">4.5dp</dimen>         <!-- back frame to the 36dp header avatar (x 52.5) -->
     <dimen name="chat_online_dot">9dp</dimen>             <!-- 5dp green disc + 2dp white ring -->
     <dimen name="chat_header_text_start">8dp</dimen>      <!-- avatar to "Aisha Khan" -->
-    <dimen name="chat_header_icon_width">44dp</dimen>     <!-- phone / video / info are 44dp apart -->
-    <dimen name="chat_header_icon_pad_h">12dp</dimen>     <!-- (44 - 20) / 2: 20dp icons -->
+    <dimen name="chat_header_icon_width">48dp</dimen>     <!-- phone / video / info are 44dp apart; slots overlap 4dp, so icons stay 44dp apart -->
+    <dimen name="chat_header_icon_pad_h">14dp</dimen>     <!-- (44 - 20) / 2: 20dp icons; (48 - 20) / 2 -->
     <dimen name="chat_header_icon_pad_v">14dp</dimen>     <!-- (48 - 20) / 2 -->
-    <dimen name="chat_header_end">4dp</dimen>             <!-- info icon centred at x 334 -->
+    <dimen name="chat_header_end">2dp</dimen>             <!-- info icon centred at x 334 -->
     <dimen name="chat_status_top">2dp</dimen>             <!-- name to "Active now" -->
     <dimen name="chat_intro_top">15dp</dimen>             <!-- divider to the 66dp avatar -->
     <dimen name="chat_intro_name_top">10dp</dimen>
@@ -858,4 +859,27 @@
     <dimen name="market_label_height">18.5dp</dimen>
     <dimen name="market_label_padding">7.5dp</dimen>
     <dimen name="text_price">14sp</dimen>                 <!-- "Rs 45,000" -->
+
+    <!-- ===== 48dp touch targets (responsive + accessibility pass) ===== -->
+    <dimen name="touch_overlap_2">-2dp</dimen>          <!-- neighbouring 48dp slots overlap so 44dp pitches stay -->
+    <dimen name="touch_overlap_4">-4dp</dimen>          <!-- 48dp sheet rows (07) keep a 44dp pitch -->
+    <dimen name="composer_avatar_overlap">-6dp</dimen>  <!-- 48dp touch frame around the 36dp JW avatar (04) -->
+    <dimen name="top_bar_frame_shift">4dp</dimen>       <!-- paddingTop: circle 2dp below the row centre (large) -->
+    <dimen name="top_bar_frame_shift_small">6dp</dimen> <!-- paddingTop: 3dp below (small) -->
+    <dimen name="touch_balance_login">4.5dp</dimen>     <!-- "Log in" (03) padded to 48dp wide, balanced on the left -->
+    <dimen name="signup_login_gap_touch">-0.5dp</dimen> <!-- signup_login_gap minus that padding -->
+    <dimen name="login_more_pad_start">6dp</dimen>         <!-- paddingStart: dots stay 21dp from the card edge -->
+    <dimen name="story_close_pad_start">14dp</dimen>    <!-- X glyph keeps its place now the frame is 2dp further in -->
+    <dimen name="story_close_pad_end">10dp</dimen>
+    <dimen name="editor_bar_vertical_touch">20.5dp</dimen> <!-- 48dp bar, 44dp pills: 22.5 - 2 -->
+    <dimen name="editor_bar_end_touch">8dp</dimen>      <!-- 48dp arrow frame, 44dp circle: 10 - 2 -->
+    <dimen name="editor_next_gap_touch">6dp</dimen>     <!-- 8 - 2 -->
+    <dimen name="next_arrow_padding_touch">14dp</dimen> <!-- (48 - 20) / 2 -->
+    <dimen name="touch_overlap_1">-1dp</dimen>          <!-- 48dp edit rows (16) overlap their 1dp line: 48dp pitch kept -->
+    <dimen name="field_text_touch_pad_top">22dp</dimen>  <!-- field EditText (02, 03) reaches up over the label -->
+    <dimen name="field_text_touch_pad_bottom">7.5dp</dimen> <!-- ... and down to the field's bottom edge -->
+    <dimen name="field_text_touch_top">-20dp</dimen>     <!-- field_value_gap (2) - 22 -->
+    <dimen name="field_text_touch_bottom_margin">-7.5dp</dimen>
+    <dimen name="reply_bar_touch_top">5.5dp</dimen>     <!-- reply row (06) reaches up so its 48dp targets fit -->
+    <dimen name="dropdown_height">51sp</dimen>         <!-- Day / Month / Year box: 51dp at normal text size, grows with larger text -->
 </resources>

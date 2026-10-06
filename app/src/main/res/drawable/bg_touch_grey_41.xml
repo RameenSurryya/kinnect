@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 41dp grey button: Log out (19).
+     48dp touch target: the view is 48dp, the visible shape (bg_button_grey) is drawn inset so it keeps
+     the design's size. The inset also counts as view padding (centred content is unaffected). -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/bg_button_grey"
+    android:insetLeft="0dp"
+    android:insetTop="3.5dp"
+    android:insetRight="0dp"
+    android:insetBottom="3.5dp" />

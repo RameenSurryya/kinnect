@@ -205,14 +205,16 @@
                             <Button
                                 style="@style/Kinnect.Button.Small"
                                 android:layout_width="0dp"
-                                android:layout_height="@dimen/button_height_xsmall"
+                                android:layout_height="@dimen/touch_target"
+                                android:background="@drawable/bg_touch_small_33"
                                 android:layout_weight="1"
                                 android:text="@string/friends_confirm" />
 
                             <Button
                                 style="@style/Kinnect.Button.Small.Grey"
                                 android:layout_width="0dp"
-                                android:layout_height="@dimen/button_height_xsmall"
+                                android:layout_height="@dimen/touch_target"
+                                android:background="@drawable/bg_touch_grey_33"
                                 android:layout_marginStart="@dimen/space_8"
                                 android:layout_weight="1"
                                 android:text="@string/friends_delete" />

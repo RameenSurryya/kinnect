@@ -15,8 +15,8 @@
     16dp from the right edge, y 8-44, 19dp icons, 18dp badge. Small (14-23): circles 31dp,
     6.5dp apart, 18dp from the edge, centred at y 27, 16dp icons, 15dp badge.
     Each circle sits in a 48dp FrameLayout (the touch target); the frames overlap (negative
-    margin) so the circles keep the design's gap. translationY moves a view down without
-    changing the layout around it.
+    margin) so the circles keep the design's gap. A paddingTop on each frame moves the circle
+    a little below the row centre while the whole 48dp frame stays inside the bar.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

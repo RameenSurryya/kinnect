@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 37dp "What's on your mind" pill (04).
+     48dp touch target: the view is 48dp, the visible shape (bg_composer) is drawn inset so it keeps
+     the design's size. The inset also counts as view padding (centred content is unaffected). -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/bg_composer"
+    android:insetLeft="0dp"
+    android:insetTop="5.5dp"
+    android:insetRight="0dp"
+    android:insetBottom="5.5dp" />

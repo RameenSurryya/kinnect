@@ -166,10 +166,11 @@
     </style>
 
     <!-- Teal pill, full width: Log in, Create account. -->
+    <!-- 48dp touch target; the visible pill (bg_touch_primary_44) stays 44dp. -->
     <style name="Kinnect.Button.Primary">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/button_height</item>
-        <item name="android:background">@drawable/bg_button_primary</item>
+        <item name="android:layout_height">@dimen/touch_target</item>
+        <item name="android:background">@drawable/bg_touch_primary_44</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_name</item>
     </style>
@@ -177,30 +178,31 @@
     <!-- Outlined pill: Create new account. -->
     <style name="Kinnect.Button.Outline">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/button_height_outline</item>
-        <item name="android:background">@drawable/bg_button_outline</item>
+        <item name="android:layout_height">@dimen/touch_target</item>          <!-- pill stays 46dp -->
+        <item name="android:background">@drawable/bg_touch_outline_46</item>
         <item name="android:textColor">@color/teal</item>
         <item name="android:textSize">@dimen/text_name</item>
     </style>
 
     <!-- Small teal button with 10dp corners: Confirm, Join, Add to story. -->
+    <!-- 48dp touch target, 35dp visible shape. Shorter uses swap in bg_touch_small_33 / _31. -->
     <style name="Kinnect.Button.Small">
-        <item name="android:layout_height">@dimen/button_height_small</item>
-        <item name="android:background">@drawable/bg_button_small</item>
+        <item name="android:layout_height">@dimen/touch_target</item>
+        <item name="android:background">@drawable/bg_touch_small_35</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <!-- Small grey button with 10dp corners: Delete, Edit profile. -->
     <style name="Kinnect.Button.Small.Grey">
-        <item name="android:background">@drawable/bg_button_grey</item>
+        <item name="android:background">@drawable/bg_touch_grey_35</item>
         <item name="android:textColor">@color/text_dark</item>
     </style>
 
     <!-- Full-width grey button: See more, See all people, See previous notifications. -->
     <style name="Kinnect.Button.Grey">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/button_height_medium</item>
-        <item name="android:background">@drawable/bg_button_grey</item>
+        <item name="android:layout_height">@dimen/touch_target</item>          <!-- shape stays 37dp -->
+        <item name="android:background">@drawable/bg_touch_grey_37</item>
         <item name="android:textColor">@color/text_dark</item>
     </style>
 
@@ -221,9 +223,11 @@
 
     <!-- Field with a small label above the value (02, 03): the white rounded box is a vertical
          LinearLayout holding a Kinnect.Text.Caption label and a Kinnect.FieldText EditText. -->
+    <!-- 51dp tall (minHeight); grows if the user picks a large system text size. -->
     <style name="Kinnect.Field" parent="">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/input_height</item>
         <item name="android:background">@drawable/bg_input</item>
         <item name="android:orientation">vertical</item>
         <item name="android:gravity">center_vertical</item>
@@ -233,13 +237,20 @@
         <item name="android:paddingTop">@dimen/field_value_gap</item>
     </style>
 
-    <!-- The EditText inside a Kinnect.Field: no box or padding of its own (the field draws it). -->
+    <!-- The EditText inside a Kinnect.Field: no box of its own (the field draws it).
+         Touch target: padding stretches the EditText over the whole field (up over the label,
+         down to the bottom edge) and equal negative margins cancel it, so the text stays where
+         it was but a tap anywhere in the box focuses the field (48dp tall). -->
     <style name="Kinnect.FieldText" parent="">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/field_value_gap</item>
+        <item name="android:layout_marginTop">@dimen/field_text_touch_top</item>
+        <item name="android:layout_marginBottom">@dimen/field_text_touch_bottom_margin</item>
         <item name="android:background">@null</item>
-        <item name="android:padding">0dp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingTop">@dimen/field_text_touch_pad_top</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingBottom">@dimen/field_text_touch_pad_bottom</item>
         <item name="android:fontFamily">@font/figtree_regular</item>
         <item name="android:textSize">@dimen/text_name</item>
         <item name="android:textColor">@color/text_dark</item>
@@ -258,7 +269,7 @@
          and a chevron. Width comes from layout_weight. -->
     <style name="Kinnect.Dropdown" parent="">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:layout_height">@dimen/dropdown_height</item>
         <item name="android:layout_weight">1</item>
         <item name="android:background">@drawable/bg_input</item>
     </style>
@@ -303,9 +314,9 @@
          filled radio follow the checked state with no Kotlin. -->
     <style name="Kinnect.Option" parent="">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">@dimen/option_height</item>
+        <item name="android:layout_height">@dimen/touch_target</item>          <!-- box stays 44dp -->
         <item name="android:layout_weight">1</item>
-        <item name="android:background">@drawable/bg_option</item>
+        <item name="android:background">@drawable/bg_touch_option_44</item>
         <item name="android:button">@null</item>
         <item name="android:drawableEnd">@drawable/bg_radio</item>
         <item name="android:gravity">center_vertical</item>
@@ -314,8 +325,15 @@
         <item name="android:fontFamily">@font/figtree_regular</item>
         <item name="android:textSize">@dimen/text_name</item>
         <item name="android:textColor">@color/text_dark</item>
-        <item name="android:singleLine">true</item>
+        <!-- One line. On narrow phones (320dp) "Female" / "Custom" would not fit at 15sp, so
+             the text shrinks just enough (down to 11sp) instead of ending in "...". At 360dp
+             and wider it stays at the full 15sp. -->
+        <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">11sp</item>
+        <item name="android:autoSizeMaxTextSize">@dimen/text_name</item>
+        <item name="android:autoSizeStepGranularity">0.5sp</item>
     </style>
 
     <!-- 3dp rounded bar segment (step bar and password meter); colour via backgroundTint. -->
@@ -411,6 +429,8 @@
         <item name="android:layout_width">@dimen/reaction_slot</item>
         <item name="android:layout_height">@dimen/reaction_slot</item>
         <item name="android:padding">@dimen/reaction_slot_padding</item>
+        <item name="android:layout_marginStart">@dimen/touch_overlap_2</item>
+        <item name="android:layout_marginEnd">@dimen/touch_overlap_2</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 
@@ -550,7 +570,8 @@
     <!-- One row of the bottom sheet: coloured 22dp icon + label, 44dp tall. -->
     <style name="Kinnect.SheetRow" parent="">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/sheet_row_height</item>
+        <item name="android:layout_height">@dimen/touch_target</item>
+        <item name="android:layout_marginTop">@dimen/touch_overlap_4</item>  <!-- 44dp pitch -->
         <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
@@ -636,12 +657,12 @@
         <item name="android:layout_width">@dimen/touch_target</item>
         <item name="android:layout_height">@dimen/touch_target</item>
         <item name="android:layout_marginEnd">@dimen/top_bar_end_margin</item>
-        <item name="android:translationY">@dimen/top_bar_button_shift</item>
+        <item name="android:paddingTop">@dimen/top_bar_frame_shift</item>
     </style>
 
     <style name="Kinnect.TopBar.MessengerFrame.Small">
         <item name="android:layout_marginEnd">@dimen/top_bar_end_margin_small</item>
-        <item name="android:translationY">@dimen/top_bar_button_shift_small</item>
+        <item name="android:paddingTop">@dimen/top_bar_frame_shift_small</item>
     </style>
 
     <!-- 48dp touch frame around the search circle; overlaps the messenger frame so the
@@ -650,12 +671,12 @@
         <item name="android:layout_width">@dimen/touch_target</item>
         <item name="android:layout_height">@dimen/touch_target</item>
         <item name="android:layout_marginEnd">@dimen/top_bar_button_overlap</item>
-        <item name="android:translationY">@dimen/top_bar_button_shift</item>
+        <item name="android:paddingTop">@dimen/top_bar_frame_shift</item>
     </style>
 
     <style name="Kinnect.TopBar.SearchFrame.Small">
         <item name="android:layout_marginEnd">@dimen/top_bar_button_overlap_small</item>
-        <item name="android:translationY">@dimen/top_bar_button_shift_small</item>
+        <item name="android:paddingTop">@dimen/top_bar_frame_shift_small</item>
     </style>
 
     <!-- Grey circle with the icon centred inside by padding. -->
@@ -761,7 +782,7 @@
     <!-- One row: label on the left (fixed column), value on the right. -->
     <style name="Kinnect.EditRow" parent="">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/edit_row_height</item>
+        <item name="android:layout_height">@dimen/touch_target</item>  <!-- overlaps its 1dp line -->
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingStart">@dimen/screen_margin</item>
@@ -777,16 +798,23 @@
     </style>
 
     <!-- Value: an EditText without a box, filling the rest of the row. -->
+    <!-- Fills the full row height (48dp touch target); the text is centred as before. -->
     <style name="Kinnect.EditRow.Value" parent="Kinnect.FieldText">
         <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:textColorHint">@color/text_hint</item>
         <item name="android:inputType">text</item>
     </style>
 
     <!-- Thin line under a value; it starts at the value column, not under the label. -->
     <style name="Kinnect.EditRow.Line" parent="Kinnect.Divider">
+        <item name="android:layout_marginTop">@dimen/touch_overlap_1</item> <!-- drawn over the 48dp row's last 1dp -->
         <item name="android:layout_marginStart">@dimen/edit_line_start</item>
         <item name="android:layout_marginEnd">@dimen/screen_margin</item>
     </style>
@@ -1039,6 +1067,8 @@
     <style name="Kinnect.ChatHeaderIcon" parent="">
         <item name="android:layout_width">@dimen/chat_header_icon_width</item>
         <item name="android:layout_height">@dimen/touch_target</item>
+        <item name="android:layout_marginStart">@dimen/touch_overlap_2</item>
+        <item name="android:layout_marginEnd">@dimen/touch_overlap_2</item>
         <item name="android:paddingStart">@dimen/chat_header_icon_pad_h</item>
         <item name="android:paddingEnd">@dimen/chat_header_icon_pad_h</item>
         <item name="android:paddingTop">@dimen/chat_header_icon_pad_v</item>

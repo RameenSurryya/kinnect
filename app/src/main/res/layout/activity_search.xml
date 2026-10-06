@@ -35,14 +35,16 @@
             android:contentDescription="@string/cd_back"
             android:src="@drawable/ic_back" />
 
-        <!-- Grey pill: magnifier, the typed text and the round clear button -->
+        <!-- Grey pill (37dp, drawn inside a 48dp touch target): magnifier, the typed text and the round clear button -->
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="@dimen/input_height_search"
+            android:layout_height="@dimen/touch_target"
             android:layout_marginStart="@dimen/search_field_start"
             android:layout_marginEnd="@dimen/screen_margin"
             android:layout_weight="1"
-            android:background="@drawable/bg_chip"
+            android:background="@drawable/bg_touch_chip_37"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="@dimen/search_field_padding"
@@ -324,7 +326,7 @@
             <!-- See all people: visual only -->
             <Button
                 style="@style/Kinnect.Button.Grey"
-                android:layout_height="@dimen/button_height_small"
+                android:background="@drawable/bg_touch_grey_35"
                 android:layout_marginStart="@dimen/screen_margin"
                 android:layout_marginTop="@dimen/search_see_all_top"
                 android:layout_marginEnd="@dimen/screen_margin"
@@ -391,7 +393,8 @@
                 <Button
                     style="@style/Kinnect.Button.Small"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/button_height_join"
+                    android:layout_height="@dimen/touch_target"
+                    android:background="@drawable/bg_touch_small_31"
                     android:paddingStart="@dimen/join_padding"
                     android:paddingEnd="@dimen/join_padding"
                     android:text="@string/search_join"

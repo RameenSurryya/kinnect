@@ -38,24 +38,30 @@
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/screen_margin">
 
-                <!-- JW avatar: opens your profile -->
+                <!-- JW avatar: opens your profile. 36dp circle in a 48dp touch target. -->
                 <TextView
                     android:id="@+id/tv_composer_avatar"
                     style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/touch_target"
+                    android:layout_height="@dimen/touch_target"
+                    android:layout_marginStart="@dimen/composer_avatar_overlap"
+                    android:layout_marginEnd="@dimen/composer_avatar_overlap"
+                    android:background="@drawable/bg_touch_avatar_36"
                     android:backgroundTint="@color/avatar_jw"
                     android:contentDescription="@string/cd_your_profile"
                     android:importantForAccessibility="yes"
                     android:text="@string/sample_initials_jacob" />
 
-                <!-- Looks like a text field, but it is a TextView: tapping opens Create post -->
+                <!-- Looks like a text field, but it is a TextView: tapping opens Create post.
+                     37dp pill in a 48dp touch target. -->
                 <TextView
                     android:id="@+id/tv_composer"
                     style="@style/Kinnect.Text"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/input_height_search"
+                    android:layout_height="@dimen/touch_target"
                     android:layout_marginStart="@dimen/composer_avatar_gap"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_composer"
+                    android:background="@drawable/bg_touch_composer_37"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/composer_pill_padding"
@@ -139,7 +145,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="@dimen/story_create_label_bottom"
+                            android:ellipsize="end"
                             android:fontFamily="@font/figtree_bold"
+                            android:maxLines="1"
                             android:text="@string/home_create_story"
                             android:textSize="@dimen/text_small" />
                     </FrameLayout>

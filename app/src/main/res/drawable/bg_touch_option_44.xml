@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 44dp gender option box (03).
+     48dp touch target: the view is 48dp, the visible shape (bg_option) is drawn inset so it keeps
+     the design's size. The inset also counts as view padding (centred content is unaffected). -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/bg_option"
+    android:insetLeft="0dp"
+    android:insetTop="2dp"
+    android:insetRight="0dp"
+    android:insetBottom="2dp" />

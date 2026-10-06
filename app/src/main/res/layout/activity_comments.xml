@@ -549,12 +549,16 @@
             android:textSize="@dimen/text_subtitle" />
     </LinearLayout>
 
-    <!-- Camera, "Write a reply..." pill with an emoji icon, teal send circle -->
+    <!-- Camera, "Write a reply..." pill with an emoji icon, teal send circle.
+         The camera and the pill are 48dp touch targets around 37dp visuals: the row reaches
+         5.5dp up (negative margin + equal padding) so both fit inside it without moving. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/reply_camera_overlap"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:paddingTop="@dimen/reply_bar_touch_top"
         android:paddingBottom="@dimen/reply_bar_bottom">
 
         <ImageView
@@ -571,9 +575,13 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="@dimen/input_height_search"
+            android:layout_height="@dimen/touch_target"
+            android:layout_marginTop="@dimen/reply_camera_overlap"
+            android:layout_marginBottom="@dimen/reply_camera_overlap"
             android:layout_weight="1"
-            android:background="@drawable/bg_chip"
+            android:background="@drawable/bg_touch_chip_37"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="@dimen/reply_field_padding_start"

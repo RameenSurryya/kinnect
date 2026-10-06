@@ -38,6 +38,8 @@
             android:id="@+id/iv_back"
             style="@style/Kinnect.ChatHeaderIcon"
             android:layout_width="@dimen/touch_target"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
             android:paddingStart="@dimen/chat_header_icon_pad_v"
             android:paddingEnd="@dimen/chat_header_icon_pad_v"
             android:contentDescription="@string/cd_back"

@@ -371,15 +371,17 @@
             <LinearLayout
                 android:id="@+id/ll_password"
                 style="@style/Kinnect.Field"
-                android:layout_height="@dimen/input_height_password"
+                android:minHeight="@dimen/input_height_password"
                 android:layout_marginTop="@dimen/signup_password_top"
                 android:orientation="horizontal"
                 android:paddingEnd="@dimen/login_eye_end">
 
+                <!-- Full field height, content centred: the EditText can reach the whole box (48dp touch target) -->
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:orientation="vertical">
 
                     <TextView
@@ -464,13 +466,17 @@
                 android:layout_marginTop="@dimen/signup_button_top"
                 android:text="@string/signup_button" />
 
-            <!-- "Already have an account? Log in": only "Log in" is tappable (48dp tall) -->
+            <!-- "Already have an account? Log in": only "Log in" is tappable (48dp tall, padded to
+                 48dp wide; the row's paddingStart balances that padding so the line stays centred).
+                 layout_weight on the first text only matters when the line is too wide (very large
+                 system text): that text then wraps instead of squeezing "Log in". -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/signup_login_top"
                 android:gravity="center_vertical"
+                android:paddingStart="@dimen/touch_balance_login"
                 android:orientation="horizontal">
 
                 <TextView
@@ -478,6 +484,7 @@
                     style="@style/Kinnect.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/signup_have_account"
                     android:textColor="@color/text_grey" />
 
@@ -486,8 +493,10 @@
                     style="@style/Kinnect.Text.Link"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/touch_target"
-                    android:layout_marginStart="@dimen/signup_login_gap"
+                    android:layout_marginStart="@dimen/signup_login_gap_touch"
                     android:fontFamily="@font/figtree_bold"
+                    android:paddingStart="@dimen/touch_balance_login"
+                    android:paddingEnd="@dimen/touch_balance_login"
                     android:gravity="center_vertical"
                     android:text="@string/signup_log_in" />
             </LinearLayout>

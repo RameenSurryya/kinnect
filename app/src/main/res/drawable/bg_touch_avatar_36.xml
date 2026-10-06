@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 36dp avatar circle that opens a screen: JW on Home (04). Colour via backgroundTint.
+     48dp touch target: the view is 48dp, the visible shape (bg_avatar_circle) is drawn inset so it keeps
+     the design's size. The inset also counts as view padding (centred content is unaffected). -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/bg_avatar_circle"
+    android:insetLeft="6dp"
+    android:insetTop="6dp"
+    android:insetRight="6dp"
+    android:insetBottom="6dp" />

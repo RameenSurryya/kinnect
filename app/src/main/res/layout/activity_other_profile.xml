@@ -143,7 +143,7 @@
                  those widths; "..." keeps a fixed width. -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height_medium"
+                android:layout_height="@dimen/touch_target"
                 android:layout_marginStart="@dimen/screen_margin"
                 android:layout_marginTop="@dimen/other_buttons_top"
                 android:layout_marginEnd="@dimen/screen_margin"
@@ -155,7 +155,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="143"
-                    android:background="@drawable/bg_button_small"
+                    android:background="@drawable/bg_touch_small_37"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -184,7 +184,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/profile_button_gap"
                     android:layout_weight="131"
-                    android:background="@drawable/bg_button_grey"
+                    android:background="@drawable/bg_touch_grey_37"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -211,7 +211,7 @@
                     android:layout_width="@dimen/profile_more_width"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/profile_button_gap"
-                    android:background="@drawable/bg_button_grey"
+                    android:background="@drawable/bg_touch_grey_37"
                     android:contentDescription="@string/cd_more"
                     android:scaleType="center"
                     android:src="@drawable/ic_more"
