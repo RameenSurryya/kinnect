@@ -79,6 +79,11 @@
             android:name=".ui.home.StoryViewerActivity"
             android:screenOrientation="portrait" />
 
+        <!-- 12 Your story -->
+        <activity
+            android:name=".ui.home.YourStoryActivity"
+            android:screenOrientation="portrait" />
+
         <!-- 13 Search -->
         <activity
             android:name=".ui.home.SearchActivity"

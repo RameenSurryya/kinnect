@@ -700,6 +700,37 @@
         <item name="android:background">@drawable/bg_segment</item>
     </style>
 
+    <!-- Your story (12) bottom row: one equal-width column per action (icon above a label). -->
+    <style name="Kinnect.StoryAction" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">@dimen/yours_column_padding</item>
+        <item name="android:paddingBottom">@dimen/yours_column_padding</item>
+    </style>
+
+    <!-- 20dp white glyph centred in the 24dp icon row. -->
+    <style name="Kinnect.StoryAction.Icon" parent="">
+        <item name="android:layout_width">@dimen/seen_avatar_size</item>
+        <item name="android:layout_height">@dimen/seen_avatar_size</item>
+        <item name="android:padding">@dimen/yours_icon_padding</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <!-- White 11sp label under each icon (and "Seen by 24"). -->
+    <style name="Kinnect.StoryAction.Label" parent="Kinnect.Text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/yours_label_top</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+
     <!-- Mode labels under the camera: spaced bold capitals, pale grey. -->
     <style name="Kinnect.Text.CameraMode">
         <item name="android:layout_width">wrap_content</item>

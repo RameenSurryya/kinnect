@@ -220,6 +220,14 @@
     <string name="viewer_send_message">Send message…</string>
     <string name="cd_story_photo">Story photo</string>
 
+    <!-- 12 Your story -->
+    <string name="yours_time">11h · Close friends</string>
+    <string name="yours_seen_by">Seen by 24</string>
+    <string name="yours_create">Create</string>
+    <string name="yours_highlight">Highlight</string>
+    <string name="yours_send">Send</string>
+    <string name="yours_more">More</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

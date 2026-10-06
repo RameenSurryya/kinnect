@@ -512,6 +512,31 @@
     <dimen name="text_message_hint">13.5sp</dimen>
     <dimen name="reaction_button_padding">8dp</dimen> <!-- (48 - 32) / 2: 32dp reaction discs, 48dp apart -->
 
+    <!-- Your story (12): floating hearts, pinned to the viewport's bottom-left corner.
+         Margins put each heart's centre where the PNG has it (sizes 20 / 20 / 22 / 25 / 28dp). -->
+    <dimen name="heart_size_1">20dp</dimen>
+    <dimen name="heart_size_2">22dp</dimen>
+    <dimen name="heart_size_3">25dp</dimen>
+    <dimen name="heart_size_4">28dp</dimen>
+    <dimen name="heart_1_start">28dp</dimen>     <dimen name="heart_1_bottom">163.5dp</dimen> <!-- top, faintest -->
+    <dimen name="heart_2_start">15.5dp</dimen>   <dimen name="heart_2_bottom">131.5dp</dimen>
+    <dimen name="heart_3_start">30.5dp</dimen>   <dimen name="heart_3_bottom">96.5dp</dimen>
+    <dimen name="heart_4_start">19dp</dimen>     <dimen name="heart_4_bottom">59dp</dimen>
+    <dimen name="heart_5_start">32.5dp</dimen>   <dimen name="heart_5_bottom">21.5dp</dimen>  <!-- bottom, opaque -->
+    <!-- Bottom row: "Seen by" stack, then four equal icon + label columns -->
+    <dimen name="yours_bar_top">25.5dp</dimen>     <!-- viewport to the row (avatars 28.5dp below it) -->
+    <dimen name="yours_bar_bottom">14.5dp</dimen>
+    <dimen name="yours_bar_start">12.5dp</dimen>
+    <dimen name="yours_bar_end">1dp</dimen>
+    <dimen name="yours_column_padding">3dp</dimen> <!-- makes each column a 49dp touch target -->
+    <dimen name="yours_actions_start">12dp</dimen> <!-- seen-by stack to the first column -->
+    <dimen name="yours_label_top">3dp</dimen>      <!-- icon row to the label -->
+    <dimen name="yours_icon_padding">2dp</dimen>   <!-- 20dp glyph in the 24dp icon row -->
+    <dimen name="seen_avatar_size">24dp</dimen>    <!-- 20dp disc + 2dp dark ring -->
+    <dimen name="seen_avatar_ring">2dp</dimen>
+    <dimen name="seen_avatar_overlap">-6dp</dimen> <!-- avatars 18dp apart -->
+    <dimen name="text_avatar_20">7sp</dimen>       <!-- 0.36 x 20dp -->
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->

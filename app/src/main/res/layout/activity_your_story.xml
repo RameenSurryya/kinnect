@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    12 Your story: Jacob's own story, as his friends react to it. Visual only: the photo is
+    the ph_sage placeholder, the same photo and sticker as the story editor (10).
+
+    Near-black screen with two parts, the same frame as screens 10 and 11:
+     1. The rounded viewport (FrameLayout, weight 1): the photo, the progress bar and header,
+        the rotated "Saturday plans" sticker (copied from 10) and five floating hearts.
+        YourStoryActivity turns on clipToOutline for the corners.
+     2. The bottom row: the "Seen by 24" avatar stack, then Create / Highlight / Send / More.
+
+    Progress bar: one story, 80 % played (a white View with weight 4 and an empty Space with
+    weight 1 inside a translucent segment).
+    Floating hearts: the reaction_love disc at five sizes and opacities (android:alpha),
+    staggered left and right. They are pinned to the viewport's bottom-left corner with
+    margins, so they stay above the bottom bar on any phone height.
+    Seen-by stack: each avatar sits in a 24dp dark disc (2dp ring). The negative start margin
+    makes them overlap; a LinearLayout draws later children on top, so OF covers LM covers AK.
+    Measurements in dp come from design/screens/screen-12.png (dimens.xml, Your story section).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/camera_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== 1. Rounded viewport ===== -->
+    <FrameLayout
+        android:id="@+id/fl_viewport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/camera_frame_margin"
+        android:layout_marginTop="@dimen/camera_frame_margin"
+        android:layout_marginEnd="@dimen/camera_frame_margin"
+        android:layout_weight="1"
+        android:background="@drawable/bg_camera_frame">
+
+        <!-- The story photo: tall story crop of the square placeholder -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/cd_story_photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ph_sage" />
+
+        <!-- Progress bar and header, stacked at the top of the photo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Progress bar: a single story, nearly finished -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/story_progress_height"
+                android:layout_marginStart="@dimen/story_progress_side"
+                android:layout_marginTop="@dimen/story_progress_top"
+                android:layout_marginEnd="@dimen/story_progress_side"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/Kinnect.StorySegment"
+                    android:backgroundTint="@color/story_track"
+                    android:orientation="horizontal">
+
+                    <View
+                        style="@style/Kinnect.StorySegment"
+                        android:layout_weight="4" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Header: avatar, "Your story" and audience, X -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_target"
+                android:layout_marginStart="@dimen/story_header_start"
+                android:layout_marginTop="@dimen/story_header_top"
+                android:layout_marginEnd="@dimen/story_header_end"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_35"
+                    android:layout_height="@dimen/avatar_35"
+                    android:backgroundTint="@color/avatar_jw"
+                    android:text="@string/sample_initials_jacob"
+                    android:textSize="@dimen/text_avatar_35" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/story_name_gap"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_bold"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/editor_your_story"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_story_name" />
+
+                    <TextView
+                        style="@style/Kinnect.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/story_time_top"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/yours_time"
+                        android:textColor="@color/text_on_teal_soft"
+                        android:textSize="@dimen/text_story_time" />
+                </LinearLayout>
+
+                <!-- X: close the story and go back to Home -->
+                <ImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="@dimen/touch_target"
+                    android:layout_height="@dimen/touch_target"
+                    android:contentDescription="@string/cd_close"
+                    android:padding="@dimen/story_close_padding"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Rotated text sticker: same size, angle and place as in the story editor (10) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/sticker_height"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="@dimen/sticker_start"
+            android:layout_marginTop="@dimen/sticker_below_centre"
+            android:background="@drawable/bg_sticker"
+            android:fontFamily="@font/bricolage_grotesque_extrabold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingStart="@dimen/sticker_padding"
+            android:paddingEnd="@dimen/sticker_padding"
+            android:rotation="3"
+            android:singleLine="true"
+            android:text="@string/editor_sticker"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_sticker" />
+
+        <!-- Floating hearts from friends' reactions, top (faint, small) to bottom (opaque, big) -->
+        <ImageView
+            android:layout_width="@dimen/heart_size_1"
+            android:layout_height="@dimen/heart_size_1"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/heart_1_start"
+            android:layout_marginBottom="@dimen/heart_1_bottom"
+            android:alpha="0.45"
+            android:importantForAccessibility="no"
+            android:src="@drawable/reaction_love" />
+
+        <ImageView
+            android:layout_width="@dimen/heart_size_1"
+            android:layout_height="@dimen/heart_size_1"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/heart_2_start"
+            android:layout_marginBottom="@dimen/heart_2_bottom"
+            android:alpha="0.6"
+            android:importantForAccessibility="no"
+            android:src="@drawable/reaction_love" />
+
+        <ImageView
+            android:layout_width="@dimen/heart_size_2"
+            android:layout_height="@dimen/heart_size_2"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/heart_3_start"
+            android:layout_marginBottom="@dimen/heart_3_bottom"
+            android:alpha="0.75"
+            android:importantForAccessibility="no"
+            android:src="@drawable/reaction_love" />
+
+        <ImageView
+            android:layout_width="@dimen/heart_size_3"
+            android:layout_height="@dimen/heart_size_3"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/heart_4_start"
+            android:layout_marginBottom="@dimen/heart_4_bottom"
+            android:alpha="0.9"
+            android:importantForAccessibility="no"
+            android:src="@drawable/reaction_love" />
+
+        <ImageView
+            android:layout_width="@dimen/heart_size_4"
+            android:layout_height="@dimen/heart_size_4"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/heart_5_start"
+            android:layout_marginBottom="@dimen/heart_5_bottom"
+            android:importantForAccessibility="no"
+            android:src="@drawable/reaction_love" />
+    </FrameLayout>
+
+    <!-- ===== 2. Bottom row ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/yours_bar_start"
+        android:layout_marginTop="@dimen/yours_bar_top"
+        android:layout_marginEnd="@dimen/yours_bar_end"
+        android:layout_marginBottom="@dimen/yours_bar_bottom"
+        android:orientation="horizontal">
+
+        <!-- "Seen by 24": three overlapping avatars above the count (visual only) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/yours_column_padding"
+            android:paddingBottom="@dimen/yours_column_padding">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Each avatar: dark 24dp disc (the ring) with the 20dp initials disc inside -->
+                <FrameLayout
+                    android:layout_width="@dimen/seen_avatar_size"
+                    android:layout_height="@dimen/seen_avatar_size"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:backgroundTint="@color/camera_bg"
+                    android:padding="@dimen/seen_avatar_ring">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/avatar_ak"
+                        android:text="@string/sample_initials_aisha"
+                        android:textSize="@dimen/text_avatar_20" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="@dimen/seen_avatar_size"
+                    android:layout_height="@dimen/seen_avatar_size"
+                    android:layout_marginStart="@dimen/seen_avatar_overlap"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:backgroundTint="@color/camera_bg"
+                    android:padding="@dimen/seen_avatar_ring">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/avatar_lm"
+                        android:text="@string/sample_initials_lina"
+                        android:textSize="@dimen/text_avatar_20" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="@dimen/seen_avatar_size"
+                    android:layout_height="@dimen/seen_avatar_size"
+                    android:layout_marginStart="@dimen/seen_avatar_overlap"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:backgroundTint="@color/camera_bg"
+                    android:padding="@dimen/seen_avatar_ring">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/avatar_of"
+                        android:text="@string/sample_initials_omar"
+                        android:textSize="@dimen/text_avatar_20" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.StoryAction.Label"
+                android:text="@string/yours_seen_by" />
+        </LinearLayout>
+
+        <!-- Actions (visual only). Each column is one touch target with its label. -->
+        <LinearLayout
+            style="@style/Kinnect.StoryAction"
+            android:layout_marginStart="@dimen/yours_actions_start">
+
+            <ImageView
+                style="@style/Kinnect.StoryAction.Icon"
+                android:src="@drawable/ic_create_reel" />
+
+            <TextView
+                style="@style/Kinnect.StoryAction.Label"
+                android:text="@string/yours_create" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Kinnect.StoryAction">
+
+            <ImageView
+                style="@style/Kinnect.StoryAction.Icon"
+                android:src="@drawable/ic_heart" />
+
+            <TextView
+                style="@style/Kinnect.StoryAction.Label"
+                android:text="@string/yours_highlight" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Kinnect.StoryAction">
+
+            <ImageView
+                style="@style/Kinnect.StoryAction.Icon"
+                android:src="@drawable/ic_send" />
+
+            <TextView
+                style="@style/Kinnect.StoryAction.Label"
+                android:text="@string/yours_send" />
+        </LinearLayout>
+
+        <!-- The dots are drawn at the full 24dp (no padding), as in the design -->
+        <LinearLayout style="@style/Kinnect.StoryAction">
+
+            <ImageView
+                style="@style/Kinnect.StoryAction.Icon"
+                android:padding="0dp"
+                android:src="@drawable/ic_more" />
+
+            <TextView
+                style="@style/Kinnect.StoryAction.Label"
+                android:text="@string/yours_more" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

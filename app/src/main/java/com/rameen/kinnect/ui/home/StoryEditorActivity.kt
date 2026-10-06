@@ -1,5 +1,6 @@
 package com.rameen.kinnect.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import com.rameen.kinnect.databinding.ActivityStoryEditorBinding
 import com.rameen.kinnect.ui.BaseActivity
@@ -28,6 +29,6 @@ class StoryEditorActivity : BaseActivity() {
         binding.llYourStory.setOnClickListener { openYourStory() }
     }
 
-    /** Your story (12) is opened by class name, so the tap is ignored until it is built. */
-    private fun openYourStory() = openScreen("com.rameen.kinnect.ui.home.YourStoryActivity")
+    /** Opens Your story (12) with an explicit Intent. */
+    private fun openYourStory() = startActivity(Intent(this, YourStoryActivity::class.java))
 }
