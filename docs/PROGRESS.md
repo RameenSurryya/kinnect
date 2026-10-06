@@ -6,7 +6,9 @@
 
 - [x] Photo placeholders (ph_sand, ph_teal, ph_lilac, ph_sky, ph_sage, ph_rose, ph_night)
 
-- [ ] Real photos added
+- [x] Real photos: not needed. Every photo in the design is a placeholder landscape, so the ph_* vectors match it exactly
+
+- [x] Package and project renamed to com.rameen.i230806 / i230806   - [x] README and submission zip
 
 - [x] 01 Splash   - [x] 02 Login   - [x] 03 Sign up   - [x] 04 Home feed   - [x] 05 Reaction picker
 
@@ -20,5 +22,5 @@
 
 - [x] Navigation / back stack audit   - [x] Responsive + accessibility pass
 
-- [x] Espresso test 1 (multi-step)   - [x] Espresso test 2 (login â†’ menu â†’ logout)
+- [x] Espresso test 1 (multi-step)   - [x] Espresso test 2 (login -> menu -> logout)
 
