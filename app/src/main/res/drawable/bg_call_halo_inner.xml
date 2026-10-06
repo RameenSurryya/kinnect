@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Inner soft ring round the call avatar (22): white 12 % rounded square, 53dp corners.
+     The avatar covers its middle, leaving a 9dp ring. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/call_halo_inner" />
+    <corners android:radius="@dimen/call_halo_inner_radius" />
+</shape>

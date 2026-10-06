@@ -816,4 +816,29 @@
     <dimen name="text_chat_time">10.5sp</dimen>           <!-- TODAY 4:49 PM, tracked out -->
     <dimen name="text_chat_quote">12.5sp</dimen>          <!-- quoted "Lina booked the table for 8" -->
     <dimen name="text_avatar_66">24sp</dimen>             <!-- 0.36 x 66dp -->
+
+    <!-- 22 Voice call (measured from design/screens/screen-22.png) -->
+    <dimen name="call_encrypted_top">46dp</dimen>         <!-- lock line centred at y 53 -->
+    <dimen name="icon_size_lock">12dp</dimen>             <!-- lock glyph 8 x 10dp -->
+    <dimen name="call_lock_gap">5dp</dimen>               <!-- lock to "End-to-end encrypted" -->
+    <dimen name="call_halo_top">133dp</dimen>             <!-- outer ring top at y 193.7 -->
+    <dimen name="call_halo_outer_size">183dp</dimen>      <!-- 144 + 2 x (9 + 10.5) -->
+    <dimen name="call_halo_outer_width">10.5dp</dimen>
+    <dimen name="call_halo_outer_radius">58.25dp</dimen>  <!-- stroke centre: edges at 63.5dp and 53dp -->
+    <dimen name="call_halo_inner_radius">53dp</dimen>
+    <dimen name="call_halo_inner_width">9dp</dimen>
+    <dimen name="call_name_top">13.5dp</dimen>
+    <dimen name="call_heart_gap">8.5dp</dimen>            <!-- "Ammi" to the heart -->
+    <dimen name="call_heart">18dp</dimen>                 <!-- love disc, measured 17.3dp -->
+    <dimen name="call_timer_top">8.5dp</dimen>
+    <dimen name="call_controls_bottom">52dp</dimen>       <!-- end-call button to the screen bottom -->
+    <dimen name="call_control">52dp</dimen>               <!-- round buttons -->
+    <dimen name="call_control_padding">15dp</dimen>       <!-- (52 - 22) / 2: 22dp icons -->
+    <dimen name="call_control_gap">20.4dp</dimen>
+    <dimen name="call_end">72dp</dimen>
+    <dimen name="call_end_padding">21dp</dimen>           <!-- (72 - 30) / 2: 30dp handset -->
+    <dimen name="text_call_encrypted">12sp</dimen>        <!-- letterSpacing 0.05: text 131dp wide -->
+    <dimen name="text_call_name">28sp</dimen>             <!-- "Ammi", Bricolage ExtraBold -->
+    <dimen name="text_call_timer">17sp</dimen>            <!-- "03:12" -->
+    <dimen name="text_avatar_144">52sp</dimen>            <!-- 0.36 x 144dp -->
 </resources>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    22 Voice call with Ammi. Teal screen in two parts:
+      1. ScrollView (centred column): lock + "End-to-end encrypted"; the 144dp rounded-square
+         "AM" avatar inside two soft rings (FrameLayouts: outer 5 % ring drawn as a stroke,
+         inner 12 % rounded square, avatar on top); "Ammi" with a love heart; the call time.
+      2. Pinned controls at the bottom: transcript, mute, the red end-call button (ends the
+         call: back to Chat) and speaker. Visual only: no microphone, speaker or call API.
+    Measurements in dp come from design/screens/screen-22.png (dimens.xml, 22 Voice call).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== 1. Caller ===== -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Lock + "End-to-end encrypted" -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/call_encrypted_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_lock"
+                    android:layout_height="@dimen/icon_size_lock"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_lock"
+                    app:tint="@color/text_on_teal_soft" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/call_lock_gap"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="0.05"
+                    android:text="@string/call_encrypted"
+                    android:textColor="@color/text_on_teal_soft"
+                    android:textSize="@dimen/text_call_encrypted" />
+            </LinearLayout>
+
+            <!-- Avatar in two soft rings -->
+            <FrameLayout
+                android:layout_width="@dimen/call_halo_outer_size"
+                android:layout_height="@dimen/call_halo_outer_size"
+                android:layout_marginTop="@dimen/call_halo_top"
+                android:background="@drawable/bg_call_halo_outer"
+                android:padding="@dimen/call_halo_outer_width">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_call_halo_inner"
+                    android:padding="@dimen/call_halo_inner_width">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_call_avatar"
+                        android:backgroundTint="@color/avatar_am"
+                        android:text="@string/sample_initials_ammi"
+                        android:textSize="@dimen/text_avatar_144" />
+                </FrameLayout>
+            </FrameLayout>
+
+            <!-- Name + love heart -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/call_name_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bricolage_grotesque_extrabold"
+                    android:includeFontPadding="false"
+                    android:text="@string/sample_name_ammi"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_call_name" />
+
+                <ImageView
+                    android:layout_width="@dimen/call_heart"
+                    android:layout_height="@dimen/call_heart"
+                    android:layout_marginStart="@dimen/call_heart_gap"
+                    android:contentDescription="@string/cd_favourite"
+                    android:src="@drawable/reaction_love" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/call_timer_top"
+                android:includeFontPadding="false"
+                android:text="@string/call_timer"
+                android:textColor="@color/text_on_teal_soft"
+                android:textSize="@dimen/text_call_timer" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ===== 2. Pinned controls ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/call_controls_bottom"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/Kinnect.CallControl"
+            android:contentDescription="@string/cd_transcript"
+            android:src="@drawable/ic_transcript" />
+
+        <ImageView
+            style="@style/Kinnect.CallControl"
+            android:layout_marginStart="@dimen/call_control_gap"
+            android:contentDescription="@string/cd_mute"
+            android:src="@drawable/ic_mic" />
+
+        <ImageView
+            android:id="@+id/iv_end_call"
+            style="@style/Kinnect.CallControl"
+            android:layout_width="@dimen/call_end"
+            android:layout_height="@dimen/call_end"
+            android:layout_marginStart="@dimen/call_control_gap"
+            android:background="@drawable/bg_call_end"
+            android:contentDescription="@string/cd_end_call"
+            android:padding="@dimen/call_end_padding"
+            android:src="@drawable/ic_call_end" />
+
+        <ImageView
+            style="@style/Kinnect.CallControl"
+            android:layout_marginStart="@dimen/call_control_gap"
+            android:contentDescription="@string/cd_speaker"
+            android:src="@drawable/ic_speaker" />
+    </LinearLayout>
+</LinearLayout>

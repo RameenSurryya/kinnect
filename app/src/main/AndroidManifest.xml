@@ -131,6 +131,11 @@
             android:name=".ui.chat.ChatActivity"
             android:screenOrientation="portrait" />
 
+        <!-- 22 Voice call -->
+        <activity
+            android:name=".ui.chat.VoiceCallActivity"
+            android:screenOrientation="portrait" />
+
         <!-- 23 Marketplace -->
         <activity
             android:name=".ui.market.MarketplaceActivity"

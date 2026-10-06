@@ -32,7 +32,7 @@ ic_heart=heart, ic_text_aa=text-aa, ic_music=music-notes-simple (one beam as in 
 
 ic_create_reel=hand-drawn (see Custom; film-slate had no play triangle)
 
-Chat/call: ic_phone=phone, ic_video=video-camera, ic_mic=microphone, ic_call_end=phone-disconnect,
+Chat/call: ic_phone=phone, ic_video=video-camera, ic_mic=microphone, ic_call_end=phone-disconnect (handset only: the bottom bar is removed, as in 22),
 
 ic_speaker=speaker-high, ic_transcript=article
 

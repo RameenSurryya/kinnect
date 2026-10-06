@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Red end-call button (22): 72dp rounded square, 26dp corners. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/call_end_red" />
+    <corners android:radius="@dimen/radius_call_end" />
+</shape>

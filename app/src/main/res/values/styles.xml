@@ -1079,4 +1079,16 @@
         <item name="android:layout_height">@dimen/chat_typing_dot</item>
         <item name="android:background">@drawable/bg_avatar_circle</item>
     </style>
+
+    <!-- ===== Voice call (22) ===== -->
+
+    <!-- 52dp translucent round button with a white 22dp icon (transcript, mute, speaker). -->
+    <style name="Kinnect.CallControl" parent="">
+        <item name="android:layout_width">@dimen/call_control</item>
+        <item name="android:layout_height">@dimen/call_control</item>
+        <item name="android:padding">@dimen/call_control_padding</item>
+        <item name="android:background">@drawable/bg_call_control</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="tint">@color/white</item>
+    </style>
 </resources>

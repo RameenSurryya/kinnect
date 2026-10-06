@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Outer soft ring round the call avatar (22): white 5 %, 10.5dp wide.
+     Drawn as a stroke (not a fill), so it does not add up with the inner ring's 12 %:
+     both were sampled straight over the teal background. The stroke sits inside the bounds;
+     its outer edge has a 63.5dp radius and its inner edge 53dp, the inner ring's radius. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="@dimen/call_halo_outer_width"
+        android:color="@color/call_halo_outer" />
+    <corners android:radius="@dimen/call_halo_outer_radius" />
+</shape>
