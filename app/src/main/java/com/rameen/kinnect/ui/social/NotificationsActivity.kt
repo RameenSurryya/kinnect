@@ -4,12 +4,13 @@ import android.os.Bundle
 import com.rameen.kinnect.R
 import com.rameen.kinnect.databinding.ActivityNotificationsBinding
 import com.rameen.kinnect.ui.BaseActivity
+import com.rameen.kinnect.ui.profile.OtherProfileActivity
 
 /**
  * 18 Notifications. UI only: every notification is static sample content.
  *  - Top bar (title, search, messenger) and the tabs are wired by BaseActivity.
- *  - Tapping a notification row opens the other person's profile.
- *  - "...", Confirm, Delete and See previous notifications do nothing.
+ *  - Tapping the friend request row (Sara Iqbal) opens the other person's profile.
+ *  - The other rows, "...", Confirm, Delete and See previous notifications do nothing.
  */
 class NotificationsActivity : BaseActivity() {
 
@@ -23,12 +24,7 @@ class NotificationsActivity : BaseActivity() {
         setupTopBar(R.string.title_notifications)
         setupTopTabs(Tab.NOTIFICATIONS)
 
-        val rows = listOf(
-            binding.llNotifAisha, binding.llNotifSara, binding.llNotifZain,
-            binding.llNotifClass, binding.llNotifHamza, binding.llNotifLina,
-        )
-        for (row in rows) {
-            row.setOnClickListener { openScreen("com.rameen.kinnect.ui.profile.OtherProfileActivity") }
-        }
+        // Only the friend request (Sara Iqbal) leads to another screen: that person's profile.
+        binding.llNotifSara.setOnClickListener { openScreen(OtherProfileActivity::class.java) }
     }
 }

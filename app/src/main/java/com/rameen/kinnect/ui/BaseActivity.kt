@@ -1,5 +1,6 @@
 package com.rameen.kinnect.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -14,6 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import com.rameen.kinnect.R
+import com.rameen.kinnect.ui.chat.ChatsActivity
+import com.rameen.kinnect.ui.home.HomeActivity
+import com.rameen.kinnect.ui.home.SearchActivity
+import com.rameen.kinnect.ui.market.MarketplaceActivity
+import com.rameen.kinnect.ui.social.FriendsActivity
+import com.rameen.kinnect.ui.social.MenuActivity
+import com.rameen.kinnect.ui.social.NotificationsActivity
 
 /**
  * Parent class of every Kinnect screen.
@@ -59,25 +67,23 @@ abstract class BaseActivity : AppCompatActivity() {
 
     /**
      * The five tabs. Each one knows its views in include_top_tabs.xml and the screen it opens.
-     * Screens are named by class name (text) so this file compiles before they are built;
-     * [openScreen] skips any screen that does not exist yet.
      */
     protected enum class Tab(
         val frameId: Int,
         val iconId: Int,
         val indicatorId: Int,
-        val screen: String,
+        val screen: Class<out Activity>,
     ) {
         HOME(R.id.fl_tab_home, R.id.iv_tab_home, R.id.v_tab_home_indicator,
-            "com.rameen.kinnect.ui.home.HomeActivity"),
+            HomeActivity::class.java),
         FRIENDS(R.id.fl_tab_friends, R.id.iv_tab_friends, R.id.v_tab_friends_indicator,
-            "com.rameen.kinnect.ui.social.FriendsActivity"),
+            FriendsActivity::class.java),
         MARKETPLACE(R.id.fl_tab_marketplace, R.id.iv_tab_marketplace, R.id.v_tab_marketplace_indicator,
-            "com.rameen.kinnect.ui.market.MarketplaceActivity"),
+            MarketplaceActivity::class.java),
         NOTIFICATIONS(R.id.fl_tab_notifications, R.id.iv_tab_notifications, R.id.v_tab_notifications_indicator,
-            "com.rameen.kinnect.ui.social.NotificationsActivity"),
+            NotificationsActivity::class.java),
         MENU(R.id.fl_tab_menu, R.id.iv_tab_menu, R.id.v_tab_menu_indicator,
-            "com.rameen.kinnect.ui.social.MenuActivity"),
+            MenuActivity::class.java),
     }
 
     /**
@@ -126,10 +132,10 @@ abstract class BaseActivity : AppCompatActivity() {
     /** Search opens the Search screen, messenger opens the Chats list. */
     private fun wireTopBarButtons() {
         findViewById<View>(R.id.fl_search).setOnClickListener {
-            openScreen("com.rameen.kinnect.ui.home.SearchActivity")
+            openScreen(SearchActivity::class.java)
         }
         findViewById<View>(R.id.fl_messenger).setOnClickListener {
-            openScreen("com.rameen.kinnect.ui.chat.ChatsActivity")
+            openScreen(ChatsActivity::class.java)
         }
     }
 
@@ -137,20 +143,13 @@ abstract class BaseActivity : AppCompatActivity() {
     // 4. Back arrow and navigation
     // ---------------------------------------------------------------------------------------
 
-    /** Makes the view [buttonId] behave like the system Back button (returns to the previous screen). */
+    /** Makes the view [buttonId] (back arrow, X, Cancel) close this screen and return to the previous one. */
     protected fun setupBackButton(buttonId: Int) {
-        findViewById<View>(buttonId).setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        findViewById<View>(buttonId).setOnClickListener { finish() }
     }
 
-    /**
-     * Opens the screen with the given full class name using an explicit Intent.
-     * Until every screen is built some targets do not exist yet: those taps are ignored
-     * instead of crashing the app.
-     */
-    protected fun openScreen(className: String, flags: Int = 0) {
-        val intent = Intent().setClassName(this, className).addFlags(flags)
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
-        }
+    /** Opens [screen] with an explicit Intent, plus optional flags (e.g. REORDER_TO_FRONT for tabs). */
+    protected fun openScreen(screen: Class<out Activity>, flags: Int = 0) {
+        startActivity(Intent(this, screen).addFlags(flags))
     }
 }

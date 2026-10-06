@@ -25,12 +25,10 @@ eye eye
 info info
 plus_circle plus-circle
 plus plus
-check check
 expand corners-out
 select_multiple copy
 add_person user-plus
 person user
-groups users-three
 briefcase briefcase
 graduation graduation-cap
 clock clock
@@ -41,7 +39,6 @@ flip arrows-clockwise
 star star
 send paper-plane-tilt
 heart heart
-text_aa text-aa
 music music-notes-simple
 sparkle star-four
 brightness sun
@@ -56,8 +53,5 @@ logout sign-out
 help question
 settings sun
 apps squares-four
-memories clock-counter-clockwise
 lock lock
-like_filled thumbs-up-fill
-heart_filled heart-fill
 arrow_right arrow-right

@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.rameen.kinnect.R
 import com.rameen.kinnect.databinding.ActivityFriendsBinding
 import com.rameen.kinnect.ui.BaseActivity
+import com.rameen.kinnect.ui.profile.OtherProfileActivity
 
 /**
  * 14 Friends. UI only: the chips and friend requests are static sample content.
@@ -28,7 +29,7 @@ class FriendsActivity : BaseActivity() {
             binding.llRequestNoor, binding.llRequestDaniyal,
         )
         for (row in requests) {
-            row.setOnClickListener { openScreen("com.rameen.kinnect.ui.profile.OtherProfileActivity") }
+            row.setOnClickListener { openScreen(OtherProfileActivity::class.java) }
         }
     }
 }

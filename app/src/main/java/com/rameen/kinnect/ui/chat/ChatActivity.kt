@@ -20,7 +20,7 @@ class ChatActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.ivBack.setOnClickListener { finish() }
-        binding.ivCall.setOnClickListener { openScreen("com.rameen.kinnect.ui.chat.VoiceCallActivity") }
+        binding.ivCall.setOnClickListener { openScreen(VoiceCallActivity::class.java) }
 
         // Cuts the photo message to the frame's rounded corners (bg_chat_photo);
         // XML only has this attribute from Android 12.

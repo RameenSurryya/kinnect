@@ -5,6 +5,9 @@ import android.os.Bundle
 import com.rameen.kinnect.R
 import com.rameen.kinnect.databinding.ActivityMenuBinding
 import com.rameen.kinnect.ui.BaseActivity
+import com.rameen.kinnect.ui.auth.LoginActivity
+import com.rameen.kinnect.ui.market.MarketplaceActivity
+import com.rameen.kinnect.ui.profile.ProfileActivity
 
 /**
  * 19 Menu. UI only: the shortcuts and rows are static sample content.
@@ -26,19 +29,19 @@ class MenuActivity : BaseActivity() {
         setupTopTabs(Tab.MENU)
 
         binding.llProfileCard.setOnClickListener {
-            openScreen("com.rameen.kinnect.ui.profile.ProfileActivity")
+            openScreen(ProfileActivity::class.java)
         }
         // Friends and Marketplace are tab screens too: bring them to the front, don't stack copies.
         binding.llShortcutFriends.setOnClickListener {
-            openScreen("com.rameen.kinnect.ui.social.FriendsActivity", Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            openScreen(FriendsActivity::class.java, Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
         }
         binding.llShortcutMarketplace.setOnClickListener {
-            openScreen("com.rameen.kinnect.ui.market.MarketplaceActivity", Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            openScreen(MarketplaceActivity::class.java, Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
         }
         // Log out: a new task with everything before it cleared, so Back cannot return here.
         binding.llLogout.setOnClickListener {
             openScreen(
-                "com.rameen.kinnect.ui.auth.LoginActivity",
+                LoginActivity::class.java,
                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK,
             )
         }

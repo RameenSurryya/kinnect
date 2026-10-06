@@ -43,7 +43,6 @@
             android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait" />
 
-        <!-- Placeholders (screen background only) until each screen is built -->
         <!-- 05 Reaction picker -->
         <activity
             android:name=".ui.home.ReactionPickerActivity"

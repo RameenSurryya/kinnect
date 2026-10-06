@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.rameen.kinnect.R
 import com.rameen.kinnect.databinding.ActivitySearchBinding
 import com.rameen.kinnect.ui.BaseActivity
+import com.rameen.kinnect.ui.profile.OtherProfileActivity
 
 /**
  * 13 Search. UI only: the query "omar", the chips and every result are static sample content.
@@ -23,7 +24,7 @@ class SearchActivity : BaseActivity() {
 
         // The three person rows all open the other person's profile.
         for (row in listOf(binding.llPersonOmarF, binding.llPersonOmarS, binding.llPersonOmarT)) {
-            row.setOnClickListener { openScreen("com.rameen.kinnect.ui.profile.OtherProfileActivity") }
+            row.setOnClickListener { openScreen(OtherProfileActivity::class.java) }
         }
     }
 }

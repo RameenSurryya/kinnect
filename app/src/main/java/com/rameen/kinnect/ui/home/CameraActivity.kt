@@ -26,7 +26,7 @@ class CameraActivity : BaseActivity() {
 
         binding.ivClose.setOnClickListener { finish() }
         binding.ivShutter.setOnClickListener {
-            openScreen("com.rameen.kinnect.ui.home.StoryEditorActivity")
+            openScreen(StoryEditorActivity::class.java)
         }
     }
 }

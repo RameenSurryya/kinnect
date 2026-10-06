@@ -18,9 +18,9 @@ ic_share=arrow-bend-up-right, ic_globe=globe, ic_close=x, ic_more=dots-three, ic
 
 ic_chevron_down=caret-down, ic_chevron_right=caret-right, ic_eye=eye, ic_info=info,
 
-ic_plus_circle=plus-circle, ic_check=check, ic_expand=corners-out, ic_select_multiple=copy
+ic_plus_circle=plus-circle, ic_expand=corners-out, ic_select_multiple=copy
 
-People/profile: ic_add_person=user-plus, ic_person=user, ic_groups=users-three,
+People/profile: ic_add_person=user-plus, ic_person=user,
 
 ic_briefcase=briefcase, ic_graduation=graduation-cap, ic_clock=clock, ic_edit=pencil-simple,
 
@@ -28,7 +28,7 @@ ic_bookmark=bookmark-simple
 
 Camera/story: ic_flash=lightning, ic_flip=arrows-clockwise (two arrows as in 09; was camera-rotate), ic_star=star, ic_send=paper-plane-tilt,
 
-ic_heart=heart, ic_text_aa=text-aa, ic_music=music-notes-simple (one beam as in 10; was music-notes), ic_sparkle=star-four (as in 10; was sparkle), ic_brightness=sun,
+ic_heart=heart, ic_music=music-notes-simple (one beam as in 10; was music-notes), ic_sparkle=star-four (as in 10; was sparkle), ic_brightness=sun,
 
 ic_create_reel=hand-drawn (see Custom; film-slate had no play triangle)
 
@@ -36,12 +36,13 @@ Chat/call: ic_phone=phone, ic_video=video-camera, ic_mic=microphone, ic_call_end
 
 ic_speaker=speaker-high, ic_transcript=article
 
-Menu: ic_logout=sign-out, ic_help=question, ic_settings=sun, ic_apps=squares-four, ic_memories=clock-counter-clockwise
+Menu: ic_logout=sign-out, ic_help=question, ic_settings=sun, ic_apps=squares-four
 
 Added after checking the screens: ic_lock=lock ("End-to-end encrypted", screen 22),
 ic_arrow_right=arrow-right (next button, screen 10),
 ic_plus=plus (white "+" on the Create story card, screen 04).
-Filled variants (Phosphor Fill): ic_like_filled=thumbs-up-fill, ic_heart_filled=heart-fill.
+Removed in the navigation audit because no screen used them: ic_check, ic_groups, ic_text_aa,
+ic_memories, ic_like_filled, ic_heart_filled, logo_kinnect_teal and bg_bubble_sent (SVGs stay in design/svg/).
 No ic_home_filled: the active tab in the design is still an outline icon (teal).
 All names above resolved on Phosphor with no 404s. SVG sources are in design/svg/.
 design/svg/map.txt lists the same mapping (icon name, Phosphor name); "custom" means hand-drawn.
@@ -64,7 +65,6 @@ Logo (viewport 100, three equal rings: stroke = 0.32 x radius, bottom rings 0.57
 and 1.0 x radius below the top ring, fitted to design/logo.png):
 
 - logo_kinnect: white #FFFFFF (tint grey for the Login footer).
-- logo_kinnect_teal: teal #0B5F63.
 
 Reactions (viewport 64, disc fills it, white glyph, default 32dp):
 

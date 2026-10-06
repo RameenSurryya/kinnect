@@ -18,7 +18,7 @@
 
 - [x] 21 Chat   - [x] 22 Voice call   - [x] 23 Marketplace
 
-- [ ] Navigation / back stack audit   - [ ] Responsive + accessibility pass
+- [x] Navigation / back stack audit   - [ ] Responsive + accessibility pass
 
 - [ ] Espresso test 1 (multi-step)   - [ ] Espresso test 2 (login â†’ menu â†’ logout)
 

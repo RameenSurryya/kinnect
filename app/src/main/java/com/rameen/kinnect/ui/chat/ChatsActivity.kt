@@ -26,7 +26,7 @@ class ChatsActivity : BaseActivity() {
             binding.llChatOmar, binding.llChatBilal, binding.llChatNoor,
         )
         for (row in rows) {
-            row.setOnClickListener { openScreen("com.rameen.kinnect.ui.chat.ChatActivity") }
+            row.setOnClickListener { openScreen(ChatActivity::class.java) }
         }
     }
 }
