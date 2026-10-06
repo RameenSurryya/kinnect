@@ -363,4 +363,21 @@
     <string name="notif_time_lina" translatable="false">2d</string>
     <string name="notif_see_previous">See previous notifications</string>
     <string name="sample_initials_class" translatable="false">DC</string>
+
+    <!-- 19 Menu -->
+    <string name="title_menu">Menu</string>
+    <string name="menu_see_profile">See your profile</string>
+    <string name="menu_all_shortcuts">All shortcuts</string>
+    <string name="menu_memories">Memories</string>
+    <string name="menu_saved">Saved</string>
+    <string name="menu_groups">Groups</string>
+    <string name="menu_marketplace">Marketplace</string>
+    <string name="menu_friends">Friends</string>
+    <string name="menu_events">Events</string>
+    <string name="menu_see_more">See more</string>
+    <string name="menu_help">Help &amp; support</string>
+    <string name="menu_settings">Settings &amp; privacy</string>
+    <string name="menu_also_from">Also from SMD</string>
+    <string name="menu_log_out">Log out</string>
+    <string name="cd_see_profile">See your profile, Jacob West</string>
 </resources>

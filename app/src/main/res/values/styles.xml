@@ -790,4 +790,94 @@
         <item name="android:layout_marginStart">@dimen/edit_line_start</item>
         <item name="android:layout_marginEnd">@dimen/screen_margin</item>
     </style>
+
+    <!-- ===== Menu (19) ===== -->
+
+    <!-- One shortcut card in the 2-column grid: white card, coloured 24dp icon, label below.
+         layout_columnWeight = 1 makes both GridLayout columns share the width equally. -->
+    <style name="Kinnect.ShortcutCard" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:paddingStart">@dimen/menu_card_padding</item>
+        <item name="android:paddingEnd">@dimen/menu_card_padding</item>
+        <item name="android:paddingTop">@dimen/menu_card_padding_top</item>
+        <item name="android:paddingBottom">@dimen/menu_shortcut_padding_bottom</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- Left column: half of the gap on its right. -->
+    <style name="Kinnect.ShortcutCard.Start">
+        <item name="android:layout_marginEnd">@dimen/menu_grid_gap</item>
+    </style>
+
+    <!-- Right column: half of the gap on its left. -->
+    <style name="Kinnect.ShortcutCard.End">
+        <item name="android:layout_marginStart">@dimen/menu_grid_gap</item>
+    </style>
+
+    <!-- Icon of a shortcut card; each card sets its own colour with app:tint. -->
+    <style name="Kinnect.ShortcutCard.Icon" parent="">
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <!-- Label of a shortcut card ("Memories"): Figtree SemiBold 14sp. -->
+    <style name="Kinnect.Text.Shortcut">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/menu_shortcut_label_top</item>
+        <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- "Expandable" row (Help & support ...): grey circle icon, label, down chevron. -->
+    <style name="Kinnect.MenuRow" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/menu_row_height</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/menu_row_padding_start</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- 18dp icon in a 33dp grey circle (the padding centres the icon). -->
+    <style name="Kinnect.MenuRow.Icon" parent="">
+        <item name="android:layout_width">@dimen/icon_circle</item>
+        <item name="android:layout_height">@dimen/icon_circle</item>
+        <item name="android:padding">@dimen/menu_row_icon_padding</item>
+        <item name="android:background">@drawable/bg_circle_grey</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="tint">@color/text_dark</item>
+    </style>
+
+    <!-- Row label: Figtree SemiBold 15sp, fills the space before the chevron. -->
+    <style name="Kinnect.Text.MenuRow">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">@dimen/menu_row_text_start</item>
+        <item name="android:fontFamily">@font/figtree_semibold</item>
+        <item name="android:textSize">@dimen/text_name</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Grey down chevron at the end of a row. -->
+    <style name="Kinnect.MenuRow.Chevron" parent="">
+        <item name="android:layout_width">@dimen/menu_chevron_size</item>
+        <item name="android:layout_height">@dimen/menu_chevron_size</item>
+        <item name="android:layout_marginEnd">@dimen/menu_row_chevron_end</item>
+        <item name="android:src">@drawable/ic_chevron_down</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="tint">@color/text_grey</item>
+    </style>
 </resources>

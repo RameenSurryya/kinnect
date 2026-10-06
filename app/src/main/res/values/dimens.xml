@@ -696,4 +696,33 @@
     <dimen name="notif_buttons_end">3dp</dimen>          <!-- buttons end at x 304 -->
     <dimen name="notif_more_end">2dp</dimen>             <!-- "..." centre 26dp from the right -->
     <dimen name="notif_see_previous_top">13dp</dimen>
+
+    <!-- 19 Menu (measured on screen-19.png; text views use includeFontPadding="false").
+         Cards use bg_card, whose 1.5dp bottom shadow is part of the view height. -->
+    <dimen name="menu_card_top">11dp</dimen>             <!-- tab divider to the profile card -->
+    <dimen name="menu_card_padding">11.5dp</dimen>       <!-- card edge to the avatar / icon / label -->
+    <dimen name="menu_card_padding_top">11dp</dimen>
+    <dimen name="menu_card_padding_bottom">12.5dp</dimen> <!-- 11dp + the 1.5dp shadow -->
+    <dimen name="menu_name_start">11dp</dimen>           <!-- avatar to "Jacob West" -->
+    <dimen name="text_avatar_40">14.5sp</dimen>          <!-- 0.36 x 40dp -->
+    <dimen name="text_menu_name">16sp</dimen>            <!-- "Jacob West" (cap height 11.2dp) -->
+    <dimen name="text_menu_subtitle">13.5sp</dimen>      <!-- "See your profile" -->
+    <dimen name="menu_chevron_size">16dp</dimen>         <!-- profile card and row chevrons -->
+    <dimen name="menu_label_top">10dp</dimen>            <!-- profile card to "All shortcuts" -->
+    <dimen name="menu_grid_top">12.5dp</dimen>           <!-- "All shortcuts" to the first shortcut card -->
+    <dimen name="menu_grid_gap">3.5dp</dimen>            <!-- half the 7dp gap between the two columns -->
+    <dimen name="menu_grid_row_gap">5.5dp</dimen>        <!-- card shadow to the next card (rows 79dp apart) -->
+    <dimen name="menu_shortcut_label_top">8dp</dimen>    <!-- icon to "Memories" -->
+    <dimen name="menu_shortcut_padding_bottom">13.5dp</dimen> <!-- 12dp + the 1.5dp shadow -->
+    <dimen name="menu_see_more_top">10.5dp</dimen>       <!-- last card to See more -->
+    <dimen name="menu_rows_top">10.5dp</dimen>           <!-- See more to the first divider -->
+    <dimen name="menu_row_height">47dp</dimen>           <!-- rows 47.8dp apart incl. the 1dp divider -->
+    <dimen name="menu_row_padding_start">4dp</dimen>     <!-- divider start to the grey circle -->
+    <dimen name="menu_row_icon_size">18dp</dimen>
+    <dimen name="menu_row_icon_padding">7.5dp</dimen>    <!-- (33 - 18) / 2 -->
+    <dimen name="menu_row_text_start">11.5dp</dimen>     <!-- circle to the label -->
+    <dimen name="menu_row_chevron_end">5dp</dimen>       <!-- chevron centre 13dp from the divider end -->
+    <dimen name="menu_logout_top">12dp</dimen>           <!-- last row to Log out -->
+    <dimen name="menu_logout_icon_gap">7dp</dimen>
+    <dimen name="menu_white_top">160dp</dimen>           <!-- white behind status bar + top bar + tabs -->
 </resources>

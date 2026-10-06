@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Root background of the menu (19): the warm page colour, with white across the top so the
+     status bar matches the white top bar and tabs, and the gesture bar matches the page. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/background" />
+    <item
+        android:drawable="@color/surface"
+        android:gravity="top"
+        android:height="@dimen/menu_white_top" />
+</layer-list>

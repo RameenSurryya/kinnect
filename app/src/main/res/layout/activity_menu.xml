@@ -1,7 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 19 Menu (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    19 Menu. Pinned at the top: the shared top bar ("Menu", small search / messenger circles via
+    ThemeOverlay.Kinnect.TopBarSmall) and the five tabs (Menu active, set in MenuActivity).
+    The rest scrolls on the warm page colour:
+      1. profile card (JW avatar, Jacob West, See your profile, chevron) -> Profile,
+      2. "All shortcuts" and a 2-column GridLayout of six white cards (equal column weights),
+      3. See more, three "expandable" rows separated by 1dp dividers, and Log out.
+    Only the profile card, Friends, Marketplace and Log out navigate (MenuActivity).
+    Measurements in dp come from design/screens/screen-19.png (dimens.xml, 19 Menu).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:fitsSystemWindows="true" />
+    android:background="@drawable/bg_menu_screen"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Pinned: "Menu" + small search / messenger circles -->
+    <include
+        layout="@layout/include_top_bar"
+        android:theme="@style/ThemeOverlay.Kinnect.TopBarSmall" />
+
+    <!-- Pinned: five tabs, Menu active -->
+    <include layout="@layout/include_top_tabs" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/background"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_margin"
+            android:paddingEnd="@dimen/screen_margin"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- ===== Profile card: avatar, name + "See your profile", chevron ===== -->
+            <LinearLayout
+                android:id="@+id/ll_profile_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/menu_card_top"
+                android:background="@drawable/bg_card"
+                android:clickable="true"
+                android:contentDescription="@string/cd_see_profile"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/menu_card_padding"
+                android:paddingTop="@dimen/menu_card_padding_top"
+                android:paddingEnd="@dimen/menu_card_padding"
+                android:paddingBottom="@dimen/menu_card_padding_bottom">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_40"
+                    android:layout_height="@dimen/avatar_40"
+                    android:backgroundTint="@color/avatar_jw"
+                    android:text="@string/sample_initials_jacob"
+                    android:textSize="@dimen/text_avatar_40" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/menu_name_start"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Name.Bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/sample_name_jacob"
+                        android:textSize="@dimen/text_menu_name" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/menu_see_profile"
+                        android:textSize="@dimen/text_menu_subtitle" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/menu_chevron_size"
+                    android:layout_height="@dimen/menu_chevron_size"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/text_grey" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.Text.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/menu_label_top"
+                android:includeFontPadding="false"
+                android:text="@string/menu_all_shortcuts" />
+
+            <!-- ===== Shortcut grid: 2 equal columns (layout_columnWeight in the card style) ===== -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/menu_grid_top"
+                android:columnCount="2"
+                android:useDefaultMargins="false">
+
+                <!-- Row 1: Memories, Saved -->
+                <LinearLayout style="@style/Kinnect.ShortcutCard.Start">
+
+                    <ImageView
+                        style="@style/Kinnect.ShortcutCard.Icon"
+                        android:src="@drawable/ic_clock"
+                        app:tint="@color/teal" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Shortcut"
+                        android:text="@string/menu_memories" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Kinnect.ShortcutCard.End">
+
+                    <ImageView
+                        style="@style/Kinnect.ShortcutCard.Icon"
+                        android:src="@drawable/ic_bookmark"
+                        app:tint="@color/purple" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Shortcut"
+                        android:text="@string/menu_saved" />
+                </LinearLayout>
+
+                <!-- Row 2: Groups, Marketplace (opens Marketplace) -->
+                <LinearLayout
+                    style="@style/Kinnect.ShortcutCard.Start"
+                    android:layout_marginTop="@dimen/menu_grid_row_gap">
+
+                    <ImageView
+                        style="@style/Kinnect.ShortcutCard.Icon"
+                        android:src="@drawable/ic_friends"
+                        app:tint="@color/indigo" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Shortcut"
+                        android:text="@string/menu_groups" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_shortcut_marketplace"
+                    style="@style/Kinnect.ShortcutCard.End"
+                    android:layout_marginTop="@dimen/menu_grid_row_gap">
+
+                    <ImageView
+                        style="@style/Kinnect.ShortcutCard.Icon"
+                        android:src="@drawable/ic_store"
+                        app:tint="@color/green" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Shortcut"
+                        android:text="@string/menu_marketplace" />
+                </LinearLayout>
+
+                <!-- Row 3: Friends (opens Friends), Events -->
+                <LinearLayout
+                    android:id="@+id/ll_shortcut_friends"
+                    style="@style/Kinnect.ShortcutCard.Start"
+                    android:layout_marginTop="@dimen/menu_grid_row_gap">
+
+                    <ImageView
+                        style="@style/Kinnect.ShortcutCard.Icon"
+                        android:src="@drawable/ic_person"
+                        app:tint="@color/teal" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Shortcut"
+                        android:text="@string/menu_friends" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Kinnect.ShortcutCard.End"
+                    android:layout_marginTop="@dimen/menu_grid_row_gap">
+
+                    <ImageView
+                        style="@style/Kinnect.ShortcutCard.Icon"
+                        android:src="@drawable/ic_calendar"
+                        app:tint="@color/accent_orange" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Shortcut"
+                        android:text="@string/menu_events" />
+                </LinearLayout>
+            </GridLayout>
+
+            <Button
+                style="@style/Kinnect.Button.Grey"
+                android:layout_marginTop="@dimen/menu_see_more_top"
+                android:text="@string/menu_see_more" />
+
+            <!-- ===== Expandable-looking rows (visual only) ===== -->
+            <View
+                style="@style/Kinnect.Divider"
+                android:layout_marginTop="@dimen/menu_rows_top" />
+
+            <LinearLayout style="@style/Kinnect.MenuRow">
+
+                <ImageView
+                    style="@style/Kinnect.MenuRow.Icon"
+                    android:src="@drawable/ic_help" />
+
+                <TextView
+                    style="@style/Kinnect.Text.MenuRow"
+                    android:text="@string/menu_help" />
+
+                <ImageView style="@style/Kinnect.MenuRow.Chevron" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.Divider" />
+
+            <LinearLayout style="@style/Kinnect.MenuRow">
+
+                <ImageView
+                    style="@style/Kinnect.MenuRow.Icon"
+                    android:src="@drawable/ic_settings" />
+
+                <TextView
+                    style="@style/Kinnect.Text.MenuRow"
+                    android:text="@string/menu_settings" />
+
+                <ImageView style="@style/Kinnect.MenuRow.Chevron" />
+            </LinearLayout>
+
+            <View style="@style/Kinnect.Divider" />
+
+            <LinearLayout style="@style/Kinnect.MenuRow">
+
+                <ImageView
+                    style="@style/Kinnect.MenuRow.Icon"
+                    android:src="@drawable/ic_apps" />
+
+                <TextView
+                    style="@style/Kinnect.Text.MenuRow"
+                    android:text="@string/menu_also_from" />
+
+                <ImageView style="@style/Kinnect.MenuRow.Chevron" />
+            </LinearLayout>
+
+            <!-- ===== Log out: grey button with the icon and label centred together.
+                 scaleX="-1" mirrors Phosphor's sign-out so the arrow points left, as drawn. ===== -->
+            <LinearLayout
+                android:id="@+id/ll_logout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_logout"
+                android:layout_marginTop="@dimen/menu_logout_top"
+                android:background="@drawable/bg_button_grey"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/menu_row_icon_size"
+                    android:layout_height="@dimen/menu_row_icon_size"
+                    android:importantForAccessibility="no"
+                    android:scaleX="-1"
+                    android:src="@drawable/ic_logout"
+                    app:tint="@color/text_dark" />
+
+                <TextView
+                    style="@style/Kinnect.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/menu_logout_icon_gap"
+                    android:fontFamily="@font/figtree_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/menu_log_out"
+                    android:textSize="@dimen/text_name_large" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
