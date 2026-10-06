@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Big profile ring (17): a 3dp teal ring, then a 3.5dp white gap. Put it on a FrameLayout and
+     place the initials avatar inside with a margin of other_ring_total (6.5dp). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer teal disc: only its 3dp edge stays visible -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/teal" />
+        </shape>
+    </item>
+    <!-- White disc inset by the teal width: forms the gap around the avatar -->
+    <item
+        android:bottom="@dimen/other_ring_teal"
+        android:left="@dimen/other_ring_teal"
+        android:right="@dimen/other_ring_teal"
+        android:top="@dimen/other_ring_teal">
+        <shape android:shape="oval">
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>

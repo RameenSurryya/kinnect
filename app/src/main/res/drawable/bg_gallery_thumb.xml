@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Gallery thumbnail shape (09): 6dp corners. CameraActivity turns on clipToOutline so the
+<!-- Gallery thumbnail shape (09) and photo tiles (17): 6dp corners. The activity turns on clipToOutline so the
      photo is cut to it; bg_gallery_thumb_border draws the white frame on top. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">

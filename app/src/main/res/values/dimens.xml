@@ -105,7 +105,7 @@
     <dimen name="icon_size_composer">21dp</dimen>  <!-- image icon at the end of the composer row (04) -->
     <dimen name="icon_size_top_bar">19dp</dimen>   <!-- search and messenger inside the 36dp circles -->
     <dimen name="icon_size_small">16dp</dimen>     <!-- inside chips and small buttons -->
-    <dimen name="icon_size_tiny">12dp</dimen>      <!-- globe after "2h ·" -->
+    <dimen name="icon_size_tiny">12dp</dimen>      <!-- globe after "2h Â·" -->
     <dimen name="reaction_size">32dp</dimen>       <!-- reaction tray (05), story reactions (11) -->
     <dimen name="reaction_size_raised">46dp</dimen> <!-- hovered reaction in the tray (05) -->
     <dimen name="reaction_size_small">18dp</dimen> <!-- reaction summary row (04, 06) -->
@@ -501,7 +501,7 @@
     <dimen name="story_close_padding">12dp</dimen>    <!-- (48 - 24) / 2 -->
     <dimen name="text_avatar_35">12.5sp</dimen>       <!-- 0.36 x 35dp -->
     <dimen name="text_story_name">14sp</dimen>        <!-- "Omar Farooq", Figtree Bold -->
-    <dimen name="text_story_time">12sp</dimen>        <!-- "5h ·" -->
+    <dimen name="text_story_time">12sp</dimen>        <!-- "5h Â·" -->
     <dimen name="viewer_sticker_height">47dp</dimen>
     <dimen name="viewer_sticker_padding">16.5dp</dimen> <!-- 198dp wide with the text -->
     <dimen name="viewer_sticker_above_centre">30.5dp</dimen> <!-- sticker centre above the viewport centre -->
@@ -646,4 +646,30 @@
     <dimen name="edit_switch_top">14dp</dimen>           <!-- last line to "Switch to professional mode" -->
     <dimen name="edit_private_top">15dp</dimen>
     <dimen name="edit_private_rows_top">12dp</dimen>
+
+    <!-- 17 Other profile (measured on screen-17.png; text views use includeFontPadding="false").
+         The toolbar, cover height, detail rows and "..." button reuse the 15 Profile values. -->
+    <dimen name="other_avatar_top">93dp</dimen>          <!-- cover top to the 144dp ring: overlaps the cover by 87dp -->
+    <dimen name="other_ring_teal">3dp</dimen>            <!-- teal outer ring -->
+    <dimen name="other_ring_total">6.5dp</dimen>         <!-- 3dp teal + 3.5dp white: 131dp OF disc -->
+    <dimen name="text_avatar_131">47sp</dimen>           <!-- 0.36 x 131dp -->
+    <dimen name="other_initials_lift">2dp</dimen>        <!-- OF sits 1dp above the disc centre -->
+    <dimen name="other_name_top">6dp</dimen>
+    <dimen name="other_count_top">4dp</dimen>
+    <dimen name="other_bio_top">7dp</dimen>
+    <dimen name="other_buttons_top">14dp</dimen>
+    <dimen name="other_mutual_top">13dp</dimen>
+    <dimen name="text_mutual">12.75sp</dimen>            <!-- "Friends with ..." (line 1 measured 249dp wide) -->
+    <dimen name="mutual_avatar_size">24dp</dimen>        <!-- 22dp disc + 1dp white ring -->
+    <dimen name="mutual_avatar_ring">1dp</dimen>
+    <dimen name="mutual_avatar_overlap">-3.5dp</dimen>   <!-- avatars 20.5dp apart -->
+    <dimen name="text_avatar_22">8sp</dimen>             <!-- 0.36 x 22dp -->
+    <dimen name="other_mutual_text_start">9.5dp</dimen>   <!-- stack end to "Friends with" (x 91) -->
+    <dimen name="other_divider_top">14dp</dimen>
+    <dimen name="other_rows_top">8dp</dimen>
+    <dimen name="other_photos_top">10dp</dimen>
+    <dimen name="other_see_all_top">3dp</dimen>          <!-- "See all" sits lower than "Photos" -->
+    <dimen name="other_tiles_top">11dp</dimen>
+    <dimen name="other_tile_height">104dp</dimen>        <!-- photo tiles 107 x 104dp -->
+    <dimen name="other_tile_gap">4dp</dimen>
 </resources>

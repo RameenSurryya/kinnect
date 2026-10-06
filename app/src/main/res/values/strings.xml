@@ -332,4 +332,16 @@
     <string name="edit_gender">Male</string>
     <string name="edit_switch_professional">Switch to professional mode</string>
     <string name="edit_private_information">Private information</string>
+
+    <!-- 17 Other profile (Omar Farooq). Lines that mix weights use <b> and are shown with
+         fontFamily @font/figtree, so <b> picks the real Figtree Bold. -->
+    <string name="other_counts"><b>1,204</b><font color="#5B5954"> friends · </font><b>38</b><font color="#5B5954"> mutual</font></string>
+    <string name="other_bio">Night photographer. Karachi after dark.</string>
+    <string name="other_add_friend">Add friend</string>
+    <string name="other_message">Message</string>
+    <string name="other_mutual">Friends with <b>Aisha Khan</b>, <b>Lina Marsh</b> and <b>36 others</b></string>
+    <string name="other_work_prefix">"Photographer at "</string>
+    <string name="other_work" translatable="false">Studio Nocturne</string>
+    <string name="other_joined">Joined June 2017</string>
+    <string name="cd_photo">Photo</string>
 </resources>
