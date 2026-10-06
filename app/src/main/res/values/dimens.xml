@@ -569,4 +569,21 @@
     <dimen name="icon_size_clear">13dp</dimen>
     <dimen name="text_avatar_48">17.5sp</dimen>          <!-- 0.36 x 48dp -->
     <dimen name="text_search_recent">13.5sp</dimen>      <!-- lina marsh, study desk karachi -->
+
+    <!-- 14 Friends (measured on screen-14.png) -->
+    <dimen name="friends_chips_top">12dp</dimen>         <!-- tab divider to the chips -->
+    <dimen name="friends_title_top">16dp</dimen>         <!-- chips to "Friend requests" -->
+    <dimen name="friends_count_gap">5dp</dimen>          <!-- "Friend requests" to the orange "12" -->
+    <dimen name="friends_rows_top">12.5dp</dimen>        <!-- section title to the first request -->
+    <dimen name="request_gap">17.5dp</dimen>             <!-- between requests, and above the divider -->
+    <dimen name="request_text_gap">11.5dp</dimen>        <!-- avatar to the text column -->
+    <dimen name="request_name_top">1dp</dimen>
+    <dimen name="request_mutual_top">6dp</dimen>
+    <dimen name="request_buttons_top">8.5dp</dimen>
+    <dimen name="mutual_dot">15dp</dimen>                <!-- two overlapping mutual-friend discs -->
+    <dimen name="mutual_dot_overlap">-4dp</dimen>
+    <dimen name="mutual_text_gap">7dp</dimen>
+    <dimen name="friends_divider_top">15dp</dimen>       <!-- last request to the divider -->
+    <dimen name="friends_more_top">13.5dp</dimen>        <!-- divider to "People you may know" -->
+    <dimen name="text_avatar_74">26.5sp</dimen>          <!-- 0.36 x 74dp -->
 </resources>

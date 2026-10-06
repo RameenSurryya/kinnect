@@ -1,7 +1,522 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 14 Friends (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    14 Friends. Pinned at the top: the shared top bar ("Friends", small search / messenger
+    circles via ThemeOverlay.Kinnect.TopBarSmall) and the five tabs (Friends active, set in
+    FriendsActivity). The rest scrolls: Suggestions / Your friends chips, the "Friend requests 12"
+    header with "See all", four request rows, a divider and the "People you may know" header.
+
+    Request row = horizontal LinearLayout: 74dp initials avatar + a text column. The column holds
+      1. name (left, weight 1) and time (right), top-aligned,
+      2. two overlapping 15dp mutual-friend discs (negative margin) + "N mutual friends",
+      3. Confirm and Delete, equal width (layout_weight 1 each).
+    Measurements in dp come from design/screens/screen-14.png (dimens.xml, 14 Friends section).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Pinned: "Friends" + small search / messenger circles -->
+    <include
+        layout="@layout/include_top_bar"
+        android:theme="@style/ThemeOverlay.Kinnect.TopBarSmall" />
+
+    <!-- Pinned: five tabs, Friends active -->
+    <include layout="@layout/include_top_tabs" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- ===== Chips (both unselected in the design, visual only) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/friends_chips_top"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Chip"
+                    android:text="@string/friends_suggestions" />
+
+                <TextView
+                    style="@style/Kinnect.Chip"
+                    android:layout_marginStart="@dimen/chip_gap"
+                    android:text="@string/friends_your_friends" />
+            </LinearLayout>
+
+            <!-- ===== "Friend requests 12" ...... "See all" (baseline aligned) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/friends_title_top"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Text.SectionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/friends_requests" />
+
+                <!-- The count is a second TextView so it can be orange -->
+                <TextView
+                    style="@style/Kinnect.Text.SectionTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/friends_count_gap"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/friends_requests_count"
+                    android:textColor="@color/accent_orange" />
+
+                <!-- See all: visual only -->
+                <TextView
+                    style="@style/Kinnect.Text.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/friends_see_all"
+                    android:textSize="@dimen/text_label" />
+            </LinearLayout>
+
+            <!-- ===== Request: Sara Iqbal ===== -->
+            <LinearLayout
+                android:id="@+id/ll_request_sara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/friends_rows_top"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_74"
+                    android:layout_height="@dimen/avatar_74"
+                    android:backgroundTint="@color/avatar_si"
+                    android:text="@string/sample_initials_sara"
+                    android:textSize="@dimen/text_avatar_74" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/request_text_gap"
+                    android:layout_marginTop="@dimen/request_name_top"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_sara" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_time_sara" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_mutual_top"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/indigo" />
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:layout_marginStart="@dimen/mutual_dot_overlap"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/brown" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/mutual_text_gap"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_mutual_sara" />
+                    </LinearLayout>
+
+                    <!-- Confirm / Delete: visual only -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_buttons_top"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Kinnect.Button.Small"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="@string/friends_confirm" />
+
+                        <Button
+                            style="@style/Kinnect.Button.Small.Grey"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="@dimen/space_8"
+                            android:layout_weight="1"
+                            android:text="@string/friends_delete" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Request: Bilal Ahmed ===== -->
+            <LinearLayout
+                android:id="@+id/ll_request_bilal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/request_gap"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_74"
+                    android:layout_height="@dimen/avatar_74"
+                    android:backgroundTint="@color/avatar_ba"
+                    android:text="@string/sample_initials_bilal"
+                    android:textSize="@dimen/text_avatar_74" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/request_text_gap"
+                    android:layout_marginTop="@dimen/request_name_top"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_bilal" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_time_bilal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_mutual_top"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/indigo" />
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:layout_marginStart="@dimen/mutual_dot_overlap"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/brown" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/mutual_text_gap"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_mutual_bilal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_buttons_top"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Kinnect.Button.Small"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="@string/friends_confirm" />
+
+                        <Button
+                            style="@style/Kinnect.Button.Small.Grey"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="@dimen/space_8"
+                            android:layout_weight="1"
+                            android:text="@string/friends_delete" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Request: Noor Fatima ===== -->
+            <LinearLayout
+                android:id="@+id/ll_request_noor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/request_gap"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_74"
+                    android:layout_height="@dimen/avatar_74"
+                    android:backgroundTint="@color/avatar_nf"
+                    android:text="@string/sample_initials_noor"
+                    android:textSize="@dimen/text_avatar_74" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/request_text_gap"
+                    android:layout_marginTop="@dimen/request_name_top"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_noor" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_time_noor" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_mutual_top"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/indigo" />
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:layout_marginStart="@dimen/mutual_dot_overlap"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/brown" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/mutual_text_gap"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_mutual_noor" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_buttons_top"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Kinnect.Button.Small"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="@string/friends_confirm" />
+
+                        <Button
+                            style="@style/Kinnect.Button.Small.Grey"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="@dimen/space_8"
+                            android:layout_weight="1"
+                            android:text="@string/friends_delete" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Request: Daniyal Shah ===== -->
+            <LinearLayout
+                android:id="@+id/ll_request_daniyal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/request_gap"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_74"
+                    android:layout_height="@dimen/avatar_74"
+                    android:backgroundTint="@color/avatar_ds"
+                    android:text="@string/sample_initials_daniyal"
+                    android:textSize="@dimen/text_avatar_74" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/request_text_gap"
+                    android:layout_marginTop="@dimen/request_name_top"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="@string/sample_name_daniyal" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_time_daniyal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_mutual_top"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/indigo" />
+
+                        <View
+                            android:layout_width="@dimen/mutual_dot"
+                            android:layout_height="@dimen/mutual_dot"
+                            android:layout_marginStart="@dimen/mutual_dot_overlap"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:backgroundTint="@color/brown" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/mutual_text_gap"
+                            android:includeFontPadding="false"
+                            android:text="@string/friends_mutual_daniyal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/request_buttons_top"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Kinnect.Button.Small"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="@string/friends_confirm" />
+
+                        <Button
+                            style="@style/Kinnect.Button.Small.Grey"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="@dimen/space_8"
+                            android:layout_weight="1"
+                            android:text="@string/friends_delete" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Divider + "People you may know" (the design shows only the header) ===== -->
+            <View
+                style="@style/Kinnect.Divider"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/friends_divider_top"
+                android:layout_marginEnd="@dimen/screen_margin" />
+
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/friends_more_top"
+                android:includeFontPadding="false"
+                android:text="@string/friends_people_you_may_know" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

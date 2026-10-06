@@ -256,6 +256,31 @@
     <string name="cd_add_friend">Add friend</string>
     <string name="cd_remove_recent">Remove from recent searches</string>
 
+    <!-- 14 Friends (static sample friend requests) -->
+    <string name="title_friends">Friends</string>
+    <string name="friends_suggestions">Suggestions</string>
+    <string name="friends_your_friends">Your friends</string>
+    <string name="friends_requests">Friend requests</string>
+    <string name="friends_requests_count" translatable="false">12</string>
+    <string name="friends_see_all">See all</string>
+    <string name="friends_confirm">Confirm</string>
+    <string name="friends_delete">Delete</string>
+    <string name="friends_people_you_may_know">People you may know</string>
+    <string name="sample_name_bilal" translatable="false">Bilal Ahmed</string>
+    <string name="sample_initials_bilal" translatable="false">BA</string>
+    <string name="sample_name_noor" translatable="false">Noor Fatima</string>
+    <string name="sample_initials_noor" translatable="false">NF</string>
+    <string name="sample_name_daniyal" translatable="false">Daniyal Shah</string>
+    <string name="sample_initials_daniyal" translatable="false">DS</string>
+    <string name="friends_mutual_sara">8 mutual friends</string>
+    <string name="friends_mutual_bilal">14 mutual friends</string>
+    <string name="friends_mutual_noor">3 mutual friends</string>
+    <string name="friends_mutual_daniyal">21 mutual friends</string>
+    <string name="friends_time_sara" translatable="false">3d</string>
+    <string name="friends_time_bilal" translatable="false">1w</string>
+    <string name="friends_time_noor" translatable="false">2w</string>
+    <string name="friends_time_daniyal" translatable="false">3w</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

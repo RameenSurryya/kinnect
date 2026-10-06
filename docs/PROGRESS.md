@@ -12,7 +12,7 @@
 
 - [x] 06 Comments   - [x] 07 Create post   - [x] 08 Photo picker   - [x] 09 Camera   - [x] 10 Story editor
 
-- [x] 11 Story viewer   - [x] 12 Your story   - [x] 13 Search   - [ ] 14 Friends   - [ ] 15 Profile
+- [x] 11 Story viewer   - [x] 12 Your story   - [x] 13 Search   - [x] 14 Friends   - [ ] 15 Profile
 
 - [ ] 16 Edit profile   - [ ] 17 Other profile   - [ ] 18 Notifications   - [ ] 19 Menu   - [ ] 20 Chats
 
@@ -20,5 +20,5 @@
 
 - [ ] Navigation / back stack audit   - [ ] Responsive + accessibility pass
 
-- [ ] Espresso test 1 (multi-step)   - [ ] Espresso test 2 (login → menu → logout)
+- [ ] Espresso test 1 (multi-step)   - [ ] Espresso test 2 (login â†’ menu â†’ logout)
 
