@@ -1,7 +1,542 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 18 Notifications (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    18 Notifications. Pinned at the top: the shared top bar ("Notifications", small search /
+    messenger circles via ThemeOverlay.Kinnect.TopBarSmall) and the five tabs (Notifications
+    active, set in NotificationsActivity). The rest scrolls: "New" with its two unread rows on a
+    light teal band, "Earlier" with four rows, and "See previous notifications".
+
+    Notification row = horizontal LinearLayout:
+      1. a 59dp FrameLayout holding the 55dp initials avatar and, drawn last at bottom|end so it
+         sits on top, the type badge (coloured disc inside a white circle that forms the ring),
+      2. a text column: the sentence (names bold through <b> in strings.xml) and the time,
+      3. the "..." button (visual only), shifted up so it lines up with the first text line.
+    Measurements in dp come from design/screens/screen-18.png (dimens.xml, 18 Notifications).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/surface"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Pinned: "Notifications" + small search / messenger circles -->
+    <include
+        layout="@layout/include_top_bar"
+        android:theme="@style/ThemeOverlay.Kinnect.TopBarSmall" />
+
+    <!-- Pinned: five tabs, Notifications active -->
+    <include layout="@layout/include_top_tabs" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/space_16">
+
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/notif_new_top"
+                android:includeFontPadding="false"
+                android:text="@string/notif_new" />
+
+            <!-- ===== New: light teal band behind the unread rows ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/notif_band_top"
+                android:background="@color/teal_tint"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/notif_band_padding_top"
+                android:paddingBottom="@dimen/notif_band_padding_bottom">
+
+                <!-- Aisha Khan reacted (love badge) -->
+                <LinearLayout
+                    android:id="@+id/ll_notif_aisha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/screen_margin">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/notif_avatar_frame"
+                        android:layout_height="@dimen/notif_avatar_frame">
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:layout_width="@dimen/avatar_55"
+                            android:layout_height="@dimen/avatar_55"
+                            android:backgroundTint="@color/avatar_ak"
+                            android:text="@string/sample_initials_aisha"
+                            android:textSize="@dimen/text_avatar_55" />
+
+                        <FrameLayout
+                            android:layout_width="@dimen/notif_reaction_frame"
+                            android:layout_height="@dimen/notif_reaction_frame"
+                            android:layout_gravity="bottom|end"
+                            android:layout_marginEnd="@dimen/notif_reaction_inset"
+                            android:layout_marginBottom="@dimen/notif_reaction_inset"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:padding="@dimen/notif_reaction_ring">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/reaction_love" />
+                        </FrameLayout>
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/notif_text_start"
+                        android:layout_marginEnd="@dimen/notif_text_end"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/figtree"
+                            android:lineSpacingExtra="@dimen/notif_line_spacing"
+                            android:includeFontPadding="false"
+                            android:text="@string/notif_aisha" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption.New"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/notif_line_spacing"
+                            android:includeFontPadding="false"
+                            android:text="@string/notif_time_aisha" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/Kinnect.IconButton"
+                        android:layout_marginTop="@dimen/post_action_shift"
+                        android:layout_marginEnd="@dimen/notif_more_end"
+                        android:contentDescription="@string/cd_more"
+                        android:src="@drawable/ic_more"
+                        app:tint="@color/text_grey" />
+                </LinearLayout>
+
+                <!-- Sara Iqbal sent a friend request (friend request badge) + Confirm / Delete -->
+                <LinearLayout
+                    android:id="@+id/ll_notif_sara"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/notif_row_gap"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/screen_margin">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/notif_avatar_frame"
+                        android:layout_height="@dimen/notif_avatar_frame">
+
+                        <TextView
+                            style="@style/Kinnect.Avatar"
+                            android:layout_width="@dimen/avatar_55"
+                            android:layout_height="@dimen/avatar_55"
+                            android:backgroundTint="@color/avatar_si"
+                            android:text="@string/sample_initials_sara"
+                            android:textSize="@dimen/text_avatar_55" />
+
+                        <FrameLayout
+                            android:layout_width="@dimen/notif_badge_frame"
+                            android:layout_height="@dimen/notif_badge_frame"
+                            android:layout_gravity="bottom|end"
+                            android:background="@drawable/bg_avatar_circle"
+                            android:padding="@dimen/notif_badge_ring">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/badge_friend_request" />
+                        </FrameLayout>
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/notif_text_start"
+                        android:layout_marginEnd="@dimen/notif_text_end"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Kinnect.Text.Body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/figtree"
+                            android:lineSpacingExtra="@dimen/notif_line_spacing"
+                            android:includeFontPadding="false"
+                            android:text="@string/notif_sara" />
+
+                        <TextView
+                            style="@style/Kinnect.Text.Caption.New"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/notif_line_spacing"
+                            android:includeFontPadding="false"
+                            android:text="@string/notif_time_sara" />
+
+                        <!-- Confirm / Delete: visual only, equal width (layout_weight 1 each) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/notif_buttons_top"
+                            android:layout_marginEnd="@dimen/notif_buttons_end"
+                            android:orientation="horizontal">
+
+                            <Button
+                                style="@style/Kinnect.Button.Small"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/button_height_xsmall"
+                                android:layout_weight="1"
+                                android:text="@string/friends_confirm" />
+
+                            <Button
+                                style="@style/Kinnect.Button.Small.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/button_height_xsmall"
+                                android:layout_marginStart="@dimen/space_8"
+                                android:layout_weight="1"
+                                android:text="@string/friends_delete" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/Kinnect.IconButton"
+                        android:layout_marginTop="@dimen/post_action_shift"
+                        android:layout_marginEnd="@dimen/notif_more_end"
+                        android:contentDescription="@string/cd_more"
+                        android:src="@drawable/ic_more"
+                        app:tint="@color/text_grey" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.Text.SectionTitle.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/notif_earlier_top"
+                android:includeFontPadding="false"
+                android:text="@string/notif_earlier" />
+
+            <!-- ===== Earlier ===== -->
+
+            <!-- Zain Raza replied (comment badge) -->
+            <LinearLayout
+                android:id="@+id/ll_notif_zain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/notif_earlier_rows_top"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin">
+
+                <FrameLayout
+                    android:layout_width="@dimen/notif_avatar_frame"
+                    android:layout_height="@dimen/notif_avatar_frame">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="@dimen/avatar_55"
+                        android:layout_height="@dimen/avatar_55"
+                        android:backgroundTint="@color/avatar_zr"
+                        android:text="@string/sample_initials_zain"
+                        android:textSize="@dimen/text_avatar_55" />
+
+                    <FrameLayout
+                        android:layout_width="@dimen/notif_badge_frame"
+                        android:layout_height="@dimen/notif_badge_frame"
+                        android:layout_gravity="bottom|end"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:padding="@dimen/notif_badge_ring">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/badge_comment" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/notif_text_start"
+                    android:layout_marginEnd="@dimen/notif_text_end"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree"
+                        android:lineSpacingExtra="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_zain" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_time_zain" />
+                </LinearLayout>
+
+                <ImageView
+                    style="@style/Kinnect.IconButton"
+                    android:layout_marginTop="@dimen/post_action_shift"
+                    android:layout_marginEnd="@dimen/notif_more_end"
+                    android:contentDescription="@string/cd_more"
+                    android:src="@drawable/ic_more"
+                    app:tint="@color/text_grey" />
+            </LinearLayout>
+
+            <!-- New post in SMD Class of 2026 (group badge) -->
+            <LinearLayout
+                android:id="@+id/ll_notif_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/notif_row_gap"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin">
+
+                <FrameLayout
+                    android:layout_width="@dimen/notif_avatar_frame"
+                    android:layout_height="@dimen/notif_avatar_frame">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="@dimen/avatar_55"
+                        android:layout_height="@dimen/avatar_55"
+                        android:backgroundTint="@color/avatar_dc"
+                        android:text="@string/sample_initials_class"
+                        android:textSize="@dimen/text_avatar_55" />
+
+                    <FrameLayout
+                        android:layout_width="@dimen/notif_badge_frame"
+                        android:layout_height="@dimen/notif_badge_frame"
+                        android:layout_gravity="bottom|end"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:padding="@dimen/notif_badge_ring">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/badge_group" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/notif_text_start"
+                    android:layout_marginEnd="@dimen/notif_text_end"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree"
+                        android:lineSpacingExtra="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_class" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_time_class" />
+                </LinearLayout>
+
+                <ImageView
+                    style="@style/Kinnect.IconButton"
+                    android:layout_marginTop="@dimen/post_action_shift"
+                    android:layout_marginEnd="@dimen/notif_more_end"
+                    android:contentDescription="@string/cd_more"
+                    android:src="@drawable/ic_more"
+                    app:tint="@color/text_grey" />
+            </LinearLayout>
+
+            <!-- Hamza Ali tagged you (tag badge) -->
+            <LinearLayout
+                android:id="@+id/ll_notif_hamza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/notif_row_gap"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin">
+
+                <FrameLayout
+                    android:layout_width="@dimen/notif_avatar_frame"
+                    android:layout_height="@dimen/notif_avatar_frame">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="@dimen/avatar_55"
+                        android:layout_height="@dimen/avatar_55"
+                        android:backgroundTint="@color/avatar_ha"
+                        android:text="@string/sample_initials_hamza"
+                        android:textSize="@dimen/text_avatar_55" />
+
+                    <FrameLayout
+                        android:layout_width="@dimen/notif_badge_frame"
+                        android:layout_height="@dimen/notif_badge_frame"
+                        android:layout_gravity="bottom|end"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:padding="@dimen/notif_badge_ring">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/badge_tag" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/notif_text_start"
+                    android:layout_marginEnd="@dimen/notif_text_end"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree"
+                        android:lineSpacingExtra="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_hamza" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_time_hamza" />
+                </LinearLayout>
+
+                <ImageView
+                    style="@style/Kinnect.IconButton"
+                    android:layout_marginTop="@dimen/post_action_shift"
+                    android:layout_marginEnd="@dimen/notif_more_end"
+                    android:contentDescription="@string/cd_more"
+                    android:src="@drawable/ic_more"
+                    app:tint="@color/text_grey" />
+            </LinearLayout>
+
+            <!-- Lina Marsh liked your story (like badge) -->
+            <LinearLayout
+                android:id="@+id/ll_notif_lina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/notif_row_gap"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/screen_margin">
+
+                <FrameLayout
+                    android:layout_width="@dimen/notif_avatar_frame"
+                    android:layout_height="@dimen/notif_avatar_frame">
+
+                    <TextView
+                        style="@style/Kinnect.Avatar"
+                        android:layout_width="@dimen/avatar_55"
+                        android:layout_height="@dimen/avatar_55"
+                        android:backgroundTint="@color/avatar_lm"
+                        android:text="@string/sample_initials_lina"
+                        android:textSize="@dimen/text_avatar_55" />
+
+                    <FrameLayout
+                        android:layout_width="@dimen/notif_reaction_frame"
+                        android:layout_height="@dimen/notif_reaction_frame"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="@dimen/notif_reaction_inset"
+                        android:layout_marginBottom="@dimen/notif_reaction_inset"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:padding="@dimen/notif_reaction_ring">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/reaction_like" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/notif_text_start"
+                    android:layout_marginEnd="@dimen/notif_text_end"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree"
+                        android:lineSpacingExtra="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_lina" />
+
+                    <TextView
+                        style="@style/Kinnect.Text.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/notif_line_spacing"
+                        android:includeFontPadding="false"
+                        android:text="@string/notif_time_lina" />
+                </LinearLayout>
+
+                <ImageView
+                    style="@style/Kinnect.IconButton"
+                    android:layout_marginTop="@dimen/post_action_shift"
+                    android:layout_marginEnd="@dimen/notif_more_end"
+                    android:contentDescription="@string/cd_more"
+                    android:src="@drawable/ic_more"
+                    app:tint="@color/text_grey" />
+            </LinearLayout>
+
+            <!-- See previous notifications: visual only -->
+            <Button
+                style="@style/Kinnect.Button.Grey"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/notif_see_previous_top"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:text="@string/notif_see_previous" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

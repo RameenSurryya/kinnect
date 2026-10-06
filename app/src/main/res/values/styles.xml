@@ -105,6 +105,12 @@
         <item name="android:textColor">@color/text_grey</item>
     </style>
 
+    <!-- Time of an unread notification ("5m" in the New section, 18): teal and bold. -->
+    <style name="Kinnect.Text.Caption.New">
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textColor">@color/teal</item>
+    </style>
+
     <!-- Bold name in the recent login card (02): heavier than a list name. -->
     <style name="Kinnect.Text.Name.Bold">
         <item name="android:fontFamily">@font/figtree_bold</item>

@@ -344,4 +344,23 @@
     <string name="other_work" translatable="false">Studio Nocturne</string>
     <string name="other_joined">Joined June 2017</string>
     <string name="cd_photo">Photo</string>
+
+    <!-- 18 Notifications. Shown with fontFamily @font/figtree so <b> picks the real Figtree Bold. -->
+    <string name="title_notifications">Notifications</string>
+    <string name="notif_new">New</string>
+    <string name="notif_earlier">Earlier</string>
+    <string name="notif_aisha"><b>Aisha Khan</b> and <b>32 others</b> reacted to your photo.</string>
+    <string name="notif_sara"><b>Sara Iqbal</b> sent you a friend request.</string>
+    <string name="notif_zain"><b>Zain Raza</b> replied to your comment: “next time invite the rest of us”</string>
+    <string name="notif_class">New post in <b>SMD Class of 2026</b>: “Assignment 1 is out. Start early.”</string>
+    <string name="notif_hamza"><b>Hamza Ali</b> tagged you in a post.</string>
+    <string name="notif_lina"><b>Lina Marsh</b> liked your story.</string>
+    <string name="notif_time_aisha" translatable="false">5m</string>
+    <string name="notif_time_sara" translatable="false">20m</string>
+    <string name="notif_time_zain" translatable="false">2h</string>
+    <string name="notif_time_class" translatable="false">5h</string>
+    <string name="notif_time_hamza">Yesterday</string>
+    <string name="notif_time_lina" translatable="false">2d</string>
+    <string name="notif_see_previous">See previous notifications</string>
+    <string name="sample_initials_class" translatable="false">DC</string>
 </resources>

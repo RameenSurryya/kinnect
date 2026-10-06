@@ -111,7 +111,7 @@
     <dimen name="reaction_size_small">18dp</dimen> <!-- reaction summary row (04, 06) -->
     <dimen name="badge_size">18dp</dimen>          <!-- red count badge incl. 2dp white ring -->
     <dimen name="badge_ring">2dp</dimen>
-    <dimen name="type_badge_size">20dp</dimen>     <!-- notification type disc (18), plus 2dp ring -->
+    <dimen name="type_badge_size">24dp</dimen>     <!-- notification type disc (18), plus 2dp ring (re-measured on 18; was 20) -->
     <dimen name="online_dot">8dp</dimen>           <!-- online dot (20), plus 2dp white ring -->
     <dimen name="unread_dot">11dp</dimen>          <!-- unread dot in chats list (20) -->
 
@@ -672,4 +672,28 @@
     <dimen name="other_tiles_top">11dp</dimen>
     <dimen name="other_tile_height">104dp</dimen>        <!-- photo tiles 107 x 104dp -->
     <dimen name="other_tile_gap">4dp</dimen>
+
+    <!-- 18 Notifications (measured on screen-18.png; text views use includeFontPadding="false").
+         Each row: 59dp avatar frame (55dp disc + room for the badge), text column, "..." -->
+    <dimen name="notif_new_top">13.5dp</dimen>           <!-- tab divider to "New" -->
+    <dimen name="notif_band_top">3.5dp</dimen>           <!-- "New" to the light teal band -->
+    <dimen name="notif_band_padding_top">9.5dp</dimen>   <!-- band top to the first avatar -->
+    <dimen name="notif_band_padding_bottom">8.5dp</dimen> <!-- Confirm / Delete to the band bottom -->
+    <dimen name="notif_earlier_top">11dp</dimen>         <!-- band bottom to "Earlier" -->
+    <dimen name="notif_earlier_rows_top">16dp</dimen>    <!-- "Earlier" to the first avatar -->
+    <dimen name="notif_row_gap">14.5dp</dimen>           <!-- avatar frame bottom to the next avatar (rows 73.5dp apart) -->
+    <dimen name="notif_avatar_frame">59dp</dimen>
+    <dimen name="text_avatar_55">20sp</dimen>            <!-- 0.36 x 55dp -->
+    <dimen name="notif_badge_frame">28dp</dimen>         <!-- 24dp type disc + 2dp white ring, centre 17.5dp right / below the avatar centre -->
+    <dimen name="notif_badge_ring">2dp</dimen>
+    <dimen name="notif_reaction_frame">26dp</dimen>      <!-- 18dp love / like disc + 4dp white ring -->
+    <dimen name="notif_reaction_ring">4dp</dimen>
+    <dimen name="notif_reaction_inset">1dp</dimen>       <!-- keeps the smaller frame on the same centre -->
+    <dimen name="notif_text_start">7.5dp</dimen>         <!-- avatar frame to the text (x 82) -->
+    <dimen name="notif_text_end">2.5dp</dimen>           <!-- text column 225dp wide: "request." wraps as in the design -->
+    <dimen name="notif_line_spacing">2.8dp</dimen>       <!-- line pitch 19.6dp, also used above the time -->
+    <dimen name="notif_buttons_top">8.5dp</dimen>        <!-- time to Confirm / Delete -->
+    <dimen name="notif_buttons_end">3dp</dimen>          <!-- buttons end at x 304 -->
+    <dimen name="notif_more_end">2dp</dimen>             <!-- "..." centre 26dp from the right -->
+    <dimen name="notif_see_previous_top">13dp</dimen>
 </resources>

@@ -123,7 +123,8 @@ values are rounded down to whole dp).
 - Icons: 24 dp default (tabs; Home tab 25 dp), 19 dp in the large top bar circles, 15 dp in the
   small ones, 21 dp composer image icon (04, icon_size_composer), 16 dp in chips, 12 dp globe.
   Reactions 32 dp (05 tray and 11; measured 32.1 and 31.6), hovered reaction 46 dp, small
-  summary reactions 18 dp. Badges 18 dp. Notification type badges 20 dp + 2 dp ring.
+  summary reactions 18 dp. Badges 18 dp. Notification type badges 24 dp + 2 dp white ring
+  (re-measured when 18 was built, was 20); love / like badges there are 18 dp + 4 dp white ring.
   Online dot 8 dp + ring, unread dot 11 dp.
 - Buttons: primary pill 44 dp (02, 03, 10); outline 46 dp (02); medium 37 dp (Add to story,
   Edit profile, See more, See previous, SELECT MULTIPLE); small 35 dp (Confirm / Delete in 14,
