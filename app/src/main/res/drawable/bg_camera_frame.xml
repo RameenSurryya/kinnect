@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded camera / story viewport (09-12). The Activity turns on clipToOutline, so the
+     photo and everything on it are cut to these 16dp corners. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/camera_bg" />
+    <corners android:radius="@dimen/radius_camera" />
+</shape>

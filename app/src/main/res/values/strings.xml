@@ -188,6 +188,20 @@
     <string name="cd_preview">Selected photo</string>
     <string name="cd_expand">Expand photo</string>
 
+    <!-- 09 Camera (visual only: no real camera) -->
+    <string name="camera_mode_text">Text</string>
+    <string name="camera_mode_live">Live</string>
+    <string name="camera_mode_story">Story</string>
+    <string name="camera_mode_post">Post</string>
+    <string name="camera_mode_boomerang">Boomerang</string>
+    <string name="cd_camera_preview">Camera preview</string>
+    <string name="cd_brightness">Brightness</string>
+    <string name="cd_gallery">Open gallery</string>
+    <string name="cd_flash">Flash</string>
+    <string name="cd_take_photo">Take photo</string>
+    <string name="cd_flip_camera">Flip camera</string>
+    <string name="cd_effects">Effects</string>
+
     <!-- Sample badge counts shown in the design -->
     <string name="sample_badge_messages" translatable="false">3</string>
     <string name="sample_badge_notifications" translatable="false">5</string>

@@ -1,7 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 09 Camera (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    09 Camera. Visual only: the "camera picture" is the ph_sage placeholder, no real camera.
+
+    Near-black screen with two parts:
+     1. The rounded viewport (FrameLayout, weight 1 so it fills the height): the photo, then
+        on top of it the brightness and close circles (top corners) and the bottom row
+        (gallery thumb, flash, shutter, flip, effects). CameraActivity turns on clipToOutline
+        so the photo is cut to the 16dp corners of bg_camera_frame.
+     2. The mode labels under it: TEXT, LIVE, STORY (selected, white with an underline),
+        POST, BOOMERANG. They sit in a HorizontalScrollView, so on narrow phones the last
+        word is cut off at the right edge instead of wrapping.
+
+    The bottom row is a LinearLayout: the shutter in the middle and two weighted groups on
+    each side. The weights 131 : 135 are the widths of the two sides in the design (the
+    shutter sits 2dp left of centre), so the row stretches evenly on every phone width.
+    Measurements in dp come from design/screens/screen-09.png (dimens.xml, Camera section).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/camera_bg"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== 1. Rounded viewport ===== -->
+    <FrameLayout
+        android:id="@+id/fl_viewport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/camera_frame_margin"
+        android:layout_marginTop="@dimen/camera_frame_margin"
+        android:layout_marginEnd="@dimen/camera_frame_margin"
+        android:layout_weight="1"
+        android:background="@drawable/bg_camera_frame">
+
+        <!-- Camera picture: the tall story crop of the square placeholder (ICONS.md) -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/cd_camera_preview"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ph_sage" />
+
+        <!-- Brightness (visual only) -->
+        <ImageView
+            android:id="@+id/iv_brightness"
+            style="@style/Kinnect.CameraButton"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="@dimen/camera_top_side"
+            android:layout_marginTop="@dimen/camera_top_top"
+            android:contentDescription="@string/cd_brightness"
+            android:src="@drawable/ic_brightness" />
+
+        <!-- Close: back to the previous screen -->
+        <ImageView
+            android:id="@+id/iv_close"
+            style="@style/Kinnect.CameraButton"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/camera_top_top"
+            android:layout_marginEnd="@dimen/camera_top_side"
+            android:contentDescription="@string/cd_close"
+            android:src="@drawable/ic_close" />
+
+        <!-- Bottom row over the photo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/camera_row_height"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/camera_row_bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Left side: gallery thumb, space, flash -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="131"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Gallery thumbnail: rounded photo (clipToOutline) with a white frame on top -->
+                <ImageView
+                    android:id="@+id/iv_gallery"
+                    android:layout_width="@dimen/gallery_thumb"
+                    android:layout_height="@dimen/gallery_thumb"
+                    android:layout_marginStart="@dimen/camera_row_start"
+                    android:background="@drawable/bg_gallery_thumb"
+                    android:contentDescription="@string/cd_gallery"
+                    android:foreground="@drawable/bg_gallery_thumb_border"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ph_teal" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- Flash (visual only); its glyph is drawn smaller in the design -->
+                <ImageView
+                    android:id="@+id/iv_flash"
+                    style="@style/Kinnect.CameraButton"
+                    android:layout_marginEnd="@dimen/camera_flash_end"
+                    android:contentDescription="@string/cd_flash"
+                    android:padding="@dimen/camera_flash_padding"
+                    android:src="@drawable/ic_flash" />
+            </LinearLayout>
+
+            <!-- Shutter: opens the story editor -->
+            <ImageView
+                android:id="@+id/iv_shutter"
+                android:layout_width="@dimen/camera_row_height"
+                android:layout_height="@dimen/camera_row_height"
+                android:background="@drawable/bg_shutter"
+                android:contentDescription="@string/cd_take_photo" />
+
+            <!-- Right side: flip, space, effects with the orange dot -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="135"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/camera_row_end">
+
+                <!-- Flip camera (visual only) -->
+                <ImageView
+                    android:id="@+id/iv_flip"
+                    style="@style/Kinnect.CameraButton"
+                    android:layout_marginStart="@dimen/camera_flip_start"
+                    android:contentDescription="@string/cd_flip_camera"
+                    android:src="@drawable/ic_flip" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- Effects (visual only): FrameLayout so the dot overlaps the circle -->
+                <FrameLayout
+                    android:layout_width="@dimen/camera_button"
+                    android:layout_height="@dimen/camera_button">
+
+                    <ImageView
+                        android:id="@+id/iv_effects"
+                        style="@style/Kinnect.CameraButton"
+                        android:contentDescription="@string/cd_effects"
+                        android:src="@drawable/ic_smile" />
+
+                    <!-- Orange dot with a white ring (same drawable as the count badges) -->
+                    <View
+                        android:layout_width="@dimen/badge_size_small"
+                        android:layout_height="@dimen/badge_size_small"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="@dimen/effects_dot_top"
+                        android:layout_marginEnd="@dimen/effects_dot_end"
+                        android:background="@drawable/bg_badge" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- ===== 2. Mode labels (visual only) ===== -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/camera_modes_top"
+        android:layout_marginBottom="@dimen/camera_modes_bottom"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/camera_modes_start">
+
+            <TextView
+                style="@style/Kinnect.Text.CameraMode"
+                android:text="@string/camera_mode_text" />
+
+            <TextView
+                style="@style/Kinnect.Text.CameraMode"
+                android:text="@string/camera_mode_live" />
+
+            <!-- Selected mode: white bold word with a white line under it -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/camera_mode_gap"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Kinnect.Text.CameraMode.Selected"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/camera_mode_story" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/camera_mode_underline"
+                    android:layout_marginTop="@dimen/camera_mode_underline_top"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/Kinnect.Text.CameraMode"
+                android:text="@string/camera_mode_post" />
+
+            <TextView
+                style="@style/Kinnect.Text.CameraMode"
+                android:text="@string/camera_mode_boomerang" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

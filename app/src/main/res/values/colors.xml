@@ -66,6 +66,8 @@
     <color name="camera_bg">#121212</color>
     <color name="story_pill">#2A2925</color>         <!-- "Your story" / "Close friends" pills (10) -->
     <color name="story_track">#66FFFFFF</color>      <!-- unfilled story progress bar -->
+    <color name="camera_mode">#B8B3AA</color>        <!-- inactive TEXT / LIVE / POST labels (09) -->
+    <color name="shutter_ring">#57FFFFFF</color>     <!-- white 34 %: ring around the shutter (09) -->
     <!-- Translucent layers on top of photos (fitted against the photo colour underneath) -->
     <color name="photo_button_light">#52000000</color> <!-- black 32 %: camera top buttons (09) -->
     <color name="photo_button">#66000000</color>     <!-- black 40 %: story editor buttons (10) -->

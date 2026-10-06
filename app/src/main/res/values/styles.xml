@@ -678,4 +678,36 @@
         <item name="android:translationX">@dimen/top_bar_badge_x_small</item>
         <item name="android:translationY">@dimen/top_bar_badge_y_small</item>
     </style>
+
+    <!-- ===== Camera (09) and story editor (10) ===== -->
+
+    <!-- Round see-through button on the photo: 48dp touch area, 40dp circle, 20dp white icon. -->
+    <style name="Kinnect.CameraButton" parent="">
+        <item name="android:layout_width">@dimen/camera_button</item>
+        <item name="android:layout_height">@dimen/camera_button</item>
+        <item name="android:background">@drawable/bg_camera_button</item>
+        <item name="android:backgroundTint">@color/photo_button_light</item>
+        <item name="android:padding">@dimen/camera_button_padding</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <!-- Mode labels under the camera: spaced bold capitals, pale grey. -->
+    <style name="Kinnect.Text.CameraMode">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/camera_mode_gap</item>
+        <item name="android:paddingStart">@dimen/camera_mode_padding</item>
+        <item name="android:paddingEnd">@dimen/camera_mode_padding</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+        <item name="android:textSize">@dimen/text_camera_mode</item>
+        <item name="android:textColor">@color/camera_mode</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- The selected mode (STORY): white. -->
+    <style name="Kinnect.Text.CameraMode.Selected">
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

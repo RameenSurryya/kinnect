@@ -37,7 +37,7 @@ clock clock
 edit pencil-simple
 bookmark bookmark-simple
 flash lightning
-flip camera-rotate
+flip arrows-clockwise
 star star
 send paper-plane-tilt
 heart heart

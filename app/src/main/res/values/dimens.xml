@@ -439,6 +439,32 @@
     <dimen name="picker_tabs_shift">-3dp</dimen>       <!-- labels row overlaps the 3dp teal line -->
     <dimen name="picker_title_shift">-4dp</dimen>      <!-- "Recents" group sits 4dp left of centre -->
 
+    <!-- Camera (09); story editor (10) shares the frame and the buttons -->
+    <dimen name="camera_frame_margin">8dp</dimen>      <!-- black edge around the rounded viewport -->
+    <dimen name="camera_button">48dp</dimen>           <!-- touch area; the visible circle is 40dp (4dp inset) -->
+    <dimen name="camera_button_padding">14dp</dimen>   <!-- (48 - 20) / 2: a 20dp icon -->
+    <dimen name="camera_flash_padding">15dp</dimen>    <!-- (48 - 18) / 2: the flash glyph is drawn at 18dp -->
+    <dimen name="camera_top_side">1.5dp</dimen>        <!-- circle 5.5dp from the viewport sides -->
+    <dimen name="camera_top_top">4.5dp</dimen>         <!-- circle 8.5dp below the viewport top -->
+    <dimen name="camera_row_height">78dp</dimen>       <!-- shutter: 78dp ring, 60dp white disc -->
+    <dimen name="camera_row_bottom">20dp</dimen>       <!-- row centre 59dp above the viewport bottom -->
+    <dimen name="camera_row_start">11.5dp</dimen>      <!-- gallery thumb to the viewport edge -->
+    <dimen name="camera_row_end">7.5dp</dimen>         <!-- effects circle 11.5dp from the edge -->
+    <dimen name="camera_flash_end">17dp</dimen>        <!-- flash circle (40dp) 21dp from the shutter -->
+    <dimen name="camera_flip_start">18dp</dimen>       <!-- flip circle 22dp right of the shutter -->
+    <dimen name="gallery_thumb">36dp</dimen>
+    <dimen name="gallery_thumb_border">1.5dp</dimen>   <!-- white frame around the thumb -->
+    <dimen name="effects_dot_end">5.5dp</dimen>        <!-- orange dot centre 11dp right, 11dp up of the circle centre -->
+    <dimen name="effects_dot_top">5.5dp</dimen>
+    <dimen name="text_camera_mode">11.5sp</dimen>      <!-- TEXT / LIVE / STORY ... (cap height 8dp) -->
+    <dimen name="camera_modes_top">38.5dp</dimen>      <!-- viewport bottom to the labels -->
+    <dimen name="camera_modes_bottom">40.5dp</dimen>   <!-- underline to the screen bottom -->
+    <dimen name="camera_modes_start">14dp</dimen>      <!-- "TEXT" ink 17dp from the screen edge -->
+    <dimen name="camera_mode_padding">3dp</dimen>      <!-- underline 4dp wider than STORY on each side -->
+    <dimen name="camera_mode_gap">19dp</dimen>         <!-- about 27dp between the words -->
+    <dimen name="camera_mode_underline">2dp</dimen>
+    <dimen name="camera_mode_underline_top">6.5dp</dimen>
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->

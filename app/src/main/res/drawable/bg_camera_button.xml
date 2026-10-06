@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Round see-through button on the camera / story photo (09, 10). The view is 48dp (touch
+     target); the inset leaves a 40dp visible circle. The colour comes from the view:
+     android:backgroundTint="@color/photo_button_light" (09) or "@color/photo_button" (10). -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="4dp">
+    <shape android:shape="oval">
+        <solid android:color="@color/white" />
+    </shape>
+</inset>

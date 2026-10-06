@@ -26,7 +26,7 @@ ic_briefcase=briefcase, ic_graduation=graduation-cap, ic_clock=clock, ic_edit=pe
 
 ic_bookmark=bookmark-simple
 
-Camera/story: ic_flash=lightning, ic_flip=camera-rotate, ic_star=star, ic_send=paper-plane-tilt,
+Camera/story: ic_flash=lightning, ic_flip=arrows-clockwise (two arrows as in 09; was camera-rotate), ic_star=star, ic_send=paper-plane-tilt,
 
 ic_heart=heart, ic_text_aa=text-aa, ic_music=music-notes, ic_sparkle=sparkle, ic_brightness=sun,
 
