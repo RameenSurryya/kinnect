@@ -485,6 +485,33 @@
     <dimen name="close_friends_star_padding">5dp</dimen> <!-- (24 - 14) / 2: a 14dp star -->
     <dimen name="next_arrow_padding">12dp</dimen>      <!-- (44 - 20) / 2: a 20dp arrow -->
 
+    <!-- Story viewer (11) and Your story (12); the viewport and the 89dp bottom strip are
+         the same as in the story editor (10) -->
+    <dimen name="story_progress_height">3dp</dimen>   <!-- thin white segments at the top -->
+    <dimen name="story_progress_top">9dp</dimen>      <!-- viewport top to the segments -->
+    <dimen name="story_progress_side">9.5dp</dimen>   <!-- viewport sides to the first / last segment -->
+    <dimen name="story_progress_gap">5dp</dimen>      <!-- between segments -->
+    <dimen name="story_header_top">4.5dp</dimen>      <!-- segments to the 48dp header row -->
+    <dimen name="story_header_start">9.5dp</dimen>    <!-- viewport left to the avatar -->
+    <dimen name="story_header_end">-2dp</dimen>       <!-- X glyph 15dp from the viewport right: its 48dp frame sticks out 2dp -->
+    <dimen name="story_name_gap">9.5dp</dimen>        <!-- avatar to the name -->
+    <dimen name="story_time_top">2dp</dimen>          <!-- name to "5h" -->
+    <dimen name="story_more_padding">10dp</dimen>     <!-- (48 - 28) / 2: the dots are drawn at 28dp -->
+    <dimen name="story_more_end">1.5dp</dimen>
+    <dimen name="story_close_padding">12dp</dimen>    <!-- (48 - 24) / 2 -->
+    <dimen name="text_avatar_35">12.5sp</dimen>       <!-- 0.36 x 35dp -->
+    <dimen name="text_story_name">14sp</dimen>        <!-- "Omar Farooq", Figtree Bold -->
+    <dimen name="text_story_time">12sp</dimen>        <!-- "5h ·" -->
+    <dimen name="viewer_sticker_height">47dp</dimen>
+    <dimen name="viewer_sticker_padding">16.5dp</dimen> <!-- 198dp wide with the text -->
+    <dimen name="viewer_sticker_above_centre">30.5dp</dimen> <!-- sticker centre above the viewport centre -->
+    <dimen name="text_viewer_sticker">23sp</dimen>   <!-- text ink 165dp wide -->
+    <dimen name="viewer_bar_end">7.5dp</dimen>        <!-- haha disc 15.5dp from the screen edge -->
+    <dimen name="viewer_message_gap">4dp</dimen>      <!-- pill to the first 48dp reaction frame (12dp to the disc) -->
+    <dimen name="viewer_message_padding">17.5dp</dimen>
+    <dimen name="text_message_hint">13.5sp</dimen>
+    <dimen name="reaction_button_padding">8dp</dimen> <!-- (48 - 32) / 2: 32dp reaction discs, 48dp apart -->
+
     <!-- Line spacing (added to the font's own line height) -->
     <dimen name="heading_line_spacing">-1dp</dimen> <!-- 2-line heading pitch 26dp (03) -->
     <dimen name="body_line_spacing">1.5dp</dimen>   <!-- post text pitch 18.3dp (04) -->

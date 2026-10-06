@@ -1,7 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 11 Story viewer (placeholder until the screen is built). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    11 Story viewer: Omar Farooq's story. Visual only: the photo is the ph_night placeholder.
+
+    Near-black screen with two parts, the same frame as the story editor (10):
+     1. The rounded viewport (FrameLayout, weight 1): the photo, then on top of it the
+        progress bar and header (one vertical LinearLayout at the top) and the rotated
+        "Karachi nights" sticker. StoryViewerActivity turns on clipToOutline for the corners.
+     2. The bottom bar: "Send message..." outline pill (weight 1) and three reaction buttons.
+
+    Progress bar: four equal segments (Kinnect.StorySegment). Stories 1 and 2 are seen (white),
+    story 3 is playing (half white: a white View and an empty Space with equal weights inside a
+    translucent segment), story 4 is still to come (translucent).
+    The sticker is a TextView turned 3 degrees anticlockwise with android:rotation (the right
+    end is higher in the PNG), centred and pushed 30.5dp up from the viewport centre.
+    Measurements in dp come from design/screens/screen-11.png (dimens.xml, Story viewer section).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/camera_bg"
-    android:fitsSystemWindows="true" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ===== 1. Rounded viewport ===== -->
+    <FrameLayout
+        android:id="@+id/fl_viewport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/camera_frame_margin"
+        android:layout_marginTop="@dimen/camera_frame_margin"
+        android:layout_marginEnd="@dimen/camera_frame_margin"
+        android:layout_weight="1"
+        android:background="@drawable/bg_camera_frame">
+
+        <!-- The story photo: tall story crop of the square placeholder -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/cd_story_photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ph_night" />
+
+        <!-- Progress bar and header, stacked at the top of the photo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Progress bar: one segment per story -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/story_progress_height"
+                android:layout_marginStart="@dimen/story_progress_side"
+                android:layout_marginTop="@dimen/story_progress_top"
+                android:layout_marginEnd="@dimen/story_progress_side"
+                android:orientation="horizontal">
+
+                <!-- Seen -->
+                <View style="@style/Kinnect.StorySegment" />
+
+                <!-- Seen -->
+                <View
+                    style="@style/Kinnect.StorySegment"
+                    android:layout_marginStart="@dimen/story_progress_gap" />
+
+                <!-- Playing: half white -->
+                <LinearLayout
+                    style="@style/Kinnect.StorySegment"
+                    android:layout_marginStart="@dimen/story_progress_gap"
+                    android:backgroundTint="@color/story_track"
+                    android:orientation="horizontal">
+
+                    <View style="@style/Kinnect.StorySegment" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <!-- Not seen yet -->
+                <View
+                    style="@style/Kinnect.StorySegment"
+                    android:layout_marginStart="@dimen/story_progress_gap"
+                    android:backgroundTint="@color/story_track" />
+            </LinearLayout>
+
+            <!-- Header: avatar, name and time, "..." and X -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_target"
+                android:layout_marginStart="@dimen/story_header_start"
+                android:layout_marginTop="@dimen/story_header_top"
+                android:layout_marginEnd="@dimen/story_header_end"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Kinnect.Avatar"
+                    android:layout_width="@dimen/avatar_35"
+                    android:layout_height="@dimen/avatar_35"
+                    android:backgroundTint="@color/avatar_of"
+                    android:text="@string/sample_initials_omar"
+                    android:textSize="@dimen/text_avatar_35" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/story_name_gap"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Kinnect.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/figtree_bold"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/sample_name_omar"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_story_name" />
+
+                    <!-- "5h ·" and the globe (public story) -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/story_time_top"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Kinnect.Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="@string/viewer_time"
+                            android:textColor="@color/text_on_teal_soft"
+                            android:textSize="@dimen/text_story_time" />
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_tiny"
+                            android:layout_height="@dimen/icon_size_tiny"
+                            android:layout_marginStart="@dimen/space_4"
+                            android:contentDescription="@string/cd_public"
+                            android:src="@drawable/ic_globe"
+                            app:tint="@color/text_on_teal_soft" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- "...": no action in this UI-only app -->
+                <ImageView
+                    android:layout_width="@dimen/touch_target"
+                    android:layout_height="@dimen/touch_target"
+                    android:layout_marginEnd="@dimen/story_more_end"
+                    android:contentDescription="@string/cd_more"
+                    android:padding="@dimen/story_more_padding"
+                    android:src="@drawable/ic_more"
+                    app:tint="@color/white" />
+
+                <!-- X: close the story -->
+                <ImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="@dimen/touch_target"
+                    android:layout_height="@dimen/touch_target"
+                    android:contentDescription="@string/cd_close"
+                    android:padding="@dimen/story_close_padding"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Rotated text sticker -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/viewer_sticker_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/viewer_sticker_above_centre"
+            android:background="@drawable/bg_sticker_light"
+            android:fontFamily="@font/bricolage_grotesque_extrabold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingStart="@dimen/viewer_sticker_padding"
+            android:paddingEnd="@dimen/viewer_sticker_padding"
+            android:rotation="-3"
+            android:singleLine="true"
+            android:text="@string/viewer_sticker"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_viewer_sticker" />
+    </FrameLayout>
+
+    <!-- ===== 2. Bottom bar ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="@dimen/editor_bar_start"
+        android:layout_marginTop="@dimen/editor_bar_vertical"
+        android:layout_marginEnd="@dimen/viewer_bar_end"
+        android:layout_marginBottom="@dimen/editor_bar_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Reply box: visual only, so a TextView showing the placeholder -->
+        <TextView
+            style="@style/Kinnect.Text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/viewer_message_gap"
+            android:layout_weight="1"
+            android:background="@drawable/bg_message_pill"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/viewer_message_padding"
+            android:paddingEnd="@dimen/viewer_message_padding"
+            android:singleLine="true"
+            android:text="@string/viewer_send_message"
+            android:textColor="@color/story_outline"
+            android:textSize="@dimen/text_message_hint" />
+
+        <!-- Quick reactions (visual only) -->
+        <ImageView
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:contentDescription="@string/reaction_like"
+            android:padding="@dimen/reaction_button_padding"
+            android:src="@drawable/reaction_like" />
+
+        <ImageView
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:contentDescription="@string/reaction_love"
+            android:padding="@dimen/reaction_button_padding"
+            android:src="@drawable/reaction_love" />
+
+        <ImageView
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:contentDescription="@string/reaction_haha"
+            android:padding="@dimen/reaction_button_padding"
+            android:src="@drawable/reaction_haha" />
+    </LinearLayout>
+</LinearLayout>

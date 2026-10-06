@@ -691,6 +691,15 @@
         <item name="tint">@color/white</item>
     </style>
 
+    <!-- Story progress segment (11, 12): one equal share of the top bar, white = already seen.
+         Unseen segments override the colour with android:backgroundTint="@color/story_track". -->
+    <style name="Kinnect.StorySegment" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_segment</item>
+    </style>
+
     <!-- Mode labels under the camera: spaced bold capitals, pale grey. -->
     <style name="Kinnect.Text.CameraMode">
         <item name="android:layout_width">wrap_content</item>

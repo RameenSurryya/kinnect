@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Send message..." pill under a story (11): transparent inside, 1dp grey outline. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="@dimen/stroke_outline"
+        android:color="@color/story_outline" />
+    <corners android:radius="@dimen/radius_pill" />
+</shape>
